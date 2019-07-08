@@ -2112,6 +2112,10 @@ ol.comment-list {
 
 
 
-body{
+/*body{
+	background-color: red !important;
+}*/
+
+#masthead.site-header{
 	background-color: red !important;
 }
