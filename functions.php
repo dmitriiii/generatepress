@@ -94,7 +94,7 @@ add_filter( 'auto_update_plugin', '__return_false' );
 
 
 #implement only not for certain websites
-if( get_site_url() !== 'https://vpntester.de/' ){
+if( get_site_url() !== 'https://vpntester.de' ){
 	# add the lazy-load class to most of the other images that are missing it (filters dependent)
 	function raul_add_image_placeholders( $content ) {
 			// Don't lazyload for feeds, previews
