@@ -97,7 +97,8 @@ add_filter( 'auto_update_plugin', '__return_false' );
 #
 $k8_arrr = array(
 	'https://vpntester.de',
-	'https://vpntester.at'
+	'https://vpntester.at',
+	'https://vpntester.ch'
 );
 if( !in_array(get_site_url(), $k8_arrr) ){
 	# add the lazy-load class to most of the other images that are missing it (filters dependent)
