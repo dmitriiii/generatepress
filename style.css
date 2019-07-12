@@ -2060,3 +2060,63 @@ ol.comment-list {
 
 
 
+.k8_compare-tbl td:first-child{
+	text-transform: capitalize;
+	font-weight: bold;
+	color: #428bca;
+	width: 30%;
+}
+.k8_compare-tbl tr:nth-child(odd){
+  background-color: #f9f9f9;
+}
+
+
+
+.tbl{
+	display: table;
+	width: 100%;
+}
+
+.tbl-cell{
+	display: table-cell;
+}
+.mdl{
+	vertical-align: middle;
+}
+.k8-round{
+	border-radius: 50%;
+}
+
+.k8-meta__tbl{
+	margin-top: 15px;
+	font-size: 16px;
+}
+
+.k8-met__descr{
+	font-style: italic;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+.k8-meta__img{
+	width: 90px;
+	font-size: 0;
+}
+
+.k8-meta__img img{
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.k8-meta__txt .author-name{
+	color: #808080;
+	font-weight: 600;
+	margin-right: 7px;
+}
+
+.k8-meta__tbl .k8-meta__txt .posted-on a{
+	color: #1d69a7;
+}
