@@ -99,6 +99,39 @@ $k8_arrr = array(
 	'https://vpn-anbieter-vergleich-test.de'
 );
 if( in_array(get_site_url(), $k8_arrr) ){
+
+	#REST API FOR CRON
+	add_action( 'rest_api_init', 'create_api_posts_meta_field' );
+
+	function create_api_posts_meta_field() {
+
+	 // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
+	 register_rest_field( 'affcoups_coupon', 'k8_pm', array(
+		 'get_callback' => 'get_post_meta_for_api',
+		 'schema' => null,
+		 )
+	 );
+
+	 register_rest_field( 'affcoups_coupon', 'k8_cont', array(
+		 'get_callback' => 'get_content_for_api',
+		 'schema' => null,
+		 )
+	 );
+	}
+
+	function get_post_meta_for_api( $object ) {
+		 $post_id = $object['id'];
+		 return get_post_meta( $post_id );
+	}
+	function get_content_for_api( $object ) {
+		$post_id = $object['id'];
+		$post = get_post($post_id);
+		$content = $post->post_content;
+		return $content;
+	}
+
+
+
 	# add the lazy-load class to most of the other images that are missing it (filters dependent)
 	function raul_add_image_placeholders( $content ) {
 			// Don't lazyload for feeds, previews
