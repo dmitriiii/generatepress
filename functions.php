@@ -117,11 +117,23 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		 'schema' => null,
 		 )
 	 );
+
+	 register_rest_field( 'affcoups_vendor', 'k8_vend', array(
+		 'get_callback' => 'k8_add_vendors',
+		 'schema' => null,
+		 )
+	 );
+
+	}
+
+	function k8_add_vendors( $object ){
+		$post_id = $object['id'];
+		return get_post_meta( $post_id );
 	}
 
 	function get_post_meta_for_api( $object ) {
-		 $post_id = $object['id'];
-		 return get_post_meta( $post_id );
+		$post_id = $object['id'];
+		return get_post_meta( $post_id );
 	}
 	function get_content_for_api( $object ) {
 		$post_id = $object['id'];
