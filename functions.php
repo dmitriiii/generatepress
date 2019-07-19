@@ -130,12 +130,24 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		 )
 	 );
 
+	 register_rest_field( 'affcoups_coupon', 'k8_aff_cat', array(
+		 'get_callback' => 'get_k8_aff_cat',
+		 'schema' => null,
+		 )
+	 );
+
 	 register_rest_field( 'affcoups_vendor', 'k8_vend', array(
 		 'get_callback' => 'k8_add_vendors',
 		 'schema' => null,
 		 )
 	 );
 
+	}
+
+	function get_k8_aff_cat( $object ){
+		$post_id = $object['id'];
+		$termz = get_the_terms( $post_id, 'affcoups_coupon_category' );
+		return $termz;
 	}
 
 	function get_k8_aff_typ( $object ){
