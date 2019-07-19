@@ -118,6 +118,12 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		 )
 	 );
 
+	 register_rest_field( 'affcoups_coupon', 'k8_exc', array(
+		 'get_callback' => 'get_excerpt_for_api',
+		 'schema' => null,
+		 )
+	 );
+
 	 register_rest_field( 'affcoups_vendor', 'k8_vend', array(
 		 'get_callback' => 'k8_add_vendors',
 		 'schema' => null,
@@ -142,7 +148,12 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		return $content;
 	}
 
-
+	function get_excerpt_for_api( $object ) {
+		$post_id = $object['id'];
+		$post = get_post($post_id);
+		$excerpt = $post->post_excerpt;
+		return $excerpt;
+	}
 
 		/**
 	 * Add REST API support to an already registered post type.
