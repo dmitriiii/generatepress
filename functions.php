@@ -142,6 +142,12 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		 )
 	 );
 
+	 register_rest_field( 'affcoups_vendor', 'k8_feat_img', array(
+		 'get_callback' => 'k8_api_feat_img',
+		 'schema' => null,
+		 )
+	 );
+
 	}
 
 	function get_k8_aff_cat( $object ){
@@ -149,18 +155,11 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		$termz = get_the_terms( $post_id, 'affcoups_coupon_category' );
 		return $termz;
 	}
-
 	function get_k8_aff_typ( $object ){
 		$post_id = $object['id'];
 		$termz = get_the_terms( $post_id, 'affcoups_coupon_type' );
 		return $termz;
 	}
-
-	function k8_add_vendors( $object ){
-		$post_id = $object['id'];
-		return get_post_meta( $post_id );
-	}
-
 	function get_post_meta_for_api( $object ) {
 		$post_id = $object['id'];
 		return get_post_meta( $post_id );
@@ -171,13 +170,22 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		$content = $post->post_content;
 		return $content;
 	}
-
 	function get_excerpt_for_api( $object ) {
 		$post_id = $object['id'];
 		$post = get_post($post_id);
 		$excerpt = $post->post_excerpt;
 		return $excerpt;
 	}
+
+	function k8_add_vendors( $object ){
+		$post_id = $object['id'];
+		return get_post_meta( $post_id );
+	}
+	function k8_api_feat_img( $object ){
+		$post_id = $object['id'];
+		return get_the_post_thumbnail_url( $post_id );
+	}
+
 
 		/**
 	 * Add REST API support to an already registered post type.
