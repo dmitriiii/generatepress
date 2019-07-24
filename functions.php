@@ -183,7 +183,8 @@ if( in_array(get_site_url(), $k8_arrr) ){
 	}
 	function k8_api_feat_img( $object ){
 		$post_id = $object['id'];
-		return get_the_post_thumbnail_url( $post_id );
+		$affcoups_vendor_image = get_post_meta( $post_id, 'affcoups_vendor_image', true );
+		return $affcoups_vendor_image;
 	}
 
 
