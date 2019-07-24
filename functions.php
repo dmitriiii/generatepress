@@ -143,7 +143,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 	 );
 
 	 register_rest_field( 'affcoups_coupon', 'k8_feat_img', array(
-		 'get_callback' => 'k8_api_coup_feat_img',
+		 'get_callback' => 'k8_api_feat_img',
 		 'schema' => null,
 		 )
 	 );
@@ -189,10 +189,10 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		return $excerpt;
 	}
 
-	function k8_api_coup_feat_img( $object ){
-		$post_id = $object['id'];
-		return get_the_post_thumbnail_url( $post_id,'medium_large' );
-	}
+	// function k8_api_coup_feat_img( $object ){
+	// 	$post_id = $object['id'];
+	// 	return get_the_post_thumbnail_url( $post_id,'medium_large' );
+	// }
 
 	function k8_add_vendors( $object ){
 		$post_id = $object['id'];
