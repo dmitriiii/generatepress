@@ -185,11 +185,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		$post_id = $object['id'];
 		$affcoups_vendor_image = get_post_meta( $post_id, 'affcoups_vendor_image', true );
 		$arr = wp_get_attachment_image_src( $affcoups_vendor_image, 'medium_large');
-		$ret = array(
-			'url' => $arr[0],
-			'name' => get_the_title($affcoups_vendor_image)
-		);
-		return $ret;
+		return $arr[0];
 	}
 
 
