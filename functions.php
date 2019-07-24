@@ -184,7 +184,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 	function k8_api_feat_img( $object ){
 		$post_id = $object['id'];
 		$affcoups_vendor_image = get_post_meta( $post_id, 'affcoups_vendor_image', true );
-		$arr = wp_get_attachment_image_src( $affcoups_vendor_image, 'medium');
+		$arr = wp_get_attachment_image_src( $affcoups_vendor_image, 'medium_large');
 		return $arr[0];
 	}
 
