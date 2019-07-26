@@ -93,6 +93,13 @@ add_filter( 'auto_update_theme', '__return_false' );
 add_filter( 'auto_update_plugin', '__return_false' );
 
 
+
+add_action( 'wp_enqueue_scripts', 'reacher89_scripts' );
+function reacher89_scripts() {
+  wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css' );
+  
+}
+
 #implement only not for certain websites
 #
 $k8_arrr = array(
