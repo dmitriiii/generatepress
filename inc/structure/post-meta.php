@@ -250,7 +250,7 @@ if ( ! function_exists( 'generate_post_meta' ) ) {
 			'post',
 		) );
 
-		if ( in_array( get_post_type(), $post_types ) ) : 
+		if ( in_array( get_post_type(), $post_types ) ) :
 			$uid = get_the_author_meta( 'ID' );
 			$k8_acf_u_ph = get_field( 'k8_acf_u_ph', 'user_' . $uid );?>
 			<div class="entry-meta tbl k8-meta__tbl">
@@ -262,6 +262,13 @@ if ( ! function_exists( 'generate_post_meta' ) ) {
 				</div>
 			</div><!-- .entry-meta -->
 		<?php endif;
+
+		#Show leave a reply button
+		if( is_single() && in_category('vpn-anbieter') ) :?>
+			<a href="#respond" class='k8-repl__link' >Hinterlasse eine Bewertung</a>
+		<?php
+		endif;
+
 	}
 }
 
