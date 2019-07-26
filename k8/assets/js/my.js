@@ -3,10 +3,10 @@ jQuery(document).ready(function($){
 	$('body').on('click', '.k8-repl__link', function(e) {
 		e.preventDefault();
 		var blck = $(this).attr('href'),
-		point = ( $(blck).offset().top - 300 );
+		point = ( $(blck).offset().top - 200 );
 
-		console.log( $(blck).offset().top );
-		console.log( point );
+		// console.log( $(blck).offset().top );
+		// console.log( point );
 		
 		$('html, body').animate({
       scrollTop: point
