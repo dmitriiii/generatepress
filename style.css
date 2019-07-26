@@ -2085,6 +2085,8 @@ ol.comment-list {
 }
 .k8-round{
 	border-radius: 50%;
+	display: inline-block;
+	overflow: hidden;
 }
 
 .k8-meta__tbl{
