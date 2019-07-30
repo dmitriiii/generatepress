@@ -62,6 +62,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			the_content();
 
+			echo '<p><b>Erstellt am:</b> ' . get_the_date() . '</p>'
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
 				'after'  => '</div>',
