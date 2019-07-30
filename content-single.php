@@ -62,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			the_content();
 
-			echo '<br><meta itemprop="datePublished" content="' . get_the_date() . '"><p><u><b>Erstellt am:</b></u> ' . get_the_date() . '</p>';
+			echo '<br><p><u><b>Erstellt am:</b></u> <meta itemprop="datePublished" content="' . get_the_date() . '">' . get_the_date() . '</p>';
 
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
