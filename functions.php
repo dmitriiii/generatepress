@@ -229,8 +229,8 @@ if( in_array(get_site_url(), $k8_arrr) ){
 
 
 
-	global $post;
-	$iddd = $post->id;
+	$urlll = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+	$iddd = url_to_postid( $urlll );
 
 	if( $iddd != 4819 ):
 		# add the lazy-load class to most of the other images that are missing it (filters dependent)
