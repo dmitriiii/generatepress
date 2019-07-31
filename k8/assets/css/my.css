@@ -72,6 +72,6 @@
 }
 
 
-.posted-on .updated:before {
+.k8-meta__tbl .posted-on .updated:before {
   content: " Letzte Aktualisierung: ";
 }
