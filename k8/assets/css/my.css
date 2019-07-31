@@ -70,3 +70,8 @@
 	padding: 6px 12px;
   border-radius: 4px;
 }
+
+
+.posted-on .updated:before {
+  content: " Letzte Aktualisierung: ";
+}

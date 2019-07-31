@@ -144,7 +144,7 @@ if ( ! function_exists( 'generate_posted_on' ) ) {
 		// If our date is enabled, show it.
 		if ( $date ) {
 			echo apply_filters( 'generate_post_date_output', sprintf( '<span class="posted-on">%1$s</span>', // WPCS: XSS ok, sanitization ok.
-				sprintf( '<ins><em title="%1$s">%2$s</em></ins>',
+				sprintf( '<em title="%1$s">%2$s</em>',
 					esc_attr( get_the_time() ),
 					$time_string
 				)
