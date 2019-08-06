@@ -98,7 +98,13 @@ add_action( 'wp_enqueue_scripts', 'reacher89_scripts' );
 function reacher89_scripts() {
   wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css' );
   wp_enqueue_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), '', true );
+
+  if ( is_page( 'k8tpl-whois' ) ) {
+    wp_enqueue_style( 'k8tpl-whois-css', get_template_directory_uri() . '/k8/assets/whois/dist/css/main.css' );
+  	wp_enqueue_script( 'k8tpl-whois-js', get_template_directory_uri() . '/k8/assets/whois/dist/js/all.js', array(), '', true );
+  }
 }
+
 
 #implement only not for certain websites
 #
