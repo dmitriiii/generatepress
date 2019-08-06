@@ -47,7 +47,7 @@ if ( ! function_exists( 'generate_setup' ) ) {
 		 * We set a more accurate width in generate_smart_content_width()
 		 */
 		global $content_width;
-		if ( ! isset( $content_width ) ) {
+		if ( !isset( $content_width ) ) {
 			$content_width = 1200; /* pixels */
 		}
 		// This theme styles the visual editor to resemble the theme style.
@@ -320,7 +320,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 				return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 			}
 		function raul_allow_lazy_attributes( $allowed_tags ) {
-				if ( ! isset( $allowed_tags['img'] ) ) {
+				if ( !isset( $allowed_tags['img'] ) ) {
 					return $allowed_tags;
 				}
 				// But, if images are allowed, ensure that our attributes are allowed!
