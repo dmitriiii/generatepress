@@ -103,7 +103,8 @@ function reacher89_scripts() {
 #implement only not for certain websites
 #
 $k8_arrr = array(
-	'https://vpn-anbieter-vergleich-test.de'
+	'https://vpn-anbieter-vergleich-test.de',
+	'https://dev.vavt.de'
 );
 if( in_array(get_site_url(), $k8_arrr) ){
 
@@ -231,108 +232,107 @@ if( in_array(get_site_url(), $k8_arrr) ){
 
 	$urlll = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
 	$iddd = url_to_postid( $urlll );
-
 	if( $iddd != 4819 ):
 		# add the lazy-load class to most of the other images that are missing it (filters dependent)
 		function raul_add_image_placeholders( $content ) {
-				// Don't lazyload for feeds, previews
-				if ( is_feed() || is_preview() ) {
-					return $content;
-				}
-				// Don't lazyload for amp-wp content
-				if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
-					return $content;
-				}
-				// This is a pretty simple regex, but it works
-				$content = preg_replace_callback( '#<(img)([^>]+?)(>(.*?)</\\1>|[\/]?>)#si', 'raul_process_image', $content );
+			// Don't lazyload for feeds, previews
+			if ( is_feed() || is_preview() ) {
 				return $content;
+			}
+			// Don't lazyload for amp-wp content
+			if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+				return $content;
+			}
+			// This is a pretty simple regex, but it works
+			$content = preg_replace_callback( '#<(img)([^>]+?)(>(.*?)</\\1>|[\/]?>)#si', 'raul_process_image', $content );
+			return $content;
 		}
 		function raul_process_image( $matches ) {
-				$old_attributes_str       = $matches[2];
-				$old_attributes_kses_hair = wp_kses_hair( $old_attributes_str, wp_allowed_protocols() );
-				if ( empty( $old_attributes_kses_hair['src'] ) ) {
-					return $matches[0];
-				}
-				$old_attributes = raul_flatten_kses_hair_data( $old_attributes_kses_hair );
-				# Don't lazy-load if there is already a data-src present
-				if(isset($old_attributes['data-src']) || isset($old_attributes['data-srcset'])){
-					return $matches[0];
-				}
-				# Don't lazy-load if there is already a lazy class
-				if ( ! empty( $old_attributes['class'] ) && false !== strpos( $old_attributes['class'], 'lazy' ) ) {
-					return $matches[0];
-				}
-				$new_attributes     = raul_process_image_attributes( $old_attributes );
-				$new_attributes_str = raul_build_attributes_string( $new_attributes );
-				return sprintf( '<!-- lazy loaded by fvm --><img %1$s>', $new_attributes_str, $matches[0] );
+			$old_attributes_str       = $matches[2];
+			$old_attributes_kses_hair = wp_kses_hair( $old_attributes_str, wp_allowed_protocols() );
+			if ( empty( $old_attributes_kses_hair['src'] ) ) {
+				return $matches[0];
+			}
+			$old_attributes = raul_flatten_kses_hair_data( $old_attributes_kses_hair );
+			# Don't lazy-load if there is already a data-src present
+			if(isset($old_attributes['data-src']) || isset($old_attributes['data-srcset'])){
+				return $matches[0];
+			}
+			# Don't lazy-load if there is already a lazy class
+			if ( ! empty( $old_attributes['class'] ) && false !== strpos( $old_attributes['class'], 'lazy' ) ) {
+				return $matches[0];
+			}
+			$new_attributes     = raul_process_image_attributes( $old_attributes );
+			$new_attributes_str = raul_build_attributes_string( $new_attributes );
+			return sprintf( '<!-- lazy loaded by fvm --><img %1$s>', $new_attributes_str, $matches[0] );
 		}
 		function raul_process_image_attributes( $attributes ) {
-				if ( empty( $attributes['src'] ) ) {
-					return $attributes;
-				}
-				if ( ! empty( $attributes['class'] ) && raul_should_skip_image_with_blacklisted_class( $attributes['class'] ) ) {
-					return $attributes;
-				}
-				$old_attributes = $attributes;
-				# convert srcset and sizes to data attributes.
-				foreach ( array( 'srcset', 'sizes' ) as $attribute ) {
-					if ( isset( $old_attributes[ $attribute ] ) ) {
-						$attributes[ "data-$attribute" ] = $old_attributes[ $attribute ];
-						unset( $attributes[ $attribute ] );
-					}
-				}
-				# add class and attributes
-				$attributes["data-src"] = $old_attributes['src'];
-				$attributes["src"] = raul_get_placeholder_image();
-				$attributes["data-lazy-type"] = 'image';
-				$attributes['class']  = sprintf('%s lazy lazyfvm', empty( $old_attributes['class']) ? '' : $old_attributes['class']);
+			if ( empty( $attributes['src'] ) ) {
 				return $attributes;
 			}
+			if ( ! empty( $attributes['class'] ) && raul_should_skip_image_with_blacklisted_class( $attributes['class'] ) ) {
+				return $attributes;
+			}
+			$old_attributes = $attributes;
+			# convert srcset and sizes to data attributes.
+			foreach ( array( 'srcset', 'sizes' ) as $attribute ) {
+				if ( isset( $old_attributes[ $attribute ] ) ) {
+					$attributes[ "data-$attribute" ] = $old_attributes[ $attribute ];
+					unset( $attributes[ $attribute ] );
+				}
+			}
+			# add class and attributes
+			$attributes["data-src"] = $old_attributes['src'];
+			$attributes["src"] = raul_get_placeholder_image();
+			$attributes["data-lazy-type"] = 'image';
+			$attributes['class']  = sprintf('%s lazy lazyfvm', empty( $old_attributes['class']) ? '' : $old_attributes['class']);
+			return $attributes;
+		}
 
 		function raul_build_attributes_string( $attributes ) {
-				$string = array();
-				foreach ( $attributes as $name => $value ) {
-					if ( '' === $value ) {
-						$string[] = sprintf( '%s', $name );
-					} else {
-						$string[] = sprintf( '%s="%s"', $name, esc_attr( $value ) );
-					}
+			$string = array();
+			foreach ( $attributes as $name => $value ) {
+				if ( '' === $value ) {
+					$string[] = sprintf( '%s', $name );
+				} else {
+					$string[] = sprintf( '%s="%s"', $name, esc_attr( $value ) );
 				}
-				return implode( ' ', $string );
 			}
+			return implode( ' ', $string );
+		}
 
 		function raul_flatten_kses_hair_data( $attributes ) {
-				$flattened_attributes = array();
-				foreach ( $attributes as $name => $attribute ) {
-					$flattened_attributes[ $name ] = $attribute['value'];
-				}
-				return $flattened_attributes;
+			$flattened_attributes = array();
+			foreach ( $attributes as $name => $attribute ) {
+				$flattened_attributes[ $name ] = $attribute['value'];
 			}
+			return $flattened_attributes;
+		}
 		function raul_should_skip_image_with_blacklisted_class( $classes ) {
-				$blacklisted_classes = array(
-					'skip-lazy',
-					'gazette-featured-content-thumbnail',
-				);
-				return false;
-			}
+			$blacklisted_classes = array(
+				'skip-lazy',
+				'gazette-featured-content-thumbnail',
+			);
+			return false;
+		}
 
 		function raul_get_placeholder_image() {
-				return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-			}
+			return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+		}
 		function raul_allow_lazy_attributes( $allowed_tags ) {
-				if ( !isset( $allowed_tags['img'] ) ) {
-					return $allowed_tags;
-				}
-				// But, if images are allowed, ensure that our attributes are allowed!
-				$img_attributes = array_merge( $allowed_tags['img'], array(
-					'data-src' => 1,
-					'data-srcset' => 1,
-					'data-sizes' => 1,
-					'data-lazy-type' => 1,
-				) );
-				$allowed_tags['img'] = $img_attributes;
+			if ( !isset( $allowed_tags['img'] ) ) {
 				return $allowed_tags;
 			}
+			// But, if images are allowed, ensure that our attributes are allowed!
+			$img_attributes = array_merge( $allowed_tags['img'], array(
+				'data-src' => 1,
+				'data-srcset' => 1,
+				'data-sizes' => 1,
+				'data-lazy-type' => 1,
+			) );
+			$allowed_tags['img'] = $img_attributes;
+			return $allowed_tags;
+		}
 
 		# allow attributes on html
 		add_action( 'template_redirect', 'raul_add_extra_attributes' );
@@ -354,7 +354,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 			return $html;
 		}
 		function raul_lazy_filter_html_start($html) {
-		    ob_start('raul_lazy_filter_html');
+		  ob_start('raul_lazy_filter_html');
 		}
 		# add lazy load library from https://github.com/malchata/yall.js
 		add_action('wp_head', 'raul_add_lazy_yall');
@@ -375,6 +375,6 @@ if( in_array(get_site_url(), $k8_arrr) ){
 		# no theme updates, else modifications will be gone
 		add_filter( 'site_transient_update_plugins', 'raul_filter_plugin_updates' );
 
-	endif;
+	endif; # $iddd != 4819
 
 }
