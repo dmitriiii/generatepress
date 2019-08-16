@@ -14,7 +14,7 @@ class K8Short
 		$pid = get_the_ID();
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();?>
-			<table class="k8_compare-tbl">
+			<table class="k8_compare-tbl mtb-30">
 				<?php
 				#Connections per account
 				if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
