@@ -12,9 +12,11 @@ class K8Short
 
 	public function vpn_det($atts){
 		$pid = get_the_ID();
+		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();?>
 			<table class="k8_compare-tbl">
 				<?php
+				#Connections per account
 				if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
 					<tr>
 						<td>Verbindungen pro Konto</td>
@@ -23,38 +25,40 @@ class K8Short
 				<?php
 				endif;
 
+				#Duration 1
 				if ( get_field( 'k8_acf_vpndet_durr1', $pid ) ): ?>
 					<tr>
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat )</td>
 						<td>
-							<?php
-							echo get_field( 'k8_acf_vpndet_prc1', $pid ) . " " . get_field( 'k8_acf_vpndet_curr', $pid )['label'];
-							?>
+							<?php echo get_field( 'k8_acf_vpndet_prc1', $pid ) . " " . $k8_acf_vpndet_curr; ?>
 						</td>
 					</tr>
 				<?php
 				endif;
 
+				#Duration 2
 				if ( get_field( 'k8_acf_vpndet_durr2', $pid ) ): ?>
 					<tr>
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monat )</td>
-						<td><?php the_field( 'k8_acf_vpndet_prc2', $pid ); ?></td>
+						<td><?php echo get_field( 'k8_acf_vpndet_prc2', $pid ) . " " . $k8_acf_vpndet_curr; ?></td>
 					</tr>
 				<?php
 				endif;
 
+				#Duration 3
 				if ( get_field( 'k8_acf_vpndet_durr3', $pid ) ): ?>
 					<tr>
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monat )</td>
-						<td><?php the_field( 'k8_acf_vpndet_prc3', $pid ); ?></td>
+						<td><?php echo get_field( 'k8_acf_vpndet_prc3', $pid ) . " " . $k8_acf_vpndet_curr; ?></td>
 					</tr>
 				<?php
 				endif;
 
+				# Duration 4
 				if ( get_field( 'k8_acf_vpndet_durr4', $pid ) ): ?>
 					<tr>
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monat )</td>
-						<td><?php the_field( 'k8_acf_vpndet_prc4', $pid ); ?></td>
+						<td><?php echo get_field( 'k8_acf_vpndet_prc4', $pid ) . " " . $k8_acf_vpndet_curr; ?></td>
 					</tr>
 				<?php
 				endif;
