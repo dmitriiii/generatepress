@@ -105,7 +105,7 @@ class K8Short
 							$ccc = 1;
 							foreach ($videoplattformen as $key=>$value): ?>
 								<strong>
-									<?php echo $value['label']; ?>
+									<?php echo $value; ?>
 								</strong>
 							<?php
 								echo ( count( $videoplattformen ) > $ccc ) ? ', ' : '';
