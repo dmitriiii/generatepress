@@ -26,7 +26,14 @@ class K8Short
 				if ( get_field( 'k8_acf_vpndet_durr1', $pid ) ): ?>
 					<tr>
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat )</td>
-						<td><?php the_field( 'k8_acf_vpndet_prc1', $pid ); ?></td>
+						<td>
+							<?php 
+								the_field( 'k8_acf_vpndet_prc1', $pid ); 
+								echo " ";
+								the_field( 'k8_acf_vpndet_curr', $pid ); 
+							?>
+
+						</td>
 					</tr>
 				<?php
 				endif;
