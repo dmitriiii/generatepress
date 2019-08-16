@@ -30,7 +30,7 @@ class K8Short
 							<?php 
 							the_field( 'k8_acf_vpndet_prc1', $pid ); 
 							echo " ";
-							the_field( 'k8_acf_vpndet_curr', $pid ); 
+							echo get_field( 'k8_acf_vpndet_curr', $pid )['label']; 
 							
 							echo '<pre style="display:none;">';
 							print_r( get_field( 'k8_acf_vpndet_curr', $pid ) );
