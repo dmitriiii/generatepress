@@ -18,7 +18,7 @@ class K8Short
 				if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
 					<tr>
 						<td>Verbindungen pro Konto</td>
-						<td><?php get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></td>
+						<td><?php echo get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></td>
 					</tr>
 				<?php
 				endif;
