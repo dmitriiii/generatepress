@@ -28,11 +28,16 @@ class K8Short
 						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat )</td>
 						<td>
 							<?php 
-								the_field( 'k8_acf_vpndet_prc1', $pid ); 
-								echo " ";
-								the_field( 'k8_acf_vpndet_curr', $pid ); 
-							?>
+							the_field( 'k8_acf_vpndet_prc1', $pid ); 
+							echo " ";
+							the_field( 'k8_acf_vpndet_curr', $pid ); 
+							
+							echo '<pre style="display:none;">';
+							print_r( get_field( 'k8_acf_vpndet_curr', $pid ) );
+							echo '</pre>';
 
+							?>
+							
 						</td>
 					</tr>
 				<?php
