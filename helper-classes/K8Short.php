@@ -39,7 +39,7 @@ class K8Short
 				#Duration 2
 				if ( get_field( 'k8_acf_vpndet_durr2', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monat )</td>
+						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc2', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -50,7 +50,7 @@ class K8Short
 				#Duration 3
 				if ( get_field( 'k8_acf_vpndet_durr3', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monat )</td>
+						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc3', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -61,7 +61,7 @@ class K8Short
 				# Duration 4
 				if ( get_field( 'k8_acf_vpndet_durr4', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monat )</td>
+						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc4', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -96,11 +96,6 @@ class K8Short
 					<tr>
 						<td>Videoplattformen</td>
 						<td>
-							<?php 
-							echo '<pre style="display: none;">';
-							print_r( $videoplattformen );
-							echo '</pre>'; ?>
-
 							<?php
 							$ccc = 1;
 							foreach ($videoplattformen as $key=>$value): ?>
