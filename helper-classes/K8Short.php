@@ -70,16 +70,19 @@ class K8Short
 				endif;
 
 				#Trials
-				if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ): ?>
+				if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ): 
+					$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
 					<tr>
 						<td>Testmöglichkeiten</td>
-						<td><strong>
+						<td>
 							<?php 
-							echo '<pre style="display:none;">';
-							print_r( get_field('k8_acf_vpndet_trialz') );
-							echo '</pre>';   
-							?>
-						</strong></td>
+							foreach ($k8_acf_vpndet_trialz as $key=>$value): ?>
+								<strong>
+									<?php echo $value['label']; ?>
+								</strong>
+							<?php 
+							endforeach ?>
+						</td>
 					</tr>
 				<?php
 				endif;
