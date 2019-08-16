@@ -96,10 +96,16 @@ class K8Short
 					<tr>
 						<td>Videoplattformen</td>
 						<td>
-							<?php 
-							echo '<pre style="display: none;">';
-							print_r( $videoplattformen );
-							echo '</pre>'; ?>
+							<?php
+							$ccc = 1;
+							foreach ($videoplattformen as $key=>$value): ?>
+								<strong>
+									<?php echo $value['label']; ?>
+								</strong>
+							<?php
+								echo ( count( $videoplattformen ) > $ccc ) ? ', ' : '';
+								$ccc++;
+							endforeach ?>
 						</td>
 					</tr>
 				<?php
