@@ -88,8 +88,24 @@ class K8Short
 						</td>
 					</tr>
 				<?php
-				endif;
-				?>
+				endif; 
+
+				#Videoplattformen
+				if ( get_field( 'Videoplattformen', $pid ) ):
+					$videoplattformen =	get_field( 'Videoplattformen', $pid ); ?>
+					<tr>
+						<td>Videoplattformen</td>
+						<td>
+							<?php 
+							echo '<pre style="display: none;">';
+							print_r( $videoplattformen );
+							echo '</pre>'; ?>
+						</td>
+					</tr>
+				<?php
+				endif; ?>
+
+				
 
 			</table>
 		<?php
