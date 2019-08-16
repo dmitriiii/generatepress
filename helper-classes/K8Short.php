@@ -11,17 +11,6 @@ class K8Short
 	}
 
 	public function vpn_det($atts){
-		// $arr = array(
-		// 	'Verbindungen pro Konto' => 'k8_acf_vpndet_conn',
-		// 	'Dauer(Monat)' => 'k8_acf_vpndet_durr1',
-		// 	'Dauer(Monat)' => 'k8_acf_vpndet_prc1',
-		// 	'k8_acf_vpndet_durr2',
-		// 	'k8_acf_vpndet_prc2',
-		// 	'k8_acf_vpndet_durr3',
-		// 	'k8_acf_vpndet_prc3',
-		// 	'k8_acf_vpndet_durr4',
-		// 	'k8_acf_vpndet_prc4',
-		// );
 		$pid = get_the_ID();
 		ob_start();?>
 			<table class="k8_compare-tbl">

@@ -1,3 +1,8 @@
+.k8_compare-tbl{
+	border-collapse: collapse;
+	border: 1px solid rgba(0,0,0,.1);
+}
+
 .k8_compare-tbl td:first-child{
 	text-transform: capitalize;
 	font-weight: bold;
