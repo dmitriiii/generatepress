@@ -8,7 +8,12 @@ class K8Short
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
 
+		#Show download app button
+		// add_shortcode( 'k8_short_dwn_but', array( $this, 'dwn_but') );
+
 	}
+
+	
 
 	#Show table with vpn details
 	public function vpn_det($atts){
