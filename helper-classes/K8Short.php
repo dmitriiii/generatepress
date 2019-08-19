@@ -10,6 +10,7 @@ class K8Short
 
 	}
 
+	#Show table with vpn details
 	public function vpn_det($atts){
 		$pid = get_the_ID();
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
@@ -119,7 +120,7 @@ class K8Short
 	  return $html;
 	}
 
-
+	#Show table with taxonomies Data
 	public function vpn_tax($atts){
 		$arr = array(
 			'betriebssystem'=>'Betriebssysteme',
