@@ -13,7 +13,7 @@ class K8Short
 
 	}
 
-	
+
 
 	#Show table with vpn details
 	public function vpn_det($atts){
@@ -94,7 +94,7 @@ class K8Short
 						</td>
 					</tr>
 				<?php
-				endif; 
+				endif;
 
 				#Videoplattformen
 				if ( get_field( 'Videoplattformen', $pid ) ):
@@ -117,7 +117,7 @@ class K8Short
 				<?php
 				endif; ?>
 
-				
+
 
 			</table>
 		<?php
