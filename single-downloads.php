@@ -639,7 +639,7 @@ get_header(); ?>
 							the_content();
 
 							echo '<div class="k8-rew__wrr">';
-								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='full']" );
+								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
 							echo '</div>';
 
 							wp_link_pages( array(
