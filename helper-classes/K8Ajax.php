@@ -1,71 +1,73 @@
 <?php
-// class K8Ajax
-// {
-//   function __construct()
-//   {
-//     //Catch Lead
-//     add_action('wp_ajax_nopriv_leav_form', array( $this, 'leav_form' ));
-//     add_action('wp_ajax_leav_form', array( $this, 'leav_form' ));
-//   }
+class K8Ajax
+{
+  function __construct()
+  {
+    //Success Captcha
+    add_action('wp_ajax_nopriv_k8_ajx_captcha_succ', array( $this, 'k8_ajx_captcha_succ' ));
+    add_action('wp_ajax_k8_ajx_captcha_succ', array( $this, 'k8_ajx_captcha_succ' ));
+  }
 
-//   #Catch Lead
-//   public function leav_form(){
-//     $arrr = array();
-//     extract( $_POST );
-//     $body = "";
-//     foreach ($cont as $value) {
-//       switch ( $value['name'] ) {
-//         case 'k8_name':
-//           $body .= K8H::mess( 'Имя', $value['value']);
-//           break;
-//         case 'k8_phone':
-//           $body .= K8H::mess( 'Телефон', $value['value']);
-//           break;
-//         case 'k8_email':
-//           $body .= K8H::mess( 'Email', $value['value']);
-//           break;
+  public function final( $arrr ){
+    echo json_encode( $arrr );
+    exit();
+  }
 
-//         default:
-//           break;
-//       }
-//     }
+  //Success Captcha
+  public function k8_ajx_captcha_succ(){
+    $arrr = array();
+    extract( $_POST );
+   
+   	if( !isset( $action ) || $action != 'k8_ajx_captcha_succ' ){
+      $arrr['error'] = 'Submit via website, please';
+      $this->final($arrr);
+    }
 
-//     foreach ($calc as $value) {
-//       switch ( $value['name'] ) {
-//         case 'k8_want':
-//           $body .= K8H::mess( 'Хочет вложить', $value['value']);
-//           break;
-//         case 'k8_srok':
-//           $body .= K8H::mess( 'На срок', $value['value']);
-//           break;
-//         case 'k8_vypl':
-//           $body .= K8H::mess( 'С выплатой процентов', K8H::proc( $value['value'] ));
-//           break;
+   	if( is_array($dataSubm) && count($dataSubm) > 0 ){
+   		foreach ($dataSubm as $item) {
+   			switch ( $item['name'] ) {
+   				case 'g-recaptcha-response':
+   					$recaptcha = $item['value'];
+   					break;
+   				case 'href':
+   					$href = $item['value'];
+   					break;
+   				default:
+   					$pid = $item['value'];
+   					break;
+   			}
+   		}
+   	}
 
-//         default:
-//           break;
-//       }
-//     }
+   	#Verify captcha backend code
+ 	  if(isset( $recaptcha ) && !empty( $recaptcha ) ){
+      $secret = '6LdCnLQUAAAAAFa309xFoL442plFuhYWBUEsTjvs';
+      $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$recaptcha);
+      $responseData = json_decode($verifyResponse);
+      if($responseData->success){
+       	ob_start();?>
+      		<p>
+						<a class="dwnd__butt" href="<?php echo $href; ?>" download>
+						 <img src="<?php echo get_the_post_thumbnail_url( $pid, 'thumbnail' ); ?>" alt="">
+						 Download Starten
+						 <i class="fa fa-download" aria-hidden="true"></i>
+						</a>
+					</p>
+      	<?php	
+      	$arrr['html'] =	ob_get_clean();
+      }
+      else{
+      	$arrr['error'] = 'Robot verification failed, please try again.';
+      	$this->final($arrr);
+      }
+	  }
 
-//     $body .= "<h2>Расчет калькулятора</h2>";
 
-//     $body .= $plash;
+    // write_log(get_defined_vars());
+    echo json_encode( $arrr );
+    exit();
+  }
 
-//     $m = new K8Mail([
-//       'to' => [
-//         get_field('k8_acf_ema_to', 'option'),
-//       ],
-//       'subject' => 'Заявка с сайта iResidence',
-//       'body' => $body
-//     ]);
-//     $m->send();
+}
 
-//     //write_log(get_defined_vars());
-//     $arrr['html'] = 'ok!';
-//     echo json_encode( $arrr );
-//     exit();
-//   }
-
-// }
-
-// new K8Ajax;
+new K8Ajax;
