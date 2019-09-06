@@ -106,13 +106,13 @@ get_header(); ?>
 							$k8_tax_brand =	get_the_terms( $pid, 'k8_tax_brand' )[0];
 							// echo '<pre>';
 							// print_r( $k8_tax_brand );
-							// echo '</pre>';  
+							// echo '</pre>';
 
 							$k8_acf_dwn_varrs = get_field( 'k8_acf_dwn_varrs', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
 
 							// echo '<pre>';
 							// print_r( $k8_acf_dwn_varrs );
-							// echo '</pre>';  
+							// echo '</pre>';
 
 							$comz = get_comments(array(
 								'post_id' => $k8_acf_dwn_ambieter,
@@ -124,7 +124,7 @@ get_header(); ?>
 							// 	$meta_values = get_comment_meta( $v->comment_ID );
 							// 	// echo '<pre>';
 							// 	// print_r( $meta_values );
-							// 	// echo '</pre>';  
+							// 	// echo '</pre>';
 							// }
 
 							// echo '<pre>';
@@ -133,8 +133,8 @@ get_header(); ?>
 
 							// echo '<pre>';
 							// print_r( $comz );
-							// echo '</pre>';  
-							
+							// echo '</pre>';
+
 							// echo '<pre>';
 							// print_r($wppr_options);
 							// echo '</pre>';
@@ -235,9 +235,9 @@ get_header(); ?>
 											endforeach; ?>
 										</div>
 									<?php
-									endif; 
+									endif;
 
-									if (is_array($wppr_links) && count($wppr_links)>0) : 
+									if (is_array($wppr_links) && count($wppr_links)>0) :
 										foreach ($wppr_links as $k => $v) :?>
 											<p>
 												<a href="<?php echo $v; ?>" target="_blank" rel="nofollow" class="k8_kauph">
@@ -245,7 +245,7 @@ get_header(); ?>
 													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 												</a>
 											</p>
-										<?php 
+										<?php
 										endforeach;
 									endif; ?>
 
@@ -365,30 +365,30 @@ get_header(); ?>
 							<?php
 							endif;  ?>
 
-							
 
-							<?php 
+
+							<?php
 							if( have_rows('k8_acf_dwn_slider') ):?>
 								<div class="k8-sl__wrr k8-dwnd__sl w-scrns">
 									<div class="k8-sl__control k8-sl__prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
 									<div class="k8-sl__control k8-sl__next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
 									<div class="k8-sl ">
-										
-										<?php 
+
+										<?php
 										while ( have_rows('k8_acf_dwn_slider') ) : the_row(); ?>
 											<div>
 												<div class="k8-sl__itt">
 													<a href="<?php echo K8Help::getImgUrl( get_sub_field('image'), 'full' ); ?>" data-lightbox="roadtrip">
 														<img src="<?php echo K8Help::getImgUrl( get_sub_field('image'), 'medium' ); ?>" alt="">
 													</a>
-													
+
 												</div>
-											</div>		
-											<?php 
+											</div>
+											<?php
 										endwhile; ?>
 									</div>
 								</div>
-							<?php 
+							<?php
 							endif; ?>
 
 
@@ -623,7 +623,7 @@ get_header(); ?>
 
 								<?php
 								if($k8_tax_brand) : ?>
-									"producer" : "<?php 
+									"producer" : "<?php
 									echo $k8_tax_brand->name; ?>",
 								<?php
 								endif; ?>
@@ -639,7 +639,7 @@ get_header(); ?>
 							the_content();
 
 							echo '<div class="k8-rew__wrr">';
-								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
+								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='full']" );
 							echo '</div>';
 
 							wp_link_pages( array(
@@ -647,24 +647,24 @@ get_header(); ?>
 								'after'  => '</div>',
 							) );
 							?>
-						
-							
+
+
 							<br><br>
 
 							<h2>Aktivieren Sie jetzt den Update-Alarm</h2>
 							<p>Sie möchten über wichtige Programm-Updates immer informiert werden? Dann aktivieren Sie hier einfach den Update-Alarm und Sie verpassen kein Update mehr!</p>
-							
+
 							<form action="" class="k8_cnt" onsubmit="return false;">
 								<label>E-Mail-Adresse*</label>
-									
+
 								<div class="fxw">
 									<input class="fx1" type="email" name="email" required>
 									<button type="submit" class="dwnd__butt md">Anmelden</button>
 								</div>
-									
+
 
 							</form>
-				
+
 						</div><!-- .entry-content -->
 
 						<?php
