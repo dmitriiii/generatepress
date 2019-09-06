@@ -94,11 +94,11 @@ add_filter( 'auto_update_plugin', '__return_false' );
 
 
 
-add_action( 'wp_enqueue_scripts', 'reacher89_scripts' );
-function reacher89_scripts() {
-  wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css' );
-  wp_enqueue_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), '', true );
-}
+// add_action( 'wp_enqueue_scripts', 'reacher89_scripts' );
+// function reacher89_scripts() {
+//   wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css' );
+//   wp_enqueue_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), '', true );
+// }
 
 
 #implement only not for certain websites
