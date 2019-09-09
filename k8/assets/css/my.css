@@ -184,9 +184,9 @@
 	align-items: center;
 	justify-content: space-between;
 	letter-spacing: 2px;
-	-webkit-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	transition: all 0.5s ease;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
   background-size: 200% auto;
 }
 
@@ -196,7 +196,7 @@
 
 /*GREEN BUTTON WITH GRADIENTS*/
 .dwnd__butt.grn{
-	background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7 51%, #1CD8D2 100%)
+	background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%);
 }
 .dwnd__butt.grn:hover{
 	background-position: right center;
