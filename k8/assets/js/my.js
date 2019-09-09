@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
 
 	// STICKY
 	if( $('.k8_sticky').length > 0 ){
-		// $(".k8_sticky").sticky({topSpacing:0});
+		$(".k8_sticky").stick_in_parent();
 	}
 
 
