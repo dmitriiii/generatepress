@@ -47,7 +47,7 @@ class K8Html
 							 %s
 							 <i class="fa fa-download" aria-hidden="true"></i>
 							</a>
-						</p>'
+						</p>';
 
 		$html = sprintf($strr,
 										$args['nofollow'],
