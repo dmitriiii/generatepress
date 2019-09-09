@@ -183,14 +183,16 @@ get_header(); ?>
 
 									<div style="display: none;">
 										<?php 
-										echo K8Html::getButt([
-											'nofollow'=> 'nofollow',
-											'class'   => 'dwnd__butt grn',
-											'target'  => '_blank',
-											'href'    => $k8_acf_dwn_file['link'],
-											'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
-											'text'    => 'Download'
-										]); ?>
+										echo K8Html::getButt(
+											array(
+												'nofollow'=> 'nofollow',
+												'class'   => 'dwnd__butt grn',
+												'target'  => '_blank',
+												'href'    => $k8_acf_dwn_file['link'],
+												'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
+												'text'    => 'Download'
+											)
+										); ?>
 									</div>
 
 									<p>
