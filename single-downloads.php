@@ -347,13 +347,16 @@ get_header(); ?>
 														<p>
 															<?php echo K8Help::excerpt(20); ?>
 														</p>
-														<p>
-															<a class="dwnd__butt sm" href="<?php the_permalink(); ?>">
-															 <img src="<?php echo get_the_post_thumbnail_url( $ambieter, 'thumbnail' ); ?>" alt="">
-															 Download
-															 <i class="fa fa-download" aria-hidden="true"></i>
-															</a>
-														</p>
+														
+														<?php 
+														echo K8Html::getButt(
+															array(
+																'class'   => 'dwnd__butt sm',
+																'href'    => get_the_permalink($curr_id),
+																'img_src' => get_the_post_thumbnail_url( $ambieter, 'thumbnail' ),
+															)
+														); ?>
+
 													</div>
 												</div>
 											</div>
