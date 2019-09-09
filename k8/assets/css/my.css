@@ -190,6 +190,14 @@
 	background-color: #0284dba8 !important;
 }
 
+.dwnd__butt.grn{
+	background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7 51%, #1CD8D2 100%)
+}
+
+.dwnd__butt.grn:hover{
+	background-position: right center;
+}
+
 .dwnd__butt picture{
 	font-size: 0;
 	margin-right: 7px;
