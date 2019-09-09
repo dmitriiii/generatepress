@@ -39,7 +39,7 @@ class K8Html
 		}
 		if( !isset( $args['text'] ) ){
 			$args['text'] = 'Download';
-		}
+		} 
 
 		$strr = '<p>
 							<a rel="%s" class="%s" target="%s" href="%s" %s>

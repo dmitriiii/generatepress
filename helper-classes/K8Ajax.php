@@ -17,7 +17,7 @@
 //   public function k8_ajx_captcha_succ(){
 //     $arrr = array();
 //     extract( $_POST );
-   
+
 //    	if( !isset( $action ) || $action != 'k8_ajx_captcha_succ' ){
 //       $arrr['error'] = 'Submit via website, please';
 //       $this->final($arrr);
@@ -67,6 +67,6 @@
 //     exit();
 //   }
 
-// } 
+// }
 
 // new K8Ajax;
