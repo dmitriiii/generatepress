@@ -245,7 +245,12 @@
 
 .dwnd__butt.sm{
 	font-size: 14px;
+	background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%)
 }
+.dwnd__butt.sm:hover{
+	background-position: right center;
+}
+
 .dwnd__butt.sm img{
 	max-height: 30px;
 }
