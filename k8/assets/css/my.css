@@ -196,10 +196,10 @@
 
 /*GREEN BUTTON WITH GRADIENTS*/
 .dwnd__butt.grn{
-	background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%);
+	background-image: linear-gradient(to left, #1D976C 0%, #93F9B9 51%, #1D976C 100%);
 }
 .dwnd__butt.grn:hover{
-	background-position: right center;
+	background-position: left center;
 }
 
 
