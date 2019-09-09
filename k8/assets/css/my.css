@@ -373,9 +373,10 @@
 	-ms-align-items: center;
 	align-items: center;
 	margin-top: 25px;
-	/*border-radius: 4px;*/
+	border-radius: 4px;
 	overflow: hidden;
-	
+	-webkit-box-shadow: 0 0 10px #cccccc;
+  box-shadow: 0 0 10px #cccccc;
 	-webkit-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
@@ -400,10 +401,13 @@
 	letter-spacing: 4px;
 }
 
-.k8_kauph:hover,
-.k8_kauph:hover i{
+.k8_kauph:hover{
 	background: #0284dba8;
 	color: #fff;
+}
+
+.k8_kauph:hover i{
+	background-color: transparent;
 }
 
 .k8-rew__wrr{
