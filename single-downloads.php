@@ -180,81 +180,84 @@ get_header(); ?>
 							<div class="dwnd dwnd__info fxw">
 								<div class="dwnd__info-1 fx-40">
 
-
-									<?php
-									echo K8Html::getButt(
-										array(
-											'nofollow'=> 'nofollow',
-											'class'   => 'dwnd__butt grn',
-											'target'  => '_blank',
-											'href'    => $k8_acf_dwn_file['link'],
-											'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
-										)
-									);
-
-
-									if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
-										<p>
-											<?php
-											foreach ($k8_acf_dwn_feat as $key => $value): ?>
-												<span><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $value['label']; ?></span>
-											<?php
-											endforeach ?>
-										</p>
-									<?php
-									endif;
-
-									if ( is_array( $k8_acf_dwn_varrs ) && count( $k8_acf_dwn_varrs ) > 0 ) :
-										$ara = array(
-											'windows' => array(
-												'label'=>'Windows',
-												'icon'=>'fa-windows'
-											),
-											'mac' => array(
-												'label'=>'Mac',
-												'icon'=>'fa-apple'
-											),
-											'android' => array(
-												'label'=>'Android',
-												'icon'=>'fa-android'
-											),
-											'ios' => array(
-												'label'=>'iOS',
-												'icon'=>'fa-apple'
+									<div class="k8_sticky">
+										
+									
+										<?php
+										echo K8Html::getButt(
+											array(
+												'nofollow'=> 'nofollow',
+												'class'   => 'dwnd__butt grn',
+												'target'  => '_blank',
+												'href'    => $k8_acf_dwn_file['link'],
+												'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
 											)
-										); ?>
-										<div class="dwnd__ot fx">
-											<?php
-											foreach ($ara as $key => $item) :
-												if ( $k8_acf_dwn_varrs[0][$key]['url'] !== '' ): ?>
-													<a <?php echo( $k8_acf_dwn_varrs[0][$key]['target'] == '_blank' ) ? 'target="_blank" rel="nofollow"' : ''; ?>
-														href="<?php echo $k8_acf_dwn_varrs[0][$key]['url']; ?>"
-														class="dwnd__ot-link <?php echo ($curr_url == $k8_acf_dwn_varrs[0][$key]['url']) ? 'act' : ''; ?>">
+										);
 
-															<i class="fa <?php echo $item['icon']; ?>" aria-hidden="true"></i>
-															<?php echo $item['label']; ?>
 
-													</a>
-												<?php
-												endif;
-											endforeach; ?>
-										</div>
-									<?php
-									endif;
-
-									if (is_array($wppr_links) && count($wppr_links)>0) :
-										foreach ($wppr_links as $k => $v) :?>
+										if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
 											<p>
-												<a href="<?php echo $v; ?>" target="_blank" rel="nofollow" class="k8_kauph">
-													<span>Kaufen</span>
-													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-												</a>
+												<?php
+												foreach ($k8_acf_dwn_feat as $key => $value): ?>
+													<span><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $value['label']; ?></span>
+												<?php
+												endforeach ?>
 											</p>
 										<?php
-										endforeach;
-									endif; ?>
+										endif;
 
-								</div>
+										if ( is_array( $k8_acf_dwn_varrs ) && count( $k8_acf_dwn_varrs ) > 0 ) :
+											$ara = array(
+												'windows' => array(
+													'label'=>'Windows',
+													'icon'=>'fa-windows'
+												),
+												'mac' => array(
+													'label'=>'Mac',
+													'icon'=>'fa-apple'
+												),
+												'android' => array(
+													'label'=>'Android',
+													'icon'=>'fa-android'
+												),
+												'ios' => array(
+													'label'=>'iOS',
+													'icon'=>'fa-apple'
+												)
+											); ?>
+											<div class="dwnd__ot fx">
+												<?php
+												foreach ($ara as $key => $item) :
+													if ( $k8_acf_dwn_varrs[0][$key]['url'] !== '' ): ?>
+														<a <?php echo( $k8_acf_dwn_varrs[0][$key]['target'] == '_blank' ) ? 'target="_blank" rel="nofollow"' : ''; ?>
+															href="<?php echo $k8_acf_dwn_varrs[0][$key]['url']; ?>"
+															class="dwnd__ot-link <?php echo ($curr_url == $k8_acf_dwn_varrs[0][$key]['url']) ? 'act' : ''; ?>">
+
+																<i class="fa <?php echo $item['icon']; ?>" aria-hidden="true"></i>
+																<?php echo $item['label']; ?>
+
+														</a>
+													<?php
+													endif;
+												endforeach; ?>
+											</div>
+										<?php
+										endif;
+
+										if (is_array($wppr_links) && count($wppr_links)>0) :
+											foreach ($wppr_links as $k => $v) :?>
+												<p>
+													<a href="<?php echo $v; ?>" target="_blank" rel="nofollow" class="k8_kauph">
+														<span>Kaufen</span>
+														<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+													</a>
+												</p>
+											<?php
+											endforeach;
+										endif; ?>
+									
+									</div>
+								</div><!-- .dwnd__info-1 fx-40 -->
 								<div class="dwnd__info-2 fx-60">
 									<?php the_field('k8_acf_dwn_txt'); ?>
 								</div>

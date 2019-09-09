@@ -36,6 +36,12 @@ jQuery(document).ready(function($){
 	}
 	
 
+	// STICKY
+	if( $('.k8_sticky').length > 0 ){
+		$(".k8_sticky").sticky({topSpacing:0});
+	}
+
+
 	// Succesfull captcha
 	function k8CaptchaSucc( $obj ){
 		var $form = $('.k8-capt__form');
