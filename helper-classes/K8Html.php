@@ -4,10 +4,11 @@ class K8Html
 	/**
 	 * [getButt description]
 	 * @param  [type] $args [
-	 *  'class' - string ( def - 'dwnd__butt' )
 	 *  'nofollow' - string ( def - '' )
+	 *  'class' - string ( def - 'dwnd__butt' )
 	 *  'target' - string ( def - '' )
 	 *  'href' - string ( def - '#' )
+	 *  'download' - string ( def - '' )
 	 *  'img_src' - string( def - '' )
 	 *  'img_alt' - string( def - '' )
 	 *  'text' - string( def - 'Download' )
@@ -27,6 +28,9 @@ class K8Html
 		if( !isset( $args['href'] ) ){
 			$args['href'] = '#';
 		}
+		if( !isset( $args['download'] ) ){
+			$args['download'] = '';
+		}
 		if( !isset( $args['img_src'] ) ){
 			$args['img_src'] = '';
 		}
@@ -37,17 +41,20 @@ class K8Html
 			$args['text'] = 'Download';
 		}
 
-		$html = sprintf('<p>
-											<a rel="%s" class="%s" target="%s" href="%s">
-											 <img src="%s" alt="%s">
-											 %s
-											 <i class="fa fa-download" aria-hidden="true"></i>
-											</a>
-										</p>',
+		$strr = '<p>
+							<a rel="%s" class="%s" target="%s" href="%s" %s>
+							 <img src="%s" alt="%s">
+							 %s
+							 <i class="fa fa-download" aria-hidden="true"></i>
+							</a>
+						</p>'
+
+		$html = sprintf($strr,
 										$args['nofollow'],
 										$args['class'],
 										$args['target'],
 										$args['href'],
+										$args['download'],
 										$args['img_src'],
 										$args['img_alt'],
 										$args['text']);

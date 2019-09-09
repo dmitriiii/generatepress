@@ -189,7 +189,6 @@ get_header(); ?>
 											'target'  => '_blank',
 											'href'    => $k8_acf_dwn_file['link'],
 											'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
-											'text'    => 'Download'
 										)
 									);
 
@@ -347,7 +346,6 @@ get_header(); ?>
 														<p>
 															<?php echo K8Help::excerpt(20); ?>
 														</p>
-														
 														<?php 
 														echo K8Html::getButt(
 															array(

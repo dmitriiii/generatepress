@@ -45,23 +45,22 @@ class K8Ajax
       $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$recaptcha);
       $responseData = json_decode($verifyResponse);
       if($responseData->success){
-       	ob_start();?>
-      		<p>
-						<a class="dwnd__butt grn" href="<?php echo $href; ?>" download>
-						 <img src="<?php echo get_the_post_thumbnail_url( $pid, 'thumbnail' ); ?>" alt="">
-						 Download Starten
-						 <i class="fa fa-download" aria-hidden="true"></i>
-						</a>
-					</p>
-      	<?php	
-      	$arrr['html'] =	ob_get_clean();
+        $arrr['html'] = K8Html::getButt(
+          array(
+            'nofollow'=> 'nofollow',
+            'class'   => 'dwnd__butt grn',
+            'href'    => $href,
+            'download'=> 'download'
+            'img_src' => get_the_post_thumbnail_url( $pid, 'thumbnail' ),
+            'text'    => 'Download Starten'
+          )
+        );
       }
       else{
       	$arrr['error'] = 'Robot verification failed, please try again.';
       	$this->final($arrr);
       }
 	  }
-
 
     // write_log(get_defined_vars());
     echo json_encode( $arrr );
