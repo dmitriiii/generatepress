@@ -179,6 +179,7 @@ get_header(); ?>
 
 							<div class="dwnd dwnd__info fxw">
 								<div class="dwnd__info-1 fx-40">
+									
 									<p>
 										<a rel="nofollow" class="dwnd__butt grn" target="_blank" href="<?php echo $k8_acf_dwn_file['link']; ?>">
 										 <img src="<?php echo get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ); ?>" alt="">
