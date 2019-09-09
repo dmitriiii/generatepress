@@ -373,7 +373,7 @@
 	-ms-align-items: center;
 	align-items: center;
 	margin-top: 25px;
-	border-radius: 4px;
+	/*border-radius: 4px;*/
 	overflow: hidden;
 	
 	-webkit-transition: all .3s ease;
@@ -402,7 +402,8 @@
 
 .k8_kauph:hover,
 .k8_kauph:hover i{
-	background: #000;
+	background: #0284dba8;
+	color: #fff;
 }
 
 .k8-rew__wrr{
