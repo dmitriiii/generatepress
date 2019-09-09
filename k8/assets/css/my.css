@@ -185,14 +185,15 @@
 	align-items: center;
 	justify-content: space-between;
 	letter-spacing: 2px;
-	-webkit-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
   background-size: 200% auto;
 }
 
 .dwnd__butt:hover{
 	background-color: #0284dba8 !important;
+	text-shadow: 0px 0px 10px rgba(255,255,255,1);
 }
 
 /*GREEN BUTTON WITH GRADIENTS*/
