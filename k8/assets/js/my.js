@@ -38,7 +38,7 @@ jQuery(document).ready(function($){
 
 	// STICKY
 	if( $('.k8_sticky').length > 0 ){
-		console.log($('#site-navigation').height());
+		console.log( $('#site-navigation').outerHeight() );
 		// $(".k8_sticky").stick_in_parent({
 		// 	offset_top : $('#site-navigation').
 		// });
