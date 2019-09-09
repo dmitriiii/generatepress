@@ -50,7 +50,7 @@ class K8Ajax
             'nofollow'=> 'nofollow',
             'class'   => 'dwnd__butt grn',
             'href'    => $href,
-            'download'=> 'download'
+            'download'=> 'download',
             'img_src' => get_the_post_thumbnail_url( $pid, 'thumbnail' ),
             'text'    => 'Download Starten'
           )
