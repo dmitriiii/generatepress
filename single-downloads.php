@@ -179,9 +179,9 @@ get_header(); ?>
 
 							<div class="dwnd dwnd__info fxw">
 								<div class="dwnd__info-1 fx-40">
-									
 
-									<?php 
+
+									<?php
 									echo K8Html::getButt(
 										array(
 											'nofollow'=> 'nofollow',
@@ -191,9 +191,9 @@ get_header(); ?>
 											'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
 											'text'    => 'Download'
 										)
-									); 
+									);
 
-									
+
 									if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
 										<p>
 											<?php
