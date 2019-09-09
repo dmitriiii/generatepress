@@ -383,7 +383,8 @@
 
 .k8_kauph i{
 	padding: 15px 10px;
-	background-color: #999;
+	background-color: #eee;
+	color: #0284db;
 	width: 60px;
 	text-align: center;
 	font-size: 20px;
