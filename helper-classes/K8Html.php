@@ -15,25 +15,25 @@ class K8Html
 	 * @return [type]       [description]
 	 */
 	static function getButt( $args ){
-		if( !in_array( 'class', $args ) ){
-			$args['class'] = 'dwnd__butt';
-		}
-		if( !in_array( 'nofollow', $args ) ){
+		if( !isset( $args['nofollow'] ) ){
 			$args['nofollow'] = '';
 		}
-		if( !in_array( 'target', $args ) ){
+		if( !isset( $args['class'] ) ){
+			$args['class'] = 'dwnd__butt';
+		}
+		if( !isset( $args['target'] ) ){
 			$args['target'] = '';
 		}
-		if( !in_array( 'href', $args ) ){
+		if( !isset( $args['href'] ) ){
 			$args['href'] = '#';
 		}
-		if( !in_array( 'img_src', $args ) ){
+		if( !isset( $args['img_src'] ) ){
 			$args['img_src'] = '';
 		}
-		if( !in_array( 'img_alt', $args ) ){
+		if( !isset( $args['img_alt'] ) ){
 			$args['img_alt'] = '';
 		}
-		if( !in_array( 'text', $args ) ){
+		if( !isset( $args['text'] ) ){
 			$args['text'] = 'Download';
 		}
 
