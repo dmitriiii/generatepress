@@ -181,29 +181,19 @@ get_header(); ?>
 								<div class="dwnd__info-1 fx-40">
 									
 
-									<div style="display: none;">
-										<?php 
-										echo K8Html::getButt(
-											array(
-												'nofollow'=> 'nofollow',
-												'class'   => 'dwnd__butt grn',
-												'target'  => '_blank',
-												'href'    => $k8_acf_dwn_file['link'],
-												'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
-												'text'    => 'Download'
-											)
-										); ?>
-									</div>
+									<?php 
+									echo K8Html::getButt(
+										array(
+											'nofollow'=> 'nofollow',
+											'class'   => 'dwnd__butt grn',
+											'target'  => '_blank',
+											'href'    => $k8_acf_dwn_file['link'],
+											'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
+											'text'    => 'Download'
+										)
+									); 
 
-									<p>
-										<a rel="nofollow" class="dwnd__butt grn" target="_blank" href="<?php echo $k8_acf_dwn_file['link']; ?>">
-										 <img src="<?php echo get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ); ?>" alt="">
-										 Download
-										 <i class="fa fa-download" aria-hidden="true"></i>
-										</a>
-									</p>
-
-									<?php
+									
 									if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
 										<p>
 											<?php
