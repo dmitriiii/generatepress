@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
 	// STICKY
 	if( $('.k8_sticky').length > 0 ){
 		$(".k8_sticky").stick_in_parent({
-			offset_top : 50
+			offset_top : $('#site-navigation')
 		});
 	}
 

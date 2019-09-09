@@ -669,7 +669,7 @@ get_header(); ?>
 
 								<div class="fxw">
 									<input class="fx1" type="email" name="email" required>
-									<button type="submit" class="dwnd__butt md">Anmelden</button>
+									<button type="submit" class="dwnd__butt md sm">Anmelden</button>
 								</div>
 
 
