@@ -47,7 +47,7 @@ class K8Ajax
       if($responseData->success){
        	ob_start();?>
       		<p>
-						<a class="dwnd__butt" href="<?php echo $href; ?>" download>
+						<a class="dwnd__butt grn" href="<?php echo $href; ?>" download>
 						 <img src="<?php echo get_the_post_thumbnail_url( $pid, 'thumbnail' ); ?>" alt="">
 						 Download Starten
 						 <i class="fa fa-download" aria-hidden="true"></i>
