@@ -647,6 +647,7 @@ get_header(); ?>
 
 							<?php
 							the_content();
+								
 
 							echo '<div class="k8-rew__wrr">';
 								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
