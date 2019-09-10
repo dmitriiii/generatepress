@@ -314,6 +314,8 @@
 .cons{
 	padding: 20px;
 	background-color: #fff;
+	-webkit-box-shadow: 0 0 13px #ccc;
+	box-shadow: 0 0 13px #ccc;
 }
 .pros{
 	margin-right: 20px;
@@ -602,7 +604,7 @@
 /*#FORMS*/
 .k8_cnt{
 	padding: 30px;
-	background-color: #e4e4e4;
+	background-color: #eee;
 }
 
 .k8_cnt .dwnd__butt{
