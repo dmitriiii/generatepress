@@ -279,6 +279,8 @@
 	margin-bottom: 30px;
 	font-style: italic;
 	font-size: 16px;
+	padding: 30px 20px;
+	background-color: #eee;
 }
 
 .dwnd__pscs ul{
@@ -308,6 +310,11 @@
 	margin-bottom: 30px;
 }
 
+.pros,
+.cons{
+	padding: 20px;
+	background-color: #fff;
+}
 
 .pros i{
 	color: #8DC153;
@@ -374,7 +381,7 @@
 	align-items: center;
 	margin-top: 25px;
 	/*border-radius: 4px;*/
-	overflow: hidden;
+	/*overflow: hidden;*/
 	-webkit-box-shadow: 0 0 10px #cccccc;
   box-shadow: 0 0 10px #cccccc;
 	-webkit-transition: all .3s ease;
