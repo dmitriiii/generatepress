@@ -84,7 +84,9 @@ get_header(); ?>
 								'k8_acf_dwn_her_home',
 								'k8_acf_dwn_unin',
 								'k8_acf_dwn_ambieter',
-								// 'k8_acf_dwn_varrs'
+								'k8_acf_dwn_title1',
+								'k8_acf_dwn_title2',
+								'k8_acf_dwn_title3',
 							);
 
 							foreach ($ar as $key => $value) {
@@ -264,6 +266,10 @@ get_header(); ?>
 							</div>
 
 							<!-- PROS&CONS -->
+							<?php 
+							if ( $k8_acf_dwn_title1 ):
+								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title1);
+							endif; ?>
 							<div class="dwnd__pscs fx">
 								<div class="fx-50 pros">
 									<div class="dwnd__pscs-title">
@@ -378,6 +384,10 @@ get_header(); ?>
 
 
 							<?php
+							if ( $k8_acf_dwn_title2 ):
+								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title2);
+							endif;
+
 							if( have_rows('k8_acf_dwn_slider') ):?>
 								<div class="k8-sl__wrr k8-dwnd__sl w-scrns">
 									<div class="k8-sl__control k8-sl__prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
@@ -648,6 +658,9 @@ get_header(); ?>
 							<?php
 							the_content();
 								
+							if ( $k8_acf_dwn_title3 ):
+								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title3);
+							endif;
 
 							echo '<div class="k8-rew__wrr">';
 								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
