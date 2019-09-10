@@ -264,7 +264,7 @@ get_header(); ?>
 							</div>
 
 							<!-- PROS&CONS -->
-							<div class="dwnd__pscs fxw">
+							<div class="dwnd__pscs fx">
 								<div class="fx-50 pros">
 									<div class="dwnd__pscs-title">
 										Vorteile

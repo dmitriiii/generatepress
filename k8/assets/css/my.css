@@ -315,6 +315,12 @@
 	padding: 20px;
 	background-color: #fff;
 }
+.pros{
+	margin-right: 20px;
+}
+.cons{
+	margin-right: 20px;
+}
 
 .pros i{
 	color: #8DC153;
