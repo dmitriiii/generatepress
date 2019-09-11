@@ -8,11 +8,28 @@ class K8Short
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
 
-		#Show download app button
-		// add_shortcode( 'k8_short_dwn_but', array( $this, 'dwn_but') );
-
+		#[K8_SHORT_YT id="dkPLIw9aZwY"]
+		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
 	}
 
+
+	public function yt( $atts ) {
+		$a = shortcode_atts( array(
+			'id' => 'dkPLIw9aZwY',
+		), $atts );
+		$str = "<div class='k8_yt-wrr'>
+							<a href='%s' rel='nofollow' class='k8_yt-link'>
+								<span class='btn-blu'><i class='fa fa-play' aria-hidden='true'></i></span>
+							</a>
+							<img src='https://img.youtube.com/vi/%s/maxresdefault.jpg'/>
+						</div>";
+
+		return sprintf(
+			$str,
+			$a['id'],
+			$a['id']
+		);
+	}
 
 
 	#Show table with vpn details

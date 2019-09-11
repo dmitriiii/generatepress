@@ -1,6 +1,22 @@
 jQuery(document).ready(function($){
 
-	// console.log(k8All);
+	// load youtube iframe on click
+	$('body').on('click', '.k8_yt-link', function(event) {
+		event.preventDefault();
+		var $link = $(this),
+		    $wrr = $link.parents('.k8_yt-wrr'),
+		    url = $link.attr('href'),
+		    w = $wrr.width(),
+		    h = $wrr.height();
+		
+		// console.log(w);
+		// console.log(h);
+
+		var htm = '<iframe width="' + w + '" height="' + h + '" src="https://www.youtube.com/embed/' + url + '?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+		$wrr.html(htm);
+		return false;
+	});
+
 
 	// SLIDER
 	if( $('.k8-sl').length > 0 ){
@@ -10,8 +26,6 @@ jQuery(document).ready(function($){
 					$prev = $wrr.find('.k8-sl__prev'),
 					$next = $wrr.find('.k8-sl__next');
 			
-			// console.log(el);
-
 			$(el).slick({
 			  infinite: true,
 			  slidesToShow: 3,
@@ -64,7 +78,6 @@ jQuery(document).ready(function($){
 			}
 		});
 	}
-
 	window.k8CaptchaSucc = k8CaptchaSucc;
 
 
