@@ -310,25 +310,25 @@
 	margin-bottom: 30px;
 }
 
-.pros,
-.cons{
+.dwnd__pscs .pros,
+.dwnd__pscs .cons{
 	padding: 20px;
 	background-color: #fff;
 	-webkit-box-shadow: 0 0 13px #ccc;
 	box-shadow: 0 0 13px #ccc;
 }
-.pros{
+.dwnd__pscs .pros{
 	margin-right: 20px;
 }
-.cons{
+.dwnd__pscs .cons{
 	margin-left: 20px;
 }
 
-.pros i{
+.dwnd__pscs .pros i{
 	color: #8DC153;
 }
 
-.cons i{
+.dwnd__pscs .cons i{
 	color: crimson;
 }
 
