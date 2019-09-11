@@ -101,9 +101,6 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // }
 
 
-if (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
-    ini_set( 'error_log', WP_CONTENT_DIR . '/debug.txt' );
-}
 
 
 
