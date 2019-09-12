@@ -28,12 +28,12 @@ class K8Hooks
 	}
 
 	public function add_admin_column($column) {
-	  $column['k8vpn_id'] = '<span style="color: red; font-weight: bold;">VPN ID *</span>';
+	  $column['k8_acf_vpnid'] = '<span style="color: red; font-weight: bold;">VPN ID *</span>';
 	  return $column;
 	}
 	public function add_admin_column_show($column_name) {
-	  if ($column_name == 'k8vpn_id') {
-	    echo get_field('vpn_id');
+	  if ($column_name == 'k8_acf_vpnid') {
+	    echo get_field('k8_acf_vpnid');
 	  }
 	}
 
