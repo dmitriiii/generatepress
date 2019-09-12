@@ -7,8 +7,8 @@ class K8Hooks
 		add_filter( 'upload_mimes', array( $this, 'upload_mimes' ) );
 
 		# Add column with custom field vpn_id to Posts Admin Column
-		add_filter('manage_posts_columns', array( $this,'add_admin_column' ));
-		add_action('manage_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
+		add_filter('manage_post_posts_columns', array( $this,'add_admin_column' ));
+		add_action('manage_post_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
 	}
 
 	public function upload_mimes( $mimes ){
