@@ -633,38 +633,92 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9;
-	background-color: rgba(0,0,0,0.4);
-	-webkit-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+	
+/*	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
+	background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
+	
+	opacity: 0;*/
+	/*background-size: 100% 100%;*/
+
+
+}
+
+.k8_yt-link:after{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.2));
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.2));
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.2));
+	background: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.2));
+	-webkit-transition: opacity 0.5s ease;
+	-o-transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
+}
+
+
+.k8_yt-link:before{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.8));
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.8));
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.8));
+	background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.8));
+
+	-webkit-transition: opacity 0.5s ease;
+	-o-transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
 }
 
 .k8_yt-link span{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -40px;
-	margin-top: -30px;
-	width: 80px;
-	height: 60px;
-	line-height: 60px;
-	font-size: 30px;
+	margin-left: -35px;
+	margin-top: -25px;
+	width: 70px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 25px;
 	text-align: center;
 	-webkit-box-shadow: 0 0 5px #eeeeee;
 	box-shadow: 0 0 5px #eeeeee;
 	border-radius: 10px;
-	
+	z-index: 9;
 }
 
-.k8_yt-link:hover{
-	background-color: rgba(0,0,0,0.7);
+.k8_yt-link:hover:after{
+	opacity: 1;
 }
+
+.k8_yt-link:hover:before{
+	opacity: 0;
+}
+
 
 .k8_yt-link:hover span{
 	background-position: right center;
 	-webkit-box-shadow: 0 0 15px #eeeeee;
 	box-shadow: 0 0 15px #eeeeee;
 }
+
+.of-cv{
+	width: 100%;
+	object-fit: cover;
+}
+
 
 /*Buttons with gradient animation*/
 .btn-blu{
