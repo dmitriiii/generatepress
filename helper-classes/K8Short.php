@@ -21,7 +21,7 @@ class K8Short
 							<a href='%s' rel='nofollow' class='k8_yt-link'>
 								<span class='btn-blu'><i class='fa fa-play' aria-hidden='true'></i></span>
 							</a>
-							<img class='of-cv' src='https://img.youtube.com/vi/%s/sddefault.jpg'/>
+							<img class='of-cv' src='https://img.youtube.com/vi/%s/maxresdefault.jpg'/>
 						</div>";
 
 		return sprintf(
