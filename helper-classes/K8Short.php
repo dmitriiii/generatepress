@@ -113,20 +113,25 @@ class K8Short
 				<?php
 				endif;
 
-				#Videoplattformen
-				if ( get_field( 'Videoplattformen', $pid ) ):
-					$videoplattformen =	get_field( 'Videoplattformen', $pid ); ?>
+				#k8_acf_vpndet_vid
+				if ( get_field( 'k8_acf_vpndet_vid', $pid ) ):
+					$k8_acf_vpndet_vid =	get_field( 'k8_acf_vpndet_vid', $pid ); ?>
 					<tr>
 						<td>Videoplattformen</td>
 						<td>
 							<?php
+
+							echo '<pre style="display: none;">';
+							print_r( $k8_acf_vpndet_vid );
+							echo '</pre>';  
+
 							$ccc = 1;
-							foreach ($videoplattformen as $key=>$value): ?>
+							foreach ($k8_acf_vpndet_vid as $it): ?>
 								<strong>
-									<?php echo $value; ?>
+									<?php echo $it['label']; ?>
 								</strong>
 							<?php
-								echo ( count( $videoplattformen ) > $ccc ) ? ', ' : '';
+								echo ( count( $k8_acf_vpndet_vid ) > $ccc ) ? ', ' : '';
 								$ccc++;
 							endforeach ?>
 						</td>
