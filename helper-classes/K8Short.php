@@ -120,11 +120,6 @@ class K8Short
 						<td>Videoplattformen</td>
 						<td>
 							<?php
-
-							echo '<pre style="display: none;">';
-							print_r( $k8_acf_vpndet_vid );
-							echo '</pre>';  
-
 							$ccc = 1;
 							foreach ($k8_acf_vpndet_vid as $it): ?>
 								<strong>
