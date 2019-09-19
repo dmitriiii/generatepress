@@ -92,6 +92,17 @@ class K8Short
 				<?php
 				endif;
 
+				if ( get_field( 'k8_acf_vpndet_avg', $pid ) ): ?>
+					<tr>
+						<td>Durchschnittspreis pro Monat</td>
+						<td>
+							<strong><?php echo get_field( 'k8_acf_vpndet_avg', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
+						</td>
+					</tr>
+				<?php
+				endif;
+
+
 				#Trials
 				if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
 					$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
