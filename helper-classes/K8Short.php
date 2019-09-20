@@ -51,7 +51,7 @@ class K8Short
 				#Duration 1
 				if ( get_field( 'k8_acf_vpndet_durr1', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat )</td>
+						<td>Tarif ( <?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc1', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -62,7 +62,7 @@ class K8Short
 				#Duration 2
 				if ( get_field( 'k8_acf_vpndet_durr2', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monate )</td>
+						<td>Tarif ( <?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc2', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -73,7 +73,7 @@ class K8Short
 				#Duration 3
 				if ( get_field( 'k8_acf_vpndet_durr3', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monate )</td>
+						<td>Tarif ( <?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc3', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
@@ -84,7 +84,7 @@ class K8Short
 				# Duration 4
 				if ( get_field( 'k8_acf_vpndet_durr4', $pid ) ): ?>
 					<tr>
-						<td>Dauer( <?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monate )</td>
+						<td>Tarif ( <?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monate )</td>
 						<td>
 							<strong><?php echo get_field( 'k8_acf_vpndet_prc4', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
 						</td>
