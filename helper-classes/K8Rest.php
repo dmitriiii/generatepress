@@ -1,4 +1,4 @@
-<?php 
+<?php
 class K8Rest
 {
 	public $k8_arrr;
@@ -12,8 +12,56 @@ class K8Rest
 		if( in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'rest_api_init', array( $this, 'create_api_posts_meta_field' ) );
 			add_filter( 'register_post_type_args', array( $this, 'my_post_type_args' ), 10, 2 );
+
+			#Custom route for bulk update posts under VPN Ambieter
+			add_action( 'rest_api_init', array( $this, 'my_register_route' ) );
 		}
 	}
+
+	#Custom route for bulk update posts under VPN Ambieter
+	public function my_register_route() {
+    register_rest_route(
+    	'my-route',
+    	'my-posts/(?P<k8_acf_vpnid>\d+)',
+    	array(
+        'methods' => 'GET',
+        'callback' => array( $this, 'my_posts' ),
+				'args' => array(
+				  'k8_acf_vpnid' => array(
+			      'validate_callback' => function( $param, $request, $key ) {
+			        return is_numeric( $param );
+			      }
+				  ),
+				),
+      )
+    );
+	}
+
+	#Custom route for bulk update posts under VPN Ambieter
+	public function my_posts( $data ) {
+    $post_data = array();
+    $argzz = array(
+  		'post_type'   => 'post',
+  		'posts_per_page' => -1,
+  	);
+  	if( isset( $data[ 'k8_acf_vpnid' ] ) ) {
+      $argzz['meta_key'] = 'k8_acf_vpnid';
+      $argzz['meta_value'] = $data[ 'k8_acf_vpnid' ];
+    }
+
+  	$the_query = new WP_Query( $argzz );
+  	 if ( $the_query->have_posts() ) :
+  		while ( $the_query->have_posts() ) : $the_query->the_post();
+  			$pid = get_the_ID();
+	      $post_data[ $pid ][ 'title' ] = get_the_title( $pid );
+  		endwhile;
+  		wp_reset_postdata();
+  	endif;
+
+    return rest_ensure_response( $post_data );
+	}
+
+
 
 	public function create_api_posts_meta_field(){
 		register_rest_field( 'affcoups_coupon', 'k8_pm', array(
@@ -123,5 +171,5 @@ class K8Rest
 		return $arr[0];
 	}
 
-} 
+}
 new K8Rest();
