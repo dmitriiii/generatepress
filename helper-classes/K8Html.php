@@ -39,7 +39,7 @@ class K8Html
 		}
 		if( !isset( $args['text'] ) ){
 			$args['text'] = 'Download';
-		} 
+		}
 
 		$strr = '<p>
 							<a rel="%s" class="%s" target="%s" href="%s" %s>
@@ -60,4 +60,49 @@ class K8Html
 										$args['text']);
 		return $html;
 	}
+
+
+	/**
+	 * [getRow Get table price row]
+	 * @param  [type] $args [
+	 *  'durr' - string
+	 *  'prc' - string
+	 *  'pid' - int
+	 *  'curr' - string
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getRow( $args ){
+		$durr = get_field( $args['durr'], $args['pid'] );
+		$prc = get_field( $args['prc'], $args['pid'] );
+
+		if( !$durr || !$prc ){
+			return false;
+		}
+
+		if( $durr == 1 ) :
+			$str = "<tr>
+								<td>Tarif (%s Monat)</td>
+								<td>
+									<strong>%s</strong>	<em>%s</em>
+								</td>
+							</tr>";
+			return sprintf( $str, $durr, $prc, $args['curr'] );
+
+		else:
+			$avg = $prc / $durr;
+			$avg = round( $avg, 2 );
+			$str = "<tr>
+								<td>Tarif (%s Monate)</td>
+								<td>
+									<strong>%s</strong>	<em>%s</em>
+									(pro Monat <strong>%s</strong> %s)
+								</td>
+							</tr>";
+
+			return sprintf( $str, $durr, $prc, $args['curr'], $avg, $args['curr'] );
+		endif;
+	}
+
+
 } ?>

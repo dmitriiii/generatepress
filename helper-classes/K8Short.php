@@ -48,71 +48,22 @@ class K8Short
 				<?php
 				endif;
 
-				#Duration 1
-				if ( get_field( 'k8_acf_vpndet_durr1', $pid ) ): ?>
-					<tr>
-						<td>Tarif (<?php the_field( 'k8_acf_vpndet_durr1', $pid ); ?> Monat)</td>
-						<td>
-							<strong><?php echo get_field( 'k8_acf_vpndet_prc1', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
-						</td>
-					</tr>
-				<?php
-				endif;
+				#Duration & Prices
+				$arrgz = array(
+					'k8_acf_vpndet_durr1' => 'k8_acf_vpndet_prc1',
+					'k8_acf_vpndet_durr2' => 'k8_acf_vpndet_prc2',
+					'k8_acf_vpndet_durr3' => 'k8_acf_vpndet_prc3',
+					'k8_acf_vpndet_durr4' => 'k8_acf_vpndet_prc4'
+				);
 
-				#Duration 2
-				if ( get_field( 'k8_acf_vpndet_durr2', $pid ) ): ?>
-					<tr>
-						<td>Tarif (<?php the_field( 'k8_acf_vpndet_durr2', $pid ); ?> Monate)</td>
-						<td>
-							<strong><?php echo get_field( 'k8_acf_vpndet_prc2', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
-							<?php
-							echo sprintf(
-								'(pro Monat <strong>%s</strong> %s)',
-								round( ( get_field( 'k8_acf_vpndet_prc2', $pid ) / get_field( 'k8_acf_vpndet_durr2', $pid ) ), 2 ),
-								$k8_acf_vpndet_curr
-							);
-							?>
-						</td>
-					</tr>
-				<?php
-				endif;
-
-				#Duration 3
-				if ( get_field( 'k8_acf_vpndet_durr3', $pid ) ): ?>
-					<tr>
-						<td>Tarif (<?php the_field( 'k8_acf_vpndet_durr3', $pid ); ?> Monate)</td>
-						<td>
-							<strong><?php echo get_field( 'k8_acf_vpndet_prc3', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
-							<?php
-							echo sprintf(
-								'(pro Monat <strong>%s</strong> %s)',
-								round( ( get_field( 'k8_acf_vpndet_prc3', $pid ) / get_field( 'k8_acf_vpndet_durr3', $pid ) ), 2 ),
-								$k8_acf_vpndet_curr
-							);
-							?>
-						</td>
-					</tr>
-				<?php
-				endif;
-
-				# Duration 4
-				if ( get_field( 'k8_acf_vpndet_durr4', $pid ) ): ?>
-					<tr>
-						<td>Tarif (<?php the_field( 'k8_acf_vpndet_durr4', $pid ); ?> Monate)</td>
-						<td>
-							<strong><?php echo get_field( 'k8_acf_vpndet_prc4', $pid ) . "</strong>	<em>" . $k8_acf_vpndet_curr; ?></em>
-							<?php
-							echo sprintf(
-								'(pro Monat <strong>%s</strong> %s)',
-								round( ( get_field( 'k8_acf_vpndet_prc4', $pid ) / get_field( 'k8_acf_vpndet_durr4', $pid ) ), 2 ),
-								$k8_acf_vpndet_curr
-							);
-							?>
-						</td>
-					</tr>
-				<?php
-				endif;
-
+				foreach ($arrgz as $k=>$v) {
+					echo K8Html::getRow( array(
+						'durr' => $k,
+						'prc' => $v,
+						'pid' => $pid,
+						'curr' => $k8_acf_vpndet_curr
+					));
+				}
 
 				#Trials
 				if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
