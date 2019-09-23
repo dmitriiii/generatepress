@@ -35,7 +35,11 @@ $taxz = [
 $res =  wp_remote_get( 'https://vpn-anbieter-vergleich-test.de/wp-json/my-route/my-posts/' );
 $decc = json_decode( $res['body'], true );
 
+echo '<pre>';
+print_r( $decc );
+echo '</pre>';
 
+die();
 
 $args = array(
 	'post_type'   => 'post',
