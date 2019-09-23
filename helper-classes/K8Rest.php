@@ -2,8 +2,15 @@
 class K8Rest
 {
 	public $k8_arrr;
+	public $cust_fields;
+	public $taxz;
 
-	function __construct(){
+	function __construct( $args ){
+
+		$this->cust_fields = $args['cust_fields'];
+
+		$this->taxz = $args['taxz'];
+
 		$this->k8_arrr = array(
 			'https://vpn-anbieter-vergleich-test.de',
 			'https://dev.vavt.de'
@@ -22,38 +29,44 @@ class K8Rest
 	public function my_register_route() {
     register_rest_route(
     	'my-route',
-    	'my-posts/(?P<k8_acf_vpnid>\d+)',
+    	'my-posts',
     	array(
         'methods' => 'GET',
-        'callback' => array( $this, 'my_posts' ),
-				'args' => array(
-				  'k8_acf_vpnid' => array(
-			      'validate_callback' => function( $param, $request, $key ) {
-			        return is_numeric( $param );
-			      }
-				  ),
-				),
+        'callback' => array( $this, 'my_posts' )
       )
     );
 	}
 
 	#Custom route for bulk update posts under VPN Ambieter
-	public function my_posts( $data ) {
+	public function my_posts() {
     $post_data = array();
     $argzz = array(
   		'post_type'   => 'post',
   		'posts_per_page' => -1,
+  		'category_name' => 'vpn-anbieter'
   	);
-  	if( isset( $data[ 'k8_acf_vpnid' ] ) ) {
-      $argzz['meta_key'] = 'k8_acf_vpnid';
-      $argzz['meta_value'] = $data[ 'k8_acf_vpnid' ];
-    }
+  	
 
   	$the_query = new WP_Query( $argzz );
   	 if ( $the_query->have_posts() ) :
   		while ( $the_query->have_posts() ) : $the_query->the_post();
   			$pid = get_the_ID();
-	      $post_data[ $pid ][ 'title' ] = get_the_title( $pid );
+  			$k8_acf_vpnid = get_field( 'k8_acf_vpnid', $pid );
+
+	      $post_data[ $k8_acf_vpnid ][ 'pid' ] = $pid;
+	      $post_data[ $k8_acf_vpnid ][ 'title' ] = get_the_title( $pid );
+
+	      #Custom Fields
+	      foreach ($this->cust_fields as $k) {
+	      	$post_data[ $k8_acf_vpnid ]['cust_fields'][ $k ] = get_field( $k, $pid );
+	      }
+	      #Taxonomies
+	      foreach ($this->taxz as $k) {
+	      	$post_data[ $k8_acf_vpnid ]['taxz'][ $k ] = get_the_terms( $pid, $k );
+	      }
+
+	      // $post_data[ $k8_acf_vpnid ]['taxz']['betriebssystem'] = get_the_terms( $pid, 'betriebssystem' );
+
   		endwhile;
   		wp_reset_postdata();
   	endif;
@@ -172,4 +185,33 @@ class K8Rest
 	}
 
 }
-new K8Rest();
+
+new K8Rest([
+	'cust_fields' => [
+		'k8_acf_vpndet_conn',
+		'k8_acf_vpndet_curr',
+		'k8_acf_vpndet_durr1',
+		'k8_acf_vpndet_prc1',
+		'k8_acf_vpndet_durr2',
+		'k8_acf_vpndet_prc2',
+		'k8_acf_vpndet_durr3',
+		'k8_acf_vpndet_prc3',
+		'k8_acf_vpndet_durr4',
+		'k8_acf_vpndet_prc4',
+		'k8_acf_vpndet_trialz',
+		'k8_acf_vpndet_vid'
+	],
+	'taxz' => [
+		'betriebssystem',
+		'zahlungsmittel',
+		'sprache',
+		'vpnprotokolle',
+		'anwendungen',
+		'sonderfunktionen',
+		'fixeip',
+		'vpnstandortelaender',
+		'kundenservice',
+		'unternehmen',
+		'bedingungen'
+	]
+]);
