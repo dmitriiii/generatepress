@@ -465,13 +465,20 @@ get_header(); ?>
 								<?php
 								endif;
 
-								if($k8_acf_dwn_preis) : ?>
+								if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
 									<tr>
 										<td>Kaufpreis</td>
-										<td><strong><?php echo $k8_acf_dwn_preis; ?></strong></td>
+										<td>
+											<strong>
+												<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>
+											</strong>
+											<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>
+										</td>
 									</tr>
 								<?php
 								endif;
+
+
 
 								if(is_array($k8_acf_dwn_lang) && count($k8_acf_dwn_lang) > 0) : ?>
 									<tr>
@@ -633,15 +640,17 @@ get_header(); ?>
 										"userInteractionCount":"<?php echo addslashes($k8_acf_dwn_count); ?>"
 									},
 								<?php
-								endif;?>
+								endif;
 
-								"offers":{
-									"@type":"Offer",
-									"price":<?php echo (float) filter_var( $pm['cwp_rev_price'][0], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ); ?>,
-									"priceCurrency":"EUR"
-								},
-
+								if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
+									"offers":{
+										"@type":"Offer",
+										"price":<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>,
+										"priceCurrency":"<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>"
+									},
 								<?php
+								endif;
+
 								if($k8_tax_brand) : ?>
 									"producer" : "<?php
 									echo $k8_tax_brand->name; ?>",
