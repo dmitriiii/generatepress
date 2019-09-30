@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 					$next = $wrr.find('.k8-sl__next');
 			
 			$(el).slick({
-			  infinite: true,
+			  infinite: false,
 			  slidesToShow: 3,
 			  slidesToScroll: 1,
 			  autoplay: true,
