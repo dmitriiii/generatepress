@@ -105,6 +105,7 @@ get_header(); ?>
 
 
 
+
 							$k8_tax_brand =	get_the_terms( $pid, 'k8_tax_brand' )[0];
 							// echo '<pre>';
 							// print_r( $k8_tax_brand );
@@ -145,9 +146,9 @@ get_header(); ?>
 							// print_r($wppr_review_custom_fields);
 							// echo '</pre>';
 
-							// echo '<pre>';
-							// print_r($wppr_links);
-							// echo '</pre>';
+							echo '<pre style="display: none;">';
+							print_r($wppr_links);
+							echo '</pre>';
 
 
 							global $wp;
@@ -247,7 +248,11 @@ get_header(); ?>
 										endif;
 
 										if (is_array($wppr_links) && count($wppr_links)>0) :
-											foreach ($wppr_links as $k => $v) :?>
+											$c = 0;
+											foreach ($wppr_links as $k => $v) : 
+												if( $c>= 1 ) : 
+													break;
+												endif; ?>
 												<p>
 													<a href="<?php echo $v; ?>" target="_blank" rel="nofollow" class="k8_kauph">
 														<span>Kaufen</span>
@@ -255,6 +260,7 @@ get_header(); ?>
 													</a>
 												</p>
 											<?php
+												$c++;
 											endforeach;
 										endif; ?>
 									
