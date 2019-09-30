@@ -498,6 +498,10 @@
 	right: 0;
 }
 
+.k8-sl__control.slick-disabled{
+	background-color: #999;
+}
+
 
 
 /*SLIDER WITH SCREENSHOTS*/
