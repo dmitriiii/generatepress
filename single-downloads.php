@@ -316,7 +316,7 @@ get_header(); ?>
 									'publish'
 								),
 								'post__not_in' => array($pid),
-								'posts_per_page' => -1,
+								'posts_per_page' => 6,
 								'orderby'       => 'rand',
 								// 'order'         => 'DESC',
 							);
