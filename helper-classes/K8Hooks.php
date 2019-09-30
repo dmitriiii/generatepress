@@ -16,6 +16,7 @@ class K8Hooks
 		$mimes['pkg'] = 'application/x-newton-compatible-pkg';
 		$mimes['dmg'] = 'application/x-apple-diskimage';
 		$mimes['apk'] = 'application/vnd.android.package-archive';
+		$mimes['msi'] = 'application/x-msi';
 
 		return $mimes;
 	}
