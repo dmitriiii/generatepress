@@ -146,9 +146,9 @@ get_header(); ?>
 							// print_r($wppr_review_custom_fields);
 							// echo '</pre>';
 
-							echo '<pre style="display: none;">';
-							print_r($wppr_links);
-							echo '</pre>';
+							// echo '<pre style="display: none;">';
+							// print_r($wppr_links);
+							// echo '</pre>';
 
 
 							global $wp;
