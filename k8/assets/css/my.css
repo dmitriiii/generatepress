@@ -499,7 +499,7 @@
 }
 
 .k8-sl__control.slick-disabled{
-	background-color: #999;
+	opacity: 0.4;
 }
 
 
