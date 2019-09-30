@@ -316,7 +316,7 @@ get_header(); ?>
 									'publish'
 								),
 								'post__not_in' => array($pid),
-								'posts_per_page' => 6,
+								'posts_per_page' => 5,
 								'orderby'       => 'rand',
 								// 'order'         => 'DESC',
 							);
@@ -329,7 +329,7 @@ get_header(); ?>
 							 	$i=1;?>
 
 								<div class="k8-dwnd__head">
-									Top-<?php echo $the_query->found_posts; ?>-Alternativen dieser Kategorie
+									Top-5-Alternativen dieser Kategorie
 								</div>
 
 								<div class="k8-sl__wrr k8-dwnd__sl">
