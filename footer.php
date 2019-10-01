@@ -50,6 +50,23 @@ do_action( 'generate_before_footer' );
 	?>
 </div><!-- .site-footer -->
 
+
+<div class="modd" id="modd_safe">
+	<div class="modd__content">
+		<div class="modd__clz">×</div>
+		<div class="modd__loader">
+			<div class="lds-spinner">
+				<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+			</div>
+		</div>
+		<div class="modd__txt">
+			
+
+		</div>
+  </div>
+</div>
+
+
 <?php
 /**
  * generate_after_footer hook.

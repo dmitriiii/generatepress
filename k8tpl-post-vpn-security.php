@@ -21,7 +21,7 @@ get_header(); ?>
 			do_action( 'generate_before_main_content' );
 
 			while ( have_posts() ) : the_post(); ?>
-				
+
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_do_microdata( 'article' ); ?>>
 					<div class="inside-article">
 						<?php
@@ -71,7 +71,7 @@ get_header(); ?>
 						?>
 
 						<div class="entry-content" itemprop="text">
-							
+
 							<div class="k8-sec1">
 								<div class="container-fluid">
 									<div class="row">
@@ -81,20 +81,20 @@ get_header(); ?>
 											</h2>
 											<br>
 											<p>
-												Allerdings muss man dazu festhalten, dass es eben sehr viele verschiedene Bedrohungszenarien geben kann. Also was für den einen ausreichende Sicherheit darstellt, mag für den anderen überhaupt kein Schutz darstellen. Kurz gesagt: Sicherheit ist relativ und subjektiv zu betrachten. 
+												Allerdings muss man dazu festhalten, dass es eben sehr viele verschiedene Bedrohungszenarien geben kann. Also was für den einen ausreichende Sicherheit darstellt, mag für den anderen überhaupt kein Schutz darstellen. Kurz gesagt: Sicherheit ist relativ und subjektiv zu betrachten.
 											</p>
 											<p>
-												Die wichtigsten Unterscheidungsmerkmale habe ich einmal hier zusammen geführt und versucht dies in 4 einfache Sicherheitsgruppen sortiert. Klar man kann darüber streiten, welche Eigenschaft nun wichtiger wäre usw.. es ist aber eine ganz gute Unterscheidung, die vielen meiner Leser bisher geholfen hat. 
+												Die wichtigsten Unterscheidungsmerkmale habe ich einmal hier zusammen geführt und versucht dies in 4 einfache Sicherheitsgruppen sortiert. Klar man kann darüber streiten, welche Eigenschaft nun wichtiger wäre usw.. es ist aber eine ganz gute Unterscheidung, die vielen meiner Leser bisher geholfen hat.
 											</p>
 											<br>
 											<h2>
-												Welchen VPN suchst Du? Finde die passenden VPN-Anbieter für Deinen Bedarf 
+												Welchen VPN suchst Du? Finde die passenden VPN-Anbieter für Deinen Bedarf
 											</h2>
 										</div>
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="k8-sec2">
 								<div class="container-fluid">
 									<div class="row">
@@ -113,7 +113,7 @@ get_header(); ?>
 									</div>
 								</div>
 							</div><!-- .k8-sec2 -->
-							
+
 							<div class="k8-sec3">
 								<div class="container-fluid">
 									<div class="row">
@@ -134,8 +134,8 @@ get_header(); ?>
 													</div>
 													<div class="k8-sec3__txt">
 														<h3 style="text-align: center;">
-															Gewechselte IP-Adresse 
-															& einfacher Schutz 
+															Gewechselte IP-Adresse
+															& einfacher Schutz
 														</h3>
 														<p><em>Schützt vor Ausforschungen wegen Zivilrecht (Urheberrecht)</em></p>
 														<h4>Merkmale: </h4>
@@ -145,7 +145,7 @@ get_header(); ?>
 															<li>Geschütze Verbindungen von Endgerät bis zum VPN-Standort</li>
 														</ul>
 														<h4>
-															Ideal für: 
+															Ideal für:
 														</h4>
 														<ul>
 															<li>Nutzung einer IP-Adresse aus dem Ausland</li>
@@ -156,57 +156,293 @@ get_header(); ?>
 													</div>
 												</div><!-- END .k8-sec3__blck -->
 											</div><!-- .k8-sec3__wrr -->
-											
-											<div class="k8-sec3__it">
-												<div class="tbl k8-sec3__it-tbl">
-													<div class="tbl-cell cell-1 mdl">
-														<img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">
+											<?php
+												$args = array(
+													'post_type'   => 'post',
+													'post_status' => array(
+														'publish'
+													),
+													'category_name' => 'vpn-anbieter',
+													'posts_per_page' => 2,
+													'orderby'       => 'date',
+													'order'         => 'ASC',
+												);
+
+												$the_query = new WP_Query( $args );
+
+												if ( $the_query->have_posts() ) :
+													$i = 1;
+													while ( $the_query->have_posts() ) : $the_query->the_post();
+														$pid = get_the_ID();
+														$pm = get_post_meta( $pid );
+														$wppr_options = unserialize($pm['wppr_options'][0]);
+
+														echo K8Html::getItem(array(
+															'pid' => $pid,
+															'pm' => $pm,
+															'wppr_options' => $wppr_options,
+															'i' => $i
+														));
+
+														$i++;
+													endwhile;
+													wp_reset_postdata();
+												endif;  ?>
+											<button data-targ="#modd_safe" data-typ="1" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+										</div><!-- .col-md-6 -->
+										
+										<div class="col-md-6">
+											<div class="k8-sec3__wrr">
+												<div class="k8-sec3__blck blck-2">
+													<div class="k8-sec3__head">
+														<div class="tbl k8-sec3__head-tbl">
+															<div class="tbl-cell cell-1 mdl">
+																<div class="k8-sec3__pl">
+																	<img src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/icon-20.svg" alt="">
+																</div>
+															</div>
+															<div class="tbl-cell cell-2 mdl">
+																	<img class="k8-sec3__lock" src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/lock-02.svg" alt="">
+															</div>
+														</div>
 													</div>
-													<div class="tbl-cell cell-2 mdl">
-														<ul class="k8-sec3__it-list">
-															<li>
-																<span>3.49</span>
-																Preis/Mon ab $
-															</li>
-															<li>
-																<span>100</span>
-																Geschwindig
-															</li>
-															<li>
-																<span>96</span>
-																Privatsphäre
-															</li>
-															<li>
-																<span>96</span>
-																Ausstattung
-															</li>
-															<li>
-																<span>100</span>
-																Kundendienst
-															</li>
-															<li>
-																<span>95.60</span>
-																Leserwertung
-															</li>
+													<div class="k8-sec3__txt">
+														<h3 style="text-align: center;">
+															Erweiterter Schutz vor Ausforschung 
+														</h3>
+														<p><em>Schützt vor Ausforschung durch die IP-Adresse bei weiteren Angelegenheiten.</em></p>
+														<h4>Merkmale: </h4>
+														<p>Merkmale von 1 und zusätzlich:</p>
+														<ul>
+															<li>Unternehmenssitz ausserhalb der EU/USA</li>
+															<li>Eigene DNS Server</li>
+															<li>Erweiterte Softwarefunktionen: KillSwitch, Firewall, Malwareschutz</li>
+														</ul>
+														<h4>
+															Ideal für:
+														</h4>
+														<p>Anwendungen von 1 und zusätzlich:</p>
+														<ul>
+															<li>Filesharing/Torrentnutzung</li>
+															<li>Allgemeiner Schutz vor Überwachung</li>
 														</ul>
 													</div>
-													<div class="tbl-cell cell-3 mdl">
-														<p>
-															NordVPN klingt wie ein skandinavischer VPN-Service in der Realität ist das Unternehmen aber in Panama (offshore) beheimatet, da dies aus Gründen des Datenschutzes für die eigenen Kunden wichtig ist. ab $3.00/Monat ...
-														</p>
-														<a href="#">
-															zum Testberichte
-														</a>
-													</div>
-												</div>
-											</div>
+												</div><!-- END .k8-sec3__blck -->
+											</div><!-- .k8-sec3__wrr -->
+											<?php
+												$args = array(
+													'post_type'   => 'post',
+													'post_status' => array(
+														'publish'
+													),
+													'category_name' => 'vpn-anbieter',
+													'tax_query' => array(
+										        array(
+									            'taxonomy' => 'anwendungen',
+									            'field'    => 'slug',
+									            'terms'    => 'tauschboersen-torrent',
+										        ),
+											    ),
+													'posts_per_page' => 2,
+													'orderby'       => 'date',
+													'order'         => 'ASC',
+												);
 
+												$the_query = new WP_Query( $args );
+
+												if ( $the_query->have_posts() ) :
+													$i = 1;
+													while ( $the_query->have_posts() ) : $the_query->the_post();
+														$pid = get_the_ID();
+														$pm = get_post_meta( $pid );
+														$wppr_options = unserialize($pm['wppr_options'][0]);
+
+														echo K8Html::getItem(array(
+															'pid' => $pid,
+															'pm' => $pm,
+															'wppr_options' => $wppr_options,
+															'i' => $i
+														));
+
+														$i++;
+													endwhile;
+													wp_reset_postdata();
+												endif;  ?>
+											<button data-targ="#modd_safe" data-typ="2" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
 										</div><!-- .col-md-6 -->
+
+									</div><!-- .row -->
+
+
+
+									<div class="row">
 										<div class="col-md-6">
-											
-										</div>
-									</div>
-								</div>
+											<div class="k8-sec3__wrr">
+												<div class="k8-sec3__blck blck-3">
+													<div class="k8-sec3__head">
+														<div class="tbl k8-sec3__head-tbl">
+															<div class="tbl-cell cell-1 mdl">
+																<div class="k8-sec3__pl">
+																	<img src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/icon-18.svg" alt="">
+																</div>
+															</div>
+															<div class="tbl-cell cell-2 mdl">
+																	<img class="k8-sec3__lock" src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/lock-03.svg" alt="">
+															</div>
+														</div>
+													</div>
+													<div class="k8-sec3__txt">
+														<h3 style="text-align: center;">
+															Schutz vor Überwachung durch Behörden 
+														</h3>
+														<p><em>Schützt vor einer Rückverfolgung durch vernetzte Organisationen und Behörden</em></p>
+														<h4>Merkmale: </h4>
+														<p>Merkmale von 1,2 und zusätzlich:</p>
+														<ul>
+															<li>Multi-Hop VPN Kaskaden</li>
+															<li>TOR Anbindungsmöglichkeit</li>
+															<li>Eigene Server / Eigene IP-Adressen</li>
+														</ul>
+														<h4>
+															Ideal für:
+														</h4>
+														<p>Anwendungen von 1,2 und zusätzlich:</p>
+														<ul>
+															<li>Anonymität auch bei der Nutzung von Foren, Medien und Nachrichte</li>
+														</ul>
+													</div>
+												</div><!-- END .k8-sec3__blck -->
+											</div><!-- .k8-sec3__wrr -->
+											<?php
+												$args = array(
+													'post_type'   => 'post',
+													'post_status' => array(
+														'publish'
+													),
+													'category_name' => 'vpn-anbieter',
+													'tax_query' => array(
+										        array(
+									            'taxonomy' => 'anwendungen',
+									            'field'    => 'slug',
+									            'terms'    => 'maximale-anonymitaet',
+										        ),
+											    ),
+													'posts_per_page' => 2,
+													'orderby'       => 'date',
+													'order'         => 'ASC',
+												);
+
+												$the_query = new WP_Query( $args );
+
+												if ( $the_query->have_posts() ) :
+													$i = 1;
+													while ( $the_query->have_posts() ) : $the_query->the_post();
+														$pid = get_the_ID();
+														$pm = get_post_meta( $pid );
+														$wppr_options = unserialize($pm['wppr_options'][0]);
+
+														echo K8Html::getItem(array(
+															'pid' => $pid,
+															'pm' => $pm,
+															'wppr_options' => $wppr_options,
+															'i' => $i
+														));
+
+														$i++;
+													endwhile;
+													wp_reset_postdata();
+												endif;  ?>
+											<button data-targ="#modd_safe" data-typ="3" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+										</div><!-- .col-md-6 -->
+										
+										<div class="col-md-6">
+											<div class="k8-sec3__wrr">
+												<div class="k8-sec3__blck blck-4">
+													<div class="k8-sec3__head">
+														<div class="tbl k8-sec3__head-tbl">
+															<div class="tbl-cell cell-1 mdl">
+																<div class="k8-sec3__pl">
+																	<img src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/icon-19.svg" alt="">
+																</div>
+															</div>
+															<div class="tbl-cell cell-2 mdl">
+																	<img class="k8-sec3__lock" src="<?php bloginfo( 'template_directory' ) ?>/k8/assets/img/lock-04.svg" alt="">
+															</div>
+														</div>
+													</div>
+													<div class="k8-sec3__txt">
+														<h3 style="text-align: center;">
+															Maximaler Schutz der Identität im Internet 
+														</h3>
+														<p><em>Schützt zuverlässig vor komplexen  und gezielten Überwachungszenarien</em></p>
+														<h4>Merkmale: </h4>
+														<p>Merkmale von 1 und zusätzlich:</p>
+														<ul>
+															<li>Keine Logfiles (Keine Limitierungen der Tarife)</li>
+															<li>Keine Datenspeicherung auch bei Beschlagnahmung (RAM-Disk anstelle Festspeicher)</li>
+															<li>Selbstgestaltbare Kaskaden oder auch dynamische VPN-Kaskaden</li>
+														</ul>
+														<h4>
+															Ideal für:
+														</h4>
+														<p>Anwendungen von 1 und zusätzlich:</p>
+														<ul>
+															<li>Schutz der Identität auch im erweiterten Bereich (Aktivisten, gefährdete Personen, etc), Länderübergreifend</li>
+															<li>Schutz vor gezielter Überwachung und Ausforschung durch internationale staatliche Organisationen</li>
+														</ul>
+													</div>
+												</div><!-- END .k8-sec3__blck -->
+											</div><!-- .k8-sec3__wrr -->
+											<?php
+												$args = array(
+													'post_type'   => 'post',
+													'post_status' => array(
+														'publish'
+													),
+													'category_name' => 'vpn-anbieter',
+													'tax_query' => array(
+														'relation' => 'AND',
+										        array(
+									            'taxonomy' => 'anwendungen',
+									            'field'    => 'slug',
+									            'terms'    => 'maximale-anonymitaet',
+										        ),
+										        array(
+									            'taxonomy' => 'sonderfunktionen',
+									            'field'    => 'slug',
+									            'terms'    => 'multi-hop-vpn',
+										        ),
+											    ),
+													'posts_per_page' => 2,
+													'orderby'       => 'date',
+													'order'         => 'ASC',
+												);
+
+												$the_query = new WP_Query( $args );
+
+												if ( $the_query->have_posts() ) :
+													$i = 1;
+													while ( $the_query->have_posts() ) : $the_query->the_post();
+														$pid = get_the_ID();
+														$pm = get_post_meta( $pid );
+														$wppr_options = unserialize($pm['wppr_options'][0]);
+
+														echo K8Html::getItem(array(
+															'pid' => $pid,
+															'pm' => $pm,
+															'wppr_options' => $wppr_options,
+															'i' => $i
+														));
+
+														$i++;
+													endwhile;
+													wp_reset_postdata();
+												endif;  ?>
+											<button data-targ="#modd_safe" data-typ="4" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+										</div><!-- .col-md-6 -->
+
+									</div><!-- .row -->
+								</div><!-- .container-fluid -->
 							</div><!-- .k8-sec3 -->
 
 							<?php
@@ -242,7 +478,7 @@ get_header(); ?>
 				</article><!-- #post-## -->
 
 
-				<?php	
+				<?php
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || '0' != get_comments_number() ) :
 					/**

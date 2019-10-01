@@ -104,5 +104,56 @@ class K8Html
 		endif;
 	}
 
+	/**
+	 * [getItem description]
+	 * @param  [type] $args [
+	 *   'pid' - int
+	 *   'pm' - array
+	 *   'wppr_options' - array
+	 *   'i' - int
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getItem( $args ){
+		extract( $args );
+		ob_start();?>
+			<div class="k8-sec3__it <?php echo( isset($i) && $i > 1 ) ? 'blured' : ''; ?>">
+				<div class="tbl k8-sec3__it-tbl">
+					<div class="tbl-cell cell-1 mdl">
+						<img src="<?php echo get_the_post_thumbnail_url( $pid, 'thumbnail' ) ?>">
+					</div>
+					<div class="tbl-cell cell-2 mdl">
+						<ul class="k8-sec3__it-list">
+							<li>
+								<span><?php echo $pm['cwp_rev_price'][0]; ?></span>
+								Preis/Mon ab $
+							</li>
+							<?php
+							if ( is_array($wppr_options) && count($wppr_options) > 0 ):
+								foreach ($wppr_options as $v): ?>
+									<li>
+										<span><?php echo $v['value']; ?></span>
+										<?php echo $v['name']; ?>
+									</li>
+								<?php
+								endforeach;
+							endif; ?>
+						</ul>
+					</div>
+					<div class="tbl-cell cell-3 mdl">
+						<p>
+							<?php echo K8Help::excerptPid( 30, $pid ); ?>
+						</p>
+						<a href="<?php echo get_permalink($pid); ?>" class="k8-sec3__it-link">
+							zum Testberichte
+						</a>
+					</div>
+				</div>
+			</div><!-- .k8-sec3__it -->
+		<?php
+		$html = ob_get_clean();
+	  return $html;
+	}
+
 
 } ?>

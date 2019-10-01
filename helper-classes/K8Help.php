@@ -26,6 +26,17 @@
       $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
       return $excerpt;
 		}
+		static function excerptPid($limit,$pid) {
+      $excerpt = explode(' ', get_the_excerpt($pid), $limit);
+      if (count($excerpt) >= $limit) {
+          array_pop($excerpt);
+          $excerpt = implode(" ", $excerpt) . '...';
+      } else {
+          $excerpt = implode(" ", $excerpt);
+      }
+      $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+      return $excerpt;
+		}
 		//Custom Length Content
 		static function content($limit) {
 	    $content = explode(' ', get_the_content(), $limit);

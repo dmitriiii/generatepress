@@ -81,5 +81,48 @@ jQuery(document).ready(function($){
 	window.k8CaptchaSucc = k8CaptchaSucc;
 
 
+	//Safety load VPNs
+	$('body').on('click', '.k8-sec3__more', function(e) {
+		e.preventDefault();
+		var $butt = $(this),
+				$targ = $( $butt.attr('data-targ') ),
+				typ = $butt.attr('data-typ'),
+				act = $butt.attr('data-act'),
+				$body = $('body'),
+				$txt_wr = $targ.find('.modd__txt'),
+				$loader = $targ.find('.modd__loader');
+
+		$body.addClass('ov-hidd');
+		$targ.css('display', 'block');
+
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: k8All.ajaxurl,
+			data: {
+				'action': act,
+				'typ' : typ
+			},
+			success: function (data) {
+				$loader.css('display', 'none');
+				$txt_wr.html(data.html);
+			}
+		});
+
+	});
+
+	$('body').on('click', '.modd__clz', function(e) {
+		e.preventDefault();
+		var $butt = $(this),
+				$body = $('body'),
+				$mod = $butt.parents('.modd');
+		$body.removeClass('ov-hidd');
+		$mod.css('display', 'none');
+
+		if( $mod.is("#modd_safe") ){
+			$mod.find('.modd__loader').css('display', 'block');
+			$mod.find('.modd__txt').html('');
+		}
+	});
 
 });
