@@ -499,6 +499,9 @@
 }
 
 
+.k8-sl__control.slick-disabled{
+	opacity: 0.3;
+}
 
 /*SLIDER WITH SCREENSHOTS*/
 
