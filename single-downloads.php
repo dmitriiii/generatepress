@@ -401,11 +401,12 @@ get_header(); ?>
 									<div class="k8-sl ">
 
 										<?php
-										while ( have_rows('k8_acf_dwn_slider') ) : the_row(); ?>
+										while ( have_rows('k8_acf_dwn_slider') ) : the_row(); 
+											$im = get_sub_field('image'); ?>
 											<div>
 												<div class="k8-sl__itt">
-													<a href="<?php echo K8Help::getImgUrl( get_sub_field('image'), 'full' ); ?>" data-lightbox="roadtrip">
-														<img src="<?php echo K8Help::getImgUrl( get_sub_field('image'), 'medium' ); ?>" alt="">
+													<a href="<?php echo K8Help::getImgUrl( $im, 'full' ); ?>" data-lightbox="roadtrip">
+														<img src="<?php echo K8Help::getImgUrl( $im, 'medium' ); ?>" alt="<?php echo get_post_meta($im, '_wp_attachment_image_alt', TRUE) ?>">
 													</a>
 
 												</div>
