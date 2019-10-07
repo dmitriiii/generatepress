@@ -51,7 +51,7 @@ do_action( 'generate_before_footer' );
 </div><!-- .site-footer -->
 
 
-<div class="modd" id="modd_safe">
+<!-- <div class="modd" id="modd_safe">
 	<div class="modd__content">
 		<div class="modd__clz">×</div>
 		<div class="modd__loader">
@@ -64,7 +64,7 @@ do_action( 'generate_before_footer' );
 
 		</div>
   </div>
-</div>
+</div> -->
 
 
 <?php
