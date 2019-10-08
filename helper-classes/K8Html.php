@@ -155,5 +155,61 @@ class K8Html
 	  return $html;
 	}
 
+	/**
+	 * @param  [type] $args[
+	 * 	'key' - string
+	 * 	'item' - array,
+	 *	'varrs' - array,
+	 *	'curr_url' - string,
+	 * ]
+	 * @return [type]
+	 */
+	static function getOsLink( $args ){
+		extract( $args );
+		unset( $args );
+		write_log( get_defined_vars() );
+		$str = '<a %s href="%s" class="dwnd__ot-link %s">
+							<i class="fa %s" aria-hidden="true"></i>
+							%s
+						</a>';
+		$html = '';
+		$active_class = '';
+		$link = '#';
+		$target = '';
+		if( $varrs[0][$key] !== '' ){
+			$link = get_permalink( (int)$varrs[0][$key] );
+			write_log('Равно = ' . $link );
+
+			if( $curr_url === $link ) :
+				$active_class = 'act';
+			endif;
+
+			$html =	sprintf( $str,
+										 $target,
+										 $link,
+										 $active_class,
+										 $item['icon'],
+										 $item['label']
+										);
+			return $html;
+		}
+		elseif($varrs[0][$key.'_ext'] !== '') {
+			$target = 'target="_blank" rel="nofollow"';
+			$link = $varrs[0][$key . '_ext'];
+
+			$html =	sprintf( $str,
+										 $target,
+										 $link,
+										 $active_class,
+										 $item['icon'],
+										 $item['label']
+										);
+			return $html;
+		}
+		else{
+			return $html;
+		}
+
+	}
 
 } ?>

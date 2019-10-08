@@ -112,10 +112,13 @@ get_header(); ?>
 							// echo '</pre>';
 
 							$k8_acf_dwn_varrs = get_field( 'k8_acf_dwn_varrs', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
+							$k8_acf_dwn_varrs2 = get_field( 'k8_acf_dwn_varrs2', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
 
-							// echo '<pre>';
-							// print_r( $k8_acf_dwn_varrs );
-							// echo '</pre>';
+
+
+							echo '<pre style="display: none;">';
+							print_r( $k8_acf_dwn_varrs2 );
+							echo '</pre>';
 
 							$comz = get_comments(array(
 								'post_id' => $k8_acf_dwn_ambieter,
@@ -153,9 +156,10 @@ get_header(); ?>
 
 							global $wp;
 							$curr_url = home_url( $wp->request ) . '/';
-							// echo '<pre>';
-							// print_r( $curr_url );
-							// echo '</pre>';
+	
+							echo '<pre style="display: none;">';
+							print_r( $curr_url );
+							echo '</pre>';
 							// echo '<pre>';
 							// print_r( unserialize($pm['wppr_pros'][0]) );
 							// echo '</pre>';
@@ -208,6 +212,45 @@ get_header(); ?>
 											</p>
 										<?php
 										endif;
+
+
+										wp_reset_postdata();
+										
+										if ( is_array( $k8_acf_dwn_varrs2 ) && count( $k8_acf_dwn_varrs2 ) > 0 ) :
+											$ara = array(
+												'windows' => array(
+													'label'=>'Windows',
+													'icon'=>'fa-windows'
+												),
+												'mac' => array(
+													'label'=>'Mac',
+													'icon'=>'fa-apple'
+												),
+												'android' => array(
+													'label'=>'Android',
+													'icon'=>'fa-android'
+												),
+												'ios' => array(
+													'label'=>'iOS',
+													'icon'=>'fa-apple'
+												)
+											); ?>
+											<div class="dwnd__ot fx" style="display: none;">
+												<?php
+												foreach ($ara as $key => $item) :
+													echo K8Html::getOsLink(array(
+														'key'   => $key,
+														'item'  => $item,
+														'varrs' => $k8_acf_dwn_varrs2,
+														'curr_url' => $curr_url,
+													));
+												endforeach; ?>
+											</div>
+										<?php
+										endif;	
+
+
+
 
 										if ( is_array( $k8_acf_dwn_varrs ) && count( $k8_acf_dwn_varrs ) > 0 ) :
 											$ara = array(
