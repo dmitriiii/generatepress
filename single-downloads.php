@@ -111,7 +111,7 @@ get_header(); ?>
 							// print_r( $k8_tax_brand );
 							// echo '</pre>';
 
-							$k8_acf_dwn_varrs = get_field( 'k8_acf_dwn_varrs', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
+							// $k8_acf_dwn_varrs = get_field( 'k8_acf_dwn_varrs', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
 							$k8_acf_dwn_varrs2 = get_field( 'k8_acf_dwn_varrs2', $k8_tax_brand->taxonomy .'_' . $k8_tax_brand->term_id );
 
 
@@ -157,9 +157,12 @@ get_header(); ?>
 							global $wp;
 							$curr_url = home_url( $wp->request ) . '/';
 	
-							echo '<pre style="display: none;">';
-							print_r( $curr_url );
-							echo '</pre>';
+							// echo '<pre style="display: none;">';
+							// print_r( $curr_url );
+							// echo '</pre>';
+
+							
+
 							// echo '<pre>';
 							// print_r( unserialize($pm['wppr_pros'][0]) );
 							// echo '</pre>';
@@ -214,8 +217,6 @@ get_header(); ?>
 										endif;
 
 
-										wp_reset_postdata();
-										
 										if ( is_array( $k8_acf_dwn_varrs2 ) && count( $k8_acf_dwn_varrs2 ) > 0 ) :
 											$ara = array(
 												'windows' => array(
@@ -233,16 +234,20 @@ get_header(); ?>
 												'ios' => array(
 													'label'=>'iOS',
 													'icon'=>'fa-apple'
+												),
+												'linux' => array(
+													'label'=>'Linux',
+													'icon'=>'fa-linux'
 												)
 											); ?>
-											<div class="dwnd__ot fx" style="display: none;">
+											<div class="dwnd__ot fx">
 												<?php
 												foreach ($ara as $key => $item) :
 													echo K8Html::getOsLink(array(
 														'key'   => $key,
 														'item'  => $item,
 														'varrs' => $k8_acf_dwn_varrs2,
-														'curr_url' => $curr_url,
+														'curr_url' => get_the_permalink( $pid ),
 													));
 												endforeach; ?>
 											</div>
@@ -252,43 +257,7 @@ get_header(); ?>
 
 
 
-										if ( is_array( $k8_acf_dwn_varrs ) && count( $k8_acf_dwn_varrs ) > 0 ) :
-											$ara = array(
-												'windows' => array(
-													'label'=>'Windows',
-													'icon'=>'fa-windows'
-												),
-												'mac' => array(
-													'label'=>'Mac',
-													'icon'=>'fa-apple'
-												),
-												'android' => array(
-													'label'=>'Android',
-													'icon'=>'fa-android'
-												),
-												'ios' => array(
-													'label'=>'iOS',
-													'icon'=>'fa-apple'
-												)
-											); ?>
-											<div class="dwnd__ot fx">
-												<?php
-												foreach ($ara as $key => $item) :
-													if ( $k8_acf_dwn_varrs[0][$key]['url'] !== '' ): ?>
-														<a <?php echo( $k8_acf_dwn_varrs[0][$key]['target'] == '_blank' ) ? 'target="_blank" rel="nofollow"' : ''; ?>
-															href="<?php echo $k8_acf_dwn_varrs[0][$key]['url']; ?>"
-															class="dwnd__ot-link <?php echo ($curr_url == $k8_acf_dwn_varrs[0][$key]['url']) ? 'act' : ''; ?>">
-
-																<i class="fa <?php echo $item['icon']; ?>" aria-hidden="true"></i>
-																<?php echo $item['label']; ?>
-
-														</a>
-													<?php
-													endif;
-												endforeach; ?>
-											</div>
-										<?php
-										endif;
+										
 
 										if (is_array($wppr_links) && count($wppr_links)>0) :
 											$c = 0;

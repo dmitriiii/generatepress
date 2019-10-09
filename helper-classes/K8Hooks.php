@@ -17,6 +17,8 @@ class K8Hooks
 		$mimes['dmg'] = 'application/x-apple-diskimage';
 		$mimes['apk'] = 'application/vnd.android.package-archive';
 		$mimes['msi'] = 'application/x-msi';
+		$mimes['deb'] = 'application/x-debian-package';
+		$mimes['rpm'] = 'audio/x-pn-realaudio-plugin';
 
 		return $mimes;
 	}
