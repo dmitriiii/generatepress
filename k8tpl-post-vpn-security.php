@@ -164,8 +164,9 @@ get_header(); ?>
 													),
 													'category_name' => 'vpn-anbieter',
 													'posts_per_page' => 2,
-													'orderby'       => 'date',
-													'order'         => 'ASC',
+													'meta_key'  => 'option_overall_score',
+													'orderby'   => 'meta_value_num',
+													'order'     => 'DESC',
 												);
 
 												$the_query = new WP_Query( $args );
@@ -244,8 +245,9 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-													'orderby'       => 'date',
-													'order'         => 'ASC',
+													'meta_key'  => 'option_overall_score',
+													'orderby'   => 'meta_value_num',
+													'order'     => 'DESC',
 												);
 
 												$the_query = new WP_Query( $args );
@@ -328,8 +330,10 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-													'orderby'       => 'date',
-													'order'         => 'ASC',
+													'meta_key'  => 'option_overall_score',
+													'orderby'   => 'meta_value_num',
+													'order'     => 'DESC',
+
 												);
 
 												$the_query = new WP_Query( $args );
@@ -414,8 +418,9 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-													'orderby'       => 'date',
-													'order'         => 'ASC',
+    											'meta_key'  => 'option_overall_score',
+													'orderby'   => 'meta_value_num',
+													'order'     => 'DESC',
 												);
 
 												$the_query = new WP_Query( $args );

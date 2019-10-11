@@ -90,8 +90,9 @@ class K8Ajax
       ),
       'category_name' => 'vpn-anbieter',
       'posts_per_page' => -1,
-      'orderby'       => 'date',
-      'order'         => 'ASC',
+      'meta_key'  => 'option_overall_score',
+      'orderby'   => 'meta_value_num',
+      'order'     => 'DESC',
     );
 
     if( $typ == 2 ){
