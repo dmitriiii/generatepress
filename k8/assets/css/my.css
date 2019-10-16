@@ -1072,7 +1072,9 @@ ul.k8-sec3__it-list{
 
 
 /*MODAL*/
-
+#modd_safe.modd{
+	overflow: visible;
+}
 
 
 .modd__clz{
@@ -1085,6 +1087,7 @@ ul.k8-sec3__it-list{
 
 #modd_safe .modd__content{
 	max-width: 1000px;
+	height: 100%;
 }
 
 #modd_safe .modd__loader{
@@ -1100,6 +1103,8 @@ ul.k8-sec3__it-list{
 
 #modd_safe .modd__txt{
 	min-height: 300px;
+	height: 100%;
+	overflow: auto;
 }
 
 
@@ -1112,8 +1117,34 @@ ul.k8-sec3__it-list{
 	z-index: 99;
 }
 
+
+
 /*END MODAL*/
 
+
+
+
+/*SCROLLBAR*/
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eee; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1a77c9; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #33CC99; 
+}
+/*END SCROLLBAR*/
 
 
 
