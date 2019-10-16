@@ -116,9 +116,9 @@ get_header(); ?>
 
 
 
-							echo '<pre style="display: none;">';
-							print_r( $k8_acf_dwn_varrs2 );
-							echo '</pre>';
+							// echo '<pre style="display: none;">';
+							// print_r( $k8_acf_dwn_varrs2 );
+							// echo '</pre>';
 
 							$comz = get_comments(array(
 								'post_id' => $k8_acf_dwn_ambieter,
