@@ -116,11 +116,16 @@ class K8Html
 	 */
 	static function getItem( $args ){
 		extract( $args );
+		unset( $args );
+		// write_log( get_defined_vars() );
 		ob_start();?>
 			<div class="k8-sec3__it <?php echo( isset($i) && $i > 1 ) ? 'blured' : ''; ?>">
 				<div class="tbl k8-sec3__it-tbl">
 					<div class="tbl-cell cell-1 mdl">
 						<img src="<?php echo get_the_post_thumbnail_url( $pid, 'thumbnail' ) ?>">
+						<p class="k8-sec3__it-name">
+							<?php echo $pm['cwp_rev_product_name'][0]; ?>
+						</p>
 					</div>
 					<div class="tbl-cell cell-2 mdl">
 						<ul class="k8-sec3__it-list">
@@ -140,7 +145,7 @@ class K8Html
 							endif; ?>
 						</ul>
 					</div>
-					<div class="tbl-cell cell-3 mdl">
+					<div class="tbl-cell cell-3">
 						<p>
 							<?php echo K8Help::excerptPid( 30, $pid ); ?>
 						</p>

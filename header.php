@@ -17,8 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
-
-<body <?php body_class(); ?> <?php generate_do_microdata( 'body' ); ?>>
+<?php 
+$k8_mob_clss = "";
+if ( !wp_is_mobile() ) {
+	$k8_mob_clss = 'k8_desktop';
+} ?>
+<body <?php body_class( $k8_mob_clss ); ?> <?php generate_do_microdata( 'body' ); ?>>
 	<?php
 	/**
 	 * generate_before_header hook.

@@ -116,7 +116,7 @@ get_header(); ?>
 
 							<div class="k8-sec3">
 								<div class="container-fluid">
-									<div class="row">
+									<div class="row eq-h-row">
 										<div class="col-md-6">
 											<div class="k8-sec3__wrr">
 												<div class="k8-sec3__blck blck-1">
@@ -132,7 +132,7 @@ get_header(); ?>
 															</div>
 														</div>
 													</div>
-													<div class="k8-sec3__txt">
+													<div class="k8-sec3__txt eq-h-blck">
 														<h3 style="text-align: center;">
 															Gewechselte IP-Adresse
 															& einfacher Schutz
@@ -189,7 +189,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="1" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="1" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-1">PASSENDE SERVISES</button>
 										</div><!-- .col-md-6 -->
 										
 										<div class="col-md-6">
@@ -207,7 +207,7 @@ get_header(); ?>
 															</div>
 														</div>
 													</div>
-													<div class="k8-sec3__txt">
+													<div class="k8-sec3__txt eq-h-blck">
 														<h3 style="text-align: center;">
 															Erweiterter Schutz vor Ausforschung 
 														</h3>
@@ -270,14 +270,14 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="2" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="2" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-2">PASSENDE SERVISES</button>
 										</div><!-- .col-md-6 -->
 
 									</div><!-- .row -->
 
 
 
-									<div class="row">
+									<div class="row eq-h-row">
 										<div class="col-md-6">
 											<div class="k8-sec3__wrr">
 												<div class="k8-sec3__blck blck-3">
@@ -293,7 +293,7 @@ get_header(); ?>
 															</div>
 														</div>
 													</div>
-													<div class="k8-sec3__txt">
+													<div class="k8-sec3__txt eq-h-blck">
 														<h3 style="text-align: center;">
 															Schutz vor Überwachung durch Behörden 
 														</h3>
@@ -356,7 +356,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="3" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="3" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-3">PASSENDE SERVISES</button>
 										</div><!-- .col-md-6 -->
 										
 										<div class="col-md-6">
@@ -374,7 +374,7 @@ get_header(); ?>
 															</div>
 														</div>
 													</div>
-													<div class="k8-sec3__txt">
+													<div class="k8-sec3__txt eq-h-blck">
 														<h3 style="text-align: center;">
 															Maximaler Schutz der Identität im Internet 
 														</h3>
@@ -443,7 +443,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="4" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="4" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-4">PASSENDE SERVISES</button>
 										</div><!-- .col-md-6 -->
 
 									</div><!-- .row -->

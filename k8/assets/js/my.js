@@ -1,14 +1,36 @@
 jQuery(document).ready(function($){
 
+	// Set blocks with equal height
+
+	$(window).load(function() {
+		// Select and loop the container element of the elements you want to equalise
+		$('.k8_desktop .eq-h-row').each(function(){
+			// Cache the highest
+			var highestBox = 0;
+			// Select and loop the elements you want to equalise
+			$('.eq-h-blck', this).each(function(){
+				// If this box is higher than the cached highest then store it
+				if($(this).height() > highestBox) {
+					highestBox = $(this).height();
+				}
+			});
+			// Set the height of all those children to whichever was highest
+			$('.eq-h-blck',this).height(highestBox);
+		});
+	});
+
+
+
+
 	// load youtube iframe on click
 	$('body').on('click', '.k8_yt-link', function(event) {
 		event.preventDefault();
 		var $link = $(this),
-		    $wrr = $link.parents('.k8_yt-wrr'),
-		    url = $link.attr('href'),
-		    w = $wrr.width(),
-		    h = $wrr.height();
-		
+				$wrr = $link.parents('.k8_yt-wrr'),
+				url = $link.attr('href'),
+				w = $wrr.width(),
+				h = $wrr.height();
+
 		// console.log(w);
 		// console.log(h);
 
@@ -20,35 +42,35 @@ jQuery(document).ready(function($){
 
 	// SLIDER
 	if( $('.k8-sl').length > 0 ){
-		
+
 		$('.k8-sl').each(function(index, el) {
 			var $wrr = $(el).parents('.k8-sl__wrr'),
 					$prev = $wrr.find('.k8-sl__prev'),
 					$next = $wrr.find('.k8-sl__next');
-			
+
 			$(el).slick({
-			  infinite: false,
-			  slidesToShow: 3,
-			  slidesToScroll: 1,
-			  autoplay: false,
-			  prevArrow: $prev,
-			  nextArrow: $next,
-			  speed: 1000,
-			  autoplaySpeed: 3000,
-			  responsive: [
-			    {
-			      breakpoint: 768,
-			      settings: {
-			        arrows: false,
-			        centerMode: true,
-			        slidesToShow: 1
-			      }
-			    }
-		  	]
+				infinite: false,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				autoplay: false,
+				prevArrow: $prev,
+				nextArrow: $next,
+				speed: 1000,
+				autoplaySpeed: 3000,
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							arrows: false,
+							centerMode: true,
+							slidesToShow: 1
+						}
+					}
+				]
 			});
 		});
 	}
-	
+
 
 	// STICKY
 	if( $('.k8_sticky').length > 0 ){
@@ -60,7 +82,7 @@ jQuery(document).ready(function($){
 		});
 	}
 
- 
+
 	// Succesfull captcha
 	function k8CaptchaSucc( $obj ){
 		var $form = $('.k8-capt__form');
@@ -88,12 +110,15 @@ jQuery(document).ready(function($){
 				$targ = $( $butt.attr('data-targ') ),
 				typ = $butt.attr('data-typ'),
 				act = $butt.attr('data-act'),
+				bg = $butt.attr('data-bg'),
 				$body = $('body'),
 				$txt_wr = $targ.find('.modd__txt'),
 				$loader = $targ.find('.modd__loader');
 
 		$body.addClass('ov-hidd');
 		$targ.css('display', 'block');
+		// $txt_wr.addClass(bg);
+		$txt_wr.attr('class', bg + ' modd__txt');
 
 		$.ajax({
 			type: 'POST',
