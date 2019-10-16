@@ -823,14 +823,15 @@
 }
 
 
-.k8-sec1{
+.k8-sec1,
+.k8-sec2{
  	font-family: 'Roboto-Light';
- 	font-size: 22px;
+ 	font-size: 17px;
 }
 
 .k8-sec1 h2{
 	text-align: center;
-	font-size: 32px;
+	font-size: 25px;
 	background-color: #00B2E2;
 	padding: 24px 10px;
 	color: #fff;
@@ -841,8 +842,6 @@
 	max-width: 960px;
 	margin-left: auto;
 	margin-right: auto;
-  font-family: 'Roboto-Light';
-	font-size: 20px;
 	padding-top: 70px;
 	padding-bottom: 40px;
 }
@@ -1195,9 +1194,31 @@ ul.k8-sec3__it-list{
 	.fx-100{
 		width: 100%;
 	}
+
+	.modd{
+		padding: 20px 15px;
+	}
+	.modd__txt{
+		padding: 0;
+	}
+	.k8-sec3__wrr{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.pt-cv-colsys{
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	/**{
+		width: 100% !important;
+	}*/
 }
 
 @media (max-width: 480px){
+	h1{
+		font-size: 22px;
+	}
 	.k8-sec1 h2{
 		font-size: 24px;
 	}
