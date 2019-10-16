@@ -1194,7 +1194,10 @@ ul.k8-sec3__it-list{
 	.fx-100{
 		width: 100%;
 	}
-
+	
+	body.separate-containers .inside-article{
+		padding: 0;
+	}
 	.modd{
 		padding: 20px 15px;
 	}
