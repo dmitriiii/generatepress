@@ -1073,13 +1073,13 @@ ul.k8-sec3__it-list{
   filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='svgMask'><feGaussianBlur stdDeviation='4' /></filter></svg>#svgMask");
 }
 
-.butt-v-1{
+.butt-v-1,
+.k8-sec3 .butt-v-1{
 	display: block;
 	width: 100%;
 	font-size: 16px;
   font-family: 'Roboto-Bold';
 	border-radius: 6px;
-	
 }
 
 .k8-sec3__it-name{
