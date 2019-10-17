@@ -138,7 +138,7 @@ get_header(); ?>
 											    ),
 													'category_name' => 'vpn-anbieter',
 													'posts_per_page' => 2,
-													'meta_key'  => 'option_overall_score',
+													'meta_key'  => 'wppr_rating',
 													'orderby'   => 'meta_value_num',
 													'order'     => 'DESC',
 												);
@@ -201,7 +201,7 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-													'meta_key'  => 'option_overall_score',
+													'meta_key'  => 'wppr_rating',
 													'orderby'   => 'meta_value_num',
 													'order'     => 'DESC',
 												);
@@ -269,7 +269,7 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-													'meta_key'  => 'option_overall_score',
+													'meta_key'  => 'wppr_rating',
 													'orderby'   => 'meta_value_num',
 													'order'     => 'DESC',
 
@@ -333,7 +333,7 @@ get_header(); ?>
 										        ),
 											    ),
 													'posts_per_page' => 2,
-    											'meta_key'  => 'option_overall_score',
+    											'meta_key'  => 'wppr_rating',
 													'orderby'   => 'meta_value_num',
 													'order'     => 'DESC',
 												);
