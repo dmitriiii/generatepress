@@ -76,20 +76,7 @@ get_header(); ?>
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-md-12">
-											<h2>
-												Viele Leser suchen den "sichersten VPN Anbieter"
-											</h2>
-											<br>
-											<p>
-												Allerdings muss man dazu festhalten, dass es eben sehr viele verschiedene Bedrohungszenarien geben kann. Also was für den einen ausreichende Sicherheit darstellt, mag für den anderen überhaupt kein Schutz darstellen. Kurz gesagt: Sicherheit ist relativ und subjektiv zu betrachten.
-											</p>
-											<p>
-												Die wichtigsten Unterscheidungsmerkmale habe ich einmal hier zusammen geführt und versucht dies in 4 einfache Sicherheitsgruppen sortiert. Klar man kann darüber streiten, welche Eigenschaft nun wichtiger wäre usw.. es ist aber eine ganz gute Unterscheidung, die vielen meiner Leser bisher geholfen hat.
-											</p>
-											<br>
-											<h2>
-												Welchen VPN suchst Du? Finde die passenden VPN-Anbieter für Deinen Bedarf
-											</h2>
+											<?php the_field('tmpl_txt_1'); ?>
 										</div>
 									</div>
 								</div>
@@ -99,16 +86,15 @@ get_header(); ?>
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-md-6">
-											<img src="<?php bloginfo( 'template_directory' ); ?>/k8/assets/img/levlz.png" alt="">
+											<?php 
+											if (get_field('tmpl_img_1')): 
+												$imid = get_field('tmpl_img_1'); ?>
+												<img src="<?php echo wp_get_attachment_image_src($imid, 'medium_large')[0] ?>" alt="<?php echo get_post_meta($imid, '_wp_attachment_image_alt', TRUE) ?>" title="<?php echo get_the_title($imid) ?>">
+											<?php 
+											endif ?>
 										</div>
 										<div class="col-md-6">
-											<br>
-											<p>
-												Allerdings muss man dazu festhalten, dass es eben sehr viele verschiedene Bedrohungszenarien geben kann. Also was für den einen ausreichende Sicherheit darstellt, mag für den anderen überhaupt kein Schutz darstellen. Kurz gesagt: Sicherheit ist relativ und subjektiv zu betrachten.
-											</p>
-											<p>
-												Die wichtigsten Unterscheidungsmerkmale habe ich einmal hier zusammen geführt und versucht dies in 4 einfache Sicherheitsgruppen sortiert. Klar man kann darüber streiten, welche Eigenschaft nun wichtiger wäre usw.. es ist aber eine ganz gute Unterscheidung, die vielen meiner Leser bisher geholfen hat.
-											</p>
+											<?php the_field('tmpl_txt_2'); ?>
 										</div>
 									</div>
 								</div>
@@ -133,26 +119,7 @@ get_header(); ?>
 														</div>
 													</div>
 													<div class="k8-sec3__txt eq-h-blck">
-														<h3 style="text-align: center;">
-															Gewechselte IP-Adresse
-															& einfacher Schutz
-														</h3>
-														<p><em>Schützt vor Ausforschungen wegen Zivilrecht (Urheberrecht)</em></p>
-														<h4>Merkmale: </h4>
-														<ul>
-															<li>Standorte im Ausland (IP-Adressen)</li>
-															<li>Verbindungen zu einzelnen VPN Servern</li>
-															<li>Geschütze Verbindungen von Endgerät bis zum VPN-Standort</li>
-														</ul>
-														<h4>
-															Ideal für:
-														</h4>
-														<ul>
-															<li>Nutzung einer IP-Adresse aus dem Ausland</li>
-															<li>Sichere verschlüsselte Datenübertragung zwischen Endgerät und VPN-Server</li>
-															<li>Streaming (Urheberrecht)</li>
-															<li>Geographische Sperren umgehen</li>
-														</ul>
+														<?php the_field('tmpl_blck_1'); ?>
 													</div>
 												</div><!-- END .k8-sec3__blck -->
 											</div><!-- .k8-sec3__wrr -->
@@ -189,7 +156,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="1" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-1">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="1" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-1">Alle passenden Services</button>
 										</div><!-- .col-md-6 -->
 										
 										<div class="col-md-6">
@@ -208,25 +175,7 @@ get_header(); ?>
 														</div>
 													</div>
 													<div class="k8-sec3__txt eq-h-blck">
-														<h3 style="text-align: center;">
-															Erweiterter Schutz vor Ausforschung 
-														</h3>
-														<p><em>Schützt vor Ausforschung durch die IP-Adresse bei weiteren Angelegenheiten.</em></p>
-														<h4>Merkmale: </h4>
-														<p>Merkmale von 1 und zusätzlich:</p>
-														<ul>
-															<li>Unternehmenssitz ausserhalb der EU/USA</li>
-															<li>Eigene DNS Server</li>
-															<li>Erweiterte Softwarefunktionen: KillSwitch, Firewall, Malwareschutz</li>
-														</ul>
-														<h4>
-															Ideal für:
-														</h4>
-														<p>Anwendungen von 1 und zusätzlich:</p>
-														<ul>
-															<li>Filesharing/Torrentnutzung</li>
-															<li>Allgemeiner Schutz vor Überwachung</li>
-														</ul>
+														<?php the_field('tmpl_blck_2'); ?>
 													</div>
 												</div><!-- END .k8-sec3__blck -->
 											</div><!-- .k8-sec3__wrr -->
@@ -270,7 +219,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="2" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-2">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="2" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-2">Alle passenden Services</button>
 										</div><!-- .col-md-6 -->
 
 									</div><!-- .row -->
@@ -294,24 +243,7 @@ get_header(); ?>
 														</div>
 													</div>
 													<div class="k8-sec3__txt eq-h-blck">
-														<h3 style="text-align: center;">
-															Schutz vor Überwachung durch Behörden 
-														</h3>
-														<p><em>Schützt vor einer Rückverfolgung durch vernetzte Organisationen und Behörden</em></p>
-														<h4>Merkmale: </h4>
-														<p>Merkmale von 1,2 und zusätzlich:</p>
-														<ul>
-															<li>Multi-Hop VPN Kaskaden</li>
-															<li>TOR Anbindungsmöglichkeit</li>
-															<li>Eigene Server / Eigene IP-Adressen</li>
-														</ul>
-														<h4>
-															Ideal für:
-														</h4>
-														<p>Anwendungen von 1,2 und zusätzlich:</p>
-														<ul>
-															<li>Anonymität auch bei der Nutzung von Foren, Medien und Nachrichte</li>
-														</ul>
+														<?php the_field('tmpl_blck_3'); ?>
 													</div>
 												</div><!-- END .k8-sec3__blck -->
 											</div><!-- .k8-sec3__wrr -->
@@ -356,7 +288,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="3" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-3">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="3" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-3">Alle passenden Services</button>
 										</div><!-- .col-md-6 -->
 										
 										<div class="col-md-6">
@@ -375,25 +307,7 @@ get_header(); ?>
 														</div>
 													</div>
 													<div class="k8-sec3__txt eq-h-blck">
-														<h3 style="text-align: center;">
-															Maximaler Schutz der Identität im Internet 
-														</h3>
-														<p><em>Schützt zuverlässig vor komplexen  und gezielten Überwachungszenarien</em></p>
-														<h4>Merkmale: </h4>
-														<p>Merkmale von 1 und zusätzlich:</p>
-														<ul>
-															<li>Keine Logfiles (Keine Limitierungen der Tarife)</li>
-															<li>Keine Datenspeicherung auch bei Beschlagnahmung (RAM-Disk anstelle Festspeicher)</li>
-															<li>Selbstgestaltbare Kaskaden oder auch dynamische VPN-Kaskaden</li>
-														</ul>
-														<h4>
-															Ideal für:
-														</h4>
-														<p>Anwendungen von 1 und zusätzlich:</p>
-														<ul>
-															<li>Schutz der Identität auch im erweiterten Bereich (Aktivisten, gefährdete Personen, etc), Länderübergreifend</li>
-															<li>Schutz vor gezielter Überwachung und Ausforschung durch internationale staatliche Organisationen</li>
-														</ul>
+														<?php the_field('tmpl_blck_4'); ?>
 													</div>
 												</div><!-- END .k8-sec3__blck -->
 											</div><!-- .k8-sec3__wrr -->
@@ -443,7 +357,7 @@ get_header(); ?>
 													endwhile;
 													wp_reset_postdata();
 												endif;  ?>
-											<button data-targ="#modd_safe" data-typ="4" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-4">PASSENDE SERVISES</button>
+											<button data-targ="#modd_safe" data-typ="4" data-act="k8_ajx_safety" class="trigg k8-sec3__more butt-v-1 b-w-l" data-bg="blck-4">Alle passenden Services</button>
 										</div><!-- .col-md-6 -->
 
 									</div><!-- .row -->

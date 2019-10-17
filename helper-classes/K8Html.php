@@ -150,7 +150,7 @@ class K8Html
 							<?php echo K8Help::excerptPid( 30, $pid ); ?>
 						</p>
 						<a href="<?php echo get_permalink($pid); ?>" class="k8-sec3__it-link">
-							zum Testberichte
+							Zum Testbericht
 						</a>
 					</div>
 				</div>
