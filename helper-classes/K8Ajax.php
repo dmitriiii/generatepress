@@ -88,6 +88,13 @@ class K8Ajax
       'post_status' => array(
         'publish'
       ),
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'sicherheitslevel',
+          'field'    => 'slug',
+          'terms'    => 'normal',
+        ),
+      ),
       'category_name' => 'vpn-anbieter',
       'posts_per_page' => -1,
       'meta_key'  => 'option_overall_score',
@@ -98,9 +105,9 @@ class K8Ajax
     if( $typ == 2 ){
       $args['tax_query'] = array(
         array(
-          'taxonomy' => 'anwendungen',
+          'taxonomy' => 'sicherheitslevel',
           'field'    => 'slug',
-          'terms'    => 'tauschboersen-torrent',
+          'terms'    => 'erweitert',
         ),
       );
     }
@@ -108,25 +115,19 @@ class K8Ajax
     if( $typ == 3 ){
       $args['tax_query'] = array(
         array(
-          'taxonomy' => 'anwendungen',
+          'taxonomy' => 'sicherheitslevel',
           'field'    => 'slug',
-          'terms'    => 'maximale-anonymitaet',
+          'terms'    => 'hoch',
         ),
       );
     }
 
     if( $typ == 4 ){
       $args['tax_query'] = array(
-        'relation' => 'AND',
         array(
-          'taxonomy' => 'anwendungen',
+          'taxonomy' => 'sicherheitslevel',
           'field'    => 'slug',
-          'terms'    => 'maximale-anonymitaet',
-        ),
-        array(
-          'taxonomy' => 'sonderfunktionen',
-          'field'    => 'slug',
-          'terms'    => 'multi-hop-vpn',
+          'terms'    => 'maximal',
         ),
       );
     }

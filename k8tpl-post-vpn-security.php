@@ -129,6 +129,13 @@ get_header(); ?>
 													'post_status' => array(
 														'publish'
 													),
+													'tax_query' => array(
+										        array(
+									            'taxonomy' => 'sicherheitslevel',
+									            'field'    => 'slug',
+									            'terms'    => 'normal',
+										        ),
+											    ),
 													'category_name' => 'vpn-anbieter',
 													'posts_per_page' => 2,
 													'meta_key'  => 'option_overall_score',
@@ -188,9 +195,9 @@ get_header(); ?>
 													'category_name' => 'vpn-anbieter',
 													'tax_query' => array(
 										        array(
-									            'taxonomy' => 'anwendungen',
+									            'taxonomy' => 'sicherheitslevel',
 									            'field'    => 'slug',
-									            'terms'    => 'tauschboersen-torrent',
+									            'terms'    => 'erweitert',
 										        ),
 											    ),
 													'posts_per_page' => 2,
@@ -256,9 +263,9 @@ get_header(); ?>
 													'category_name' => 'vpn-anbieter',
 													'tax_query' => array(
 										        array(
-									            'taxonomy' => 'anwendungen',
+									            'taxonomy' => 'sicherheitslevel',
 									            'field'    => 'slug',
-									            'terms'    => 'maximale-anonymitaet',
+									            'terms'    => 'hoch',
 										        ),
 											    ),
 													'posts_per_page' => 2,
@@ -319,16 +326,10 @@ get_header(); ?>
 													),
 													'category_name' => 'vpn-anbieter',
 													'tax_query' => array(
-														'relation' => 'AND',
 										        array(
-									            'taxonomy' => 'anwendungen',
+									            'taxonomy' => 'sicherheitslevel',
 									            'field'    => 'slug',
-									            'terms'    => 'maximale-anonymitaet',
-										        ),
-										        array(
-									            'taxonomy' => 'sonderfunktionen',
-									            'field'    => 'slug',
-									            'terms'    => 'multi-hop-vpn',
+									            'terms'    => 'maximal',
 										        ),
 											    ),
 													'posts_per_page' => 2,
