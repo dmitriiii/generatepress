@@ -103,7 +103,7 @@ if( in_array(get_site_url(), $k8_arrr) ){
 
 	$urlll = 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
 	$iddd = url_to_postid( $urlll );
-	if( $iddd != 4819 ):
+	if( $iddd != 4819 && $iddd != 16314 ):
 		# add the lazy-load class to most of the other images that are missing it (filters dependent)
 		function raul_add_image_placeholders( $content ) {
 			// Don't lazyload for feeds, previews
