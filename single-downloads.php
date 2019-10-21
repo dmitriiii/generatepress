@@ -362,7 +362,12 @@ get_header(); ?>
 											?>
 											<div>
 												<div class="k8-sl__itt">
-													<img src="<?php echo get_the_post_thumbnail_url( $ambieter, 'thumbnail' ); ?>" alt="" class="k8-sl__img">
+													<?php 
+													echo K8Html::getImgHtml(array(
+														'img_id' => get_post_thumbnail_id( $ambieter ),
+														'size' => 'thumbnail',
+														'class' => 'k8-sl__img'
+													)); ?>
 													<div class="k8-sl__cont">
 														<div class="k8-sl__head1 ta-c">
 															<?php echo $i; ?>.
@@ -418,7 +423,12 @@ get_header(); ?>
 											<div>
 												<div class="k8-sl__itt">
 													<a href="<?php echo K8Help::getImgUrl( $im, 'full' ); ?>" data-lightbox="roadtrip">
-														<img src="<?php echo K8Help::getImgUrl( $im, 'medium' ); ?>" alt="<?php echo get_post_meta($im, '_wp_attachment_image_alt', TRUE) ?>">
+														<?php 
+															echo K8Html::getImgHtml(array(
+																'img_id' => $im,
+																'size' => 'medium',
+															)); 
+														?>
 													</a>
 
 												</div>
