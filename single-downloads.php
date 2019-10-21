@@ -40,7 +40,7 @@ get_header(); ?>
 							do_action( 'generate_before_entry_title' );
 
 							if ( generate_show_title() ) {
-								the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
+								the_title( '<h1 class="entry-title dwnd" itemprop="headline">', '</h1>' );
 							}
 
 							/**
@@ -286,7 +286,7 @@ get_header(); ?>
 							<!-- PROS&CONS -->
 							<?php 
 							if ( $k8_acf_dwn_title1 ):
-								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title1);
+								echo sprintf('<div class="dwnd"><h3>%s</h3></div>',$k8_acf_dwn_title1);
 							endif; ?>
 							<div class="dwnd__pscs fx">
 								<div class="fx-50 pros">
@@ -346,7 +346,7 @@ get_header(); ?>
 							 if ( $the_query->have_posts() ) :
 							 	$i=1;?>
 
-								<div class="k8-dwnd__head">
+								<div class="k8-dwnd__head dwnd">
 									Top-5-Alternativen dieser Kategorie
 								</div>
 
@@ -408,7 +408,7 @@ get_header(); ?>
 
 							<?php
 							if ( $k8_acf_dwn_title2 ):
-								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title2);
+								echo sprintf('<div class="dwnd"><h3>%s</h3></div>',$k8_acf_dwn_title2);
 							endif;
 
 							if( have_rows('k8_acf_dwn_slider') ):?>
@@ -430,7 +430,7 @@ get_header(); ?>
 															)); 
 														?>
 													</a>
-
+													<?php the_sub_field('text'); ?>
 												</div>
 											</div>
 											<?php
@@ -442,291 +442,287 @@ get_header(); ?>
 
 
 
+							<div class="dwnd">
+								<h2>Spezifikationen</h2>
+								<table class="k8_compare-tbl k8_dwnd-tbl mtb-30">
 
-							<h2>Spezifikationen</h2>
+									<?php
+									if($k8_acf_dwn_act) : ?>
+										<tr>
+											<td>Aktualisiert</td>
+											<td><strong><?php echo $k8_acf_dwn_act; ?></strong></td>
+										</tr>
+									<?php
+									endif;
 
-							<table class="k8_compare-tbl k8_dwnd-tbl mtb-30">
+									if(is_array($k8_acf_dwn_os) && count($k8_acf_dwn_os) > 0) : ?>
+										<tr>
+											<td><strong>Kompatible Betriebssysteme</strong></td>
+											<td>
+												<?php
+												$ccc = 1;
+												foreach ($k8_acf_dwn_os as $key=>$value): ?>
+													<strong>
+														<?php echo $value['label']; ?>
+													</strong>
+												<?php
+													echo ( count( $k8_acf_dwn_os ) > $ccc ) ? ', ' : '';
+													$ccc++;
+												endforeach ?>
+											</td>
+										</tr>
+									<?php
+									endif;
 
-								<?php
-								if($k8_acf_dwn_act) : ?>
-									<tr>
-										<td>Aktualisiert</td>
-										<td><strong><?php echo $k8_acf_dwn_act; ?></strong></td>
-									</tr>
-								<?php
-								endif;
+									if( is_array($k8_acf_dwn_typ) && count($k8_acf_dwn_typ) > 0) : ?>
+										<tr>
+											<td>Programmart</td>
+											<td>
+												<?php
+												$ccc = 1;
+												foreach ($k8_acf_dwn_typ as $key=>$value): ?>
+													<strong>
+														<?php echo $value['label']; ?>
+													</strong>
+												<?php
+													echo ( count( $k8_acf_dwn_typ ) > $ccc ) ? ', ' : '';
+													$ccc++;
+												endforeach ?>
+											</td>
+										</tr>
+									<?php
+									endif;
 
-								if(is_array($k8_acf_dwn_os) && count($k8_acf_dwn_os) > 0) : ?>
-									<tr>
-										<td><strong>Kompatible Betriebssysteme</strong></td>
-										<td>
-											<?php
-											$ccc = 1;
-											foreach ($k8_acf_dwn_os as $key=>$value): ?>
+									if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
+										<tr>
+											<td>Kaufpreis</td>
+											<td>
 												<strong>
-													<?php echo $value['label']; ?>
+													<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>
 												</strong>
-											<?php
-												echo ( count( $k8_acf_dwn_os ) > $ccc ) ? ', ' : '';
-												$ccc++;
-											endforeach ?>
-										</td>
-									</tr>
-								<?php
-								endif;
+												<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>
+											</td>
+										</tr>
+									<?php
+									endif;
 
-								if( is_array($k8_acf_dwn_typ) && count($k8_acf_dwn_typ) > 0) : ?>
-									<tr>
-										<td>Programmart</td>
-										<td>
-											<?php
-											$ccc = 1;
-											foreach ($k8_acf_dwn_typ as $key=>$value): ?>
+
+
+									if(is_array($k8_acf_dwn_lang) && count($k8_acf_dwn_lang) > 0) : ?>
+										<tr>
+											<td>Sprache</td>
+											<td>
+												<?php
+												$ccc = 1;
+												foreach ($k8_acf_dwn_lang as $key=>$value): ?>
+													<strong>
+														<?php echo $value['label']; ?>
+													</strong>
+												<?php
+													echo ( count( $k8_acf_dwn_lang ) > $ccc ) ? ', ' : '';
+													$ccc++;
+												endforeach ?>
+											</td>
+										</tr>
+									<?php
+									endif;
+
+									if($k8_acf_dwn_count) : ?>
+										<tr>
+											<td>Anzahl der Downloads</td>
+											<td><strong><?php echo $k8_acf_dwn_count; ?></strong></td>
+										</tr>
+									<?php
+									endif;
+
+
+									if($k8_acf_dwn_file) : ?>
+										<tr>
+											<td>Dateigröße</td>
+											<td><strong><?php echo size_format($k8_acf_dwn_file['filesize'],2); ?></strong></td>
+										</tr>
+									<?php
+									endif;
+
+									if($k8_tax_brand) : ?>
+										<tr>
+											<td>Hersteller</td>
+											<td>
 												<strong>
-													<?php echo $value['label']; ?>
+													<?php echo $k8_tax_brand->name; ?>
 												</strong>
-											<?php
-												echo ( count( $k8_acf_dwn_typ ) > $ccc ) ? ', ' : '';
-												$ccc++;
-											endforeach ?>
-										</td>
-									</tr>
-								<?php
-								endif;
+												<?php
+												if ($k8_acf_dwn_her_home): ?>
+													<br>
+													<a target="_blank" href="<?php echo $k8_acf_dwn_her_home; ?>">Zur Homepage des Herstellers</a>
+												<?php
+												endif ?>
+											</td>
+										</tr>
+									<?php
+									endif;
 
-								if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
-									<tr>
-										<td>Kaufpreis</td>
-										<td>
-											<strong>
-												<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>
-											</strong>
-											<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>
-										</td>
-									</tr>
-								<?php
-								endif;
+									if($k8_acf_dwn_cat1) : ?>
+										<tr>
+											<td>Kategorie</td>
+											<td><strong><?php echo $k8_acf_dwn_cat1['label']; ?></strong> | <strong><?php echo $k8_acf_dwn_cat2['label']; ?></strong></td>
+										</tr>
+									<?php
+									endif;
 
 
+									if($k8_acf_dwn_unin) : ?>
+										<tr>
+											<td>Deinstallation</td>
+											<td><?php echo $k8_acf_dwn_unin; ?></td>
+										</tr>
+									<?php
+									endif;?>
+								</table>
+							
+	
+								<!-- SCHEMA ORG-->
+								<script type="application/ld+json">{
+									"@context":"http:\/\/schema.org\/",
+									"@type":"SoftwareApplication",
+									"name":"<?php the_title(); ?>",
+									<?php
+									if($k8_acf_dwn_cat1) : ?>
+										"applicationCategory":"<?php echo $k8_acf_dwn_cat1['label']; ?>",
+									<?php
+									endif;
 
-								if(is_array($k8_acf_dwn_lang) && count($k8_acf_dwn_lang) > 0) : ?>
-									<tr>
-										<td>Sprache</td>
-										<td>
-											<?php
+									if($k8_acf_dwn_cat2) : ?>
+										"applicationSubCategory":"<?php echo $k8_acf_dwn_cat2['label']; ?>",
+									<?php
+									endif;
+
+									if(is_array($k8_acf_dwn_lang) && count($k8_acf_dwn_lang) > 0) : ?>
+										"inLanguage":["<?php
 											$ccc = 1;
-											foreach ($k8_acf_dwn_lang as $key=>$value): ?>
-												<strong>
-													<?php echo $value['label']; ?>
-												</strong>
-											<?php
+											foreach ($k8_acf_dwn_lang as $key=>$value):
+												echo $value['label'];
 												echo ( count( $k8_acf_dwn_lang ) > $ccc ) ? ', ' : '';
 												$ccc++;
-											endforeach ?>
-										</td>
-									</tr>
+											endforeach; ?>"],
+									<?php
+									endif;?>
+
+									"downloadUrl":"<?php echo addslashes($curr_url); ?>",
+
+									<?php
+									if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
+										"featureList":["<?php
+											$ccc = 1;
+											foreach ($k8_acf_dwn_feat as $key => $value):
+												echo $value['label'];
+												echo ( count( $k8_acf_dwn_feat ) > $ccc ) ? ', ' : '';
+												$ccc++;
+											endforeach ?>"],
+									<?php
+									endif;
+
+									if($k8_acf_dwn_file) : ?>
+										"fileSize":"<?php echo size_format($k8_acf_dwn_file['filesize'],2); ?>",
+									<?php
+									endif;
+
+									if(is_array($k8_acf_dwn_os) && count($k8_acf_dwn_os) > 0) : ?>
+										"operatingSystem":["<?php
+											$ccc = 1;
+											foreach ($k8_acf_dwn_os as $key=>$value):
+												echo $value['label'];
+												echo ( count( $k8_acf_dwn_os ) > $ccc ) ? ', ' : '';
+												$ccc++;
+											endforeach ?>"],
+									<?php
+									endif;?>
+
+									"screenshot":"<?php echo esc_url_raw( get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'medium' ) ); ?>",
+									"thumbnailUrl":"<?php echo esc_url( get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ) ); ?>",
+
+									<?php
+									if ($k8_acf_dwn_ver): ?>
+										"softwareVersion":"<?php echo $k8_acf_dwn_ver; ?>",
+									<?php
+									endif ?>
+
+									"aggregateRating":{
+										"@type":"AggregateRating",
+										"ratingCount":<?php echo ( count( $comz ) > 0 ) ? count( $comz ) : 1; ?>,
+										"bestRating":10,
+										"ratingValue":<?php echo ($pm['wppr_rating'][0] / 10); ?>,
+										"worstRating":0
+									},
+
+									"dateModified":"<?php the_modified_date(); ?>",
+
+									<?php
+									if($k8_acf_dwn_count) : ?>
+										"interactionStatistic":{
+											"@type":"InteractionCounter",
+											"userInteractionCount":"<?php echo addslashes($k8_acf_dwn_count); ?>"
+										},
+									<?php
+									endif;
+
+									if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
+										"offers":{
+											"@type":"Offer",
+											"price":<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>,
+											"priceCurrency":"<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>"
+										},
+									<?php
+									endif;
+
+									if($k8_tax_brand) : ?>
+										"producer" : "<?php
+										echo $k8_tax_brand->name; ?>",
+									<?php
+									endif; ?>
+
+
+									"publisher":"<?php echo addslashes( get_bloginfo( 'name' ) ); ?>",
+									"description":"<?php echo addslashes( strip_tags(K8Help::excerpt(120)) ); ?>"
+								}</script>
+
+
+
 								<?php
+								the_content();
+									
+								if ( $k8_acf_dwn_title3 ):
+									echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title3);
 								endif;
 
-								if($k8_acf_dwn_count) : ?>
-									<tr>
-										<td>Anzahl der Downloads</td>
-										<td><strong><?php echo $k8_acf_dwn_count; ?></strong></td>
-									</tr>
-								<?php
-								endif;
+								echo '<div class="k8-rew__wrr">';
+									echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
+								echo '</div>';
 
-
-								if($k8_acf_dwn_file) : ?>
-									<tr>
-										<td>Dateigröße</td>
-										<td><strong><?php echo size_format($k8_acf_dwn_file['filesize'],2); ?></strong></td>
-									</tr>
-								<?php
-								endif;
-
-								if($k8_tax_brand) : ?>
-									<tr>
-										<td>Hersteller</td>
-										<td>
-											<strong>
-												<?php echo $k8_tax_brand->name; ?>
-											</strong>
-											<?php
-											if ($k8_acf_dwn_her_home): ?>
-												<br>
-												<a target="_blank" href="<?php echo $k8_acf_dwn_her_home; ?>">Zur Homepage des Herstellers</a>
-											<?php
-											endif ?>
-										</td>
-									</tr>
-								<?php
-								endif;
-
-								if($k8_acf_dwn_cat1) : ?>
-									<tr>
-										<td>Kategorie</td>
-										<td><strong><?php echo $k8_acf_dwn_cat1['label']; ?></strong> | <strong><?php echo $k8_acf_dwn_cat2['label']; ?></strong></td>
-									</tr>
-								<?php
-								endif;
-
-
-								if($k8_acf_dwn_unin) : ?>
-									<tr>
-										<td>Deinstallation</td>
-										<td><?php echo $k8_acf_dwn_unin; ?></td>
-									</tr>
-								<?php
-								endif;
-
-
+								wp_link_pages( array(
+									'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
+									'after'  => '</div>',
+								) );
 								?>
 
-							</table>
+
+								<br><br>
+
+								<h2>Aktivieren Sie jetzt den Update-Alarm</h2>
+								<p>Sie möchten über wichtige Programm-Updates immer informiert werden? Dann aktivieren Sie hier einfach den Update-Alarm und Sie verpassen kein Update mehr!</p>
+
+								<form action="" class="k8_cnt" onsubmit="return false;">
+									<label>E-Mail-Adresse*</label>
+
+									<div class="fxw">
+										<input class="fx1" type="email" name="email" required>
+										<button type="submit" class="dwnd__butt sm">Anmelden</button>
+									</div>
 
 
-							<!-- SCHEMA ORG-->
-							<script type="application/ld+json">{
-								"@context":"http:\/\/schema.org\/",
-								"@type":"SoftwareApplication",
-								"name":"<?php the_title(); ?>",
-								<?php
-								if($k8_acf_dwn_cat1) : ?>
-									"applicationCategory":"<?php echo $k8_acf_dwn_cat1['label']; ?>",
-								<?php
-								endif;
-
-								if($k8_acf_dwn_cat2) : ?>
-									"applicationSubCategory":"<?php echo $k8_acf_dwn_cat2['label']; ?>",
-								<?php
-								endif;
-
-								if(is_array($k8_acf_dwn_lang) && count($k8_acf_dwn_lang) > 0) : ?>
-									"inLanguage":["<?php
-										$ccc = 1;
-										foreach ($k8_acf_dwn_lang as $key=>$value):
-											echo $value['label'];
-											echo ( count( $k8_acf_dwn_lang ) > $ccc ) ? ', ' : '';
-											$ccc++;
-										endforeach; ?>"],
-								<?php
-								endif;?>
-
-								"downloadUrl":"<?php echo addslashes($curr_url); ?>",
-
-								<?php
-								if( is_array( $k8_acf_dwn_feat ) && count( $k8_acf_dwn_feat ) > 0 ) : ?>
-									"featureList":["<?php
-										$ccc = 1;
-										foreach ($k8_acf_dwn_feat as $key => $value):
-											echo $value['label'];
-											echo ( count( $k8_acf_dwn_feat ) > $ccc ) ? ', ' : '';
-											$ccc++;
-										endforeach ?>"],
-								<?php
-								endif;
-
-								if($k8_acf_dwn_file) : ?>
-									"fileSize":"<?php echo size_format($k8_acf_dwn_file['filesize'],2); ?>",
-								<?php
-								endif;
-
-								if(is_array($k8_acf_dwn_os) && count($k8_acf_dwn_os) > 0) : ?>
-									"operatingSystem":["<?php
-										$ccc = 1;
-										foreach ($k8_acf_dwn_os as $key=>$value):
-											echo $value['label'];
-											echo ( count( $k8_acf_dwn_os ) > $ccc ) ? ', ' : '';
-											$ccc++;
-										endforeach ?>"],
-								<?php
-								endif;?>
-
-								"screenshot":"<?php echo esc_url_raw( get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'medium' ) ); ?>",
-								"thumbnailUrl":"<?php echo esc_url( get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ) ); ?>",
-
-								<?php
-								if ($k8_acf_dwn_ver): ?>
-									"softwareVersion":"<?php echo $k8_acf_dwn_ver; ?>",
-								<?php
-								endif ?>
-
-								"aggregateRating":{
-									"@type":"AggregateRating",
-									"ratingCount":<?php echo ( count( $comz ) > 0 ) ? count( $comz ) : 1; ?>,
-									"bestRating":10,
-									"ratingValue":<?php echo ($pm['wppr_rating'][0] / 10); ?>,
-									"worstRating":0
-								},
-
-								"dateModified":"<?php the_modified_date(); ?>",
-
-								<?php
-								if($k8_acf_dwn_count) : ?>
-									"interactionStatistic":{
-										"@type":"InteractionCounter",
-										"userInteractionCount":"<?php echo addslashes($k8_acf_dwn_count); ?>"
-									},
-								<?php
-								endif;
-
-								if( get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ) ) : ?>
-									"offers":{
-										"@type":"Offer",
-										"price":<?php echo get_field( 'k8_acf_vpndet_avg', $k8_acf_dwn_ambieter ); ?>,
-										"priceCurrency":"<?php echo get_field( 'k8_acf_vpndet_curr', $k8_acf_dwn_ambieter )['label']; ?>"
-									},
-								<?php
-								endif;
-
-								if($k8_tax_brand) : ?>
-									"producer" : "<?php
-									echo $k8_tax_brand->name; ?>",
-								<?php
-								endif; ?>
-
-
-								"publisher":"<?php echo addslashes( get_bloginfo( 'name' ) ); ?>",
-								"description":"<?php echo addslashes( strip_tags(K8Help::excerpt(120)) ); ?>"
-							}</script>
-
-
-
-							<?php
-							the_content();
-								
-							if ( $k8_acf_dwn_title3 ):
-								echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title3);
-							endif;
-
-							echo '<div class="k8-rew__wrr">';
-								echo do_shortcode( "[P_REVIEW post_id=" . $k8_acf_dwn_ambieter . " visual='rating-options']" );
-							echo '</div>';
-
-							wp_link_pages( array(
-								'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),
-								'after'  => '</div>',
-							) );
-							?>
-
-
-							<br><br>
-
-							<h2>Aktivieren Sie jetzt den Update-Alarm</h2>
-							<p>Sie möchten über wichtige Programm-Updates immer informiert werden? Dann aktivieren Sie hier einfach den Update-Alarm und Sie verpassen kein Update mehr!</p>
-
-							<form action="" class="k8_cnt" onsubmit="return false;">
-								<label>E-Mail-Adresse*</label>
-
-								<div class="fxw">
-									<input class="fx1" type="email" name="email" required>
-									<button type="submit" class="dwnd__butt sm">Anmelden</button>
-								</div>
-
-
-							</form>
-
+								</form>
+							
+							</div><!-- .dwnd -->
 						</div><!-- .entry-content -->
 
 						<?php

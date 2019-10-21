@@ -217,7 +217,6 @@ class K8Html
 		unset( $args );
 		$str = '<img src="%s" class="%s" alt="%s" title="%s" width="%d" height="%d">';
 		$img_data =	wp_get_attachment_image_src( $img_id, $size );
-		// write_log( get_defined_vars() );
 		return sprintf( $str,
 										$img_data[0],
 										$class,
