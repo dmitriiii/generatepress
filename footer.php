@@ -51,7 +51,7 @@ do_action( 'generate_before_footer' );
 </div><!-- .site-footer -->
 
 
-<!-- <div class="modd" id="modd_safe">
+<div class="modd" id="modd_safe">
 	<div class="modd__content">
 		<div class="modd__clz">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -74,13 +74,9 @@ do_action( 'generate_before_footer' );
 				<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 			</div>
 		</div>
-		<div class="modd__txt">
-			
-
-		</div>
+		<div class="modd__txt"></div>
   </div>
-</div> -->
-
+</div>
 
 <?php
 /**
