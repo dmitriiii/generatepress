@@ -200,7 +200,7 @@ get_header(); ?>
 												'class'   => 'dwnd__butt grn',
 												'target'  => '_blank',
 												'href'    => $k8_acf_dwn_file['link'],
-												'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, 'thumbnail' ),
+												'img_src' => get_the_post_thumbnail_url( $k8_acf_dwn_ambieter, array(50, 50) ),
 											)
 										);
 
@@ -362,7 +362,7 @@ get_header(); ?>
 											?>
 											<div>
 												<div class="k8-sl__itt">
-													<img src="<?php echo get_the_post_thumbnail_url( $ambieter, 'medium' ); ?>" alt="" class="k8-sl__img">
+													<img src="<?php echo get_the_post_thumbnail_url( $ambieter, 'thumbnail' ); ?>" alt="" class="k8-sl__img">
 													<div class="k8-sl__cont">
 														<div class="k8-sl__head1 ta-c">
 															<?php echo $i; ?>.
@@ -378,7 +378,7 @@ get_header(); ?>
 															array(
 																'class'   => 'dwnd__butt sm',
 																'href'    => get_the_permalink($curr_id),
-																'img_src' => get_the_post_thumbnail_url( $ambieter, 'thumbnail' ),
+																'img_src' => get_the_post_thumbnail_url( $ambieter, array(50, 50) ),
 															)
 														); ?>
 
