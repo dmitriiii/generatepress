@@ -1264,7 +1264,7 @@ ul.k8-sec3__it-list{
 	position: relative;
 	background-color: #00B2E2;
 	cursor: pointer;
-	font-size: 18px;
+	/* font-size: 18px; */
 	font-weight: bold;
 }
 
