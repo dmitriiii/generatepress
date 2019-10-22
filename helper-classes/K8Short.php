@@ -10,6 +10,9 @@ class K8Short
 
 		#[K8_SHORT_YT id="dkPLIw9aZwY"]
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
+
+		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
+		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
 	}
 
 
@@ -158,6 +161,44 @@ class K8Short
 		<?php
 		endif;
 	  $html = ob_get_clean();
+	  return $html;
+	}
+
+	// generates schema markup for FAQ pages
+	public function faq($atts){
+		ob_start();
+		$q_o = get_queried_object();
+		$k8_acf_faq = get_field('k8_acf_faq', $q_o->ID);
+		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq > 0 ) ) : ?>
+			<div class="k8_accord-wrr">
+				<div class="k8_accord">
+					<?php
+					$i = 1;
+					foreach ($k8_acf_faq as $value): ?>
+						<div class="k8_accord-blck">
+					    <input type="checkbox" <?php echo ( $i !== 1 ) ? 'checked' : ''; ?>>
+					    <i></i>
+					    <div class="k8_accord-head">
+					    	<span><?php echo $value['quest']; ?></span>
+					    </div>
+					    <div class="k8_accord-txt">
+					    	<div class="k8_accord-inn">
+					    		<?php echo $value['ans']; ?>
+					    	</div>
+					    </div>
+					  </div>
+					<?php
+					$i++;
+					endforeach ?>
+				</div>
+			</div><!-- .k8_accord-wrr -->
+			<?php
+			$schema = K8Schema::getFaqPage([
+				'k8_acf_faq' => $k8_acf_faq
+			]);
+			echo '<script type="application/ld+json">' . $schema . '</script>';
+		endif;
+		$html = ob_get_clean();
 	  return $html;
 	}
 }
