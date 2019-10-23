@@ -9,6 +9,9 @@ class K8Hooks
 		# Add column with custom field vpn_id to Posts Admin Column
 		add_filter('manage_post_posts_columns', array( $this,'add_admin_column' ));
 		add_action('manage_post_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
+
+		#Multiple Languages
+		add_action('after_setup_theme', array($this,'setup_theme'));
 	}
 
 	public function upload_mimes( $mimes ){
@@ -40,5 +43,9 @@ class K8Hooks
 	  }
 	}
 
+	#Multiple Languages
+	public function setup_theme(){
+		load_theme_textdomain('k8lang_domain', get_template_directory() . '/languages');
+	}
 }
 new K8Hooks();
