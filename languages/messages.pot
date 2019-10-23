@@ -1,0 +1,970 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-23 13:23+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: 404.php:39
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:55
+msgid "It looks like nothing was found at this location. Maybe try searching?"
+msgstr ""
+
+#: attachment.php:136 content-link.php:71 content-page.php:48
+#: content-single.php:68 content.php:70 k8tpl-post-vpn-security.php:374
+#: single-downloads.php:703
+msgid "Pages:"
+msgstr ""
+
+#: comments.php:50
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:74 comments.php:97
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:75 comments.php:98
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:76 comments.php:99
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:107
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:111 anspress/answer.php:40
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:116
+msgid "Leave a Comment"
+msgstr ""
+
+#: comments.php:117
+msgid "Post Comment"
+msgstr ""
+
+#: functions.php:43
+msgid "Primary Menu"
+msgstr ""
+
+#: k8tpl-test.php:14
+msgid "Geld-Zurück-Garantie"
+msgstr ""
+
+#: k8tpl-test.php:16
+msgid "Das ist fantastish"
+msgstr ""
+
+#: no-results.php:27
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:49
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:57
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: no-results.php:62
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: search.php:31
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:14 searchform.php:15
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:15
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: searchform.php:17 inc/structure/navigation.php:83
+#: inc/structure/navigation.php:286 inc/structure/navigation.php:316
+#: inc/structure/navigation.php:318
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: single-downloads.php:403
+msgid "Sorry, nothing found"
+msgstr ""
+
+#: anspress/answer.php:31
+#, php-format
+msgid "Posted %s"
+msgstr ""
+
+#: anspress/answers.php:20
+msgid "Answer"
+msgid_plural "Answers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: anspress/question-list-item.php:44
+msgid "Votes"
+msgstr ""
+
+#: anspress/question-list-item.php:51
+msgid "Ans"
+msgstr ""
+
+#: anspress/single-question.php:62
+msgid "Scheduled for"
+msgstr ""
+
+#: anspress/single-question.php:62
+msgid "Published"
+msgstr ""
+
+#: anspress/single-question.php:72
+#, php-format
+msgid "%s Comment"
+msgid_plural "%s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/customizer.php:74
+msgid "Premium Modules Available"
+msgstr ""
+
+#: inc/customizer.php:97
+msgid "Hide site title"
+msgstr ""
+
+#: inc/customizer.php:116
+msgid "Hide site tagline"
+msgstr ""
+
+#: inc/customizer.php:137
+msgid "Logo"
+msgstr ""
+
+#: inc/customizer.php:159
+msgid "Retina Logo"
+msgstr ""
+
+#: inc/customizer.php:182
+msgid "Logo Width"
+msgstr ""
+
+#: inc/customizer.php:204 inc/typography.php:198
+msgid "Body"
+msgstr ""
+
+#: inc/customizer.php:204
+msgid "Colors"
+msgstr ""
+
+#: inc/customizer.php:225
+msgid "Background Color"
+msgstr ""
+
+#: inc/customizer.php:246
+msgid "Text Color"
+msgstr ""
+
+#: inc/customizer.php:267
+msgid "Link Color"
+msgstr ""
+
+#: inc/customizer.php:288
+msgid "Link Color Hover"
+msgstr ""
+
+#: inc/customizer.php:309
+msgid "Link Color Visited"
+msgstr ""
+
+#: inc/customizer.php:333
+msgid "Blog Post Title"
+msgstr ""
+
+#: inc/customizer.php:354
+msgid "Blog Post Title Hover"
+msgstr ""
+
+#: inc/customizer.php:376
+msgid "Navigation Color Presets"
+msgstr ""
+
+#: inc/customizer.php:380 inc/customizer.php:694
+msgid "Current"
+msgstr ""
+
+#: inc/customizer.php:381 inc/customizer.php:695 inc/meta-box.php:136
+#: inc/meta-box.php:174 inc/meta-box.php:216
+msgid "Default"
+msgstr ""
+
+#: inc/customizer.php:382
+msgid "White"
+msgstr ""
+
+#: inc/customizer.php:383
+msgid "Grey"
+msgstr ""
+
+#: inc/customizer.php:384
+msgid "Red"
+msgstr ""
+
+#: inc/customizer.php:385
+msgid "Green"
+msgstr ""
+
+#: inc/customizer.php:386
+msgid "Blue"
+msgstr ""
+
+#: inc/customizer.php:517
+msgid "Learn More"
+msgstr ""
+
+#: inc/customizer.php:518 inc/customizer.php:1302 inc/typography.php:746
+msgid "More options are available for this section in our premium version."
+msgstr ""
+
+#: inc/customizer.php:531 inc/meta-box.php:53
+msgid "Layout"
+msgstr ""
+
+#: inc/customizer.php:539
+msgid "Container"
+msgstr ""
+
+#: inc/customizer.php:561
+msgid "Container Width"
+msgstr ""
+
+#: inc/customizer.php:583 inc/general.php:75
+msgid "Top Bar"
+msgstr ""
+
+#: inc/customizer.php:603
+msgid "Top Bar Width"
+msgstr ""
+
+#: inc/customizer.php:606 inc/customizer.php:632 inc/customizer.php:723
+#: inc/customizer.php:749 inc/customizer.php:808 inc/customizer.php:834
+#: inc/customizer.php:1148 inc/customizer.php:1174 inc/customizer.php:1285
+msgid "Full"
+msgstr ""
+
+#: inc/customizer.php:607 inc/customizer.php:633 inc/customizer.php:724
+#: inc/customizer.php:748 inc/customizer.php:809 inc/customizer.php:833
+#: inc/customizer.php:1149 inc/customizer.php:1173 inc/meta-box.php:226
+msgid "Contained"
+msgstr ""
+
+#: inc/customizer.php:629
+msgid "Top Bar Inner Width"
+msgstr ""
+
+#: inc/customizer.php:655
+msgid "Top Bar Alignment"
+msgstr ""
+
+#: inc/customizer.php:658 inc/customizer.php:773 inc/customizer.php:858
+#: inc/customizer.php:973 inc/customizer.php:1226
+msgid "Left"
+msgstr ""
+
+#: inc/customizer.php:659 inc/customizer.php:774 inc/customizer.php:859
+#: inc/customizer.php:1227
+msgid "Center"
+msgstr ""
+
+#: inc/customizer.php:660 inc/customizer.php:775 inc/customizer.php:860
+#: inc/customizer.php:972 inc/customizer.php:1228
+msgid "Right"
+msgstr ""
+
+#: inc/customizer.php:671 inc/general.php:68
+msgid "Header"
+msgstr ""
+
+#: inc/customizer.php:691
+msgid "Header Presets"
+msgstr ""
+
+#: inc/customizer.php:696
+msgid "Navigation Before - Centered"
+msgstr ""
+
+#: inc/customizer.php:697
+msgid "Navigation After - Centered"
+msgstr ""
+
+#: inc/customizer.php:698
+msgid "Navigation Right"
+msgstr ""
+
+#: inc/customizer.php:699
+msgid "Navigation Left"
+msgstr ""
+
+#: inc/customizer.php:720
+msgid "Header Width"
+msgstr ""
+
+#: inc/customizer.php:745
+msgid "Inner Header Width"
+msgstr ""
+
+#: inc/customizer.php:770
+msgid "Header Alignment"
+msgstr ""
+
+#: inc/customizer.php:785
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/customizer.php:805
+msgid "Navigation Width"
+msgstr ""
+
+#: inc/customizer.php:830
+msgid "Inner Navigation Width"
+msgstr ""
+
+#: inc/customizer.php:855
+msgid "Navigation Alignment"
+msgstr ""
+
+#: inc/customizer.php:881
+msgid "Navigation Location"
+msgstr ""
+
+#: inc/customizer.php:884
+msgid "Below Header"
+msgstr ""
+
+#: inc/customizer.php:885
+msgid "Above Header"
+msgstr ""
+
+#: inc/customizer.php:886
+msgid "Float Right"
+msgstr ""
+
+#: inc/customizer.php:887
+msgid "Float Left"
+msgstr ""
+
+#: inc/customizer.php:888 inc/general.php:67 inc/meta-box.php:144
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/customizer.php:889 inc/general.php:66 inc/meta-box.php:139
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/customizer.php:890
+msgid "No Navigation"
+msgstr ""
+
+#: inc/customizer.php:911
+msgid "Navigation Drop Point"
+msgstr ""
+
+#: inc/customizer.php:912
+msgid ""
+"The width when the navigation ceases to float and drops below your logo."
+msgstr ""
+
+#: inc/customizer.php:944
+msgid "Navigation Dropdown"
+msgstr ""
+
+#: inc/customizer.php:947
+msgid "Hover"
+msgstr ""
+
+#: inc/customizer.php:948
+msgid "Click - Menu Item"
+msgstr ""
+
+#: inc/customizer.php:949
+msgid "Click - Arrow"
+msgstr ""
+
+#: inc/customizer.php:969
+msgid "Dropdown Direction"
+msgstr ""
+
+#: inc/customizer.php:993
+msgid "Navigation Search"
+msgstr ""
+
+#: inc/customizer.php:996 inc/customizer.php:1252
+msgid "Enable"
+msgstr ""
+
+#: inc/customizer.php:997 inc/customizer.php:1253
+msgid "Disable"
+msgstr ""
+
+#: inc/customizer.php:1018
+msgid "Content Layout"
+msgstr ""
+
+#: inc/customizer.php:1021
+msgid "Separate Containers"
+msgstr ""
+
+#: inc/customizer.php:1022
+msgid "One Container"
+msgstr ""
+
+#: inc/customizer.php:1032 inc/meta-box.php:81
+msgid "Sidebars"
+msgstr ""
+
+#: inc/customizer.php:1051
+msgid "Sidebar Layout"
+msgstr ""
+
+#: inc/customizer.php:1054 inc/customizer.php:1082 inc/customizer.php:1110
+msgid "Sidebar / Content"
+msgstr ""
+
+#: inc/customizer.php:1055 inc/customizer.php:1083 inc/customizer.php:1111
+msgid "Content / Sidebar"
+msgstr ""
+
+#: inc/customizer.php:1056 inc/customizer.php:1084 inc/customizer.php:1112
+#: inc/meta-box.php:151
+msgid "Content (no sidebars)"
+msgstr ""
+
+#: inc/customizer.php:1057 inc/customizer.php:1085 inc/customizer.php:1113
+msgid "Sidebar / Content / Sidebar"
+msgstr ""
+
+#: inc/customizer.php:1058 inc/customizer.php:1086 inc/customizer.php:1114
+msgid "Sidebar / Sidebar / Content"
+msgstr ""
+
+#: inc/customizer.php:1059 inc/customizer.php:1087 inc/customizer.php:1115
+msgid "Content / Sidebar / Sidebar"
+msgstr ""
+
+#: inc/customizer.php:1079
+msgid "Blog Sidebar Layout"
+msgstr ""
+
+#: inc/customizer.php:1107
+msgid "Single Post Sidebar Layout"
+msgstr ""
+
+#: inc/customizer.php:1125
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer.php:1145
+msgid "Footer Width"
+msgstr ""
+
+#: inc/customizer.php:1170
+msgid "Inner Footer Width"
+msgstr ""
+
+#: inc/customizer.php:1194 inc/meta-box.php:86
+msgid "Footer Widgets"
+msgstr ""
+
+#: inc/customizer.php:1223
+msgid "Footer Bar Alignment"
+msgstr ""
+
+#: inc/customizer.php:1249
+msgid "Back to Top Button"
+msgstr ""
+
+#: inc/customizer.php:1263
+msgid "Blog"
+msgstr ""
+
+#: inc/customizer.php:1282
+msgid "Content Type"
+msgstr ""
+
+#: inc/customizer.php:1286
+msgid "Excerpt"
+msgstr ""
+
+#: inc/customizer.php:1301 inc/dashboard.php:164 inc/typography.php:745
+msgid "Learn more"
+msgstr ""
+
+#: inc/customizer.php:1314
+msgid "General"
+msgstr ""
+
+#: inc/customizer.php:1333
+msgid "Load essential icons only"
+msgstr ""
+
+#: inc/customizer.php:1334
+msgid "Load essential Font Awesome icons instead of the full library."
+msgstr ""
+
+#: inc/customizer.php:1354
+msgid "Cache dynamic CSS"
+msgstr ""
+
+#: inc/customizer.php:1355
+msgid "Cache CSS generated by your options to boost performance."
+msgstr ""
+
+#: inc/dashboard.php:53
+msgid "Premium"
+msgstr ""
+
+#: inc/dashboard.php:55
+msgid "Support"
+msgstr ""
+
+#: inc/dashboard.php:56
+msgid "Documentation"
+msgstr ""
+
+#: inc/dashboard.php:92
+msgid "Customize"
+msgstr ""
+
+#: inc/dashboard.php:155
+msgid "Premium Modules"
+msgstr ""
+
+#: inc/dashboard.php:197
+msgid "Upload Logo"
+msgstr ""
+
+#: inc/dashboard.php:202
+msgid "Customize Fonts"
+msgstr ""
+
+#: inc/dashboard.php:207
+msgid "Customize Colors"
+msgstr ""
+
+#: inc/dashboard.php:212
+msgid "Layout Options"
+msgstr ""
+
+#: inc/dashboard.php:217
+msgid "All Options"
+msgstr ""
+
+#: inc/dashboard.php:227
+msgid "Start Customizing"
+msgstr ""
+
+#: inc/dashboard.php:242
+msgid ""
+"Want to learn more about the theme? Check out our extensive documentation."
+msgstr ""
+
+#: inc/dashboard.php:243
+msgid "Visit documentation &rarr;"
+msgstr ""
+
+#: inc/dashboard.php:257
+msgid "Reset Settings"
+msgstr ""
+
+#: inc/dashboard.php:259
+msgid "Deleting your settings can not be undone."
+msgstr ""
+
+#: inc/dashboard.php:264
+msgid "Warning: This will delete your settings."
+msgstr ""
+
+#: inc/dashboard.php:266 inc/customizer/controls/class-range-control.php:59
+msgid "Reset"
+msgstr ""
+
+#: inc/dashboard.php:293
+#, php-format
+msgctxt "made with love"
+msgid "Made with %s by Tom Usborne"
+msgstr ""
+
+#: inc/dashboard.php:354
+msgid "Settings saved."
+msgstr ""
+
+#: inc/dashboard.php:358
+msgid "Import successful."
+msgstr ""
+
+#: inc/dashboard.php:362
+msgid "Settings removed."
+msgstr ""
+
+#: inc/deprecated.php:27 inc/structure/post-meta.php:66
+msgid "&larr; Previous"
+msgstr ""
+
+#: inc/deprecated.php:28 inc/structure/post-meta.php:67
+msgid "Next &rarr;"
+msgstr ""
+
+#: inc/general.php:69
+msgid "Footer Widget 1"
+msgstr ""
+
+#: inc/general.php:70
+msgid "Footer Widget 2"
+msgstr ""
+
+#: inc/general.php:71
+msgid "Footer Widget 3"
+msgstr ""
+
+#: inc/general.php:72
+msgid "Footer Widget 4"
+msgstr ""
+
+#: inc/general.php:73
+msgid "Footer Widget 5"
+msgstr ""
+
+#: inc/general.php:74
+msgid "Footer Bar"
+msgstr ""
+
+#: inc/meta-box.php:91
+msgid "Disable Elements"
+msgstr ""
+
+#: inc/meta-box.php:96
+msgid "Page Builder Container"
+msgstr ""
+
+#: inc/meta-box.php:141 inc/meta-box.php:146 inc/meta-box.php:156
+#: inc/meta-box.php:161 inc/meta-box.php:166
+msgid "Content"
+msgstr ""
+
+#: inc/meta-box.php:141 inc/meta-box.php:146 inc/meta-box.php:156
+#: inc/meta-box.php:161 inc/meta-box.php:166
+msgctxt "Short name for meta box"
+msgid "Sidebar"
+msgstr ""
+
+#: inc/meta-box.php:149
+msgid "No Sidebars"
+msgstr ""
+
+#: inc/meta-box.php:154
+msgid "Both Sidebars"
+msgstr ""
+
+#: inc/meta-box.php:159
+msgid "Both Sidebars on Left"
+msgstr ""
+
+#: inc/meta-box.php:164
+msgid "Both Sidebars on Right"
+msgstr ""
+
+#: inc/meta-box.php:177 inc/meta-box.php:179
+msgid "0 Widgets"
+msgstr ""
+
+#: inc/meta-box.php:182 inc/meta-box.php:184
+msgid "1 Widget"
+msgstr ""
+
+#: inc/meta-box.php:187 inc/meta-box.php:189
+msgid "2 Widgets"
+msgstr ""
+
+#: inc/meta-box.php:192 inc/meta-box.php:194
+msgid "3 Widgets"
+msgstr ""
+
+#: inc/meta-box.php:197 inc/meta-box.php:199
+msgid "4 Widgets"
+msgstr ""
+
+#: inc/meta-box.php:202 inc/meta-box.php:204
+msgid "5 Widgets"
+msgstr ""
+
+#: inc/meta-box.php:210
+msgid ""
+"Choose your page builder content container type. Both options remove the "
+"content padding for you."
+msgstr ""
+
+#: inc/meta-box.php:221
+msgid "Full Width"
+msgstr ""
+
+#: inc/meta-box.php:233 inc/meta-box.php:235
+msgid "Content Title"
+msgstr ""
+
+#: inc/meta-box.php:240
+msgid "Premium module available"
+msgstr ""
+
+#: inc/typography.php:141
+msgid "Typography"
+msgstr ""
+
+#: inc/typography.php:228 inc/typography.php:402 inc/typography.php:549
+#: inc/typography.php:686
+msgid "Font size"
+msgstr ""
+
+#: inc/typography.php:262 inc/typography.php:443 inc/typography.php:590
+#: inc/typography.php:719
+msgid "Line height"
+msgstr ""
+
+#: inc/typography.php:296
+msgid "Paragraph margin"
+msgstr ""
+
+#: inc/typography.php:364
+msgid "Heading 1 (H1)"
+msgstr ""
+
+#: inc/typography.php:511
+msgid "Heading 2 (H2)"
+msgstr ""
+
+#: inc/typography.php:658
+msgid "Heading 3 (H3)"
+msgstr ""
+
+#: inc/customizer/controls/class-deprecated.php:51
+msgid "Default fonts"
+msgstr ""
+
+#: inc/customizer/controls/class-deprecated.php:52
+#: inc/customizer/controls/class-typography-control.php:34
+msgid "Google fonts"
+msgstr ""
+
+#: inc/customizer/controls/class-deprecated.php:53
+#: inc/customizer/controls/class-typography-control.php:37
+msgid "Font family"
+msgstr ""
+
+#: inc/customizer/controls/class-range-control.php:56
+msgid "Desktop"
+msgstr ""
+
+#: inc/customizer/controls/class-range-control.php:57
+msgid "Tablet"
+msgstr ""
+
+#: inc/customizer/controls/class-range-control.php:58
+msgid "Mobile"
+msgstr ""
+
+#: inc/customizer/controls/class-typography-control.php:33
+msgid "System fonts"
+msgstr ""
+
+#: inc/customizer/controls/class-typography-control.php:38
+msgid "Font weight"
+msgstr ""
+
+#: inc/customizer/controls/class-typography-control.php:39
+msgid "Text transform"
+msgstr ""
+
+#: inc/customizer/controls/class-typography-control.php:41
+msgid "Variants"
+msgstr ""
+
+#: inc/structure/comments.php:25
+msgid "Pingback:"
+msgstr ""
+
+#: inc/structure/comments.php:25 inc/structure/comments.php:54
+msgid "Edit"
+msgstr ""
+
+#: inc/structure/comments.php:48
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/structure/comments.php:68
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/structure/comments.php:92
+msgid "Name"
+msgstr ""
+
+#: inc/structure/comments.php:93
+msgid "Email"
+msgstr ""
+
+#: inc/structure/comments.php:94
+msgid "Website"
+msgstr ""
+
+#: inc/structure/footer.php:82
+msgctxt "GeneratePress"
+msgid "Powered by"
+msgstr ""
+
+#: inc/structure/footer.php:83
+msgid "GeneratePress"
+msgstr ""
+
+#: inc/structure/footer.php:106
+msgid "Footer Widget"
+msgstr ""
+
+#: inc/structure/footer.php:112
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this "
+"widget area."
+msgstr ""
+
+#: inc/structure/footer.php:121
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+
+#: inc/structure/footer.php:228 inc/structure/footer.php:232
+msgid "Scroll back to top"
+msgstr ""
+
+#: inc/structure/header.php:263 inc/structure/header.php:264
+msgid "Skip to content"
+msgstr ""
+
+#: inc/structure/navigation.php:35
+msgid "Menu"
+msgstr ""
+
+#: inc/structure/navigation.php:257
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: inc/structure/navigation.php:347
+msgid "Mobile Menu"
+msgstr ""
+
+#: inc/structure/post-meta.php:46
+msgid "Post navigation"
+msgstr ""
+
+#: inc/structure/post-meta.php:50 inc/structure/post-meta.php:56
+msgid "Previous"
+msgstr ""
+
+#: inc/structure/post-meta.php:51 inc/structure/post-meta.php:60
+msgid "Next"
+msgstr ""
+
+#: inc/structure/post-meta.php:56
+msgid "Older posts"
+msgstr ""
+
+#: inc/structure/post-meta.php:60
+msgid "Newer posts"
+msgstr ""
+
+#: inc/structure/post-meta.php:134
+msgid "by"
+msgstr ""
+
+#: inc/structure/post-meta.php:137
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: inc/structure/post-meta.php:176 inc/structure/post-meta.php:184
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ""
+
+#: inc/structure/post-meta.php:179
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr ""
+
+#: inc/structure/post-meta.php:187
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr ""
+
+#: inc/structure/post-meta.php:194
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/structure/post-meta.php:194
+msgid "1 Comment"
+msgstr ""
+
+#: inc/structure/post-meta.php:194
+msgid "% Comments"
+msgstr ""
+
+#: inc/structure/post-meta.php:214 inc/structure/post-meta.php:234
+msgid "Read more"
+msgstr ""
+
+#: inc/structure/sidebars.php:77
+msgid "Archives"
+msgstr ""
