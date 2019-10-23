@@ -20,6 +20,9 @@ endwhile; ?>
 <!-- no posts found -->
 <?php endif;
 
+
+
+
 // $cust_fields = array(
 // 	'k8_acf_vpndet_conn',
 // 	'k8_acf_vpndet_curr',
