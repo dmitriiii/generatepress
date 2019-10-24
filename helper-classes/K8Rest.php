@@ -175,6 +175,7 @@ new K8Rest([
 		'vpnstandortelaender',
 		'kundenservice',
 		'unternehmen',
-		'bedingungen'
+		'bedingungen',
+		'sicherheitslevel'
 	]
 ]);
