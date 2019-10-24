@@ -152,7 +152,7 @@ class K8Ajax
       endwhile;
       wp_reset_postdata();
       $html = $html . '</div></div>';
-    endif; 
+    endif;
 
 
     $arrr['html'] = $html;

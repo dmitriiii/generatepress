@@ -45,7 +45,7 @@ class K8Rest
   		'posts_per_page' => -1,
   		'category_name' => 'vpn-anbieter'
   	);
-  	
+
 
   	$the_query = new WP_Query( $argzz );
   	 if ( $the_query->have_posts() ) :

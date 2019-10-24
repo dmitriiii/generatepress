@@ -193,7 +193,7 @@ class K8Html
 			endif;
 			return sprintf( $str, $target, $link, $active_class, $item['icon'], $item['label'] );
 		}
-		
+
 		if( trim($varrs[0][$key.'_ext']) !== '' ){
 			$target = 'target="_blank" rel="nofollow"';
 			$link = $varrs[0][$key . '_ext'];

@@ -3,7 +3,7 @@ class K8Assets
 {
 	public function __construct()
 	{
-		#Add scripts on front	
+		#Add scripts on front
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts') );
 
 		#add for admin dashboard
@@ -35,7 +35,7 @@ class K8Assets
 		}
 
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,1000), 'all' );
-  	
+
   	wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,1000), true );
   	wp_localize_script( 'reacher89-my-js', 'k8All', array(
 	    'ajaxurl' => admin_url( 'admin-ajax.php' ),

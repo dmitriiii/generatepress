@@ -1,4 +1,4 @@
- <?php 
+ <?php
  class K8ExpCsv
  {
 	public $taxz;
@@ -46,7 +46,7 @@
 			));
 			foreach ($termz as $item) {
 				$assoc_arr[] = array(
-					'slug' => $item->slug, 
+					'slug' => $item->slug,
 					'name' => $item->name,
 				);
 			}
