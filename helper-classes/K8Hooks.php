@@ -3,7 +3,7 @@ class K8Hooks
 {
 	function __construct()
 	{
-		add_action('init', array( $this,'reg_sess' ));
+		// add_action('init', array( $this,'reg_sess' ));
 		add_filter( 'upload_mimes', array( $this, 'upload_mimes' ) );
 
 		# Add column with custom field vpn_id to Posts Admin Column
@@ -27,11 +27,11 @@ class K8Hooks
 	}
 
 	#Allow WP work with sessions
-	public function reg_sess(){
-    if( !session_id() ){
-      session_start();
-    }
-	}
+	// public function reg_sess(){
+ //    if( !session_id() ){
+ //      session_start();
+ //    }
+	// }
 
 	public function add_admin_column($column) {
 	  $column['k8_acf_vpnid'] = '<span style="color: red; font-weight: bold;">VPN ID *</span>';
