@@ -19,7 +19,6 @@ class K8Schema
 				)
 			)
 		);
-
 		#Answers
 		if( isset( $answrs->posts ) && is_array($answrs->posts) && count($answrs->posts) > 0 ):
 			foreach ($answrs->posts as $answ):
@@ -50,7 +49,6 @@ class K8Schema
 		endif;
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
-
 	#Returns json markup for FAQ page
 	static function getFaqPage( $args ){
 		extract( $args );

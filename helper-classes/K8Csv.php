@@ -1,8 +1,7 @@
- <?php
- class K8ExpCsv
- {
+<?php
+class K8ExpCsv
+{
 	public $taxz;
-
 	function __construct(){
 		$this->taxz = [
 			'betriebssystem',
@@ -31,7 +30,6 @@
 			fclose($fp);
 		}
 	}
-
 	public function getTaxCsv(){
 		$locale = get_locale();
 		$dir = get_template_directory() . '/data/csv/taxonomies/' . $locale . '/';
@@ -39,7 +37,6 @@
 		foreach ($this->taxz as $taxonomy) {
 			$assoc_arr = array();
 			$csvFile = $dir . $locale . "_" . $taxonomy . '.csv';
-
 			$termz = get_terms( array(
 				'taxonomy' => $taxonomy,
 				'hide_empty' => false,
@@ -50,15 +47,12 @@
 					'name' => $item->name,
 				);
 			}
-
 			if (!file_exists($dir)) {
 				mkdir($dir, 0777, true);
 			}
-
 			if( !file_exists( $csvFile ) ){
 				$this->outputCsv( $csvFile, $assoc_arr );
 			}
 		}
-
 	}
  }

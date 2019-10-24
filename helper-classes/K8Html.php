@@ -40,7 +40,6 @@ class K8Html
 		if( !isset( $args['text'] ) ){
 			$args['text'] = 'Download';
 		}
-
 		$strr = '<p>
 							<a rel="%s" class="%s" target="%s" href="%s" %s>
 							 <img src="%s" alt="%s">
@@ -48,7 +47,6 @@ class K8Html
 							 <i class="fa fa-download" aria-hidden="true"></i>
 							</a>
 						</p>';
-
 		$html = sprintf($strr,
 										$args['nofollow'],
 										$args['class'],
@@ -60,7 +58,6 @@ class K8Html
 										$args['text']);
 		return $html;
 	}
-
 
 	/**
 	 * [getRow Get table price row]
@@ -75,11 +72,9 @@ class K8Html
 	static function getRow( $args ){
 		$durr = get_field( $args['durr'], $args['pid'] );
 		$prc = get_field( $args['prc'], $args['pid'] );
-
 		if( !$durr || !$prc ){
 			return false;
 		}
-
 		if( $durr == 1 ) :
 			$str = "<tr>
 								<td>Tarif (%s Monat)</td>
@@ -88,7 +83,6 @@ class K8Html
 								</td>
 							</tr>";
 			return sprintf( $str, $durr, $prc, $args['curr'] );
-
 		else:
 			$avg = $prc / $durr;
 			$avg = round( $avg, 2 );
@@ -99,11 +93,9 @@ class K8Html
 									(pro Monat <strong>%s</strong> %s)
 								</td>
 							</tr>";
-
 			return sprintf( $str, $durr, $prc, $args['curr'], $avg, $args['curr'] );
 		endif;
 	}
-
 	/**
 	 * [getItem description]
 	 * @param  [type] $args [
@@ -157,9 +149,8 @@ class K8Html
 			</div><!-- .k8-sec3__it -->
 		<?php
 		$html = ob_get_clean();
-	  return $html;
+		return $html;
 	}
-
 	/**
 	 * @param  [type] $args[
 	 * 	'key' - string
@@ -172,7 +163,6 @@ class K8Html
 	static function getOsLink( $args ){
 		extract( $args );
 		unset( $args );
-
 		$str = '<a %s href="%s" class="dwnd__ot-link %s">
 							<i class="fa %s" aria-hidden="true"></i>
 							%s
@@ -181,11 +171,9 @@ class K8Html
 		$active_class = '';
 		$link = '#';
 		$target = '';
-
 		if( trim($varrs[0][$key]) == '' && trim($varrs[0][$key.'_ext']) == '' ){
 			return '';
 		}
-
 		if( trim($varrs[0][$key]) !== '' ){
 			$link = get_the_permalink( trim($varrs[0][$key]) );
 			if( $curr_url == $link ) :
@@ -193,14 +181,12 @@ class K8Html
 			endif;
 			return sprintf( $str, $target, $link, $active_class, $item['icon'], $item['label'] );
 		}
-
 		if( trim($varrs[0][$key.'_ext']) !== '' ){
 			$target = 'target="_blank" rel="nofollow"';
 			$link = $varrs[0][$key . '_ext'];
 			return sprintf( $str, $target, $link, $active_class, $item['icon'], $item['label'] );
 		}
 	}
-
 
 	/**
 	 * [getImg description]
@@ -225,5 +211,4 @@ class K8Html
 										$img_data[1],
 										$img_data[2] );
 	}
-
 } ?>

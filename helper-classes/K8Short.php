@@ -4,18 +4,13 @@ class K8Short
 	public function __construct(){
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
-
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
-
 		#[K8_SHORT_YT id="dkPLIw9aZwY"]
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
-
 		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
 		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
 	}
-
-
 	public function yt( $atts ) {
 		$a = shortcode_atts( array(
 			'id' => 'dkPLIw9aZwY',
@@ -26,15 +21,12 @@ class K8Short
 							</a>
 							<img class='of-cv' src='https://img.youtube.com/vi/%s/maxresdefault.jpg'/>
 						</div>";
-
 		return sprintf(
 			$str,
 			$a['id'],
 			$a['id']
 		);
 	}
-
-
 	#Show table with vpn details
 	public function vpn_det($atts){
 		$pid = get_the_ID();
@@ -50,7 +42,6 @@ class K8Short
 					</tr>
 				<?php
 				endif;
-
 				#Duration & Prices
 				$arrgz = array(
 					'k8_acf_vpndet_durr1' => 'k8_acf_vpndet_prc1',
@@ -58,7 +49,6 @@ class K8Short
 					'k8_acf_vpndet_durr3' => 'k8_acf_vpndet_prc3',
 					'k8_acf_vpndet_durr4' => 'k8_acf_vpndet_prc4'
 				);
-
 				foreach ($arrgz as $k=>$v) {
 					echo K8Html::getRow( array(
 						'durr' => $k,
@@ -67,7 +57,6 @@ class K8Short
 						'curr' => $k8_acf_vpndet_curr
 					));
 				}
-
 				#Trials
 				if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
 					$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
@@ -88,7 +77,6 @@ class K8Short
 					</tr>
 				<?php
 				endif;
-
 				#k8_acf_vpndet_vid
 				if ( get_field( 'k8_acf_vpndet_vid', $pid ) ):
 					$k8_acf_vpndet_vid =	get_field( 'k8_acf_vpndet_vid', $pid ); ?>
@@ -109,15 +97,11 @@ class K8Short
 					</tr>
 				<?php
 				endif; ?>
-
-
-
 			</table>
 		<?php
-	  $html = ob_get_clean();
-	  return $html;
+		$html = ob_get_clean();
+		return $html;
 	}
-
 	#Show table with taxonomies Data
 	public function vpn_tax($atts){
 		$arr = array(
@@ -160,10 +144,9 @@ class K8Short
 			</table>
 		<?php
 		endif;
-	  $html = ob_get_clean();
-	  return $html;
+		$html = ob_get_clean();
+		return $html;
 	}
-
 	// generates schema markup for FAQ pages
 	public function faq($atts){
 		ob_start();
@@ -176,17 +159,17 @@ class K8Short
 					$i = 1;
 					foreach ($k8_acf_faq as $value): ?>
 						<div class="k8_accord-blck">
-					    <input type="checkbox" <?php echo ( $i !== 1 ) ? 'checked' : ''; ?>>
-					    <i></i>
-					    <div class="k8_accord-head">
-					    	<span><?php echo $value['quest']; ?></span>
-					    </div>
-					    <div class="k8_accord-txt">
-					    	<div class="k8_accord-inn">
-					    		<?php echo $value['ans']; ?>
-					    	</div>
-					    </div>
-					  </div>
+							<input type="checkbox" <?php echo ( $i !== 1 ) ? 'checked' : ''; ?>>
+							<i></i>
+							<div class="k8_accord-head">
+								<span><?php echo $value['quest']; ?></span>
+							</div>
+							<div class="k8_accord-txt">
+								<div class="k8_accord-inn">
+									<?php echo $value['ans']; ?>
+								</div>
+							</div>
+						</div>
 					<?php
 					$i++;
 					endforeach ?>
@@ -199,7 +182,7 @@ class K8Short
 			echo '<script type="application/ld+json">' . $schema . '</script>';
 		endif;
 		$html = ob_get_clean();
-	  return $html;
+		return $html;
 	}
 }
 new K8Short;
