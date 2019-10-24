@@ -1,5 +1,26 @@
 <?php /* Template Name: Test1
-				Template Post Type: post */
+				Template Post Type: post, page */
+
+
+$csv = new K8ExpCsv();
+$csv->getTaxCsv();
+
+/**
+  * 
+  */
+ // class K8ExpCsv
+ // {
+ // 	function __construct()
+ // 	{
+ 		
+ // 	}
+ // } 
+
+ // new K8ExpCsv;
+
+
+// (function() { echo 123; })();
+
 
 get_header();
 

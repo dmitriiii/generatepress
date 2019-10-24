@@ -1,0 +1,25 @@
+slug,name
+alwayson-server,"AlwaysOn Server"
+autom-ip-wechsel,"Autom. IP-Wechsel"
+dedicated-server,"Dedicated Server"
+eigene-dns,"Eigene DNS"
+firewall,Firewall
+geteilte-ipadressen,"Geteilte IP"
+ipv4-klassisch,IPv4
+ipv6-neu,"IPv6 (neu)"
+keine-logfiles,"Keine Logfiles"
+loadbalancing,LoadBalancing
+malwarefilter,Malwarefilter
+multi-hop-vpn,"Multi-Hop VPN"
+neurorouting,NeuroRouting
+obfsproxy,"Obfuscation (Maske)"
+own-hardware,"Own Hardware"
+own-ip-adresses,"Own IP adresses"
+own-torrent-server,"Own Torrent Server"
+portweiterleitungen,Portweiterleitungen
+ram-disk-k-hdd,"RAM-Disk (k.HDD)"
+smartdns,SmartDNS
+statische-ipadresse,"Statische IP"
+tracking-blocker,Tracking-Blocker
+virtuelle-server,"Virtuelle Server"
+vpn-zu-tor,VPN-zu-TOR
