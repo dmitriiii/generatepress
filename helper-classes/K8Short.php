@@ -65,7 +65,7 @@ class K8Short
 		if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
 			<tr>
 				<td>
-					<?php echo __('Verbindungen pro Konto' , 'k8lang_domain'); ?>
+					<?php _e('Verbindungen pro Konto' , 'k8lang_domain'); ?>
 				</td>
 				<td><strong><?php echo get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></strong></td>
 			</tr>
@@ -91,7 +91,7 @@ class K8Short
 			$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
 			<tr>
 				<td>
-					<?php echo __('Testmöglichkeiten' , 'k8lang_domain'); ?>
+					<?php _e('Testmöglichkeiten' , 'k8lang_domain'); ?>
 				</td>
 				<td>
 					<?php
@@ -113,7 +113,7 @@ class K8Short
 			$k8_acf_vpndet_vid =	get_field( 'k8_acf_vpndet_vid', $pid ); ?>
 			<tr>
 				<td>
-					<?php echo __('Videoplattformen' , 'k8lang_domain'); ?>
+					<?php _e('Videoplattformen' , 'k8lang_domain'); ?>
 				</td>
 				<td>
 					<?php
@@ -231,7 +231,7 @@ class K8Short
 			echo $this->tbl_start_hid; ?>
 				<tr>
 					<td>
-						<?php echo __('Produktbezeichnung' , 'k8lang_domain'); ?>
+						<?php _e('Produktbezeichnung' , 'k8lang_domain'); ?>
 					</td>
 					<td>
 						<strong>
@@ -241,7 +241,7 @@ class K8Short
 				</tr>
 				<tr>
 					<td>
-						<?php echo __('Empfohlene Einsatzgebiete' , 'k8lang_domain'); ?>
+						<?php _e('Empfohlene Einsatzgebiete' , 'k8lang_domain'); ?>
 					</td>
 					<td>
 						<?php
@@ -381,6 +381,33 @@ class K8Short
 					<td>
 						<?php
 						echo ( has_term( 'tauschboersen-torrent', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Eigene Torrent Server' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'own-torrent-server', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Abmahnungen vermeiden' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'abmahnungen-vermeiden', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Portweiterleitungen' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'portweiterleitungen', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
 					</td>
 				</tr>
 				<?php
