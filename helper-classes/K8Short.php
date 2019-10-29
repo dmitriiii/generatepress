@@ -15,7 +15,7 @@ class K8Short
 		$this->false_icon = file_get_contents( get_template_directory() . '/k8/assets/svg/false.svg' );
 		$this->tbl_start = '<table class="k8_compare-tbl mtb-30"><tbody>';
 		$this->tbl_end = '</tbody></table>';
-		
+
 		$this->tbl_start_hid = '<table class="k8_compare-tbl mtb-30" style="display: none;">';
 		$this->tbl_end_hid = '</tbody></table>';
 
@@ -27,14 +27,15 @@ class K8Short
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
 		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
 		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
-		
-		#[K8_SH_INTRO] 
-		add_shortcode( 'K8_SH_INTRO', array( $this, 'intro' ) );
 
+
+		#[K8_SH_INTRO]
+		add_shortcode( 'K8_SH_INTRO', array( $this, 'intro' ) );
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_STREAMING', array( $this, 'streaming' ) );
-		
-		
+		#[K8_SH_STREAMING]
+		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
+
 	}
 
 	public function yt( $atts ) {
@@ -215,7 +216,7 @@ class K8Short
 		return $html;
 	}
 
-	#[K8_SH_SERVICE_INTRO] 
+	#[K8_SH_INTRO]
 	public function intro( $atts ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
@@ -226,7 +227,7 @@ class K8Short
 		$termz =	get_the_terms( $pid, 'anwendungen' );
 		ob_start();
 		if( $a['output'] !== 'table' ):
-		else : 
+		else :
 			echo $this->tbl_start_hid; ?>
 				<tr>
 					<td>
@@ -243,7 +244,7 @@ class K8Short
 						<?php echo __('Empfohlene Einsatzgebiete' , 'k8lang_domain'); ?>
 					</td>
 					<td>
-						<?php 
+						<?php
 						if ( is_array( $termz ) && count( $termz ) > 0 ) :
 							$cc=1;
 							foreach ($termz as $term) :
@@ -272,7 +273,7 @@ class K8Short
 		$pm =	get_post_meta( $pid );
 		ob_start();
 		if( $a['output'] !== 'table' ):
-		else : 
+		else :
 			echo $this->tbl_start_hid; ?>
 				<tr>
 					<td>
@@ -347,7 +348,7 @@ class K8Short
 						</td>
 					</tr>
 				<?php
-				endif; 
+				endif;
 			echo $this->tbl_end_hid;
 		endif;
 		$html = ob_get_clean();
@@ -355,5 +356,38 @@ class K8Short
 	}
 
 
+	#[K8_SH_DOWNLOAD]
+	public function download( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		$pm =	get_post_meta( $pid );
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			echo $this->tbl_start_hid; ?>
+				<tr>
+					<td>
+						<?php _e('Download und Torrent' , 'k8lang_domain'); ?>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Torrent Nutzung erlaubt' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'tauschboersen-torrent', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<?php
+			echo $this->tbl_end_hid;
+		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
 }
 new K8Short;
