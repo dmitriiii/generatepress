@@ -69,4 +69,56 @@ class K8Schema
 		}
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
+
+	/**
+	 * [getNewsArticle Returns json markup for News Article]
+	 * @param  [type] $args [
+	 *   pid - int
+	 *   author - string
+ 	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getNewsArticle( $args ){
+		extract( $args );
+		unset( $args );
+		$attachments = get_posts( array(
+		  'post_type' => 'attachment',
+		  'posts_per_page' => -1,
+		  'post_parent' => $pid,
+		));
+		if ( is_array($attachments) && count($attachments) > 0 ) {
+			foreach ($attachments as $attach) {
+				$img_urls[] = K8Help::getImgUrl( $attach->ID, 'large' );
+			}
+		}
+		else{
+			$img_urls = array( get_template_directory() . '/img/default-user-image.png' );
+		}
+		$datta = array(
+			"@context" => "https://schema.org",
+			"@type" => "NewsArticle",
+			"mainEntityOfPage" => [
+				"@type" => "WebPage",
+				"@id" => get_the_permalink( $pid ),
+			],
+			"headline" => get_the_title( $pid ),
+			"image" => $img_urls,
+			"datePublished" => get_the_date( 'Y-m-d', $pid ),
+			"dateModified" => get_the_modified_date( 'Y-m-d', $pid ),
+			"author" => [
+		    "@type" => "Person",
+		    "name" => $author
+		  ],
+		  "publisher" => [
+		  	"@type" => "Organization",
+    		"name" => get_bloginfo('name'),
+    		"logo" => [
+		      "@type" => "ImageObject",
+		      "url" => "https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
+		    ]
+		  ],
+		  "description" => get_the_excerpt($pid)
+		);
+		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	}
 } ?>

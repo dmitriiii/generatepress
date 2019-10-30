@@ -11,6 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
+
+
+<?php
+if( has_category( 'neuigkeiten' ) ) :
+	$pid = get_the_ID(); ?>
+	<script type="application/ld+json">
+	<?php
+	echo K8Schema::getNewsArticle([
+		'pid' => $pid,
+		'author' => get_the_author(),
+	]); ?>
+	</script>
+<?php
+endif; ?>
+
+
+
 	<div id="primary" <?php generate_do_element_classes( 'content' ); ?>>
 		<main id="main" <?php generate_do_element_classes( 'main' ); ?>>
 			<?php
