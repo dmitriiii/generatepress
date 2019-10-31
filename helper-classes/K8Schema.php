@@ -88,7 +88,8 @@ class K8Schema
 		));
 		if ( is_array($attachments) && count($attachments) > 0 ) {
 			foreach ($attachments as $attach) {
-				$img_urls[] = K8Help::getImgUrl( $attach->ID, 'large' );
+				$url = K8Help::getImgUrl( $attach->ID, 'large' );
+				( strpos( $url,'.png' ) || strpos( $url,'.jpg' ) ) ? $img_urls[] = $url : '';
 			}
 		}
 		else{
@@ -121,4 +122,4 @@ class K8Schema
 		);
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
-} ?>
+}
