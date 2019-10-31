@@ -81,6 +81,7 @@ class K8Schema
 	static function getNewsArticle( $args ){
 		extract( $args );
 		unset( $args );
+		$img_urls = array();
 		$attachments = get_posts( array(
 		  'post_type' => 'attachment',
 		  'posts_per_page' => -1,
@@ -89,10 +90,10 @@ class K8Schema
 		if ( is_array($attachments) && count($attachments) > 0 ) {
 			foreach ($attachments as $attach) {
 				$url = K8Help::getImgUrl( $attach->ID, 'large' );
-				( strpos( $url,'.png' ) || strpos( $url,'.jpg' ) ) ? $img_urls[] = $url : '';
+				( strpos( $url,'.png' ) || strpos( $url,'.jpg' ) || strpos( $url,'.jpeg' ) ) ? $img_urls[] = $url : '';
 			}
 		}
-		else{
+		if( count( $img_urls ) == 0 ){
 			$img_urls = array( get_template_directory() . '/img/default-user-image.png' );
 		}
 		$datta = array(
@@ -102,7 +103,7 @@ class K8Schema
 				"@type" => "WebPage",
 				"@id" => get_the_permalink( $pid ),
 			],
-			"headline" => get_the_title( $pid ),
+			"headline" => substr( get_the_title( $pid ), 0, 100 ),
 			"image" => $img_urls,
 			"datePublished" => get_the_date( 'Y-m-d', $pid ),
 			"dateModified" => get_the_modified_date( 'Y-m-d', $pid ),
