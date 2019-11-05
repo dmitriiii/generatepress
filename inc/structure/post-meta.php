@@ -264,7 +264,9 @@ if ( ! function_exists( 'generate_post_meta' ) ) {
 
 		#Show leave a reply button
 		if( is_single() && in_category('VPN-Anbieter') ) :?>
-			<a href="#respond" class='k8-repl__link'>Hinterlasse eine Bewertung</a>
+			<a href="#respond" class='k8-repl__link'>
+				<?php _e('Hinterlasse eine Bewertung' , 'k8lang_domain'); ?>
+			</a>
 		<?php
 		endif;
 
