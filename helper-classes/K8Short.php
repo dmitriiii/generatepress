@@ -3,21 +3,13 @@ class K8Short
 {
 	public $true_icon;
 	public $false_icon;
-	public $tbl_start;
 	public $tbl_end;
 
-	public $tbl_start_hid;
-	public $tbl_end_hid;
+	public function __construct( $atts ){
 
-	public function __construct(){
-
-		$this->true_icon = file_get_contents( get_template_directory() . '/k8/assets/svg/true.svg' );
-		$this->false_icon = file_get_contents( get_template_directory() . '/k8/assets/svg/false.svg' );
-		$this->tbl_start = '<div class="k8_tbl-resp"><table class="k8_compare-tbl mtb-30"><tbody>';
+		$this->true_icon = $atts['true'];
+		$this->false_icon = $atts['false'];
 		$this->tbl_end = '</tbody></table></div>';
-
-		$this->tbl_start_hid = '<div class="k8_tbl-resp"><table class="k8_compare-tbl mtb-30" style="display: none;"><tbody>';
-		$this->tbl_end_hid = '</tbody></table></div>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -36,6 +28,12 @@ class K8Short
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
+	}
+
+	public function tbl_start( $attr = array() ){
+		$str = '<div class="k8_tbl-resp %s"><table class="k8_compare-tbl mtb-30"><tbody>';
+		( isset( $attr['add_clss'] ) ) ? $add_clss = $attr['add_clss'] : $add_clss = '';
+		return sprintf( $str, $add_clss );
 	}
 
 	public function yt( $atts ) {
@@ -60,7 +58,7 @@ class K8Short
 		$pid = get_the_ID();
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();
-		echo $this->tbl_start;
+		echo $this->tbl_start(['add_clss' => 'k8_short_vpndet']);
 		#Connections per account
 		if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
 			<tr>
@@ -153,7 +151,7 @@ class K8Short
 		);
 		ob_start();
 		if( is_array( $arr ) && count( $arr ) > 0 ):
-			echo $this->tbl_start;
+			echo $this->tbl_start(['add_clss' => 'k8_short_prod']);
 			foreach ($arr as $tax_name => $tax_label) : ?>
 				<tr>
 					<td><?php echo $tax_label; ?></td>
@@ -217,7 +215,7 @@ class K8Short
 	}
 
 	#[K8_SH_INTRO]
-	public function intro( $atts ){
+	public function intro( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -228,7 +226,7 @@ class K8Short
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
-			echo $this->tbl_start_hid; ?>
+			echo $this->tbl_start(['add_clss' => 'k8_sh_intro']); ?>
 				<tr>
 					<td>
 						<?php _e('Produktbezeichnung' , 'k8lang_domain'); ?>
@@ -256,7 +254,7 @@ class K8Short
 					</td>
 				</tr>
 		<?php
-			echo $this->tbl_end_hid;
+			echo $this->tbl_end;
 		endif;
 		$html = ob_get_clean();
 		return $html;
@@ -270,16 +268,14 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
-		$pm =	get_post_meta( $pid );
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
-			echo $this->tbl_start_hid; ?>
+			echo $this->tbl_start(['add_clss' => 'k8_sh_streaming']); ?>
 				<tr>
-					<td>
+					<th colspan="2">
 						<?php _e('Streaming von TV und Videoinhalten' , 'k8lang_domain'); ?>
-					</td>
-					<td></td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -349,7 +345,7 @@ class K8Short
 					</tr>
 				<?php
 				endif;
-			echo $this->tbl_end_hid;
+			echo $this->tbl_end;
 		endif;
 		$html = ob_get_clean();
 		return $html;
@@ -363,16 +359,14 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
-		$pm =	get_post_meta( $pid );
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
-			echo $this->tbl_start_hid; ?>
+			echo $this->tbl_start(['add_clss' => 'k8_sh_download']); ?>
 				<tr>
-					<td>
+					<th colspan="2">
 						<?php _e('Download und Torrent' , 'k8lang_domain'); ?>
 					</td>
-					<td></td>
 				</tr>
 				<tr>
 					<td>
@@ -411,10 +405,35 @@ class K8Short
 					</td>
 				</tr>
 				<?php
-			echo $this->tbl_end_hid;
+			echo $this->tbl_end;
 		endif;
 		$html = ob_get_clean();
 		return $html;
 	}
 }
-new K8Short;
+new K8Short([
+	'true' => '<svg class="k8-t-f" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+							<path fill="#33CC99" d="M147.7,73.9c-0.2,17.6-6.4,35.2-18.3,48.6c-2.3,2.6-4.9,5.1-7.6,7.4c-24.8,20.9-62.6,22.8-89.2,3.9
+								c-3.2-2.3-6.3-4.9-9.1-7.6c-6.4-6.3-11.5-13.8-15.2-21.9C-2.6,79.7,1.2,49.8,18.5,29c5.6-6.8,12.5-12.6,20.2-16.9
+								C62-1,91.4,0.3,113.6,15.3c1.1,0.7,1.4,2.2,0.7,3.3c-0.7,1.1-2.2,1.4-3.3,0.7c0,0,0,0,0,0c-7.1-3.6-13.5-7.4-21.4-9.2
+								C73.4,6.4,56,9,41.7,17.3c-7,4-13.2,9.4-18.2,15.7c-5,6.3-8.9,13.5-11.2,21.2C7.5,69.5,8.6,86.4,15.4,101
+								c3.4,7.2,8.1,13.8,13.8,19.3c23.5,22.5,61.7,23.5,86.3,2.2c22.2-19.3,28.2-52.9,13.7-78.7l-59.2,63.7l-0.3,0.3
+								c-3.1,3.4-8.4,3.5-11.7,0.4c-0.2-0.2-0.5-0.5-0.7-0.7L32.5,78.2c-2-2.4-1.7-6,0.7-8c2.2-1.8,5.3-1.8,7.3,0l22.6,19L126,30.5l0.2-0.2
+								c2.3-2.1,5.8-2,7.9,0.3c0.2,0.2,0.4,0.4,0.5,0.6C143.6,43.7,147.8,58.8,147.7,73.9z"/>
+						</svg>',
+	'false' => '<svg class="k8-t-f" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+								<path fill="#424242" d="M8.8,74.2C8.8,74.2,8.8,74.2,8.8,74.2L8.8,74.2C8.8,74.2,8.8,74.2,8.8,74.2z"/>
+								<path fill="#00B2E2" d="M147.5,74.1c-0.1,7.2-1.2,14.4-3.1,21.6c-2.8,8.7-7.1,16.8-12.8,23.8c-5.7,7-12.6,13-20.4,17.5
+									c-23.6,13.6-53.9,12.9-76.7-2.3c-7.4-5-13.9-11.3-19-18.6C-3.8,88.9-1.4,50.1,21.7,25.7c1.8-1.9,3.8-3.8,5.8-5.5
+									C34.2,14.5,42,10,50.3,7.2c14.7-5.1,30.4-5,45.2-0.5c0,0,6.1,2.3,6.1,2.3c1.1,0.4,1.7,1.7,1.3,2.8c-0.4,1.1-1.6,1.7-2.7,1.3
+									c0,0-0.2-0.1-0.2-0.1C84.2,7.4,67.9,6.2,52,12c-7.7,2.8-14.7,7-20.8,12.3C6.2,46.3,1.7,85,21.4,111.9c4.7,6.5,10.6,12,17.3,16.3
+									c20.2,13,47.1,13.5,67.8,1c6.8-4.1,12.8-9.4,17.6-15.6c4.8-6.2,8.5-13.3,10.7-20.8c4.5-15,3.1-31.6-3.7-45.7
+									c-2.6-5.3-5.9-10.2-9.8-14.6L83.4,72.2l23.4,23.4c3.2,3.2,3.2,8.4,0,11.6c-1.6,1.6-3.7,2.4-5.8,2.4c-2.1,0-4.2-0.8-5.8-2.4L72,84.1
+									L50.2,107c-3.1,3.3-8.3,3.4-11.6,0.3c-3.3-3.1-3.4-8.3-0.3-11.6c0.1-0.1,0.2-0.2,0.3-0.3l22.9-21.8L38.5,50.6
+									c-3.2-3.2-3.2-8.4,0-11.6c3.2-3.2,8.4-3.2,11.6,0l23.2,23.2l43.8-41.8l0.2-0.2c1.1-1,2.5-1.5,3.8-1.5l0.4,0c1.4,0,2.6,0.6,3.5,1.5
+									c6.6,6.3,12,13.9,15.8,22.2C145.7,52.6,147.7,63.3,147.5,74.1z"/>
+								<path fill="#424242" d="M8.8,74.2L8.8,74.2l0,0.1L8.8,74.2C8.8,74.2,8.8,74.2,8.8,74.2z"/>
+							</svg>',
+]);
