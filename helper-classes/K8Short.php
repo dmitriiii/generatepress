@@ -13,11 +13,11 @@ class K8Short
 
 		$this->true_icon = file_get_contents( get_template_directory() . '/k8/assets/svg/true.svg' );
 		$this->false_icon = file_get_contents( get_template_directory() . '/k8/assets/svg/false.svg' );
-		$this->tbl_start = '<table class="k8_compare-tbl mtb-30"><tbody>';
-		$this->tbl_end = '</tbody></table>';
+		$this->tbl_start = '<div class="k8_tbl-resp"><table class="k8_compare-tbl mtb-30"><tbody>';
+		$this->tbl_end = '</tbody></table></div>';
 
-		$this->tbl_start_hid = '<table class="k8_compare-tbl mtb-30" style="display: none;">';
-		$this->tbl_end_hid = '</tbody></table>';
+		$this->tbl_start_hid = '<div class="k8_tbl-resp"><table class="k8_compare-tbl mtb-30" style="display: none;"><tbody>';
+		$this->tbl_end_hid = '</tbody></table></div>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
