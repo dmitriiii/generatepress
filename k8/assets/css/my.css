@@ -787,6 +787,7 @@
        url('../fonts/roboto/Roboto-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
@@ -800,6 +801,7 @@
        url('../fonts/roboto/Roboto-Medium.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -812,6 +814,7 @@
        url('../fonts/roboto/Roboto-LightItalic.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -824,6 +827,7 @@
        url('../fonts/roboto/Roboto-Light.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
@@ -837,6 +841,7 @@
        url('../fonts/roboto/Roboto-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
