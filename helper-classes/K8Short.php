@@ -476,6 +476,7 @@ class K8Short
 			'tomato'=>'Tomato',
 			'openvpn-udp'=>'Vilfo Router'
 		);
+		$new_valz_arr = array();
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
@@ -527,14 +528,13 @@ class K8Short
 					</td>
 					<td>
 						<?php
-						$i = 1;
 						foreach ($valz as $k => $v) :
 						 	if( has_term( $k, 'betriebssystem', $pid ) ){
-						 		echo ( $i !== 1 && count( $valz ) >= $i ) ? ', ' : '';
-						 		echo $v;
+						 		$new_valz_arr[] = $v;
 						 	}
-						 	$i++;
-						endforeach; ?>
+						endforeach; 
+						echo implode(", ",$new_valz_arr);
+						?>
 					</td>
 				</tr>
 				<?php
