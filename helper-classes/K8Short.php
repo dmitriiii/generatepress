@@ -30,7 +30,8 @@ class K8Short
 
 		#[K8_SH_FEATURES]
 		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
-		
+		#[K8_SH_ROUTER]
+		add_shortcode( 'K8_SH_ROUTER', array( $this, 'router' ) );
 
 	}
 
@@ -435,7 +436,7 @@ class K8Short
 						<?php _e('Sonderfunktionen' , 'k8lang_domain'); ?>
 					</td>
 				</tr>
-				<?php 
+				<?php
 				if ( isset($termz) && is_array($termz) && count( $termz ) > 0 ) :
 					foreach ($termz as $term): ?>
 						<tr>
@@ -450,6 +451,88 @@ class K8Short
 					<?php
 					endforeach;
 				endif;
+			echo $this->tbl_end;
+		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_ROUTER]
+	public function router( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		$valz = array(
+			'asuswrt'=>'ASUS',
+			'openwrt'=>'Gl-iNet',
+			'dd-wrt'=>'DD-WRT',
+			'tomato'=>'Tomato',
+			'openvpn-udp'=>'Vilfo Router'
+		);
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			echo $this->tbl_start(['add_clss' => 'k8_sh_router']); ?>
+				<tr>
+					<th colspan="2">
+						<?php _e('Betrieb am VPN-Client Router' , 'k8lang_domain'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Verwendung auf Routern' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'vpn-router', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Load Balancing' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'loadbalancing', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Ausfallsfreier Betrieb' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'loadbalancing', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Eigene Router Anwendung' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'dd-wrt', 'betriebssystem', $pid ) || has_term( 'openwrt', 'betriebssystem', $pid ) || has_term( 'tomato', 'betriebssystem', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Kompatibel mit' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						$i = 1;
+						foreach ($valz as $k => $v) :
+						 	if( has_term( $k, 'betriebssystem', $pid ) ){
+						 		echo ( $i !== 1 && count( $valz ) >= $i ) ? ', ' : '';
+						 		echo $v;
+						 	}
+						 	$i++;
+						endforeach; ?>
+					</td>
+				</tr>
+				<?php
 			echo $this->tbl_end;
 		endif;
 		$html = ob_get_clean();
