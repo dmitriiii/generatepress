@@ -35,6 +35,9 @@ class K8Short
 		#[K8_SH_TRAVELING]
 		add_shortcode( 'K8_SH_TRAVELING', array( $this, 'traveling' ) );
 
+		#[K8_SHORT_PRICING]
+		add_shortcode( 'K8_SHORT_PRICING', array( $this, 'pricing') );
+
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -596,6 +599,77 @@ class K8Short
 				<?php
 			echo $this->tbl_end;
 		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SHORT_PRICING]
+	public function pricing($atts){
+		$pid = get_the_ID();
+		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
+		ob_start();
+		echo $this->tbl_start(['add_clss' => 'k8_short_pricing']); ?>
+		<tr>
+			<th colspan="2">
+				<?php _e('Kosten / Tarife' , 'k8lang_domain'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<?php _e('Kostenlose Nutzung' , 'k8lang_domain'); ?>
+			</td>
+			<td>
+				<?php
+				echo $this->false_icon; ?>
+			</td>
+		</tr><?php
+		#Duration & Prices
+		$arrgz = array(
+			'k8_acf_vpndet_durr1' => 'k8_acf_vpndet_prc1',
+			'k8_acf_vpndet_durr2' => 'k8_acf_vpndet_prc2',
+			'k8_acf_vpndet_durr3' => 'k8_acf_vpndet_prc3',
+			'k8_acf_vpndet_durr4' => 'k8_acf_vpndet_prc4'
+		);
+		foreach ($arrgz as $k=>$v) {
+			echo K8Html::getRow( array(
+				'durr' => $k,
+				'prc' => $v,
+				'pid' => $pid,
+				'curr' => $k8_acf_vpndet_curr
+			));
+		}
+		if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
+			<tr>
+				<td>
+					<?php _e('Anzahl gleichzeitiger Verbindungen pro Konto' , 'k8lang_domain'); ?>
+				</td>
+				<td><strong><?php echo get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></strong></td>
+			</tr>
+		<?php
+		endif;
+		#Trials
+		if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
+			$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
+			<tr>
+				<td>
+					<?php _e('Testmöglichkeiten' , 'k8lang_domain'); ?>
+				</td>
+				<td>
+					<?php
+					$ccc = 1;
+					foreach ($k8_acf_vpndet_trialz as $key=>$value): ?>
+						<strong>
+							<?php echo $value['label']; ?>
+						</strong>
+					<?php
+						echo ( count( $k8_acf_vpndet_trialz ) > $ccc ) ? ', ' : '';
+						$ccc++;
+					endforeach ?>
+				</td>
+			</tr>
+		<?php
+		endif;
+		echo $this->tbl_end;
 		$html = ob_get_clean();
 		return $html;
 	}
