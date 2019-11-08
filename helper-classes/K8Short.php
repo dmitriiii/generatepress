@@ -28,6 +28,10 @@ class K8Short
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
+		#[K8_SH_FEATURES]
+		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
+		
+
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -405,6 +409,47 @@ class K8Short
 					</td>
 				</tr>
 				<?php
+			echo $this->tbl_end;
+		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_FEATURES]
+	public function features( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			$termz = get_terms( array(
+		    'taxonomy' => 'sonderfunktionen',
+		    'hide_empty' => false,
+			) );
+			echo $this->tbl_start(['add_clss' => 'k8_sh_features']); ?>
+				<tr>
+					<th colspan="2">
+						<?php _e('Sonderfunktionen' , 'k8lang_domain'); ?>
+					</td>
+				</tr>
+				<?php 
+				if ( isset($termz) && is_array($termz) && count( $termz ) > 0 ) :
+					foreach ($termz as $term): ?>
+						<tr>
+							<td>
+								<?php _e($term->name , 'k8lang_domain'); ?>
+							</td>
+							<td>
+								<?php
+								echo ( has_term( $term->slug, $term->taxonomy, $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+							</td>
+						</tr>
+					<?php
+					endforeach;
+				endif;
 			echo $this->tbl_end;
 		endif;
 		$html = ob_get_clean();
