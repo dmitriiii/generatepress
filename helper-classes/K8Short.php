@@ -32,6 +32,8 @@ class K8Short
 		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
 		#[K8_SH_ROUTER]
 		add_shortcode( 'K8_SH_ROUTER', array( $this, 'router' ) );
+		#[K8_SH_TRAVELING]
+		add_shortcode( 'K8_SH_TRAVELING', array( $this, 'traveling' ) );
 
 	}
 
@@ -538,6 +540,66 @@ class K8Short
 		$html = ob_get_clean();
 		return $html;
 	}
+
+	#[K8_SH_TRAVELING]
+	public function traveling( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			echo $this->tbl_start(['add_clss' => 'k8_sh_traveling']); ?>
+				<tr>
+					<th colspan="2">
+						<?php _e('VPN für Reisen und im Ausland' , 'k8lang_domain'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Nutzung in restriktiven Netzwerken (China, Hotels)' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'obfsproxy', 'sonderfunktionen', $pid ) || has_term( 'shadowsocks', 'vpnprotokolle', $pid ) || has_term( 'wireguard', 'vpnprotokolle', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Obfusication (Maskierung)' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'obfsproxy', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Schutz in unsicheren Wifi-Netzwerken' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'lokale-sperren-umgehen', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Shadowsocks oder SOCKS5' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'shadowsocks', 'vpnprotokolle', $pid ) || has_term( 'socks5', 'vpnprotokolle', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<?php
+			echo $this->tbl_end;
+		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
+
 }
 new K8Short([
 	'true' => '<svg class="k8-t-f" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
