@@ -9,6 +9,10 @@ class K8Ajax
 		#VPN security
 		add_action('wp_ajax_nopriv_k8_ajx_safety', array( $this, 'k8_ajx_safety' ));
 		add_action('wp_ajax_k8_ajx_safety', array( $this, 'k8_ajx_safety' ));
+
+		#IP
+		add_action('wp_ajax_nopriv_k8_ajx_ip', array( $this, 'k8_ajx_ip' ));
+		add_action('wp_ajax_k8_ajx_ip', array( $this, 'k8_ajx_ip' ));
 	}
 	public function final( $arrr ){
 		echo json_encode( $arrr );
@@ -137,6 +141,16 @@ class K8Ajax
 		endif;
 		$arrr['html'] = $html;
 		// write_log(get_defined_vars());
+		echo json_encode( $arrr );
+		exit();
+	}
+
+	#Load 
+	public function k8_ajx_ip(){
+		$arrr = array();
+		extract( $_POST );
+		$html = file_get_contents( "http://ip-api.com/json/".$ip."?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,query" );
+		$arrr['html'] = $html;
 		echo json_encode( $arrr );
 		exit();
 	}
