@@ -12,8 +12,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php the_title(); ?>
 		</h1>
 		<div class="k8_tbl-resp k8-ip__tbl">
-			<?php the_post_thumbnail('medium'); ?>
+			
 			<table class="k8_compare-tbl mtb-30">
+				<tr>
+					<th><?php the_post_thumbnail('medium'); ?></th>
+					<th><button>Copy Results</button></th>
+				</tr>
 				<tr data-ip='query'>
 					<td>IP Address</td>
 					<td><strong></strong></td>
@@ -61,8 +65,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			</table>
 		</div>
 		<div class="k8-ip__map">
-			<img src="" alt="">
+			<img src="" alt="Your location" style="margin-left: auto; margin-right: auto; display: block;">
 		</div>
+
 	</div>
 	<?php
 	the_content();
@@ -98,7 +103,8 @@ get_footer();?>
 			function fillData(){
 				var parsedObj = JSON.parse( window.localStorage.getItem('k8ip') ),
 						$tbl = $('.k8-ip__tbl'),
-						$img = $('.k8-ip__map img');
+						$img = $('.k8-ip__map img'),
+						urll = '';
 				console.log( parsedObj );
 				$tbl.find('tr').each(function(index, el) {
 					var $elem = $(el),
@@ -107,7 +113,8 @@ get_footer();?>
 								$elem.find('td strong').html( parsedObj[attr] );
 							}
 				});
-				$img.attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center='+parsedObj.lat+','+parsedObj.lon+'&zoom=15&size=2000x400&maptype=hybrid&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo');
+				urll = parsedObj.lat + ',' + parsedObj.lon + '&zoom=15&size=2000x400&maptype=terrain&markers=color:blue|label:S|' + parsedObj.lat + ',' + parsedObj.lon + '&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo';
+				$img.attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=' + encodeURI( urll ));
 			}
 
 			// NOT SET
