@@ -21,6 +21,8 @@ class K8Assets
 			wp_register_script( 'k8-recaptcha-js', 'https://www.google.com/recaptcha/api.js', array(), null, false );
 			wp_enqueue_script( 'k8-recaptcha-js' );
 		}
+
+		#Template for Security Page
 		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
 			wp_register_style( 'k8-boot4grid-css', get_template_directory_uri() . '/k8/assets/css/grid.min.css', array(), false, 'all' );
 			wp_enqueue_style( 'k8-boot4grid-css' );
@@ -31,6 +33,12 @@ class K8Assets
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		));
 		wp_enqueue_script('reacher89-my-js');
+
+		#Template with IP detection
+		if( is_page_template( 'k8tpl-ip-test.php' ) ){
+			wp_register_style( 'k8-ip-test-css', get_template_directory_uri() . '/k8/assets/css/tpl/ip-test.css', array(), rand(1,1000), 'all' );
+			wp_enqueue_style( 'k8-ip-test-css' );
+		}
 	}
 	#add css for admin dashboard
 	public function admin_style(){

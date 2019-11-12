@@ -12,11 +12,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php the_title(); ?>
 		</h1>
 		<div class="k8_tbl-resp k8-ip__tbl">
-			
 			<table class="k8_compare-tbl mtb-30">
 				<tr>
-					<th><?php the_post_thumbnail('medium'); ?></th>
-					<th><button>Copy Results</button></th>
+					<th data-ip=''><?php the_post_thumbnail('medium'); ?></th>
+					<th>
+						<input type="hidden" id="input-url" value="Copied!">
+						<button class="k8-copy__url">Copy Results</button>
+					</th>
 				</tr>
 				<tr data-ip='query'>
 					<td>IP Address</td>
@@ -59,7 +61,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<td><strong></strong></td>
 				</tr>
 				<tr>
-					<td>IP type</td>
+					<td data-ip=''>IP type</td>
 					<td><strong>Residential (ISP/Broadband)</strong></td>
 				</tr>
 			</table>
@@ -67,21 +69,23 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="k8-ip__map">
 			<img src="" alt="Your location" style="margin-left: auto; margin-right: auto; display: block;">
 		</div>
-
 	</div>
 	<?php
 	the_content();
 endwhile;
 else:
 endif;
-
 get_footer();?>
-
 <script>
 	jQuery(document).ready(function($) {
-
 		(function () {
 			const ip = "<?php echo ( isset( $_GET['ip'] ) && filter_var($_GET['ip'], FILTER_VALIDATE_IP) ) ? trim($_GET['ip']) : trim($_SERVER['REMOTE_ADDR']); ?>";
+			
+			$('body').on('click', '.k8-copy__url', function(e) {
+				e.preventDefault();
+				alert('wef');
+			});
+
 			function reqq( ipAddr ){
 				$.ajax({
 					type: 'POST',
@@ -92,38 +96,33 @@ get_footer();?>
 						'ip' : ipAddr
 					},
 					success: function (data) {
-						// console.log(data);
 						window.localStorage.setItem('k8ip', data.html);
 						fillData();
 						alert('Request to server');
 					}
 				});
 			}
-
 			function fillData(){
 				var parsedObj = JSON.parse( window.localStorage.getItem('k8ip') ),
 						$tbl = $('.k8-ip__tbl'),
 						$img = $('.k8-ip__map img'),
 						urll = '';
-				console.log( parsedObj );
+				// console.log( parsedObj );
 				$tbl.find('tr').each(function(index, el) {
 					var $elem = $(el),
 							attr = $elem.attr( 'data-ip' );
-							if( parsedObj[attr] ){
+							if( typeof parsedObj[attr] != 'undefined' ){
 								$elem.find('td strong').html( parsedObj[attr] );
 							}
 				});
 				urll = parsedObj.lat + ',' + parsedObj.lon + '&zoom=15&size=2000x400&maptype=terrain&markers=color:blue|label:S|' + parsedObj.lat + ',' + parsedObj.lon + '&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo';
 				$img.attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=' + encodeURI( urll ));
 			}
-
 			// NOT SET
 			if( !window.localStorage.getItem('k8ip') ){
 				reqq( ip );
-				fillData();
 				return;
 			}
-
 			//SEt but maybe different
 			if( window.localStorage.getItem('k8ip') ){
 				var obj = JSON.parse( window.localStorage.getItem('k8ip') );
@@ -133,9 +132,6 @@ get_footer();?>
 				fillData();
 				return;
 			}
-
-
 		})();
-
 	});
 </script>

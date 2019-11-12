@@ -1,0 +1,11 @@
+.k8-ip__tbl table{
+	table-layout: fixed;
+}
+.k8-ip__wrr{
+	max-width: 850px;
+	margin: 40px auto;
+}
+.k8-ip__wrr td:last-child,
+.k8-ip__wrr th:last-child{
+	text-align: right;
+}
