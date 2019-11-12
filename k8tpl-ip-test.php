@@ -13,12 +13,24 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		</h1>
 		<div class="k8_tbl-resp k8-ip__tbl">
 			<table class="k8_compare-tbl mtb-30">
-				<tr>
+				<tr data-ip=''>
 					<th data-ip=''><?php the_post_thumbnail('medium'); ?></th>
 					<th>
-						<input type="hidden" id="input-url" value="Copied!">
-						<button class="k8-copy__url">Copy Results</button>
+						<input class="k8-copy__inp" id="myInput" value="<?php echo home_url( $wp->request ) . '/?ip=' . $_GET['ip']; ?>" readonly>
+						<div class="k8-tooltip">
+							<button class="k8-copy__url dwnd__butt grn">
+								<span class="k8-tooltiptext" id="myTooltip">Copy to clipboard</span>
+								Copy Results
+							</button>
+						</div>
 					</th>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="k8-ip__map">
+							<img src="" alt="Your location" style="margin-left: auto; margin-right: auto; display: block;">
+						</div>
+					</td>
 				</tr>
 				<tr data-ip='query'>
 					<td>IP Address</td>
@@ -66,9 +78,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				</tr>
 			</table>
 		</div>
-		<div class="k8-ip__map">
-			<img src="" alt="Your location" style="margin-left: auto; margin-right: auto; display: block;">
-		</div>
 	</div>
 	<?php
 	the_content();
@@ -80,10 +89,18 @@ get_footer();?>
 	jQuery(document).ready(function($) {
 		(function () {
 			const ip = "<?php echo ( isset( $_GET['ip'] ) && filter_var($_GET['ip'], FILTER_VALIDATE_IP) ) ? trim($_GET['ip']) : trim($_SERVER['REMOTE_ADDR']); ?>";
-			
 			$('body').on('click', '.k8-copy__url', function(e) {
-				e.preventDefault();
-				alert('wef');
+				var copyText = document.getElementById("myInput");
+			  copyText.select();
+			  copyText.setSelectionRange(0, 99999);
+			  document.execCommand("copy");
+			  var tooltip = document.getElementById("myTooltip");
+			  tooltip.innerHTML = "Copied: " + copyText.value;
+			});
+
+			$('.k8-copy__url').mouseout(function(){
+			  var tooltip = document.getElementById("myTooltip");
+	 			tooltip.innerHTML = "Copy to clipboard";
 			});
 
 			function reqq( ipAddr ){
@@ -98,7 +115,7 @@ get_footer();?>
 					success: function (data) {
 						window.localStorage.setItem('k8ip', data.html);
 						fillData();
-						alert('Request to server');
+						// alert('Request to server');
 					}
 				});
 			}
