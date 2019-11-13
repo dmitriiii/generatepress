@@ -2,19 +2,20 @@
 				Template Post Type: post, page */
 
 
-$csv = new K8ExpCsv();
-$csv->getTaxCsv();
+
+// $csv = new K8ExpCsv();
+// $csv->getTaxCsv();
 
 /**
-  * 
+  *
   */
  // class K8ExpCsv
  // {
  // 	function __construct()
  // 	{
- 		
+
  // 	}
- // } 
+ // }
 
  // new K8ExpCsv;
 
@@ -25,12 +26,54 @@ $csv->getTaxCsv();
 get_header();
 
 
-if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 	the_title();
 	echo '<hr>';
 	the_content();
-	
+
+
+	// $taxzz = array(
+	// 	'k8_acf_vpndet_conn',
+ //    'k8_acf_vpndet_curr',
+ //    'k8_acf_vpndet_durr1',
+ //    'k8_acf_vpndet_prc1',
+ //    'k8_acf_vpndet_durr2',
+ //    'k8_acf_vpndet_prc2',
+ //    'k8_acf_vpndet_durr3',
+ //    'k8_acf_vpndet_prc3',
+ //    'k8_acf_vpndet_durr4',
+ //    'k8_acf_vpndet_prc4',
+ //    'k8_acf_vpndet_trialz',
+ //    'k8_acf_vpndet_vid'
+ //  );
+
+	// $json =	json_encode($taxzz, JSON_FORCE_OBJECT);
+	// echo '<pre>';
+	// print_r( $json );
+	// echo '</pre>';
+
+	// global $_HALLO;
+	// global $_K8_VPN_TAX;
+	// global $_K8_VPN_CF;
+	// echo '<pre>';
+	// print_r( $_K8_VPN_CF );
+	// print_r( $_K8_VPN_TAX );
+	// echo '</pre><hr><hr><hr>';
+
+
+	// echo '<pre>';
+	// print_r( K8_TEST1 );
+	// echo '</pre>';
+
+	echo '<pre>';
+	print_r( K8_VPN_CF );
+	print_r( K8_VPN_TAX );
+	echo '</pre>';
+
+	// echo '<pre>';
+	// print_r( get_defined_constants() );
+	// echo '</pre>';
 
 	echo __('Geld-Zurück-Garantie' , 'k8lang_domain');
 	echo "<br>";

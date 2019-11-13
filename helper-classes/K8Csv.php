@@ -3,20 +3,9 @@ class K8ExpCsv
 {
 	public $taxz;
 	function __construct(){
-		$this->taxz = [
-			'betriebssystem',
-			'zahlungsmittel',
-			'sprache',
-			'vpnprotokolle',
-			'anwendungen',
-			'sonderfunktionen',
-			'fixeip',
-			'vpnstandortelaender',
-			'kundenservice',
-			'unternehmen',
-			'bedingungen',
-			'sicherheitslevel'
-		];
+		if ( defined('K8_VPN_TAX') ) {
+			$this->taxz = K8_VPN_TAX;
+		}
 	}
 	public function outputCsv($file_name, $assocDataArray){
 		$has_header = false;

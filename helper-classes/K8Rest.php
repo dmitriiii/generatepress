@@ -150,32 +150,6 @@ class K8Rest
 	}
 }
 new K8Rest([
-	'cust_fields' => [
-		'k8_acf_vpndet_conn',
-		'k8_acf_vpndet_curr',
-		'k8_acf_vpndet_durr1',
-		'k8_acf_vpndet_prc1',
-		'k8_acf_vpndet_durr2',
-		'k8_acf_vpndet_prc2',
-		'k8_acf_vpndet_durr3',
-		'k8_acf_vpndet_prc3',
-		'k8_acf_vpndet_durr4',
-		'k8_acf_vpndet_prc4',
-		'k8_acf_vpndet_trialz',
-		'k8_acf_vpndet_vid'
-	],
-	'taxz' => [
-		'betriebssystem',
-		'zahlungsmittel',
-		'sprache',
-		'vpnprotokolle',
-		'anwendungen',
-		'sonderfunktionen',
-		'fixeip',
-		'vpnstandortelaender',
-		'kundenservice',
-		'unternehmen',
-		'bedingungen',
-		'sicherheitslevel'
-	]
+	'cust_fields' => K8_VPN_CF,
+	'taxz' => K8_VPN_TAX
 ]);
