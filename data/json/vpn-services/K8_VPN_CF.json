@@ -1,0 +1,14 @@
+{
+  "0":"k8_acf_vpndet_conn",
+  "1":"k8_acf_vpndet_curr",
+  "2":"k8_acf_vpndet_durr1",
+  "3":"k8_acf_vpndet_prc1",
+  "4":"k8_acf_vpndet_durr2",
+  "5":"k8_acf_vpndet_prc2",
+  "6":"k8_acf_vpndet_durr3",
+  "7":"k8_acf_vpndet_prc3",
+  "8":"k8_acf_vpndet_durr4",
+  "9":"k8_acf_vpndet_prc4",
+  "10":"k8_acf_vpndet_trialz",
+  "11":"k8_acf_vpndet_vid"
+}
