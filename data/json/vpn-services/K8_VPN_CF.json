@@ -10,5 +10,10 @@
   "8":"k8_acf_vpndet_durr4",
   "9":"k8_acf_vpndet_prc4",
   "10":"k8_acf_vpndet_trialz",
-  "11":"k8_acf_vpndet_vid"
+  "11":"k8_acf_vpndet_vid",
+  "12":"k8_acf_vpndet_down",
+  "13":"k8_acf_vpndet_up",
+  "14":"k8_acf_vpndet_ping",
+  "15":"k8_acf_vpndet_jitter",
+  "16":"k8_acf_vpndet_meas"
 }
