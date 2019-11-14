@@ -1,29 +1,60 @@
 <?php /* Template Name: Test1
 				Template Post Type: post, page */
-
-
-
-// $csv = new K8ExpCsv();
-// $csv->getTaxCsv();
-
-/**
-  *
-  */
- // class K8ExpCsv
- // {
- // 	function __construct()
- // 	{
-
- // 	}
- // }
-
- // new K8ExpCsv;
-
-
-// (function() { echo 123; })();
-
-
 get_header();
+
+
+
+# $data[1] - $k8_acf_vpnid
+# $data[5] - $k8_acf_vpndet_down
+# $data[6] - $k8_acf_vpndet_up
+# $data[7] - $k8_acf_vpndet_ping
+# $data[8] - $k8_acf_vpndet_jitter
+// $row = 1;
+// if (($handle = fopen("speed2.csv", "r")) !== FALSE) {
+//   while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+//     $num = count($data);
+//     echo "<h3> $num fields in line $row: <br /></h3>\n";
+//     $row++;
+//     echo $data[0] . ' | ' . $data[1] . ' | ' . $data[5] . ' | ' . $data[6] . ' | ' . $data[7] . ' | ' . $data[8] . ' | ';
+
+//     $k8_acf_vpnid = $data[1];
+//     $k8_acf_vpndet_down = (int) $data[5];
+//     $k8_acf_vpndet_up = (int) $data[6];
+//     $k8_acf_vpndet_ping = (int) $data[7];
+//     $k8_acf_vpndet_jitter = (int) $data[8];
+
+//   	$args = array(
+// 			'post_type'   => 'post',
+// 			'category_name' => 'vpn-anbieter',
+// 			'posts_per_page' => -1,
+// 			'meta_key'		=> 'k8_acf_vpnid',
+// 			'meta_value'	=> $k8_acf_vpnid
+// 		);
+
+// 		$the_query = new WP_Query( $args );
+
+// 		 if ( $the_query->have_posts() ) :
+// 			while ( $the_query->have_posts() ) : $the_query->the_post(); 
+// 				$pid = get_the_ID();
+// 				update_field('k8_acf_vpndet_down', $k8_acf_vpndet_down, $pid);
+// 				update_field('k8_acf_vpndet_up', $k8_acf_vpndet_up, $pid);
+// 				update_field('k8_acf_vpndet_ping', $k8_acf_vpndet_ping, $pid);
+// 				update_field('k8_acf_vpndet_jitter', $k8_acf_vpndet_jitter, $pid);
+// 				echo get_the_title( get_the_ID() );
+// 			endwhile;
+// 			wp_reset_postdata();
+// 		endif;
+
+// 		echo "<hr>";
+//   }
+//   fclose($handle);
+// }
+// else{
+// 	echo 'not available!';
+// }
+
+
+
 
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -33,47 +64,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	the_content();
 
 
-	// $taxzz = array(
-	// 	'k8_acf_vpndet_conn',
- //    'k8_acf_vpndet_curr',
- //    'k8_acf_vpndet_durr1',
- //    'k8_acf_vpndet_prc1',
- //    'k8_acf_vpndet_durr2',
- //    'k8_acf_vpndet_prc2',
- //    'k8_acf_vpndet_durr3',
- //    'k8_acf_vpndet_prc3',
- //    'k8_acf_vpndet_durr4',
- //    'k8_acf_vpndet_prc4',
- //    'k8_acf_vpndet_trialz',
- //    'k8_acf_vpndet_vid'
- //  );
-
-	// $json =	json_encode($taxzz, JSON_FORCE_OBJECT);
-	// echo '<pre>';
-	// print_r( $json );
-	// echo '</pre>';
-
-	// global $_HALLO;
-	// global $_K8_VPN_TAX;
-	// global $_K8_VPN_CF;
-	// echo '<pre>';
-	// print_r( $_K8_VPN_CF );
-	// print_r( $_K8_VPN_TAX );
-	// echo '</pre><hr><hr><hr>';
-
-
-	// echo '<pre>';
-	// print_r( K8_TEST1 );
-	// echo '</pre>';
-
 	echo '<pre>';
 	print_r( K8_VPN_CF );
 	print_r( K8_VPN_TAX );
 	echo '</pre>';
 
-	// echo '<pre>';
-	// print_r( get_defined_constants() );
-	// echo '</pre>';
 
 	echo __('Geld-Zurück-Garantie' , 'k8lang_domain');
 	echo "<br>";
