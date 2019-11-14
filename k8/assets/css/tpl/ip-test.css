@@ -55,15 +55,49 @@
   padding: 7px 15px;
 }
 
+.k8-ip__map img{
+	height: 300px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .k8-copy__inp{
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border: none;
-	color: #fff;
-	background-color: #428bca;
+	color: #428bca;
+	background-color: #fff;
+	border: 1px solid #428bca;
 	height: 40px;
 	padding: 0 20px;
 	margin-bottom: 5px;
+}
+.k8-ip__hidd{
+	display: none;
+}
+.k8-ip__tbl svg{
+	width: 40px;
+	height: 40px;
+}
+
+.k8-ip__tbl--main{
+	background-color: #428bca;
+	color: #fff;
+	font-size: 35px;
+}
+
+
+
+
+
+@media (max-width: 749px){
+	.k8-ip__tbl--main{
+		font-size: 24px;
+	}
+	.k8-ip__wrr td:last-child, .k8-ip__wrr th:last-child{
+		text-align: left;
+	}
 }

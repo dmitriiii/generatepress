@@ -75,8 +75,10 @@ get_header();?>
 								</h1>
 								<div class="k8_tbl-resp k8-ip__tbl">
 									<table class="k8_compare-tbl mtb-30">
-										<tr data-ip=''>
-											<th data-ip=''><?php the_post_thumbnail('medium'); ?></th>
+										<tr>
+											<th class="k8-ip__tbl--main">
+												IP: <?php echo $_GET['ip']; ?>
+											</th>
 											<th>
 												<input class="k8-copy__inp" id="myInput" value="<?php echo home_url( $wp->request ) . '/?ip=' . $_GET['ip']; ?>" readonly>
 												<div class="k8-tooltip">
@@ -90,13 +92,9 @@ get_header();?>
 										<tr>
 											<td colspan="2">
 												<div class="k8-ip__map">
-													<img src="" alt="Your location" style="margin-left: auto; margin-right: auto; display: block;">
+													<img src="" alt="Your location">
 												</div>
 											</td>
-										</tr>
-										<tr data-ip='query'>
-											<td>IP Address</td>
-											<td><strong></strong></td>
 										</tr>
 										<tr data-ip='reverse'>
 											<td>PTR</td>
@@ -108,6 +106,10 @@ get_header();?>
 										</tr>
 										<tr data-ip='city'>
 											<td>City</td>
+											<td><strong></strong></td>
+										</tr>
+										<tr data-ip='zip'>
+											<td>ZIP</td>
 											<td><strong></strong></td>
 										</tr>
 										<tr data-ip='lat'>
@@ -135,13 +137,22 @@ get_header();?>
 											<td><strong></strong></td>
 										</tr>
 										<tr>
-											<td data-ip=''>IP type</td>
+											<td>IP type</td>
 											<td><strong>Residential (ISP/Broadband)</strong></td>
 										</tr>
 									</table>
+									<div class="k8-ip__hidd">
+										<div class="k8-ip__true">
+											<?php echo file_get_contents( get_template_directory() . '/k8/assets/svg/true.svg' ); ?>
+										</div>
+										<div class="k8-ip__false">
+											<?php echo file_get_contents( get_template_directory() . '/k8/assets/svg/false.svg' ); ?>
+										</div>
+									</div>
 								</div>
-							</div>
-	
+
+							</div><!-- .k8-ip__wrr -->
+
 							<?php
 							the_content();
 
@@ -254,16 +265,28 @@ get_footer();?>
 				var parsedObj = JSON.parse( window.localStorage.getItem('k8ip') ),
 						$tbl = $('.k8-ip__tbl'),
 						$img = $('.k8-ip__map img'),
+						true_svg = $('.k8-ip__hidd').find('.k8-ip__true').html(),
+						false_svg = $('.k8-ip__hidd').find('.k8-ip__false').html(),
 						urll = '';
-				// console.log( parsedObj );
-				$tbl.find('tr').each(function(index, el) {
+				$tbl.find('tr[data-ip]').each(function(index, el) {
 					var $elem = $(el),
 							attr = $elem.attr( 'data-ip' );
-							if( typeof parsedObj[attr] != 'undefined' ){
-								$elem.find('td strong').html( parsedObj[attr] );
-							}
+
+					if( parsedObj[attr] == true ){
+						$elem.find('td:last-child').html( true_svg );
+						return;
+					}
+
+					if( parsedObj[attr] == false ){
+						$elem.find('td:last-child').html( false_svg );
+						return;
+					}
+
+					if( typeof parsedObj[attr] != 'undefined' ){
+						$elem.find('td strong').html( parsedObj[attr] );
+					}
 				});
-				urll = parsedObj.lat + ',' + parsedObj.lon + '&zoom=15&size=2000x400&maptype=terrain&markers=color:blue|label:S|' + parsedObj.lat + ',' + parsedObj.lon + '&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo';
+				urll = parsedObj.lat + ',' + parsedObj.lon + '&zoom=9&size=2000x400&maptype=terrain&markers=color:blue|label:S|' + parsedObj.lat + ',' + parsedObj.lon + '&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo';
 				$img.attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=' + encodeURI( urll ));
 			}
 			// NOT SET

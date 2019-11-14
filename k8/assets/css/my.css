@@ -1514,6 +1514,14 @@ END SCROLLBAR*/
 	.k8_cnt .dwnd__butt{
 		margin-left: auto;
 	}
+
+	.k8_tbl-resp{
+		overflow-x: auto;
+	}
+	.k8_tbl-resp table{
+		width: 100%;
+		min-width: 500px;
+	}
 	/**{
 		width: 100% !important;
 	}*/
