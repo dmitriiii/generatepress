@@ -13,25 +13,31 @@ class K8Short
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
+
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
+
 		#[K8_SHORT_YT id="dkPLIw9aZwY"]
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
+
 		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
 		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
 
-
 		#[K8_SH_INTRO]
 		add_shortcode( 'K8_SH_INTRO', array( $this, 'intro' ) );
+
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_STREAMING', array( $this, 'streaming' ) );
+
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
 		#[K8_SH_FEATURES]
 		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
+
 		#[K8_SH_ROUTER]
 		add_shortcode( 'K8_SH_ROUTER', array( $this, 'router' ) );
+
 		#[K8_SH_TRAVELING]
 		add_shortcode( 'K8_SH_TRAVELING', array( $this, 'traveling' ) );
 
@@ -40,6 +46,10 @@ class K8Short
 
 		#[K8_SH_SPEEDTEST]
 		add_shortcode( 'K8_SH_SPEEDTEST', array( $this, 'speedtest') );
+
+		#[K8_SH_GAMING]
+		add_shortcode( 'K8_SH_GAMING', array( $this, 'gaming') );
+
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -534,7 +544,7 @@ class K8Short
 						 	if( has_term( $k, 'betriebssystem', $pid ) ){
 						 		$new_valz_arr[] = $v;
 						 	}
-						endforeach; 
+						endforeach;
 						echo implode(", ",$new_valz_arr);
 						?>
 					</td>
@@ -744,6 +754,55 @@ class K8Short
 						<strong>
 							<?php echo get_field('k8_acf_vpndet_meas', $pid)['label'];?>
 						</strong>
+					</td>
+				</tr>
+				<?php
+			echo $this->tbl_end;
+		endif;
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_GAMING]
+	public function gaming( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			echo $this->tbl_start(['add_clss' => 'k8_sh_gaming']); ?>
+				<tr>
+					<th colspan="2">
+						<?php _e('Online Gaming' , 'k8lang_domain'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Geringe Latenzzeiten' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php echo ( (int) get_field('k8_acf_vpndet_ping', $pid) < 35 ) ? $this->true_icon : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Nutzung auf Spielekonsolen' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'smartdns', 'sonderfunktionen', $pid ) ) ? '<strong>PlayStation, XBox</strong>' : $this->false_icon; ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('DDoS Schutz' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<?php
+						echo ( has_term( 'firewall', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
 					</td>
 				</tr>
 				<?php
