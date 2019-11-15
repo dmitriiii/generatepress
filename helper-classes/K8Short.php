@@ -38,6 +38,8 @@ class K8Short
 		#[K8_SHORT_PRICING]
 		add_shortcode( 'K8_SHORT_PRICING', array( $this, 'pricing') );
 
+		#[K8_SH_SPEEDTEST]
+		add_shortcode( 'K8_SH_SPEEDTEST', array( $this, 'speedtest') );
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -670,6 +672,83 @@ class K8Short
 		<?php
 		endif;
 		echo $this->tbl_end;
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_SPEEDTEST]
+	public function speedtest( $atts ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		ob_start();
+		if( $a['output'] !== 'table' ):
+		else :
+			echo $this->tbl_start(['add_clss' => 'k8_sh_speedtest']); ?>
+				<tr>
+					<th colspan="2">
+						<?php _e('Maximale Geschwindigkeit getestet' , 'k8lang_domain'); ?>
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Download' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong><?php echo get_field('k8_acf_vpndet_down', $pid); ?></strong> kbps
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Upload' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong><?php echo get_field('k8_acf_vpndet_up', $pid); ?></strong> kbps
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Jitter' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong><?php echo get_field('k8_acf_vpndet_jitter', $pid); ?></strong> ms
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Ping' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong><?php echo get_field('k8_acf_vpndet_ping', $pid); ?></strong> ms
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Getestet mit OpenVPN (UDP) am' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong>
+							<?php
+							$stamp_old = get_the_modified_time('G' , $pid);
+							echo date('d.m.Y', strtotime('-10 day', $stamp_old) ); ?>
+						</strong>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php _e('Verbindung innerhalb von' , 'k8lang_domain'); ?>
+					</td>
+					<td>
+						<strong>
+							<?php echo get_field('k8_acf_vpndet_meas', $pid)['label'];?>
+						</strong>
+					</td>
+				</tr>
+				<?php
+			echo $this->tbl_end;
+		endif;
 		$html = ob_get_clean();
 		return $html;
 	}
