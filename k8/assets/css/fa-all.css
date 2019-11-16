@@ -2220,8 +2220,8 @@ readers do not read off random characters that represent icons */
 .fa-infinity:before {
   content: "\f534"; }
 
-.fa-info:before {
-  content: "\f129"; }
+/* .fa-info:before {
+  content: "\f129"; } */
 
 .fa-info-circle:before {
   content: "\f05a"; }
