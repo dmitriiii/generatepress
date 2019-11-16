@@ -64,7 +64,7 @@ class K8Short
 		), $atts );
 		$str = "<div class='k8_yt-wrr'>
 							<a href='%s' rel='nofollow' class='k8_yt-link'>
-								<span class='btn-blu pls'><i class='fa fa-play' aria-hidden='true'></i></span>
+								<span class='btn-blu pls'><i class='fa fa-play far fa-play-circle' aria-hidden='true'></i></span>
 							</a>
 							<img class='of-cv' src='https://img.youtube.com/vi/%s/maxresdefault.jpg'/>
 						</div>";
