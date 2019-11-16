@@ -74,6 +74,11 @@ get_header();?>
 									<?php the_title(); ?>
 								</h1>
 								<div class="k8_tbl-resp k8-ip__tbl">
+									<div class="k8-ip__tbl--over animated k8-anim" data-anim="fadeOut">
+										<div class="k8-ip__tbl--spinner">
+											<i class="fas fa-spinner fa-pulse"></i>
+										</div>
+									</div>
 									<table class="k8_compare-tbl mtb-30">
 										<tr>
 											<th class="k8-ip__tbl--main">
@@ -288,6 +293,10 @@ get_footer();?>
 				});
 				urll = parsedObj.lat + ',' + parsedObj.lon + '&zoom=9&size=2000x400&maptype=terrain&markers=color:blue|label:S|' + parsedObj.lat + ',' + parsedObj.lon + '&key=AIzaSyBK4XomMibqoAiojTr4ChbeEr3cbVHLXIo';
 				$img.attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=' + encodeURI( urll ));
+
+				$('.k8-ip__tbl--over').addClass('fadeOut').one("animationend", function(){
+				  $(this).css('display', 'none');
+				});
 			}
 			// NOT SET
 			if( !window.localStorage.getItem('k8ip') ){
