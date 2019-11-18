@@ -1,7 +1,42 @@
 jQuery(document).ready(function($){
 
-	// Set blocks with equal height
+	// ANIMATION ON ELEMENT APPEAR in Viewport
+	function triggerCountUp(elemId,from,to){
+		var options = {  
+			useEasing: true,
+		  useGrouping: true,
+		  separator: ',',
+		  decimal: '.',
+		  prefix: '',
+		  suffix: ''
+		};
+		var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
+		counts.start();
+	}
+	const k8anim = document.querySelectorAll('.k8anim');
+	observer = new IntersectionObserver((entries) => {
+	  entries.forEach(entry => {
+	    if (entry.intersectionRatio > 0) {
+	      entry.target.classList.add('k8anim--visible');
 
+	      //Trigger countTo Animation
+	      var $el = $(entry.target);
+	      if (typeof $el.data('k8countup') !== 'undefined') {
+	      	// console.log($el);
+	      	triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
+	      }
+	    } else {
+	      entry.target.classList.remove('k8anim--visible');
+	    }
+	  });
+	});
+
+	k8anim.forEach(image => {
+	  observer.observe(image);
+	});
+
+
+	// Set blocks with equal height
 	$(window).load(function() {
 		// Select and loop the container element of the elements you want to equalise
 		$('.k8_desktop .eq-h-row').each(function(){

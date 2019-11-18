@@ -28,6 +28,12 @@ class K8Assets
 			wp_enqueue_style( 'k8-boot4grid-css' );
 		}
 
+		//SHORTCODE's JS & CSS
+		#[K8_SH_SPEEDTEST]
+		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
+		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), rand(1,1000), 'all' );
+
+
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,1000), 'all' );
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,1000), true );
@@ -38,7 +44,7 @@ class K8Assets
 
 		#Template with IP detection
 		if( is_page_template( 'k8tpl-ip-test.php' ) ){
-			wp_register_style( 'k8-ip-test-css', get_template_directory_uri() . '/k8/assets/css/tpl/ip-test.css', array(), rand(1,1000), 'all' );
+			wp_register_style( 'k8-ip-test-css', get_template_directory_uri() . '/k8/assets/css/tpl/ip-test.css', array(), false, 'all' );
 			wp_enqueue_style( 'k8-ip-test-css' );
 		}
 	}
