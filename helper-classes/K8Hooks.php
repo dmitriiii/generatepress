@@ -10,6 +10,8 @@ class K8Hooks
 		add_action('manage_post_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
 		#Multiple Languages
 		add_action('after_setup_theme', array($this,'setup_theme'));
+		#Remove ACF for others
+		add_action( 'admin_menu', array( $this, 'acf_rmv' ), 100 );
 	}
 	public function upload_mimes( $mimes ){
 		$mimes['exe'] = 'application/octet-stream';
@@ -39,6 +41,13 @@ class K8Hooks
 	#Multiple Languages
 	public function setup_theme(){
 		load_theme_textdomain('k8lang_domain', get_template_directory() . '/languages');
+	}
+
+	public function acf_rmv(){
+		$current_user = wp_get_current_user();
+		if ($current_user->user_email != 'dk@geroy.ooo'){
+	    remove_menu_page( 'edit.php?post_type=acf-field-group' );
+	  }
 	}
 }
 new K8Hooks();
