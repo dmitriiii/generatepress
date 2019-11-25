@@ -1,5 +1,5 @@
 <?php
-class K8ExpCsv
+class K8Csv
 {
 	public $taxz;
 	function __construct(){
