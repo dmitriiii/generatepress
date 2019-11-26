@@ -80,6 +80,15 @@ class K8Short
 	#Show table with vpn details
 	public function vpn_det($atts){
 		$pid = get_the_ID();
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();
 		echo $this->tbl_start(['add_clss' => 'k8_short_vpndet']);
@@ -245,6 +254,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		$pm =	get_post_meta( $pid );
 		$termz =	get_the_terms( $pid, 'anwendungen' );
 		ob_start();
@@ -292,6 +310,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
@@ -383,6 +410,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
@@ -442,6 +478,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
@@ -483,6 +528,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		$valz = array(
 			'asuswrt'=>'ASUS',
 			'openwrt'=>'Gl-iNet',
@@ -565,6 +619,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
@@ -620,6 +683,15 @@ class K8Short
 	#[K8_SHORT_PRICING]
 	public function pricing($atts){
 		$pid = get_the_ID();
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();
 		echo $this->tbl_start(['add_clss' => 'k8_short_pricing']); ?>
@@ -695,6 +767,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] == 'table' ){
 			echo $this->tbl_start(['add_clss' => strtolower( $tag )]);
@@ -717,6 +798,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		ob_start();
 		if( $a['output'] !== 'table' ):
 		else :
