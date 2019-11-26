@@ -211,4 +211,20 @@ class K8Html
 										$img_data[1],
 										$img_data[2] );
 	}
+
+	/**
+	 * [tbl_start description]
+	 * @param  array  $attr [
+	 *   'add_clss' - class of shortcode
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function tbl_start( $attr = array() ){
+		$str = '<div class="k8_tbl-resp %s"><table class="k8_compare-tbl mtb-30"><tbody>';
+		( isset( $attr['add_clss'] ) ) ? $add_clss = $attr['add_clss'] : $add_clss = '';
+		return sprintf( $str, $add_clss );
+	}
+	static function tbl_end(){
+		return '</tbody></table></div>';
+	}
 } ?>

@@ -77,8 +77,12 @@ class K8Short
 		);
 	}
 
-	#Show table with vpn details
-	public function vpn_det($atts){
+	#[k8_short_vpndet] Show table with vpn details
+	public function vpn_det( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
 		$pid = get_the_ID();
 		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
 			$postzz = get_posts(array(
@@ -91,83 +95,27 @@ class K8Short
 		}
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();
-		echo $this->tbl_start(['add_clss' => 'k8_short_vpndet']);
-		#Connections per account
-		if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
-			<tr>
-				<td>
-					<?php _e('Verbindungen pro Konto' , 'k8lang_domain'); ?>
-				</td>
-				<td><strong><?php echo get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></strong></td>
-			</tr>
-		<?php
-		endif;
-		#Duration & Prices
-		$arrgz = array(
-			'k8_acf_vpndet_durr1' => 'k8_acf_vpndet_prc1',
-			'k8_acf_vpndet_durr2' => 'k8_acf_vpndet_prc2',
-			'k8_acf_vpndet_durr3' => 'k8_acf_vpndet_prc3',
-			'k8_acf_vpndet_durr4' => 'k8_acf_vpndet_prc4'
-		);
-		foreach ($arrgz as $k=>$v) {
-			echo K8Html::getRow( array(
-				'durr' => $k,
-				'prc' => $v,
-				'pid' => $pid,
-				'curr' => $k8_acf_vpndet_curr
-			));
-		}
-		#Trials
-		if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
-			$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
-			<tr>
-				<td>
-					<?php _e('Testmöglichkeiten' , 'k8lang_domain'); ?>
-				</td>
-				<td>
-					<?php
-					$ccc = 1;
-					foreach ($k8_acf_vpndet_trialz as $key=>$value): ?>
-						<strong>
-							<?php echo $value['label']; ?>
-						</strong>
-					<?php
-						echo ( count( $k8_acf_vpndet_trialz ) > $ccc ) ? ', ' : '';
-						$ccc++;
-					endforeach ?>
-				</td>
-			</tr>
-		<?php
-		endif;
-		#k8_acf_vpndet_vid
-		if ( get_field( 'k8_acf_vpndet_vid', $pid ) ):
-			$k8_acf_vpndet_vid =	get_field( 'k8_acf_vpndet_vid', $pid ); ?>
-			<tr>
-				<td>
-					<?php _e('Videoplattformen' , 'k8lang_domain'); ?>
-				</td>
-				<td>
-					<?php
-					$ccc = 1;
-					foreach ($k8_acf_vpndet_vid as $it): ?>
-						<strong>
-							<?php echo $it['label']; ?>
-						</strong>
-					<?php
-						echo ( count( $k8_acf_vpndet_vid ) > $ccc ) ? ', ' : '';
-						$ccc++;
-					endforeach ?>
-				</td>
-			</tr>
-		<?php
-		endif;
-		echo $this->tbl_end;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
-	#Show table with taxonomies Data
-	public function vpn_tax($atts){
+	#[k8_short_prod] Show table with taxonomies Data
+	public function vpn_tax( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
 		$arr = array(
 			'betriebssystem'=>'Betriebssysteme',
 			'zahlungsmittel'=>'Zahlungsmöglichkeiten',
@@ -184,33 +132,13 @@ class K8Short
 		);
 		ob_start();
 		if( is_array( $arr ) && count( $arr ) > 0 ):
-			echo $this->tbl_start(['add_clss' => 'k8_short_prod']);
-			foreach ($arr as $tax_name => $tax_label) : ?>
-				<tr>
-					<td><?php echo $tax_label; ?></td>
-					<td>
-					<?php
-						$termz = get_the_terms( get_the_ID(), $tax_name );
-						if ( is_array( $termz ) && count( $termz ) > 0 ) :
-							$cc=1;
-							foreach ($termz as $term) :
-								echo( count( $termz ) > $cc ) ? $term->name . ', ' : $term->name;
-								$cc++;
-							endforeach;
-						else:
-							echo '-';
-						endif;?>
-					</td>
-				</tr>
-			<?php
-			endforeach;
-			echo $this->tbl_end;
+			include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		endif;
 		$html = ob_get_clean();
 		return $html;
 	}
 	// generates schema markup for FAQ pages
-	public function faq($atts){
+	public function faq( $atts, $content, $tag ){
 		ob_start();
 		$q_o = get_queried_object();
 		$k8_acf_faq = get_field('k8_acf_faq', $q_o->ID);
@@ -266,45 +194,14 @@ class K8Short
 		$pm =	get_post_meta( $pid );
 		$termz =	get_the_terms( $pid, 'anwendungen' );
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => 'k8_sh_intro']); ?>
-				<tr>
-					<td>
-						<?php _e('Produktbezeichnung' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<strong>
-							<?php echo $pm['cwp_rev_product_name'][0]; ?>
-						</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Empfohlene Einsatzgebiete' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						if ( is_array( $termz ) && count( $termz ) > 0 ) :
-							$cc=1;
-							foreach ($termz as $term) :
-								echo "<strong>" . $term->name . "</strong>";
-								echo( count( $termz ) > $cc ) ? ', ' : '';
-								$cc++;
-							endforeach;
-						endif; ?>
-					</td>
-				</tr>
-		<?php
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 
 	#[K8_SH_STREAMING]
-	public function streaming( $atts ){
+	public function streaming( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -320,91 +217,14 @@ class K8Short
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => 'k8_sh_streaming']); ?>
-				<tr>
-					<th colspan="2">
-						<?php _e('Streaming von TV und Videoinhalten' , 'k8lang_domain'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Nutzung am Heim-Router' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'vpn-router', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Nutzung mit KODI' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'kodi-addon', 'betriebssystem', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('SmartDNS' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'smartdns', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('FireTV App' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'firetv', 'betriebssystem', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Abmahnungen vermeiden' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'abmahnungen-vermeiden', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<?php
-				#k8_acf_vpndet_vid
-				if ( get_field( 'k8_acf_vpndet_vid', $pid ) ):
-					$k8_acf_vpndet_vid = get_field( 'k8_acf_vpndet_vid', $pid ); ?>
-					<tr>
-						<td>
-							<?php _e('Unterstütze Streaming-Plattformen' , 'k8lang_domain'); ?>
-						</td>
-						<td>
-							<?php
-							$ccc = 1;
-							foreach ($k8_acf_vpndet_vid as $it): ?>
-								<strong>
-									<?php echo $it['label']; ?>
-								</strong>
-							<?php
-								echo ( count( $k8_acf_vpndet_vid ) > $ccc ) ? ', ' : '';
-								$ccc++;
-							endforeach ?>
-						</td>
-					</tr>
-				<?php
-				endif;
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 
 	#[K8_SH_DOWNLOAD]
-	public function download( $atts ){
+	public function download( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -420,59 +240,13 @@ class K8Short
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => 'k8_sh_download']); ?>
-				<tr>
-					<th colspan="2">
-						<?php _e('Download und Torrent' , 'k8lang_domain'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Torrent Nutzung erlaubt' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'tauschboersen-torrent', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Eigene Torrent Server' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'own-torrent-server', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Abmahnungen vermeiden' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'abmahnungen-vermeiden', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Portweiterleitungen' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'portweiterleitungen', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<?php
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 	#[K8_SH_FEATURES]
-	public function features( $atts ){
+	public function features( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -487,42 +261,18 @@ class K8Short
 			));
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
+		$termz = get_terms( array(
+	    'taxonomy' => 'sonderfunktionen',
+	    'hide_empty' => false,
+		) );
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			$termz = get_terms( array(
-		    'taxonomy' => 'sonderfunktionen',
-		    'hide_empty' => false,
-			) );
-			echo $this->tbl_start(['add_clss' => 'k8_sh_features']); ?>
-				<tr>
-					<th colspan="2">
-						<?php _e('Sonderfunktionen' , 'k8lang_domain'); ?>
-					</td>
-				</tr>
-				<?php
-				if ( isset($termz) && is_array($termz) && count( $termz ) > 0 ) :
-					foreach ($termz as $term): ?>
-						<tr>
-							<td>
-								<?php _e($term->name , 'k8lang_domain'); ?>
-							</td>
-							<td>
-								<?php
-								echo ( has_term( $term->slug, $term->taxonomy, $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-							</td>
-						</tr>
-					<?php
-					endforeach;
-				endif;
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 	#[K8_SH_ROUTER]
-	public function router( $atts ){
+	public function router( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -546,74 +296,13 @@ class K8Short
 		);
 		$new_valz_arr = array();
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => 'k8_sh_router']); ?>
-				<tr>
-					<th colspan="2">
-						<?php _e('Betrieb am VPN-Client Router' , 'k8lang_domain'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Verwendung auf Routern' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'vpn-router', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Load Balancing' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'loadbalancing', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Ausfallsfreier Betrieb' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'loadbalancing', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Eigene Router Anwendung' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'dd-wrt', 'betriebssystem', $pid ) || has_term( 'openwrt', 'betriebssystem', $pid ) || has_term( 'tomato', 'betriebssystem', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Kompatibel mit' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						foreach ($valz as $k => $v) :
-						 	if( has_term( $k, 'betriebssystem', $pid ) ){
-						 		$new_valz_arr[] = $v;
-						 	}
-						endforeach;
-						echo implode(", ",$new_valz_arr);
-						?>
-					</td>
-				</tr>
-				<?php
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 	#[K8_SH_TRAVELING]
-	public function traveling( $atts ){
+	public function traveling( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
@@ -629,60 +318,18 @@ class K8Short
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => 'k8_sh_traveling']); ?>
-				<tr>
-					<th colspan="2">
-						<?php _e('VPN für Reisen und im Ausland' , 'k8lang_domain'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Nutzung in restriktiven Netzwerken (China, Hotels)' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'obfsproxy', 'sonderfunktionen', $pid ) || has_term( 'shadowsocks', 'vpnprotokolle', $pid ) || has_term( 'wireguard', 'vpnprotokolle', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Obfusication (Maskierung)' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'obfsproxy', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Schutz in unsicheren Wifi-Netzwerken' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'lokale-sperren-umgehen', 'anwendungen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php _e('Shadowsocks oder SOCKS5' , 'k8lang_domain'); ?>
-					</td>
-					<td>
-						<?php
-						echo ( has_term( 'shadowsocks', 'vpnprotokolle', $pid ) || has_term( 'socks5', 'vpnprotokolle', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
-					</td>
-				</tr>
-				<?php
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
 	#[K8_SHORT_PRICING]
-	public function pricing($atts){
-		$pid = get_the_ID();
+	public function pricing( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
 		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
 			$postzz = get_posts(array(
 				'numberposts'	=> 1,
@@ -694,68 +341,7 @@ class K8Short
 		}
 		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
 		ob_start();
-		echo $this->tbl_start(['add_clss' => 'k8_short_pricing']); ?>
-		<tr>
-			<th colspan="2">
-				<?php _e('Kosten / Tarife' , 'k8lang_domain'); ?>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<?php _e('Kostenlose Nutzung' , 'k8lang_domain'); ?>
-			</td>
-			<td>
-				<?php
-				echo $this->false_icon; ?>
-			</td>
-		</tr><?php
-		#Duration & Prices
-		$arrgz = array(
-			'k8_acf_vpndet_durr1' => 'k8_acf_vpndet_prc1',
-			'k8_acf_vpndet_durr2' => 'k8_acf_vpndet_prc2',
-			'k8_acf_vpndet_durr3' => 'k8_acf_vpndet_prc3',
-			'k8_acf_vpndet_durr4' => 'k8_acf_vpndet_prc4'
-		);
-		foreach ($arrgz as $k=>$v) {
-			echo K8Html::getRow( array(
-				'durr' => $k,
-				'prc' => $v,
-				'pid' => $pid,
-				'curr' => $k8_acf_vpndet_curr
-			));
-		}
-		if ( get_field( 'k8_acf_vpndet_conn', $pid ) ): ?>
-			<tr>
-				<td>
-					<?php _e('Anzahl gleichzeitiger Verbindungen pro Konto' , 'k8lang_domain'); ?>
-				</td>
-				<td><strong><?php echo get_field( 'k8_acf_vpndet_conn', $pid )['label']; ?></strong></td>
-			</tr>
-		<?php
-		endif;
-		#Trials
-		if ( get_field( 'k8_acf_vpndet_trialz', $pid ) ):
-			$k8_acf_vpndet_trialz =	get_field( 'k8_acf_vpndet_trialz', $pid ); ?>
-			<tr>
-				<td>
-					<?php _e('Testmöglichkeiten' , 'k8lang_domain'); ?>
-				</td>
-				<td>
-					<?php
-					$ccc = 1;
-					foreach ($k8_acf_vpndet_trialz as $key=>$value): ?>
-						<strong>
-							<?php echo $value['label']; ?>
-						</strong>
-					<?php
-						echo ( count( $k8_acf_vpndet_trialz ) > $ccc ) ? ', ' : '';
-						$ccc++;
-					endforeach ?>
-				</td>
-			</tr>
-		<?php
-		endif;
-		echo $this->tbl_end;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -777,16 +363,11 @@ class K8Short
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
 		ob_start();
-		if( $a['output'] == 'table' ){
-			echo $this->tbl_start(['add_clss' => strtolower( $tag )]);
-			include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-			echo $this->tbl_end;
-		}
-		else{
+		if( $a['output'] == 'graphic1' ){
 			wp_enqueue_script('reacher89-countUp-min-js');
 			wp_enqueue_style('k8_sh_speedtest-css');
-			include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		}
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -808,12 +389,7 @@ class K8Short
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
 		ob_start();
-		if( $a['output'] !== 'table' ):
-		else :
-			echo $this->tbl_start(['add_clss' => strtolower( $tag )]);
-			include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-			echo $this->tbl_end;
-		endif;
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}

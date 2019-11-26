@@ -1,3 +1,4 @@
+<?php echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]); ?>
 <tr>
 	<th colspan="2">
 		<?php _e('Maximale Geschwindigkeit getestet' , 'k8lang_domain'); ?>
@@ -57,3 +58,4 @@
 		</strong>
 	</td>
 </tr>
+<?php echo K8Html::tbl_end(); ?>

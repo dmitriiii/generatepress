@@ -1,3 +1,4 @@
+<?php echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]); ?>
 <tr>
 	<th colspan="2">
 		<?php _e('Online Gaming' , 'k8lang_domain'); ?>
@@ -29,3 +30,4 @@
 		echo ( has_term( 'firewall', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon; ?>
 	</td>
 </tr>
+<?php echo K8Html::tbl_end(); ?>
