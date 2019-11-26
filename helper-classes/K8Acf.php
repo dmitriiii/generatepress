@@ -6,7 +6,11 @@ class K8Acf
 		$this->k8_arrr = array(
 			'https://gratisvpn.de',
 			'https://vpntester.ru',
-			'https://vpnanbietervergleich.de'
+			'https://vpnanbietervergleich.de',
+			'https://vpn-blog.de',
+			'https://vpn-coupons.de',
+			'https://vpnwlanrouter.de',
+			'https://vpntester.net'
 		);
 		if( in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
