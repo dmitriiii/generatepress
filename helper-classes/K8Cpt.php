@@ -26,9 +26,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'betriebssystem', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "betriebssystem",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "betriebssystem",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'betriebssystem' ) ):
@@ -54,9 +54,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'zahlungsmittel', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "zahlungsmittel",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "zahlungsmittel",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'zahlungsmittel' ) ):
@@ -82,9 +82,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'sprache', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "sprache",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "sprache",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'sprache' ) ):
@@ -110,9 +110,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'vpnprotokolle', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "vpnprotokolle",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "vpnprotokolle",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'vpnprotokolle' ) ):
@@ -138,9 +138,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'anwendungen', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "anwendungen",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "anwendungen",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'anwendungen' ) ):
@@ -166,9 +166,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'sonderfunktionen', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "sonderfunktionen",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "sonderfunktionen",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'sonderfunktionen' ) ):
@@ -194,9 +194,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'fixeip', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "fixeip",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "fixeip",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'fixeip' ) ):
@@ -222,9 +222,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'vpnstandortelaender', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "vpnstandortelaender",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "vpnstandortelaender",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'vpnstandortelaender' ) ):
@@ -250,9 +250,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'kundenservice', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "kundenservice",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "kundenservice",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'kundenservice' ) ):
@@ -278,9 +278,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'unternehmen', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "unternehmen",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "unternehmen",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'unternehmen' ) ):
@@ -306,9 +306,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'bedingungen', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => false,
-			"rest_base" => "bedingungen",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => false,
+			// "rest_base" => "bedingungen",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'bedingungen' ) ):
@@ -334,9 +334,9 @@ class K8Cpt
 			"query_var" => true,
 			"rewrite" => [ 'slug' => 'sicherheitslevel', 'with_front' => true, ],
 			"show_admin_column" => false,
-			"show_in_rest" => true,
-			"rest_base" => "sicherheitslevel",
-			"rest_controller_class" => "WP_REST_Terms_Controller",
+			// "show_in_rest" => true,
+			// "rest_base" => "sicherheitslevel",
+			// "rest_controller_class" => "WP_REST_Terms_Controller",
 			"show_in_quick_edit" => false,
 			];
 		if( !taxonomy_exists( 'sicherheitslevel' ) ):
