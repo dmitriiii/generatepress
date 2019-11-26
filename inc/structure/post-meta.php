@@ -131,10 +131,10 @@ if ( ! function_exists( 'generate_posted_on' ) ) {
 			// echo '</pre>';
 			echo apply_filters( 'generate_post_author_output', sprintf( ' <span class="byline">%1$s</span>', // WPCS: XSS ok, sanitization ok.
 				sprintf( '<span class="author vcard" %5$s>%1$s <a class="url fn n" href="%2$s" title="%3$s" rel="author" itemprop="url"><span class="author-name" itemprop="name">%4$s</span></a></span>',
-					__( 'by', 'generatepress' ),
+					__( 'von', 'k8lang_domain' ),
 					esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 					/* translators: 1: Author name */
-					esc_attr( sprintf( __( 'View all posts by %s', 'generatepress' ), get_the_author() ) ),
+					esc_attr( sprintf( __( 'Zeige alle Posts von %s', 'k8lang_domain' ), get_the_author() ) ),
 					esc_html( get_the_author() ),
 					generate_get_microdata( 'post-author' )
 				)
