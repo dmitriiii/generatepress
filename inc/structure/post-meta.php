@@ -156,7 +156,7 @@ if ( ! function_exists( 'generate_posted_on' ) ) {
 
 		if ( $author ) {
 			$uid = get_the_author_meta( 'ID' );
-			echo ( get_field('k8_acf_u_desc','user_' . $uid) ) ? sprintf('<p itemprop="description" class="k8-met__descr">%1s</p>', get_field('k8_acf_u_desc','user_' . $uid) ) : '<p itemprop="description" class="k8-met__descr">Some description how cool author is!</p>';
+			echo ( get_field('k8_acf_u_desc','user_' . $uid) ) ? sprintf('<p itemprop="description" class="k8-met__descr">%1s</p>', get_field('k8_acf_u_desc','user_' . $uid) ) : '<p itemprop="description" class="k8-met__descr">' . __( "Einige Wörter über den Autor / die Autorin", "k8lang_domain" ) . '</p>';
 		}
 
 	}
