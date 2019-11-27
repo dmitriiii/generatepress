@@ -15,5 +15,6 @@
   "13":"k8_acf_vpndet_up",
   "14":"k8_acf_vpndet_ping",
   "15":"k8_acf_vpndet_jitter",
-  "16":"k8_acf_vpndet_meas"
+  "16":"k8_acf_vpndet_meas",
+  "17":"k8_acf_vpndet_vid_int"
 }
