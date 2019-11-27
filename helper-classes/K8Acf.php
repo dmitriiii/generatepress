@@ -535,6 +535,18 @@ class K8Acf
 							'value' => 'post',
 						),
 					),
+					array(
+						array(
+							'param' => 'post_category',
+							'operator' => '==',
+							'value' => 'category:vpn-anbieter',
+						),
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'post',
+						),
+					),
 				),
 				'menu_order' => 0,
 				'position' => 'acf_after_title',
