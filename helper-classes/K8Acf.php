@@ -1,18 +1,13 @@
 <?php
 class K8Acf
 {
-	public $k8_arrr;
 	public $f_id;
+	
 	function __construct(){
-		$this->k8_arrr = array(
-			'https://vpn-anbieter-vergleich-test.de'
-		);
 		$this->f_id = array(
 			'5dde6878b95b0'
 		);
-		// if( !in_array(get_site_url(), $this->k8_arrr) ){
-			add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
-		// }
+		add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
