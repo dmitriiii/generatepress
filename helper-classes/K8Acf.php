@@ -326,7 +326,7 @@ class K8Acf
 							'wai' => __( 'Waipu', 'k8lang_domain' ),
 							'joy' => __( 'JOYN', 'k8lang_domain' ),
 							'tv' => __( 'TVNow', 'k8lang_domain' ),
-							'max2' => __( 'maxdome', 'k8lang_domain' ),
+							// 'max2' => __( 'maxdome', 'k8lang_domain' ),
 							'ard' => __( 'ARD (DE)', 'k8lang_domain' ),
 							'zdf' => __( 'ZDF (DE)', 'k8lang_domain' ),
 							'br' => __( 'BR DE)', 'k8lang_domain' ),
