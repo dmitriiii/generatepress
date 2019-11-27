@@ -10,9 +10,9 @@ class K8Acf
 		$this->f_id = array(
 			'5dde6878b95b0'
 		);
-		if( !in_array(get_site_url(), $this->k8_arrr) ){
+		// if( !in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
-		}
+		// }
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
