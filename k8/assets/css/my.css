@@ -33,8 +33,8 @@
 .k8_compare-tbl th{
 	padding: 15px 10px;
 	text-align: center;
-	color: #fff;
-	background-color: #00B2E2;
+	/* color: #fff; */
+	/* background-color: #fff; */
 	font-size: 17px;
 }
 
@@ -1444,13 +1444,46 @@ END SCROLLBAR*/
 .k8anim_lines::after{
 	bottom: 0;
 }
-
 .k8anim_lines.k8anim--visible::before,
 .k8anim_lines.k8anim--visible::after{
   animation: linez 1.5s ease-out;
 }
 
 
+.k8anim_th th{
+	background-color: #fff;
+	color: #fff;
+	position: relative;
+}
+.k8anim_th th span{
+	position: relative;
+	z-index: 99;
+}
+.k8anim_th th::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background-color: #00B2E2;
+	z-index: 9;
+	height: 100%;
+	top: 0;
+}
+.k8anim_th.k8anim--visible th::before{
+	animation: thh 1.5s ease;
+}
+
+
+@-webkit-keyframes linez {
+  0% {
+    width: 0%;
+    left: 50%;
+  }
+  100% {
+    width: 100%;
+    left: 0%;
+  }
+}
 @keyframes linez {
   0% {
     width: 0%;
@@ -1459,6 +1492,30 @@ END SCROLLBAR*/
   100% {
     width: 100%;
     left: 0%;
+  }
+}
+
+
+@-webkit-keyframes thh {
+  0% {
+   	width: 0%;
+  }
+  50% {
+     width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes thh {
+  0% {
+   	width: 0%;
+  }
+  50% {
+     width: 70%;
+  }
+  100% {
+    width: 100%;
   }
 }
 

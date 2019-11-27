@@ -1,7 +1,7 @@
 <?php echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]); ?>
 	<tr>
 		<th colspan="2">
-			<?php _e('Streaming von TV und Videoinhalten' , 'k8lang_domain'); ?>
+			<span><?php _e('Streaming von TV und Videoinhalten' , 'k8lang_domain'); ?></span>
 		</th>
 	</tr>
 	<tr>

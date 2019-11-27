@@ -220,7 +220,7 @@ class K8Html
 	 * @return [type]       [description]
 	 */
 	static function tbl_start( $attr = array() ){
-		$str = '<div class="k8_tbl-resp %s"><table class="k8_compare-tbl mtb-30"><tbody>';
+		$str = '<div class="k8_tbl-resp k8anim k8anim_th %s"><table class="k8_compare-tbl mtb-30"><tbody>';
 		( isset( $attr['add_clss'] ) ) ? $add_clss = $attr['add_clss'] : $add_clss = '';
 		return sprintf( $str, $add_clss );
 	}
