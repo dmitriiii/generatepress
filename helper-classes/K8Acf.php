@@ -2,9 +2,13 @@
 class K8Acf
 {
 	public $k8_arrr;
+	public $f_id;
 	function __construct(){
 		$this->k8_arrr = array(
 			'https://vpn-anbieter-vergleich-test.de'
+		);
+		$this->f_id = array(
+			'5dde6878b95b0'
 		);
 		if( !in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
@@ -343,6 +347,61 @@ class K8Acf
 							'orf' => __( 'ORF (AT)', 'k8lang_domain' ),
 							'srf' => __( 'SRF (CH)', 'k8lang_domain' ),
 							'serv' => __( 'Servus TV (DE, AT, CH)', 'k8lang_domain' ),
+						),
+						'allow_custom' => 0,
+						'default_value' => array(
+						),
+						'layout' => 'horizontal',
+						'toggle' => 0,
+						'return_format' => 'array',
+						'save_custom' => 0,
+					),
+					array(
+						'key' => $this->f_id[0],
+						'label' => 'Videoplattformen International (Streaming)',
+						'name' => 'k8_acf_vpndet_vid_int',
+						'type' => 'checkbox',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'disney_plus_us' => __( 'Disney+ (US)', 'k8lang_domain' ),
+							'hulu_us' => __( 'Hulu (US)', 'k8lang_domain' ),
+							'amazon_prime_us' => __( 'Amazon Prime Video (US)', 'k8lang_domain' ),
+							'netflix_us' => __( 'Netflix (US)', 'k8lang_domain' ),
+							'apple_tv_us' => __( 'Apple TV (US)', 'k8lang_domain' ),
+							'watch_espn_us' => __( 'Watch ESPN (US)', 'k8lang_domain' ),
+							'channel_4_us' => __( 'Channel 4 (US)', 'k8lang_domain' ),
+							'nfl_gamepass_us' => __( 'NFL Gamepass (US)', 'k8lang_domain' ),
+							'mlb_us' => __( 'MLB.tv (US)', 'k8lang_domain' ),
+							'abc_us' => __( 'abc (US)', 'k8lang_domain' ),
+							'cbs_us' => __( 'CBS (US)', 'k8lang_domain' ),
+							'fox_us' => __( 'FOX (US)', 'k8lang_domain' ),
+							'nbc_us' => __( 'NBC (US)', 'k8lang_domain' ),
+							'showtime_us' => __( 'Showtime (US)', 'k8lang_domain' ),
+							'flix_us' => __( 'FLIX (US)', 'k8lang_domain' ),
+							'epix_us' => __( 'epix (US)', 'k8lang_domain' ),
+							'hbo_now_us' => __( 'HBO Now (US)', 'k8lang_domain' ),
+							'itv_uk' => __( 'ITV (UK)', 'k8lang_domain' ),
+							'eurosport_uk' => __( 'Eurosport (UK)', 'k8lang_domain' ),
+							'sky_uk' => __( 'Sky (UK)', 'k8lang_domain' ),
+							'bbc_uk' => __( 'BBC iPlayer (UK)', 'k8lang_domain' ),
+							'sky_news_uk' => __( 'Sky News (UK)', 'k8lang_domain' ),
+							'bloomberg_uk' => __( 'Bloomberg (UK)', 'k8lang_domain' ),
+							'bt_sport' => __( 'BT Sport (UK)', 'k8lang_domain' ),
+							'channel_4_uk' => __( 'Channel 4 (UK)', 'k8lang_domain' ),
+							'sky_go_it' => __( 'Sky Go (IT)', 'k8lang_domain' ),
+							'youtube' => __( 'YouTube', 'k8lang_domain' ),
+							'spotify' => __( 'Spotify', 'k8lang_domain' ),
+							'starz_us' => __( 'starz (US)', 'k8lang_domain' ),
+							'hustlertv_us' => __( 'hustlerTV (US)', 'k8lang_domain' ),
+							'penthousetv_us' => __( 'PenthouseTV (US)', 'k8lang_domain' ),
+							'playboytv_us' => __( 'PlayboyTV (US)', 'k8lang_domain' ),
 						),
 						'allow_custom' => 0,
 						'default_value' => array(
