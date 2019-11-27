@@ -1446,10 +1446,22 @@ END SCROLLBAR*/
 }
 .k8anim_lines.k8anim--visible::before,
 .k8anim_lines.k8anim--visible::after{
+  -webkit-animation: linez 1.5s ease-out;
   animation: linez 1.5s ease-out;
 }
 
 
+.k8anim_th{
+	-webkit-transition: all 0s ease 0s;
+	-o-transition: all 0s ease 0s;
+	transition: all 0s ease 0s;
+	-webkit-transform: translateY(30px);
+	-ms-transform: translateY(30px);
+	-o-transform: translateY(30px);
+	transform: translateY(30px);
+	opacity: 0;
+	visibility: hidden;
+}
 .k8anim_th th{
 	background-color: #fff;
 	color: #fff;
@@ -1469,7 +1481,25 @@ END SCROLLBAR*/
 	height: 100%;
 	top: 0;
 }
+.k8anim_th.k8anim--visible{
+	-webkit-transition: all 0.5s linear 0s;
+	-o-transition: all 0.5s linear 0s;
+	transition: all 0.5s linear 0s;
+
+	-webkit-box-shadow: 0 0 20px #ccc;
+	box-shadow: 0 0 20px #ccc;
+	
+	-webkit-transform: translateY(0px);
+	-ms-transform: translateY(0px);
+	-o-transform: translateY(0px);
+	transform: translateY(0px);
+	opacity: 1;
+	visibility: visible;
+
+}
 .k8anim_th.k8anim--visible th::before{
+	
+	-webkit-animation: thh 1.5s ease;
 	animation: thh 1.5s ease;
 }
 
