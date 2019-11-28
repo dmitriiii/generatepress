@@ -1455,12 +1455,12 @@ END SCROLLBAR*/
 	-webkit-transition: all 0s ease 0s;
 	-o-transition: all 0s ease 0s;
 	transition: all 0s ease 0s;
-	-webkit-transform: translateY(120px);
+/* 	-webkit-transform: translateY(120px);
 	-ms-transform: translateY(120px);
 	-o-transform: translateY(120px);
 	transform: translateY(120px);
 	opacity: 0;
-	visibility: hidden;
+	visibility: hidden; */
 }
 .k8anim_th th{
 	background-color: #fff;
@@ -1489,12 +1489,12 @@ END SCROLLBAR*/
 	-webkit-box-shadow: 0 0 20px #ccc;
 	box-shadow: 0 0 20px #ccc;
 	
-	-webkit-transform: translateY(0px);
+/* 	-webkit-transform: translateY(0px);
 	-ms-transform: translateY(0px);
 	-o-transform: translateY(0px);
 	transform: translateY(0px);
 	opacity: 1;
-	visibility: visible;
+	visibility: visible; */
 
 }
 .k8anim_th.k8anim--visible th::before{
