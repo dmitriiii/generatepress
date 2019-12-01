@@ -6,12 +6,22 @@ class K8Short
 	public $tbl_end;
 	public $templ_url;
 
+	public $td;
+	public $_td;
+	public $tr;
+	public $_tr;
+
 	public function __construct( $atts ){
 
 		$this->true_icon = $atts['true'];
 		$this->false_icon = $atts['false'];
 		$this->tbl_end = '</tbody></table></div>';
 		$this->templ_url = get_template_directory() . '/templz/shortcodes/';
+
+		$this->td = '<td>';
+		$this->_td = '</td>';
+		$this->tr = '<tr>';
+		$this->_tr = '</tr>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -205,6 +215,7 @@ class K8Short
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
+			'ver' => 'de'
 		), $atts );
 		$pid = (int)$a['vpnid'];
 		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){

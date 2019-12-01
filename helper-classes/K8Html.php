@@ -227,4 +227,20 @@ class K8Html
 	static function tbl_end(){
 		return '</tbody></table></div>';
 	}
+
+
+	/**
+	 * [tdHead echo ]
+	 * @param  [type] $atts [
+	 *   'format' - string
+	 *   'txt' - string
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function tdHead( $atts ){
+		if( !isset( $atts['format'] ) ){
+			$atts['format'] = "<td>%s</td>";
+		}
+		return sprintf( $atts['format'], $atts['txt'] );
+	}
 } ?>
