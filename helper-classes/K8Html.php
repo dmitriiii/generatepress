@@ -77,7 +77,7 @@ class K8Html
 		}
 		if( $durr == 1 ) :
 			$str = "<tr>
-								<td>Tarif (%s Monat)</td>
+								<td>" . __( 'Tarif', 'k8lang_domain' ) . " (%s " . __( 'Monat', 'k8lang_domain' ) . ")</td>
 								<td>
 									<strong>%s</strong>	<em>%s</em>
 								</td>
@@ -87,10 +87,10 @@ class K8Html
 			$avg = $prc / $durr;
 			$avg = round( $avg, 2 );
 			$str = "<tr>
-								<td>Tarif (%s Monate)</td>
+								<td>" . __( 'Tarif', 'k8lang_domain' ) . " (%s " . __( 'Monate', 'k8lang_domain' ) . ")</td>
 								<td>
 									<strong>%s</strong>	<em>%s</em>
-									(pro Monat <strong>%s</strong> %s)
+									(" . __( 'pro Monat', 'k8lang_domain' ) . " <strong>%s</strong> %s)
 								</td>
 							</tr>";
 			return sprintf( $str, $durr, $prc, $args['curr'], $avg, $args['curr'] );
