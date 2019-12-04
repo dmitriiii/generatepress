@@ -78,6 +78,9 @@ class K8Short
 
 		#K8_SH_SUPPORT
 		add_shortcode( 'K8_SH_SUPPORT', array( $this, 'support') );
+
+		#K8_SH_PRIVACY
+		add_shortcode( 'K8_SH_PRIVACY', array( $this, 'privacy') );
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -496,6 +499,27 @@ class K8Short
 		return $html;
 	}
 
+	#K8_SH_PRIVACY
+	public function privacy( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
 }
 new K8Short([
 	'true' => '<svg class="k8-t-f" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
