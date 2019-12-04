@@ -73,9 +73,11 @@ class K8Short
 		#[K8_SH_COMPANY]
 		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
 		
-		#k8_sh_apps
+		#K8_SH_APPS
 		add_shortcode( 'K8_SH_APPS', array( $this, 'apps') );
 
+		#K8_SH_SUPPORT
+		add_shortcode( 'K8_SH_SUPPORT', array( $this, 'support') );
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -469,6 +471,30 @@ class K8Short
 		return $html;
 	}
 
+	#K8_SH_SUPPORT
+	public function support( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
+		$sprache = get_the_terms( $pid, 'sprache' );
+		$kundenservice = get_the_terms( $pid, 'kundenservice' );
+		$k8_acf_lang_kund = get_field('k8_acf_lang_kund', $pid);
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
 
 }
 new K8Short([
