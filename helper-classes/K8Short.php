@@ -12,6 +12,8 @@ class K8Short
 	public $_tr;
 	public $b;
 	public $_b;
+	public $s;
+	public $_s;
 
 	public function __construct( $atts ){
 
@@ -26,7 +28,8 @@ class K8Short
 		$this->_tr = '</tr>';
 		$this->b = '<b>';
 		$this->_b = '</b>';
-
+		$this->s = '<strong>';
+		$this->_s = '</strong>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -70,6 +73,8 @@ class K8Short
 		#[K8_SH_COMPANY]
 		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
 		
+		#k8_sh_apps
+		add_shortcode( 'K8_SH_APPS', array( $this, 'apps') );
 
 	}
 
@@ -438,6 +443,32 @@ class K8Short
 		$html = ob_get_clean();
 		return $html;
 	}
+
+	#[K8_SH_APPS]
+	public function apps( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
+		$vpnprotokolle = get_the_terms( $pid, 'vpnprotokolle' );
+		$betriebssystem = get_the_terms( $pid, 'betriebssystem' );
+		$sprache = get_the_terms( $pid, 'sprache' );
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
 
 }
 new K8Short([
