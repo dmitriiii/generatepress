@@ -24,6 +24,6 @@ class K8H
 			$args['html_tag'] = 'strong';
 		}
 		$lab_arr = array_column( $args['data'], $args['label'] );
-		return "<{$args['html_tag']}>" . implode( "</{$args['html_tag']}>,<{$args['html_tag']}>", $lab_arr ) . "</{$args['html_tag']}>";
+		return "<{$args['html_tag']}>" . implode( "</{$args['html_tag']}>, <{$args['html_tag']}>", $lab_arr ) . "</{$args['html_tag']}>";
 	}
 }

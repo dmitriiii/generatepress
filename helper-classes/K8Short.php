@@ -10,6 +10,8 @@ class K8Short
 	public $_td;
 	public $tr;
 	public $_tr;
+	public $b;
+	public $_b;
 
 	public function __construct( $atts ){
 
@@ -22,6 +24,9 @@ class K8Short
 		$this->_td = '</td>';
 		$this->tr = '<tr>';
 		$this->_tr = '</tr>';
+		$this->b = '<b>';
+		$this->_b = '</b>';
+
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -61,6 +66,10 @@ class K8Short
 
 		#[K8_SH_GAMING]
 		add_shortcode( 'K8_SH_GAMING', array( $this, 'gaming') );
+
+		#[K8_SH_COMPANY]
+		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
+		
 
 	}
 
@@ -399,6 +408,31 @@ class K8Short
 			));
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	// [K8_SH_COMPANY]
+	public function company( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['vpnid'];
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$postzz = get_posts(array(
+				'numberposts'	=> 1,
+				'post_type'		=> 'post',
+				'meta_key'		=> 'k8_acf_vpnid',
+				'meta_value'	=> $atts['vpnid']
+			));
+			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+		}
+		$k8_acf_verrechnung = get_field('k8_acf_verrechnung', $pid);
+		$unternehmen = get_the_terms( $pid, 'unternehmen' );
+		$vpnstandortelaender = get_the_terms( $pid, 'vpnstandortelaender' );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
