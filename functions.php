@@ -87,7 +87,7 @@ require get_template_directory() . '/inc/structure/sidebars.php';
 
 
 remove_action('load-update-core.php', 'wp_update_themes' );
-add_filter('pre_site_transient_update_themes', create_function( '$a', "return null;" ) );
+// add_filter('pre_site_transient_update_themes', create_function( '$a', "return null;" ) );
 # no auto updates (should be manual to prevent breaking stuff without noticing)
 add_filter( 'auto_update_theme', '__return_false' );
 add_filter( 'auto_update_plugin', '__return_false' );
