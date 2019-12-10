@@ -26,6 +26,9 @@ class K8Assets
 		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
 			wp_register_style( 'k8-boot4grid-css', get_template_directory_uri() . '/k8/assets/css/grid.min.css', array(), false, 'all' );
 			wp_enqueue_style( 'k8-boot4grid-css' );
+
+			wp_register_style( 'k8-vpn-security-css', get_template_directory_uri() . '/k8/assets/css/tpl/vpn-security.css', array(), false, 'all' );
+			wp_enqueue_style( 'k8-vpn-security-css' );
 		}
 
 		//SHORTCODE's JS & CSS
