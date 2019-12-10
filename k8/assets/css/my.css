@@ -62,6 +62,10 @@
 	overflow: hidden;
 }
 
+.k8_tbl-resp{
+	clear: both;
+}
+
 .k8-meta__tbl{
 	margin-top: 15px;
 	font-size: 16px;
@@ -1308,7 +1312,6 @@ END SCROLLBAR*/
 
 	.k8_tbl-resp{
 		overflow-x: auto;
-		clear: both;
 	}
 	.k8_tbl-resp table{
 		width: 100%;
