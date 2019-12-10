@@ -1308,6 +1308,7 @@ END SCROLLBAR*/
 
 	.k8_tbl-resp{
 		overflow-x: auto;
+		clear: both;
 	}
 	.k8_tbl-resp table{
 		width: 100%;
