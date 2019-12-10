@@ -1145,6 +1145,59 @@ END SCROLLBAR*/
 }
 
 
+
+.k8anim_brd-item{
+	position: absolute;
+	background-color: #00b2e2;
+	-webkit-transition: all 0s linear;
+	-o-transition: all 0s linear;
+	transition: all 0s linear;
+}
+.tp{
+	left: 0;
+	height: 5px;
+	width: 0%;
+	top: 0;
+}
+.rght{
+	right: 0;
+	top: 0;
+	width: 5px;
+	height: 0;
+}
+.bttm{
+	right: 0;
+	bottom: 0;
+	height: 5px;
+	width: 0;
+}
+.lft{
+	left: 0;
+	bottom: 0;
+	width: 5px;
+	height: 0;
+}
+
+.k8anim_brd.k8anim--visible .tp{
+	width: 100%;
+	transition-duration: 0.5s;
+}
+.k8anim_brd.k8anim--visible .rght{
+	height: 100%;
+	transition-delay: 0.5s;
+	transition-duration: 0.5s;
+}
+.k8anim_brd.k8anim--visible .bttm{
+	width: 100%;
+	transition-delay: 1s;
+	transition-duration: 0.5s;
+}
+.k8anim_brd.k8anim--visible .lft{
+	height: 100%;
+	transition-delay: 1.5s;
+	transition-duration: 0.5s;
+}
+
 @-webkit-keyframes linez {
   0% {
     width: 0%;
