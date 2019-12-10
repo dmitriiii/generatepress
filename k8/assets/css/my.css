@@ -599,7 +599,7 @@
 
 .w-scrns .k8-sl__itt a:after{
 	font-family: FontAwesome;
-  content: "\f00e";
+  content: "f00e";
 	position: absolute;
 	left: 50%;
 	top: 50%;
