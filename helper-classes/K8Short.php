@@ -174,7 +174,7 @@ class K8Short
 		ob_start();
 		$q_o = get_queried_object();
 		$k8_acf_faq = get_field('k8_acf_faq', $q_o->ID);
-		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq > 0 ) ) : ?>
+		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq ) > 0 ) : ?>
 			<div class="k8_accord-wrr">
 				<div class="k8_accord">
 					<?php
