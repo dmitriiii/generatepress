@@ -7,6 +7,10 @@ class K8Assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts') );
 		#add for admin dashboard
 		add_action('admin_enqueue_scripts', array($this, 'admin_style'));
+
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' ){
+			add_action( 'admin_head', array($this, 'acf_fix') );
+		}
 	}
 	public function load_scripts() {
 		
@@ -59,6 +63,18 @@ class K8Assets
 		// wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin.css');
 		wp_register_style( 'k8-admin-style-css', get_template_directory_uri() . '/k8/admin/css/k8-admin-style.css', array(), false, 'all' );
 		wp_enqueue_style( 'k8-admin-style-css' );
+	}
+
+	#Fix ACF fonts on vavt.de issue
+	public function acf_fix(){
+		$st_url = get_site_url();
+		echo	"<style type='text/css'>
+				    @font-face {
+							font-family: 'acf';
+							src: url( '$st_url/wp-content/plugins/advanced-custom-fields-pro/assets/font/acf.ttf');
+							src: url('$st_url/wp-content/plugins/advanced-custom-fields-pro/assets/font/acf.woff') format('woff');
+						}
+				    </style>";
 	}
 }
 new K8Assets;
