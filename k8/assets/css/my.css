@@ -463,6 +463,7 @@
 /*SLIDER*/
 .k8-sl__wrr{
 	position: relative;
+	clear: both;
 }
 
 .k8-sl__wrr:hover .k8-sl__next{
