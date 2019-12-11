@@ -87,7 +87,7 @@ jQuery(document).ready(function($){
 				infinite: false,
 				slidesToShow: 3,
 				slidesToScroll: 1,
-				autoplay: true,
+				autoplay: false,
 				centerMode: false,
 				variableWidth: false,
 				prevArrow: $prev,
