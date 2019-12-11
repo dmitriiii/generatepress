@@ -2,7 +2,7 @@
 class K8Acf
 {
 	public $f_id;
-	
+
 	function __construct(){
 		$this->f_id = array(
 			'5dde6878b95b0'
@@ -909,7 +909,7 @@ class K8Acf
 									'id' => '',
 								),
 								'return_format' => 'id',
-								'preview_size' => 'thumbnail',
+								'preview_size' => 'large',
 								'library' => 'all',
 								'min_width' => '',
 								'min_height' => '',

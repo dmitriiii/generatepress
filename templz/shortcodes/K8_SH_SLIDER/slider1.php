@@ -1,4 +1,4 @@
-<?php 
+<?php
 if( isset( $rows ) && is_array( $rows ) && count( $rows ) > 0 ) : ?>
 	<div class="k8-sl__wrr k8-dwnd__sl w-scrns k8anim k8anim_brd mtb-40">
 		<span class="k8anim_brd-item tp"></span>
@@ -13,11 +13,11 @@ if( isset( $rows ) && is_array( $rows ) && count( $rows ) > 0 ) : ?>
 				<div>
 					<div class="k8-sl__itt">
 						<a href="<?php echo K8Help::getImgUrl( $sld['image'], 'full' ); ?>" data-lightbox="roadtrip">
-							<?php 
+							<?php
 								echo K8Html::getImgHtml(array(
 									'img_id' => $sld['image'],
 									'size' => array(300,300),
-								)); 
+								));
 							?>
 						</a>
 						<?php echo $sld['text']; ?>
