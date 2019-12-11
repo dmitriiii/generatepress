@@ -40,11 +40,7 @@ class K8Assets
 			wp_enqueue_script( 'k8-recaptcha-js' );
 		}
 
-		#Template for Security Page
-		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
-			wp_enqueue_style( 'k8-boot4grid-css' );
-			wp_enqueue_style( 'k8-vpn-security-css' );
-		}
+		
 
 		#Template with IP detection
 		if( is_page_template( 'k8tpl-ip-test.php' ) ){
@@ -59,7 +55,11 @@ class K8Assets
 		));
 		wp_enqueue_script('reacher89-my-js');
 
-		
+		#Template for Security Page
+		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
+			wp_enqueue_style( 'k8-boot4grid-css' );
+			wp_enqueue_style( 'k8-vpn-security-css' );
+		}
 	}
 
 	#add css for admin dashboard
