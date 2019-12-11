@@ -156,12 +156,12 @@ get_header(); ?>
 
 							global $wp;
 							$curr_url = home_url( $wp->request ) . '/';
-	
+
 							// echo '<pre style="display: none;">';
 							// print_r( $curr_url );
 							// echo '</pre>';
 
-							
+
 
 							// echo '<pre>';
 							// print_r( unserialize($pm['wppr_pros'][0]) );
@@ -191,8 +191,8 @@ get_header(); ?>
 								<div class="dwnd__info-1 fx-40">
 
 									<div class="k8_sticky">
-										
-									
+
+
 										<?php
 										echo K8Html::getButt(
 											array(
@@ -252,17 +252,17 @@ get_header(); ?>
 												endforeach; ?>
 											</div>
 										<?php
-										endif;	
+										endif;
 
 
 
 
-										
+
 
 										if (is_array($wppr_links) && count($wppr_links)>0) :
 											$c = 0;
-											foreach ($wppr_links as $k => $v) : 
-												if( $c>= 1 ) : 
+											foreach ($wppr_links as $k => $v) :
+												if( $c>= 1 ) :
 													break;
 												endif; ?>
 												<p>
@@ -275,7 +275,7 @@ get_header(); ?>
 												$c++;
 											endforeach;
 										endif; ?>
-									
+
 									</div>
 								</div><!-- .dwnd__info-1 fx-40 -->
 								<div class="dwnd__info-2 fx-60">
@@ -284,7 +284,7 @@ get_header(); ?>
 							</div>
 
 							<!-- PROS&CONS -->
-							<?php 
+							<?php
 							if ( $k8_acf_dwn_title1 ):
 								echo sprintf('<div class="dwnd"><h3>%s</h3></div>',$k8_acf_dwn_title1);
 							endif; ?>
@@ -362,7 +362,7 @@ get_header(); ?>
 											?>
 											<div>
 												<div class="k8-sl__itt">
-													<?php 
+													<?php
 													echo K8Html::getImgHtml(array(
 														'img_id' => get_post_thumbnail_id( $ambieter ),
 														'size' => 'thumbnail',
@@ -378,7 +378,7 @@ get_header(); ?>
 														<p>
 															<?php echo K8Help::excerpt(20); ?>
 														</p>
-														<?php 
+														<?php
 														echo K8Html::getButt(
 															array(
 																'class'   => 'dwnd__butt sm',
@@ -529,7 +529,7 @@ get_header(); ?>
 												<?php
 												if ($k8_acf_dwn_her_home): ?>
 													<br>
-													<a target="_blank" href="<?php echo $k8_acf_dwn_her_home; ?>">Zur Homepage des Herstellers</a>
+													<a rel="noopener nofollow" target="_blank" href="<?php echo $k8_acf_dwn_her_home; ?>">Zur Homepage des Herstellers</a>
 												<?php
 												endif ?>
 											</td>
@@ -554,8 +554,8 @@ get_header(); ?>
 									<?php
 									endif;?>
 								</table>
-							
-	
+
+
 								<!-- SCHEMA ORG-->
 								<script type="application/ld+json">{
 									"@context":"http:\/\/schema.org\/",
@@ -665,7 +665,7 @@ get_header(); ?>
 
 								<?php
 								the_content();
-									
+
 								if ( $k8_acf_dwn_title3 ):
 									echo sprintf('<h3>%s</h3>',$k8_acf_dwn_title3);
 								endif;
@@ -696,7 +696,7 @@ get_header(); ?>
 
 
 								</form>
-							
+
 							</div><!-- .dwnd -->
 						</div><!-- .entry-content -->
 
