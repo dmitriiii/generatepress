@@ -534,7 +534,12 @@
 	opacity: 0.3;
 }
 
+
+
 /*SLIDER WITH SCREENSHOTS*/
+.slick-list{
+	width: 100%;
+}
 
 .w-scrns{
 	background-color: #eee;
