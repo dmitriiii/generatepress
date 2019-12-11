@@ -40,13 +40,6 @@ class K8Assets
 			wp_enqueue_script( 'k8-recaptcha-js' );
 		}
 
-		
-
-		#Template with IP detection
-		if( is_page_template( 'k8tpl-ip-test.php' ) ){
-			wp_enqueue_style( 'k8-ip-test-css' );
-		}
-
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,1000), 'all' );
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,1000), true );
@@ -54,6 +47,11 @@ class K8Assets
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		));
 		wp_enqueue_script('reacher89-my-js');
+
+		#Template with IP detection
+		if( is_page_template( 'k8tpl-ip-test.php' ) ){
+			wp_enqueue_style( 'k8-ip-test-css' );
+		}
 
 		#Template for Security Page
 		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
