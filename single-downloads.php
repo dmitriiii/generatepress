@@ -411,34 +411,9 @@ get_header(); ?>
 								echo sprintf('<div class="dwnd"><h3>%s</h3></div>',$k8_acf_dwn_title2);
 							endif;
 
-							if( have_rows('k8_acf_dwn_slider') ):?>
-								<div class="k8-sl__wrr k8-dwnd__sl w-scrns">
-									<div class="k8-sl__control k8-sl__prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-									<div class="k8-sl__control k8-sl__next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-									<div class="k8-sl ">
+							echo do_shortcode( "[K8_SH_SLIDER]" );
 
-										<?php
-										while ( have_rows('k8_acf_dwn_slider') ) : the_row(); 
-											$im = get_sub_field('image'); ?>
-											<div>
-												<div class="k8-sl__itt">
-													<a href="<?php echo K8Help::getImgUrl( $im, 'full' ); ?>" data-lightbox="roadtrip">
-														<?php 
-															echo K8Html::getImgHtml(array(
-																'img_id' => $im,
-																'size' => 'medium',
-															)); 
-														?>
-													</a>
-													<?php the_sub_field('text'); ?>
-												</div>
-											</div>
-											<?php
-										endwhile; ?>
-									</div>
-								</div>
-							<?php
-							endif; ?>
+							?>
 
 
 

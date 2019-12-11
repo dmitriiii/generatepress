@@ -73,14 +73,17 @@ class K8Short
 		#[K8_SH_COMPANY]
 		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
 		
-		#K8_SH_APPS
+		#[K8_SH_APPS]
 		add_shortcode( 'K8_SH_APPS', array( $this, 'apps') );
 
-		#K8_SH_SUPPORT
+		#[K8_SH_SUPPORT]
 		add_shortcode( 'K8_SH_SUPPORT', array( $this, 'support') );
 
-		#K8_SH_PRIVACY
+		#[K8_SH_PRIVACY]
 		add_shortcode( 'K8_SH_PRIVACY', array( $this, 'privacy') );
+
+		#[K8_SH_SLIDER]
+		add_shortcode( 'K8_SH_SLIDER', array( $this, 'slider') );
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -171,7 +174,7 @@ class K8Short
 		ob_start();
 		$q_o = get_queried_object();
 		$k8_acf_faq = get_field('k8_acf_faq', $q_o->ID);
-		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq > 0 ) ) : ?>
+		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq ) > 0 ) : ?>
 			<div class="k8_accord-wrr">
 				<div class="k8_accord">
 					<?php
@@ -515,6 +518,22 @@ class K8Short
 			));
 			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
 		}
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_SLIDER]
+	public function slider( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'slider1',
+			'pid' => get_the_ID(),
+		), $atts );
+		$pid = (int)$a['pid'];
+		$rows = get_field('k8_acf_dwn_slider', $pid);
+		wp_enqueue_script( 'k8-slick-js' );
+		wp_enqueue_style( 'k8-slick-css' );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();

@@ -10,6 +10,7 @@ class K8Acf
 		add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
 		add_action( 'acf/init', array( $this, 'user_info' ) );
 		add_action( 'acf/init', array( $this, 'faq' ) );
+		add_action( 'acf/init', array( $this, 'slider' ) );
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
@@ -465,7 +466,7 @@ class K8Acf
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => 'ms',
-						'min' => 1,
+						'min' => 0,
 						'max' => 999,
 						'step' => '',
 					),
@@ -486,7 +487,7 @@ class K8Acf
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => 'ms',
-						'min' => 1,
+						'min' => 0,
 						'max' => 999,
 						'step' => '',
 					),
@@ -853,6 +854,130 @@ class K8Acf
 							'param' => 'post_type',
 							'operator' => '==',
 							'value' => 'affcoups_coupon',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+		endif;
+	}
+
+	# Slider Shortcode
+	public function slider(){
+		if( function_exists('acf_add_local_field_group') ):
+			acf_add_local_field_group(array(
+				'key' => 'group_5d6798ce9ae56',
+				'title' => 'Slider',
+				'fields' => array(
+					array(
+						'key' => 'field_5d6798f45d94b',
+						'label' => 'Slider',
+						'name' => 'k8_acf_dwn_slider',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'table',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5d67991a5d94c',
+								'label' => 'Image',
+								'name' => 'image',
+								'type' => 'image',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'return_format' => 'id',
+								'preview_size' => 'thumbnail',
+								'library' => 'all',
+								'min_width' => '',
+								'min_height' => '',
+								'min_size' => '',
+								'max_width' => '',
+								'max_height' => '',
+								'max_size' => '',
+								'mime_types' => '',
+							),
+							array(
+								'key' => 'field_5da424770271f',
+								'label' => 'text',
+								'name' => 'text',
+								'type' => 'wysiwyg',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'tabs' => 'all',
+								'toolbar' => 'full',
+								'media_upload' => 1,
+								'delay' => 0,
+							),
+						),
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'post',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '==',
+							'value' => 'category:anbieter',
+						),
+					),
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'downloads',
+						),
+					),
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'page',
+						),
+					),
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'post',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '==',
+							'value' => 'category:vpn-anbieter',
 						),
 					),
 				),
