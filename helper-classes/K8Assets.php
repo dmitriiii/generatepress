@@ -15,8 +15,19 @@ class K8Assets
 	public function load_scripts() {
 		
 		wp_register_script( 'k8-slick-js', get_template_directory_uri() . '/k8/assets/js/slick.min.js', array('jquery'), null, false );
-		wp_register_script( 'k8-sticky-js', get_template_directory_uri() . '/k8/assets/js/jquery.sticky-kit.min.js', array('jquery'), null, false );
 		wp_register_style( 'k8-slick-css', get_template_directory_uri() . '/k8/assets/css/slick.css', array(), false, 'all' );
+		wp_register_script( 'k8-sticky-js', get_template_directory_uri() . '/k8/assets/js/jquery.sticky-kit.min.js', array('jquery'), null, false );
+
+		wp_register_style( 'k8-boot4grid-css', get_template_directory_uri() . '/k8/assets/css/grid.min.css', array(), false, 'all' );
+
+		wp_register_style( 'k8-vpn-security-css', get_template_directory_uri() . '/k8/assets/css/tpl/vpn-security.css', array(), false, 'all' );
+		wp_register_style( 'k8-ip-test-css', get_template_directory_uri() . '/k8/assets/css/tpl/ip-test.css', array(), false, 'all' );
+
+		#SHORTCODE's JS & CSS
+		#[K8_SH_SPEEDTEST]
+		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
+		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), rand(1,1000), 'all' );
+		#END SHORTCODE's JS & CSS
 
 		if( is_single() && get_post_type()=='downloads' ){
 			wp_enqueue_script( 'k8-slick-js' );
@@ -31,20 +42,16 @@ class K8Assets
 
 		#Template for Security Page
 		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
-			wp_register_style( 'k8-boot4grid-css', get_template_directory_uri() . '/k8/assets/css/grid.min.css', array(), false, 'all' );
 			wp_enqueue_style( 'k8-boot4grid-css' );
-
-			wp_register_style( 'k8-vpn-security-css', get_template_directory_uri() . '/k8/assets/css/tpl/vpn-security.css', array(), false, 'all' );
 			wp_enqueue_style( 'k8-vpn-security-css' );
 		}
 
-		//SHORTCODE's JS & CSS
-		#[K8_SH_SPEEDTEST]
-		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
-		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), rand(1,1000), 'all' );
+		#Template with IP detection
+		if( is_page_template( 'k8tpl-ip-test.php' ) ){
+			wp_enqueue_style( 'k8-ip-test-css' );
+		}
 
-
-		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), rand(1,1000), 'all' );
+		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,1000), 'all' );
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,1000), true );
 		wp_localize_script( 'reacher89-my-js', 'k8All', array(
@@ -52,15 +59,11 @@ class K8Assets
 		));
 		wp_enqueue_script('reacher89-my-js');
 
-		#Template with IP detection
-		if( is_page_template( 'k8tpl-ip-test.php' ) ){
-			wp_register_style( 'k8-ip-test-css', get_template_directory_uri() . '/k8/assets/css/tpl/ip-test.css', array(), false, 'all' );
-			wp_enqueue_style( 'k8-ip-test-css' );
-		}
+		
 	}
+
 	#add css for admin dashboard
 	public function admin_style(){
-		// wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin.css');
 		wp_register_style( 'k8-admin-style-css', get_template_directory_uri() . '/k8/admin/css/k8-admin-style.css', array(), false, 'all' );
 		wp_enqueue_style( 'k8-admin-style-css' );
 	}
