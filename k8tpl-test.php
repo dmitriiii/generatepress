@@ -56,33 +56,33 @@ get_header();
 
 
 
-	$args = array(
-		'post_status' => 'publish',
-		'order'       => 'DESC',
-		'orderby'     => 'date',
-		'posts_per_page' => -1,
-		'offset'  => 0,
-		'meta_query'     => array(
-			// array(
-			// 	'key'     => 'color',
-			// 	'value'   => 'blue',
-			// 	'type'    => 'CHAR',
-			// 	'compare' => '=',
-			// ),
-			array(
-				'type' => 'NUMERIC',
-				'key'     => 'k8_acf_vpnid',
-				'value'   => array( 1, 5 ),
-				'compare' => 'IN',
-			),
-		),
-	);
+// 	$args = array(
+// 		'post_status' => 'publish',
+// 		'order'       => 'DESC',
+// 		'orderby'     => 'date',
+// 		'posts_per_page' => -1,
+// 		'offset'  => 0,
+// 		'meta_query'     => array(
+// 			// array(
+// 			// 	'key'     => 'color',
+// 			// 	'value'   => 'blue',
+// 			// 	'type'    => 'CHAR',
+// 			// 	'compare' => '=',
+// 			// ),
+// 			array(
+// 				'type' => 'NUMERIC',
+// 				'key'     => 'k8_acf_vpnid',
+// 				'value'   => array( 1, 5 ),
+// 				'compare' => 'IN',
+// 			),
+// 		),
+// 	);
 
-$queryyy = new WP_Query( $args );
+// $queryyy = new WP_Query( $args );
 
-echo '<pre style>';
-print_r( $queryyy );
-echo '</pre>';
+// echo '<pre style>';
+// print_r( $queryyy );
+// echo '</pre>';
 
 
 

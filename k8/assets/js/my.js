@@ -108,6 +108,12 @@ jQuery(document).ready(function($){
 		});
 	}
 
+	//GALLERY
+	if( $('.k8-lg__wrr').length > 0 ){
+		$('.k8-lg__wrr').lightGallery({
+		  selector: '.k8-lg__item'
+		});
+	}
 
 	// STICKY
 	if( $('.k8_sticky').length > 0 ){
