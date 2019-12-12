@@ -14,7 +14,7 @@ get_header(); ?>
 
 
 <?php
-if( has_category( 'neuigkeiten' ) ) :
+if( in_category( 'neuigkeiten' ) || in_category( 'news' ) ) :
 	$pid = get_the_ID(); ?>
 	<script type="application/ld+json">
 	<?php
