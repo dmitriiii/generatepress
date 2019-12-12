@@ -1123,7 +1123,17 @@ END SCROLLBAR*/
 	content: "";
 	position: absolute;
 	left: 0;
-	width: 100%;
+	width: 50%;
+	background-color: #00B2E2;
+	z-index: 9;
+	height: 100%;
+	top: 0;
+}
+.k8anim_th th::after{
+	content: "";
+	position: absolute;
+	right: 0;
+	width: 50%;
 	background-color: #00B2E2;
 	z-index: 9;
 	height: 100%;
@@ -1136,22 +1146,13 @@ END SCROLLBAR*/
 
 	-webkit-box-shadow: 0 0 20px #ccc;
 	box-shadow: 0 0 20px #ccc;
-	
-/* 	-webkit-transform: translateY(0px);
-	-ms-transform: translateY(0px);
-	-o-transform: translateY(0px);
-	transform: translateY(0px);
-	opacity: 1;
-	visibility: visible; */
 
 }
-.k8anim_th.k8anim--visible th::before{
-	
-	-webkit-animation: thh 1.5s ease;
-	animation: thh 1.5s ease;
+.k8anim_th.k8anim--visible th::before,
+.k8anim_th.k8anim--visible th::after{
+	-webkit-animation: thh 0.7s ease;
+	animation: thh 0.7s ease;
 }
-
-
 
 .k8anim_brd-item{
 	position: absolute;
@@ -1232,24 +1233,47 @@ END SCROLLBAR*/
    	width: 0%;
   }
   50% {
-     width: 70%;
+     width: 35%;
   }
   100% {
-    width: 100%;
+    width: 50%;
   }
 }
 @keyframes thh {
+ 	0% {
+   	width: 0%;
+  }
+  50% {
+     width: 35%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+/* @-webkit-keyframes thh-r {
   0% {
    	width: 0%;
   }
   50% {
-     width: 70%;
+     width: 35%;
   }
   100% {
-    width: 100%;
+    width: 50%;
   }
 }
-
+@keyframes thh-r {
+ 	0% {
+   	width: 0%;
+  }
+  50% {
+     width: 35%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+ */
 
 @-webkit-keyframes pls {
   0% {
