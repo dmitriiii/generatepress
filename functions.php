@@ -94,10 +94,10 @@ add_filter( 'auto_update_plugin', '__return_false' );
 
 
 
-add_filter( 'user_has_cap', function( $user_caps, $required_caps, $args, $user ) {
-	// write_log( $user->data->user_email );
-	if ( $user->data->user_email !== 'dk@geroy.ooo' ) {
-		$user_caps['view_query_monitor'] = false;
-	}
-	return $user_caps;
-}, 10, 4 );
+// add_filter( 'user_has_cap', function( $user_caps, $required_caps, $args, $user ) {
+// 	// write_log( $user->data->user_email );
+// 	if ( $user->data->user_email !== 'dk@geroy.ooo' ) {
+// 		$user_caps['view_query_monitor'] = false;
+// 	}
+// 	return $user_caps;
+// }, 10, 4 );
