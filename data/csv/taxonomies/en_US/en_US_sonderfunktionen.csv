@@ -1,0 +1,24 @@
+alwayson-server,Always On Server
+autom-ip-wechsel,IP changing
+dedicated-server,Dedicated Server
+eigene-dns,Own DNS
+firewall,Firewall
+geteilte-ipadressen,Shared IP
+ipv4-klassisch,IPv4
+ipv6-neu,IPv6 (new)
+keine-logfiles,No logfiles
+loadbalancing,Load Balancing
+malwarefilter,Malware filter
+multi-hop-vpn,Multi Hop VPN
+neurorouting,NeuroRouting
+obfsproxy,Obfuscation (Mask)
+own-hardware,Own Hardware
+own-ip-adresses,Own IP adresses
+own-torrent-server,Own Torrent Server
+portweiterleitungen,Port forwarding
+ram-disk-k-hdd,RAM-Disc (k.HDD)
+smartdns,Smart DNS
+statische-ipadresse,Static IP
+tracking-blocker,Tracking Blocker
+virtuelle-server,Virtual servers
+vpn-zu-tor,VPN with TOR

@@ -3,7 +3,42 @@
 get_header();
 
 
+#Importing tax translates
+// $k8_loc = get_locale();
+// $k8_path = get_template_directory() . '/data/csv/taxonomies/' . $k8_loc;
+// $k8_files = array_diff(scandir($k8_path), array('.', '..'));
+// $tax_arr = [];
+// echo '<pre>';
+// print_r( $k8_loc );
+// echo '<br>';
+// print_r( $k8_path );
+// echo '<br>';
+// print_r( $k8_files );
+// echo '</pre>';
+// if( is_array($k8_files) && count($k8_files) > 0 ){
+// 	foreach ($k8_files as $k8_file) {
+// 		$tax = str_replace( '.csv', '', $k8_file );
+// 		$tax = str_replace( $k8_loc .'_', '', $tax );
+// 		$tax_arr[] = $tax;
+// 		echo '<h2>' . $tax . '</h2>' ;
+// 		if (($handle = fopen( $k8_path . '/' . $k8_file, "r" )) !== FALSE) {
+// 			while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+// 				$exist = get_term_by( 'slug', $data[0], $tax, OBJECT);
+// 				if ( $exist ) {
+// 					$argzz = array(
+// 						'name' => $data[1],
+// 					);
+// 					wp_update_term( $exist->term_id, $tax, $argzz );
+// 				}
+// 			}
+// 			fclose($handle);
+// 		}
+// 		echo '<hr>';
+// 	}
+// }
 
+
+#Importing speedtest data
 # $data[1] - $k8_acf_vpnid
 # $data[5] - $k8_acf_vpndet_down
 # $data[6] - $k8_acf_vpndet_up
