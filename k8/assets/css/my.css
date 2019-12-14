@@ -1416,7 +1416,7 @@ END SCROLLBAR*/
 	.k8-sec3__it-tbl{
 		display: block;
 	}
-	.k8-sec3__it-tbl .tbl-cell{
+	body .k8-sec3__it-tbl .tbl-cell{
 		display: block;
 		width: 100%;
 	}
