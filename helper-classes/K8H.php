@@ -26,4 +26,29 @@ class K8H
 		$lab_arr = array_column( $args['data'], $args['label'] );
 		return "<{$args['html_tag']}>" . implode( "</{$args['html_tag']}>, <{$args['html_tag']}>", $lab_arr ) . "</{$args['html_tag']}>";
 	}
+
+
+
+	static function shortPrep( $a, $atts ){
+		$pid_arr = array();
+		#If passed list of vpnids
+		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+			$vpnid_arr = explode(',', $a['vpnid']);
+			$vpnidPid =	json_decode( file_get_contents( K8_PATH_LOC . '/' . 'vpnidPid.json'), true );
+			foreach( $vpnid_arr as $vpnid ){
+				$pos = array_search((int)$vpnid, array_column($vpnidPid, 'vpnid'));
+				if( $pos !== false ){
+					$pid_arr[] = $vpnidPid[$pos];
+				}
+			}
+		}
+		#without vpnid list just current post id
+		else{
+			$pid_arr[] = array(
+				'vpnid' => get_field( 'k8_acf_vpnid', (int)$a['vpnid'] ),
+				'pid' => (int)$a['vpnid']
+			);
+		}
+		return $pid_arr;
+	}
 }

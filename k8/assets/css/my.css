@@ -38,6 +38,15 @@
 	font-size: 17px;
 }
 
+.k8_compare-tbl mark{
+	padding: 10px;
+	display: block;
+	text-align: center;
+	color: #fff;
+	background: #3C9;
+	font-weight: bold;
+	font-size: 14px;
+}
 
 
 

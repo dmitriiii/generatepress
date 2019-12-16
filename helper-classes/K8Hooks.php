@@ -12,6 +12,9 @@ class K8Hooks
 		add_action('after_setup_theme', array($this,'setup_theme'));
 		#Remove ACF for others
 		add_action( 'admin_menu', array( $this, 'acf_rmv' ), 100 );
+
+		#Create json array of anbieter vpnid=>postid vallues
+		add_action( 'save_post', array( $this, 'onSavePost' ), 10, 3 );
 	}
 	public function upload_mimes( $mimes ){
 		$mimes['exe'] = 'application/octet-stream';
@@ -48,6 +51,41 @@ class K8Hooks
 		if ($current_user->user_email != 'dk@geroy.ooo'){
 	    remove_menu_page( 'edit.php?post_type=acf-field-group' );
 	  }
+	}
+
+	#Create json array of anbieter vpnid=>postid vallues
+	public function onSavePost( $post_ID, $post, $update ) {
+		if ( !$update ){
+      return;
+    }
+    if ( 'post' !== $post->post_type ) {
+      return;
+    }
+    if( !in_category( array( 'anbieter', 'vpn-anbieter' ), $post_ID ) ){
+      return;
+    }
+    $args = array(
+			'post_type'   => 'post',
+			'post_status' => array(
+				'publish'
+			),
+			'category_name' => 'anbieter,vpn-anbieter',
+			'posts_per_page' => -1,
+		);
+		$querr = new WP_Query( $args );
+	 	if ( $querr->have_posts() ) :
+			$vpnidPid_arr = array();
+			while ( $querr->have_posts() ) : $querr->the_post();
+				$pid = get_the_ID();
+				$k8_acf_vpnid = get_field( 'k8_acf_vpnid', $pid );
+				if( $k8_acf_vpnid )
+					$vpnidPid_arr[] = array( 'vpnid' => $k8_acf_vpnid, 'pid' => $pid );
+			endwhile;
+			wp_reset_postdata();
+		endif;
+		$fp = fopen( K8_PATH_LOC . '/vpnidPid.json' , 'w');
+		fwrite($fp, json_encode($vpnidPid_arr));
+		fclose($fp);
 	}
 }
 new K8Hooks();

@@ -14,6 +14,9 @@ class K8Short
 	public $_b;
 	public $s;
 	public $_s;
+	public $mark1;
+	public $_mark1;
+
 
 	public function __construct( $atts ){
 
@@ -30,6 +33,8 @@ class K8Short
 		$this->_b = '</b>';
 		$this->s = '<strong>';
 		$this->_s = '</strong>';
+		$this->mark1 = '<mark>';
+		$this->_mark1 = '</mark>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -49,7 +54,7 @@ class K8Short
 		#[K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_STREAMING', array( $this, 'streaming' ) );
 
-		#[K8_SH_STREAMING]
+		#[K8_SH_DOWNLOAD]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
 		#[K8_SH_FEATURES]
@@ -262,16 +267,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -284,16 +280,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		$termz = get_terms( array(
 	    'taxonomy' => 'sonderfunktionen',
 	    'hide_empty' => false,
@@ -310,16 +297,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		$valz = array(
 			'asuswrt'=>'ASUS',
 			'openwrt'=>'Gl-iNet',
@@ -327,7 +305,6 @@ class K8Short
 			'tomato'=>'Tomato',
 			'openvpn-udp'=>'Vilfo Router'
 		);
-		$new_valz_arr = array();
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -340,16 +317,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -411,16 +379,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -458,66 +417,33 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
-		$vpnprotokolle = get_the_terms( $pid, 'vpnprotokolle' );
-		$betriebssystem = get_the_terms( $pid, 'betriebssystem' );
-		$sprache = get_the_terms( $pid, 'sprache' );
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
-	#K8_SH_SUPPORT
+	#[K8_SH_SUPPORT]
 	public function support( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
-		$sprache = get_the_terms( $pid, 'sprache' );
-		$kundenservice = get_the_terms( $pid, 'kundenservice' );
-		$k8_acf_lang_kund = get_field('k8_acf_lang_kund', $pid);
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
 
-	#K8_SH_PRIVACY
+	#[K8_SH_PRIVACY]
 	public function privacy( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
