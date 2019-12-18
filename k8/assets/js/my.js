@@ -4,35 +4,35 @@ jQuery(document).ready(function($){
 	function triggerCountUp(elemId,from,to){
 		var options = {  
 			useEasing: true,
-		  useGrouping: true,
-		  separator: ',',
-		  decimal: '.',
-		  prefix: '',
-		  suffix: ''
+			useGrouping: true,
+			separator: ',',
+			decimal: '.',
+			prefix: '',
+			suffix: ''
 		};
 		var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
 		counts.start();
 	}
 	const k8anim = document.querySelectorAll('.k8anim');
 	observer = new IntersectionObserver((entries) => {
-	  entries.forEach(entry => {
-	    if (entry.intersectionRatio > 0) {
-	      entry.target.classList.add('k8anim--visible');
+		entries.forEach(entry => {
+			if (entry.intersectionRatio > 0) {
+				entry.target.classList.add('k8anim--visible');
 
-	      //Trigger countTo Animation
-	      var $el = $(entry.target);
-	      if (typeof $el.data('k8countup') !== 'undefined') {
-	      	// console.log($el);
-	      	triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
-	      }
-	    } else {
-	      entry.target.classList.remove('k8anim--visible');
-	    }
-	  });
+				//Trigger countTo Animation
+				var $el = $(entry.target);
+				if (typeof $el.data('k8countup') !== 'undefined') {
+					// console.log($el);
+					triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
+				}
+			} else {
+				entry.target.classList.remove('k8anim--visible');
+			}
+		});
 	});
 
 	k8anim.forEach(image => {
-	  observer.observe(image);
+		observer.observe(image);
 	});
 
 
@@ -55,6 +55,23 @@ jQuery(document).ready(function($){
 	});
 
 
+	//Set table width equal cells
+	(function() {
+		$('.k8_compare-tbl').each(function(index, el) {
+			var	$tbl = $(el),
+			$tr =	$tbl.find('tbody>tr:nth-child(2)'),
+			$tds = $tr.find('td'),
+			amnt = $tds.length -1;
+			if( amnt > 2 ){
+				var wdth = 70 / amnt;
+				$tds.each(function(index, el) {
+					if( index !== 0 ){
+						$(el).css('width', wdth + '%');
+					}
+				});
+			}
+		});
+	})();
 
 
 	// load youtube iframe on click
@@ -111,7 +128,7 @@ jQuery(document).ready(function($){
 	//GALLERY
 	if( $('.k8-lg__wrr').length > 0 ){
 		$('.k8-lg__wrr').lightGallery({
-		  selector: '.k8-lg__item'
+			selector: '.k8-lg__item'
 		});
 	}
 
