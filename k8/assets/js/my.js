@@ -62,7 +62,7 @@ jQuery(document).ready(function($){
 			$tr =	$tbl.find('tbody>tr:nth-child(2)'),
 			$tds = $tr.find('td'),
 			amnt = $tds.length -1;
-			if( amnt > 2 ){
+			if( $tds.length > 2 ){
 				var wdth = 70 / amnt;
 				$tds.each(function(index, el) {
 					if( index !== 0 ){
