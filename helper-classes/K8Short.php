@@ -89,6 +89,25 @@ class K8Short
 
 		#[K8_SH_SLIDER]
 		add_shortcode( 'K8_SH_SLIDER', array( $this, 'slider') );
+
+		#[K8_SH_VIDEOVPN]
+		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
+	}
+
+	/**
+	 * [td description]
+	 * @param  [type] $args [
+	 *   'class' - str
+	 * ]
+	 * @return [type]       [description]
+	 */
+	private function td( $args = array() ){
+		$str = "<td class='%s'>";
+		$class = '';
+		if( isset($args['class']) ){
+			$class = $args['class'];
+		}
+		return sprintf( $str, $class );
 	}
 
 	public function tbl_start( $attr = array() ){
@@ -462,6 +481,19 @@ class K8Short
 		wp_enqueue_style( 'k8-libs-lightgallery-css' );
 		wp_enqueue_script( 'k8-slick-js' );
 		wp_enqueue_script( 'k8-libs-lightgallery-js' );
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	#[K8_SH_VIDEOVPN]
+	public function videovpn( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();

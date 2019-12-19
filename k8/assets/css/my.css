@@ -55,6 +55,14 @@
 }
 
 
+.k8-path{
+	fill: #CCCCCC;
+}
+
+.act .k8-path{
+	fill: #33CC99;
+}
+
 
 .tbl{
 	display: table;
