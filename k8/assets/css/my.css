@@ -36,16 +36,22 @@
 	/* color: #fff; */
 	/* background-color: #fff; */
 	font-size: 17px;
+	border: none;
+	border-collapse: collapse;
+}
+.k8_compare-tbl td{
+	border-collapse: collapse;
+	border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .k8_compare-tbl mark{
-	padding: 10px;
-	display: block;
-	text-align: center;
-	color: #fff;
-	background: #3C9;
-	font-weight: bold;
-	font-size: 14px;
+	padding: 6px 2px;
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: #3C9;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 
