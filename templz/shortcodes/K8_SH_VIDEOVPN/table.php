@@ -20,15 +20,22 @@ foreach ($srvcs as $it) {
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 foreach ( $pid_arr as $item ) :
 	echo $this->tr .
-				$this->td . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_td;
+				$this->td .
+					'<a href="' . get_permalink( $item['pid'] ) . '">' .
+						get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
+					'</a>' .
+				$this->_td;
 	foreach ( $srvcs as $srvc ) {
 		$k8_acf_vpndet_vid = get_field( 'k8_acf_vpndet_vid', $item['pid'] );
-		$valz = array_column($k8_acf_vpndet_vid, 'value');
-
-		echo ( (in_array($srvc['name'], $valz)) ? $this->td(['class'=>'act']) : $this->td() ) .
-			$srvc['icon'] . $this->_td;
+		if( is_array( $k8_acf_vpndet_vid ) && count( $k8_acf_vpndet_vid ) > 0 ){
+			$valz = array_column($k8_acf_vpndet_vid, 'value');
+			echo ( (in_array($srvc['name'], $valz)) ? $this->td(['class'=>'act']) : $this->td() ) .
+							$srvc['icon'] .
+						$this->_td;
+			continue;
+		}
+		echo $this->td() . $srvc['icon'] . $this->_td;
 	}
 	echo $this->_tr;
 endforeach;
 echo K8Html::tbl_end();
- ?>
