@@ -54,6 +54,18 @@
   font-size: 12px;
 }
 
+.k8_sh_videovpn a{
+	border-bottom: 1px dashed #207ac9;
+}
+
+.k8_sh_videovpn td:not(:first-child) {
+	font-size: 0;
+	padding: 0;
+}
+
+.k8_sh_videovpn svg{
+	max-height: 55px;
+}
 
 .k8-path{
 	fill: #CCCCCC;
