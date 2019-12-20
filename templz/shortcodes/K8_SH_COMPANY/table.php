@@ -37,7 +37,8 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 		$this->_tr;
 
 	echo	$this->tr . K8Html::tdHead( ['txt'=>__('Logfiles' , 'k8lang_domain')] ) .
-		$this->td . ( ( has_term( 'keine-logfiles', 'sonderfunktionen', $pid ) ) ? $this->true_icon : $this->false_icon ) . $this->_td .
+		( ( has_term( 'keine-logfiles', 'sonderfunktionen', $pid ) ) ? $this->td(['class'=>'k8-blu']) . $this->true_icon : $this->td(['class'=>'k8-grn']) . $this->false_icon ) .
+			$this->_td .
 	$this->_tr .
 
 	$this->tr . K8Html::tdHead( ['txt'=>__('Eigene DNS Server' , 'k8lang_domain')] ) .

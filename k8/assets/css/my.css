@@ -1072,7 +1072,12 @@
 /*END ACCORDION */
 
 
-
+.k8-blu path{
+	fill: #00B2E2;
+}
+.k8-grn path{
+	fill: #33CC99;
+}
 
 
 /*SCROLLBAR*/
