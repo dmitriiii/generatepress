@@ -237,18 +237,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
-		$pm =	get_post_meta( $pid );
-		$termz =	get_the_terms( $pid, 'anwendungen' );
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
