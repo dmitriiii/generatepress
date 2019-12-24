@@ -252,16 +252,7 @@ class K8Short
 			'vpnid' => get_the_ID(),
 			'ver' => 'de'
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -361,18 +352,19 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		if( $a['output'] == 'graphic1' ){
+			$pid = (int)$a['vpnid'];
+			if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
+				$postzz = get_posts(array(
+					'numberposts'	=> 1,
+					'post_type'		=> 'post',
+					'meta_key'		=> 'k8_acf_vpnid',
+					'meta_value'	=> $atts['vpnid']
+				));
+				( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
+			}
 			wp_enqueue_script('reacher89-countUp-min-js');
 			wp_enqueue_style('k8_sh_speedtest-css');
 		}
