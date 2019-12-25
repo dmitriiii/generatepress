@@ -23,6 +23,13 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 		foreach ($termz as $term):
 			echo $this->tr . K8Html::tdHead( ['txt'=>__($term->name , 'k8lang_domain')] );
 			foreach ($pid_arr as $item) {
+				if( $term->slug == 'virtuelle-server' ){
+					echo ( (has_term( $term->slug, $term->taxonomy, $item['pid'] ) ) ?
+							$this->td(['class'=>'k8-blu']) . $this->true_icon :
+							$this->td(['class'=>'k8-grn']) . $this->false_icon ) .
+				 		$this->_td;
+					continue;
+				}
 				echo $this->td .
 							((has_term( $term->slug, $term->taxonomy, $item['pid'] ) ) ? $this->true_icon : $this->false_icon) .
 						 $this->_td;
