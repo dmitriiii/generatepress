@@ -52,9 +52,9 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 	}
 	echo $this->_tr .
 
-	$this->tr . K8Html::tdHead( ['txt'=>__('Logfiles' , 'k8lang_domain')] );
+	$this->tr . K8Html::tdHead( ['txt'=>__('Keine Logfiles' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
-		echo ((has_term( 'keine-logfiles', 'sonderfunktionen', $item['pid'] ) ) ? $this->td(['class'=>'k8-blu']) . $this->true_icon : $this->td(['class'=>'k8-grn']) . $this->false_icon) .
+		echo ((has_term( 'keine-logfiles', 'sonderfunktionen', $item['pid'] ) ) ? $this->td . $this->true_icon : $this->td . $this->false_icon) .
 				 $this->_td;
 	}
 	echo $this->_tr .
