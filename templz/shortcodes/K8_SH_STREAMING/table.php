@@ -9,7 +9,7 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 
 	$this->tr . K8Html::tdHead( [
 		'format' => "<th colspan='".$span."'><span>%s</span></th>",
-		'txt' => __('Anonym im Internet' , 'k8lang_domain')
+		'txt' => __('Streaming von TV und Videoinhalten' , 'k8lang_domain')
 	] ) . $this->_tr;
 
 
