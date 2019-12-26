@@ -51,4 +51,69 @@ class K8H
 		}
 		return $pid_arr;
 	}
+
+
+	static function getPerMonth( $price, $duration ){
+		$avg = $price / $duration;
+		$avg = round( $avg, 2 );
+		return $avg;
+	}
+
+	#Show price comparison rows for table
+	static function priceCompare( $obj, $pid_arr ){
+		$fieldz = [
+			array(
+				'duration' => 'k8_acf_vpndet_durr1',
+				'price' => 'k8_acf_vpndet_prc1'
+			),
+			array(
+				'duration' => 'k8_acf_vpndet_durr2',
+				'price' => 'k8_acf_vpndet_prc2'
+			),
+			array(
+				'duration' => 'k8_acf_vpndet_durr3',
+				'price' => 'k8_acf_vpndet_prc3'
+			),
+			array(
+				'duration' => 'k8_acf_vpndet_durr4',
+				'price' => 'k8_acf_vpndet_prc4'
+			),
+		];
+
+		$drn_new = array();
+		foreach ( $pid_arr as $item ) {
+			foreach ( $fieldz as $v ){
+				if( get_field( $v['duration'], $item['pid'] ) )
+					$drn_new[] = get_field( $v['duration'], $item['pid'] );
+			}
+		}
+		sort( $drn_new );
+		$drn_new = array_unique($drn_new);
+		foreach ($drn_new as $row) :
+			echo $obj->tr .
+					 	$obj->td .
+					 		__( 'Tarif', 'k8lang_domain' ) . " ($row " . (( $row == 1 ) ? __( 'Monat', 'k8lang_domain' ) : __( 'Monate', 'k8lang_domain' ) ) . " )" .
+					 	$obj->_td;
+					 	foreach ( $pid_arr as $item ):
+					 		$hass = false;
+					 		foreach( $fieldz as $d ){
+					 			if( get_field( $d['duration'], $item['pid'] ) == $row ){
+					 				$prcc =	get_field( $d['price'], $item['pid'] );
+					 				$curcc = get_field( 'k8_acf_vpndet_curr', $item['pid'] )['label'];
+					 				echo $obj->td .
+					 					$obj->b . $prcc . $obj->_b . ' ' .
+										$obj->em . $curcc . $obj->_em .
+										(( $row != 1 ) ? " (" . __( 'pro Monat', 'k8lang_domain' ) . " " .
+																			$obj->b . self::getPerMonth( $prcc, $row ) . $obj->_b . " " . $curcc . ")" : '') .
+					 				$obj->_td;
+					 				$hass = true;
+					 			}
+					 		}
+					 		if( !$hass ){
+					 			echo $obj->td . $obj->false_icon . $obj->_td;
+					 		}
+					 	endforeach;
+			echo $obj->_tr;
+		endforeach;
+	}
 }

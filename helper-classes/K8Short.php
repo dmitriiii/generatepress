@@ -35,6 +35,8 @@ class K8Short
 		$this->_s = '</strong>';
 		$this->mark1 = '<mark>';
 		$this->_mark1 = '</mark>';
+		$this->em = '<em>';
+		$this->_em = '</em>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -139,17 +141,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = get_the_ID();
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
-		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -329,17 +321,7 @@ class K8Short
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
-		$pid = (int)$a['vpnid'];
-		if( isset( $atts['vpnid'] ) && !empty( $atts['vpnid'] ) ){
-			$postzz = get_posts(array(
-				'numberposts'	=> 1,
-				'post_type'		=> 'post',
-				'meta_key'		=> 'k8_acf_vpnid',
-				'meta_value'	=> $atts['vpnid']
-			));
-			( isset( $postzz[0]->ID ) ) ? $pid = $postzz[0]->ID : '';
-		}
-		$k8_acf_vpndet_curr =	get_field( 'k8_acf_vpndet_curr', $pid )['label'];
+		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
