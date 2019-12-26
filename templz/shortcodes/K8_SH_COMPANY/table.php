@@ -62,7 +62,7 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	foreach ($pid_arr as $item) {
 		$vpnstandortelaender = get_the_terms( $item['pid'], 'vpnstandortelaender' );
 		echo $this->td .
-					$this->b . count( $vpnstandortelaender ) . $this->_b .
+					$this->b . (( is_array( $vpnstandortelaender ) && count( $vpnstandortelaender ) > 0 ) ? count( $vpnstandortelaender ) : 0 )  . $this->_b .
 				 $this->_td;
 	}
 	echo $this->_tr .
