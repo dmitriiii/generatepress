@@ -2,6 +2,99 @@
 				Template Post Type: post, page */
 get_header();
 
+//$data[1] - 1
+//$data[2] - 2
+//$data[3] - 3
+//$data[4] - 4
+//$data[5] - 5
+//$data[6] - 6
+//$data[7] - 11
+//$data[8] - 12
+//$data[9] - 14
+//$data[10] - 16
+//$data[11] - 17
+//$data[12] - 18
+//$data[13] - 19
+//$data[14] - 20
+//$data[15] - 21
+//$data[16] - 22
+//$data[17] - 23
+//$data[18] - 24
+//$data[19] - 25
+//$data[20] - 26
+//$data[21] - 27
+//$data[22] - 28
+//$data[23] - 29
+//$data[24] - 30
+//$data[25] - 31
+//$data[26] - 32
+//$data[27] - 33
+//$data[28] - 35
+//$data[29] - 36
+//$data[30] - 38
+//$data[31] - 39
+//$data[32] - 41
+//$data[33] - 42
+//$data[34] - 43
+//$data[35] - 44
+//$data[36] - 45
+//$data[37] - 46
+//$data[38] - 47
+//$data[39] - 49
+//$data[40] - 50
+
+$vpn_names = [];
+$vpn_id_arr = [	0, 1, 2, 3, 4, 5, 6, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 38, 39, 41, 42, 43, 44, 45, 46, 47, 49, 50 ];
+// $combinedd = [];
+$srch = [];
+
+$tax_label = '';
+$taxx;
+
+
+$csv_file = K8_PATH_LOC . '/csv/countries-vpn.csv';
+$row = 0;
+if (($handle = fopen($csv_file, "r")) !== FALSE) {
+	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+		// if( $row >  )
+		// 	break;
+		
+		if( $row == 0 ){
+			$vpn_names = $data;
+			$row++;
+			continue;
+		}
+		
+		$srch =	array_keys($data, 'X');
+		$tax_label = $data[0];
+
+		$taxx = get_term_by( 'name', $tax_label, 'vpnstandortelaender' );
+
+
+		echo '<pre>';
+		print_r( $row );
+		echo '<hr>';
+		print_r( $taxx );
+		print_r( $srch );
+		print_r( $data );
+		print_r( $tax_label );
+		echo '</pre>';
+		
+		$row++;
+		
+
+
+	}
+	fclose($handle);
+}
+
+echo '<h2>VPN ID List</h2>';
+echo '<pre> ';
+print_r($vpn_id_arr );
+echo '</pre>';
+
+
+
 
 #Importing tax translates
 // $k8_loc = get_locale();
