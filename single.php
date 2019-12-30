@@ -17,7 +17,7 @@ get_header(); ?>
 $pidd = get_the_ID();
 if( has_category( 'neuigkeiten', $pidd ) || has_category( 'news', $pidd ) ) :
 	 ?>
-	<script type="application/ld+json">
+	<script data-dimm="mth-fu" type="application/ld+json">
 	<?php
 	echo K8Schema::getNewsArticle([
 		'pid' => $pid,
