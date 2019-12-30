@@ -78,7 +78,7 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	$this->tr . K8Html::tdHead( ['txt'=>__('Eigene DNS Server' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
 		echo $this->td .
-					((has_term( 'eigene-dns', 'betriebssystem', $item['pid'] ) ) ? $this->true_icon : $this->false_icon) .
+					((has_term( 'eigene-dns', 'sonderfunktionen', $item['pid'] ) ) ? $this->true_icon : $this->false_icon) .
 				 $this->_td;
 	}
 	echo $this->_tr .
