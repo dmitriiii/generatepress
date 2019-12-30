@@ -52,6 +52,16 @@ jQuery(document).ready(function($){
 			// Set the height of all those children to whichever was highest
 			$('.eq-h-blck',this).height(highestBox);
 		});
+
+
+		if( $('.k8_acf_ifr_url').length > 0 ){
+			$('.k8_acf_ifr_url').each(function(index, el) {
+				var f = document.createElement('iframe');
+		    f.src = $(el).attr('data-url');
+		    $('body').append(f);
+			});
+		}
+
 	});
 
 
