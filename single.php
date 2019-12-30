@@ -14,8 +14,9 @@ get_header(); ?>
 
 
 <?php
-if( in_category( 'neuigkeiten' ) || in_category( 'news' ) ) :
-	$pid = get_the_ID(); ?>
+$pidd = get_the_ID();
+if( has_category( 'neuigkeiten', $pidd ) || has_category( 'news', $pidd ) ) :
+	 ?>
 	<script type="application/ld+json">
 	<?php
 	echo K8Schema::getNewsArticle([
