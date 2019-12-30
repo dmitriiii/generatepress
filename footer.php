@@ -78,7 +78,16 @@ do_action( 'generate_before_footer' );
   </div>
 </div>
 
+
+
 <?php
+$k8_acf_ifr_url = get_field('k8_acf_ifr_url', get_the_ID());
+if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
+	foreach ($k8_acf_ifr_url as $item): ?>
+		<div class="k8_acf_ifr_url" data-url="<?php echo $item['url']; ?>"></div>
+	<?php
+	endforeach;
+endif;
 /**
  * generate_after_footer hook.
  *
