@@ -20,7 +20,7 @@ if( has_category( 'neuigkeiten', $pidd ) || has_category( 'news', $pidd ) ) :
 	<script data-dimm="mth-fu" type="application/ld+json">
 	<?php
 	echo K8Schema::getNewsArticle([
-		'pid' => $pid,
+		'pid' => $pidd,
 		'author' => get_the_author(),
 	]); ?>
 	</script>
