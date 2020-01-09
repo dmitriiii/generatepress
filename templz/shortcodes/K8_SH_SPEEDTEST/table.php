@@ -40,7 +40,7 @@ echo $this->_tr .
 $this->tr . K8Html::tdHead( ['txt'=>__('Jitter' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
 		echo $this->td .
-					 $this->s . get_field('k8_acf_vpndet_jitter', $item['pid']) . $this->_s . ' kbps'.
+					 $this->s . get_field('k8_acf_vpndet_jitter', $item['pid']) . $this->_s . ' ms'.
 				 $this->_td;
 	}
 echo $this->_tr .
@@ -48,7 +48,7 @@ echo $this->_tr .
 $this->tr . K8Html::tdHead( ['txt'=>__('Ping' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
 		echo $this->td .
-					 $this->s . get_field('k8_acf_vpndet_ping', $item['pid']) . $this->_s . ' kbps'.
+					 $this->s . get_field('k8_acf_vpndet_ping', $item['pid']) . $this->_s . ' ms'.
 				 $this->_td;
 	}
 echo $this->_tr .
