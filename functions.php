@@ -101,3 +101,16 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 	}
 // 	return $user_caps;
 // }, 10, 4 );
+// 
+
+
+remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
+remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
+remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
+remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
+
+add_action( 'wp', function(){
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	remove_action( 'wp_head', 'feed_links', 2 );
+	remove_action( 'wp_head', 'rsd_link' );
+});
