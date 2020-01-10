@@ -1,6 +1,11 @@
 <?php
 class K8Help
 {
+	static function UR_exists($url){
+		$headers = get_headers($url);
+		return stripos($headers[0],"200 OK")?true:false;
+	}
+
 	static function getDefUrl( $img ){
 		return get_template_directory_uri() . '/dist/img/' . $img;
 	}
