@@ -1,40 +1,90 @@
 jQuery(document).ready(function($){
 
-	// ANIMATION ON ELEMENT APPEAR in Viewport
-	function triggerCountUp(elemId,from,to){
-		var options = {  
-			useEasing: true,
-			useGrouping: true,
-			separator: ',',
-			decimal: '.',
-			prefix: '',
-			suffix: ''
-		};
-		var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
-		counts.start();
-	}
-	const k8anim = document.querySelectorAll('.k8anim');
-	observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.intersectionRatio > 0) {
-				entry.target.classList.add('k8anim--visible');
 
-				//Trigger countTo Animation
-				var $el = $(entry.target);
-				if (typeof $el.data('k8countup') !== 'undefined') {
-					// console.log($el);
-					triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
-				}
-			} else {
-				entry.target.classList.remove('k8anim--visible');
-			}
-		});
-	});
+	(function(){
 
-	k8anim.forEach(image => {
-		observer.observe(image);
-	});
+		// ANIMATION ON ELEMENT APPEAR in Viewport
+		function triggerCountUp(elemId,from,to){
+			var options = {  
+				useEasing: true,
+				useGrouping: true,
+				separator: ',',
+				decimal: '.',
+				prefix: '',
+				suffix: ''
+			};
+			var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
+			counts.start();
+		}
 
+		const k8anim = document.querySelectorAll('.k8anim');
+		const k8laz_load = document.querySelectorAll('.k8laz_load');
+
+		//Lazy load contents of html
+		if( k8laz_load.length > 0 ){
+			var obsLazy = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+			    if (entry.intersectionRatio > 0) {
+			      // console.log('in the view');
+			      var	$el = $(entry.target),
+			      		datAtr = $el.data();
+
+			      $.ajax({
+							type: 'POST',
+							dataType: 'json',
+							url: k8All.ajaxurl,
+							data: datAtr,
+							success: function (data) {
+								$el.html( data.html );
+								$el.addClass('loaded');
+								// console.log('Okkk');
+							}
+						});
+
+			      // console.log( $el.data() );
+
+			      obsLazy.unobserve(entry.target);
+			    }
+			  });
+				// entries.forEach(entry => {
+				// 	if (entry.intersectionRatio > 0) {
+				// 		entry.target.classList.add('k8anim--visible');
+				// 		var $el = $(entry.target);
+				// 		console.log( $el );
+				// 	}
+				// });
+			});
+
+			k8laz_load.forEach(image => {
+				obsLazy.observe(image);
+			});
+		}
+
+		//Animation on scroll
+		if( k8anim.length > 0 ){
+			var observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.intersectionRatio > 0) {
+						entry.target.classList.add('k8anim--visible');
+
+						//Trigger countTo Animation
+						var $el = $(entry.target);
+						if (typeof $el.data('k8countup') !== 'undefined') {
+							// console.log($el);
+							triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
+						}
+					} else {
+						entry.target.classList.remove('k8anim--visible');
+					}
+				});
+			});
+			k8anim.forEach(image => {
+				observer.observe(image);
+			});
+		}
+	})();
+
+	
 
 	// Set blocks with equal height
 	$(window).load(function() {

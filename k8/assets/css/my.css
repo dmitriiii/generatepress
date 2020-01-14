@@ -849,8 +849,19 @@
 
 
 
+/* LAZY Load */
+.k8laz_load{
+	min-height: 300px;
+	background-color: rgba( 0, 0, 0, 0.7 );
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
 
-
+.k8laz_load.loaded{
+	background-color: inherit;
+  min-height: auto;
+}
 
 
 /*MODAL*/

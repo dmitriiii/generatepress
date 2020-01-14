@@ -258,6 +258,8 @@ class K8Short
 
 	#[K8_SH_DOWNLOAD]
 	public function download( $atts, $content, $tag ){
+		// write_log( get_defined_vars() );
+
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),

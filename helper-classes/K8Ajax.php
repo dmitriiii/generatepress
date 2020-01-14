@@ -13,11 +13,44 @@ class K8Ajax
 		#IP
 		add_action('wp_ajax_nopriv_k8_ajx_ip', array( $this, 'k8_ajx_ip' ));
 		add_action('wp_ajax_k8_ajx_ip', array( $this, 'k8_ajx_ip' ));
+
+		#LazyLoad Comments
+		add_action('wp_ajax_nopriv_k8laz_comments', array( $this, 'k8laz_comments' ));
+		add_action('wp_ajax_k8laz_comments', array( $this, 'k8laz_comments' ));
+
 	}
 	public function final( $arrr ){
 		echo json_encode( $arrr );
 		exit();
 	}
+
+	#Load comments
+	public function k8laz_comments(){
+		$arrr = array();
+		$html = '';
+		extract( $_POST );
+		if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
+	    $arrr['error'] = 'Submit via website, please';
+			$this->final($arrr);
+	  }
+	  ob_start();
+	  echo '<ol class="comment-list">';
+	 	$commz = get_comments(
+			array(
+				'post_id' => $pid,
+				'order' => 'ASC'
+			)
+		);
+		wp_list_comments( array('callback' => 'K8generate_comment'), $commz );
+	 	echo '</ol>';
+	  $html = ob_get_clean();
+	 	$arrr['html'] = $html;
+		echo json_encode( $arrr );
+		exit();
+	}
+
+
+
 	//Success Captcha
 	public function k8_ajx_captcha_succ(){
 		$arrr = array();
@@ -145,7 +178,7 @@ class K8Ajax
 		exit();
 	}
 
-	#Load 
+	#Load
 	public function k8_ajx_ip(){
 		$arrr = array();
 		extract( $_POST );

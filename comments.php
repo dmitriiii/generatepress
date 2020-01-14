@@ -76,8 +76,12 @@ do_action( 'generate_before_comments' );
 				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'generatepress' ) ); ?></div>
 			</nav><!-- #comment-nav-above -->
 		<?php endif; ?>
-
-		<ol class="comment-list">
+		
+		<div class="k8laz_load k8laz_comments"
+			data-nonce="<?php echo wp_create_nonce('k8laz__nonce'); ?>"
+			data-action="k8laz_comments" data-pid="<?php echo get_queried_object()->ID; ?>"></div>
+		
+		<!-- <ol class="comment-list"> -->
 			<?php
 			/*
 			 * Loop through and list the comments. Tell wp_list_comments()
@@ -86,11 +90,12 @@ do_action( 'generate_before_comments' );
 			 * define generate_comment() and that will be used instead.
 			 * See generate_comment() in inc/template-tags.php for more.
 			 */
-			wp_list_comments( array(
-				'callback' => 'generate_comment',
-			) );
+			// wp_list_comments( array(
+			// 	'callback' => 'generate_comment',
+			// ) );
 			?>
-		</ol><!-- .comment-list -->
+		<!-- </ol> -->
+		<!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-below" class="comment-navigation" role="navigation">
