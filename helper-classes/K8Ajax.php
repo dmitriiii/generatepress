@@ -18,8 +18,26 @@ class K8Ajax
 		add_action('wp_ajax_nopriv_k8laz_comments', array( $this, 'k8laz_comments' ));
 		add_action('wp_ajax_k8laz_comments', array( $this, 'k8laz_comments' ));
 
+		#LazyLoad Shortcodes
+		add_action('wp_ajax_nopriv_k8laz_short', array( $this, 'k8laz_short' ));
+		add_action('wp_ajax_k8laz_short', array( $this, 'k8laz_short' ));
+
 	}
 	public function final( $arrr ){
+		echo json_encode( $arrr );
+		exit();
+	}
+
+	#LazyLoad Shortcodes
+	public function k8laz_short(){
+		$arrr = array();
+		$html = '';
+		extract( $_POST );
+		if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
+	    $arrr['error'] = 'Submit via website, please';
+			$this->final($arrr);
+	  }
+	 	$arrr['html'] = do_shortcode("[$tag vpnid='$vpnid' output='$output' is_ajax='true']");
 		echo json_encode( $arrr );
 		exit();
 	}

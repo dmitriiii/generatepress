@@ -1,76 +1,50 @@
 jQuery(document).ready(function($){
 
+	//Set compare tables equalwidth
+	const setEqWidth = function(){
+		$('.k8_compare-tbl').each(function(index, el) {
+			var	$tbl = $(el),
+			$tr =	$tbl.find('tbody>tr:nth-child(2)'),
+			$tds = $tr.find('td'),
+			amnt = $tds.length -1;
+			if( $tds.length > 2 ){
+				var wdth = 70 / amnt;
+				$tds.each(function(index, el) {
+					if( index !== 0 ){
+						$(el).css('width', wdth + '%');
+					}
+				});
+			}
+		});
+	}
+	setEqWidth();
 
-	(function(){
+	// Count to numbers
+	const triggerCountUp = function(elemId,from,to){
+		var options = {  
+			useEasing: true,
+			useGrouping: true,
+			separator: ',',
+			decimal: '.',
+			prefix: '',
+			suffix: ''
+		};
+		var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
+		counts.start();
+	}
 
-		// ANIMATION ON ELEMENT APPEAR in Viewport
-		function triggerCountUp(elemId,from,to){
-			var options = {  
-				useEasing: true,
-				useGrouping: true,
-				separator: ',',
-				decimal: '.',
-				prefix: '',
-				suffix: ''
-			};
-			var counts = new CountUp(elemId, parseInt(from), parseInt(to), 0, 2, options);
-			counts.start();
-		}
 
-		const k8anim = document.querySelectorAll('.k8anim');
-		const k8laz_load = document.querySelectorAll('.k8laz_load');
-
-		//Lazy load contents of html
-		if( k8laz_load.length > 0 ){
-			var obsLazy = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-			    if (entry.intersectionRatio > 0) {
-			      // console.log('in the view');
-			      var	$el = $(entry.target),
-			      		datAtr = $el.data();
-
-			      $.ajax({
-							type: 'POST',
-							dataType: 'json',
-							url: k8All.ajaxurl,
-							data: datAtr,
-							success: function (data) {
-								$el.html( data.html );
-								$el.addClass('loaded');
-								// console.log('Okkk');
-							}
-						});
-
-			      // console.log( $el.data() );
-
-			      obsLazy.unobserve(entry.target);
-			    }
-			  });
-				// entries.forEach(entry => {
-				// 	if (entry.intersectionRatio > 0) {
-				// 		entry.target.classList.add('k8anim--visible');
-				// 		var $el = $(entry.target);
-				// 		console.log( $el );
-				// 	}
-				// });
-			});
-
-			k8laz_load.forEach(image => {
-				obsLazy.observe(image);
-			});
-		}
-
-		//Animation on scroll
+	//Animation on scroll
+	const k8animFun = function(){
+		var k8anim = document.querySelectorAll('.k8anim');
 		if( k8anim.length > 0 ){
 			var observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
 					if (entry.intersectionRatio > 0) {
 						entry.target.classList.add('k8anim--visible');
-
 						//Trigger countTo Animation
 						var $el = $(entry.target);
 						if (typeof $el.data('k8countup') !== 'undefined') {
-							// console.log($el);
 							triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
 						}
 					} else {
@@ -82,9 +56,42 @@ jQuery(document).ready(function($){
 				observer.observe(image);
 			});
 		}
-	})();
+	}
+	k8animFun();
 
-	
+	//Lazy load contents of html
+	const k8laz_load = function(){
+		var k8laz_load = document.querySelectorAll('.k8laz_load');
+		if( k8laz_load.length > 0 ){
+			var observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+			    if (entry.intersectionRatio > 0) {
+			      var	$el = $(entry.target),
+			      		datAtr = $el.data();
+			      $.ajax({
+							type: 'POST',
+							dataType: 'json',
+							url: k8All.ajaxurl,
+							data: datAtr,
+							success: function (data) {
+								$el.html( data.html );
+								$el.addClass('loaded');
+								setEqWidth();
+								k8animFun();
+							} // success
+						});// Ajax
+			      observer.unobserve(entry.target);
+			    }
+			  });
+			});
+
+			k8laz_load.forEach(image => {
+				observer.observe(image);
+			});
+		}
+	}
+	k8laz_load();
+
 
 	// Set blocks with equal height
 	$(window).load(function() {
@@ -115,25 +122,6 @@ jQuery(document).ready(function($){
 		}
 
 	});
-
-
-	//Set table width equal cells
-	(function() {
-		$('.k8_compare-tbl').each(function(index, el) {
-			var	$tbl = $(el),
-			$tr =	$tbl.find('tbody>tr:nth-child(2)'),
-			$tds = $tr.find('td'),
-			amnt = $tds.length -1;
-			if( $tds.length > 2 ){
-				var wdth = 70 / amnt;
-				$tds.each(function(index, el) {
-					if( index !== 0 ){
-						$(el).css('width', wdth + '%');
-					}
-				});
-			}
-		});
-	})();
 
 
 	// load youtube iframe on click

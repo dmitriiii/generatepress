@@ -139,19 +139,6 @@ class K8Short
 		);
 	}
 
-	#[k8_short_vpndet] Show table with vpn details
-	public function vpn_det( $atts, $content, $tag ){
-		$a = shortcode_atts( array(
-			'output' => 'table',
-			'vpnid' => get_the_ID(),
-		), $atts );
-		$pid_arr = K8H::shortPrep( $a, $atts );
-		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-		$html = ob_get_clean();
-		return $html;
-	}
-
 	#[k8_short_prod] Show table with taxonomies Data
 	public function vpn_tax( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
@@ -227,6 +214,25 @@ class K8Short
 		return $html;
 	}
 
+	#[k8_short_vpndet] Show table with vpn details
+	public function vpn_det( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
 	#[K8_SH_INTRO]
 	public function intro( $atts, $content, $tag ){
 		$a = shortcode_atts( array(
@@ -234,6 +240,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -249,6 +261,12 @@ class K8Short
 			'ver' => 'de'
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -258,13 +276,17 @@ class K8Short
 
 	#[K8_SH_DOWNLOAD]
 	public function download( $atts, $content, $tag ){
-		// write_log( get_defined_vars() );
-
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -278,6 +300,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		$termz = get_terms( array(
 	    'taxonomy' => 'sonderfunktionen',
 	    'hide_empty' => false,
@@ -295,6 +323,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		$valz = array(
 			'asuswrt'=>'ASUS',
 			'openwrt'=>'Gl-iNet',
@@ -315,6 +349,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -328,6 +368,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -341,6 +387,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( $a['output'] !== 'graphic1' && (!isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true') )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		if( $a['output'] == 'graphic1' ){
 			$pid = (int)$a['vpnid'];
@@ -368,6 +420,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -381,6 +439,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -394,6 +458,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -407,6 +477,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
@@ -420,10 +496,15 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-		$html = ob_get_clean();
-		return $html;
+		return ob_get_clean();
 	}
 
 	#[K8_SH_SLIDER]
@@ -451,6 +532,12 @@ class K8Short
 			'vpnid' => get_the_ID(),
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
+			return K8H::ajxHolder([
+				'pid_arr' => $pid_arr,
+				'tag' => $tag,
+				'output' => $a["output"]
+			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();

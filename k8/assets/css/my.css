@@ -858,9 +858,34 @@
 	transition: all 0.5s ease;
 }
 
+.k8laz_load::before{
+	content: '\f110';
+	font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 50px;
+	display: block;
+	margin: 0px auto;
+	color: #ccc;
+	padding: 50px 0;
+	-webkit-animation-name: spin;
+	-webkit-animation-duration: 4000ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 .k8laz_load.loaded{
 	background-color: inherit;
   min-height: auto;
+}
+.k8laz_load.loaded::before{
+	display: none;
 }
 
 
@@ -1107,11 +1132,7 @@
   background: #4e4e4e; 
 }
 
-/* Handle on hover 
-::-webkit-scrollbar-thumb:hover {
-  background: #33CC99; 
-}
-END SCROLLBAR*/
+/*END SCROLLBAR*/
 
 
 
@@ -1302,6 +1323,12 @@ END SCROLLBAR*/
   }
 }
 
+
+
+
+
+
+
 /* @-webkit-keyframes thh-r {
   0% {
    	width: 0%;
@@ -1364,6 +1391,32 @@ END SCROLLBAR*/
   from {top:-300px; opacity:0}
   to {top:0; opacity:1}
 }
+
+
+
+@-webkit-keyframes spin {
+  from { 
+  	-webkit-transform: rotate(0deg); 
+  }
+  to { 
+  	-webkit-transform: rotate(360deg); 
+  }
+}
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
 
 /*MOBILE*/
 @media (max-width: 749px){

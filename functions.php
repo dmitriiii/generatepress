@@ -114,3 +114,23 @@ add_action( 'wp', function(){
 	remove_action( 'wp_head', 'feed_links', 2 );
 	remove_action( 'wp_head', 'rsd_link' );
 });
+
+
+
+
+
+// function your_prefix_detect_shortcode()
+// {
+//   global $post;
+//   $pattern = get_shortcode_regex();
+
+//   if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
+//       && array_key_exists( 2, $matches )
+//       && in_array( 'K8_SH_SUPPORT', $matches[2] ) )
+//   {
+//       echo '<pre>';
+//       print_r( $matches );
+//       echo '</pre>';
+//   }
+// }
+// add_action( 'wp', 'your_prefix_detect_shortcode' );
