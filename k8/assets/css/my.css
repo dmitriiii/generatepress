@@ -888,6 +888,10 @@
 	display: none;
 }
 
+.k8laz_load.loaded .pt-cv-pinterest .pt-cv-page:not(.cvpshuffled) {
+  opacity: 1;
+}
+
 
 /*MODAL*/
 
