@@ -101,7 +101,7 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 	}
 // 	return $user_caps;
 // }, 10, 4 );
-//
+// 
 
 
 remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
@@ -118,30 +118,19 @@ add_action( 'wp', function(){
 
 
 
+
 // function your_prefix_detect_shortcode()
 // {
-//   global $wp_query;
-//   $posts = $wp_query->posts;
+//   global $post;
 //   $pattern = get_shortcode_regex();
 
-
-//   foreach ($posts as $post){
-// 	if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
-// 		&& array_key_exists( 2, $matches )
-// 		&& in_array( 'pt_view', $matches[2] ) ){
-// 		// enque my css and js
-// 			echo '<pre>';
-// 			print_r( $matches );
-// 			echo '</pre>';
-// 			// break;
-// 		}
+//   if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
+//       && array_key_exists( 2, $matches )
+//       && in_array( 'K8_SH_SUPPORT', $matches[2] ) )
+//   {
+//       echo '<pre>';
+//       print_r( $matches );
+//       echo '</pre>';
 //   }
 // }
 // add_action( 'wp', 'your_prefix_detect_shortcode' );
-// 
-// 
-function pippin_filter_content_sample($content) {
-	$new_content = preg_replace('/\[pt_view/', '[k8fake shrt="pt_view"' , $content);
-	return $new_content;
-}
-add_filter('the_content', 'pippin_filter_content_sample');

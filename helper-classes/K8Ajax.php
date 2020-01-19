@@ -22,9 +22,6 @@ class K8Ajax
 		add_action('wp_ajax_nopriv_k8laz_short', array( $this, 'k8laz_short' ));
 		add_action('wp_ajax_k8laz_short', array( $this, 'k8laz_short' ));
 
-		#Lazyload external plugins
-		add_action('wp_ajax_nopriv_k8laz_fake', array( $this, 'k8laz_fake' ));
-		add_action('wp_ajax_k8laz_fake', array( $this, 'k8laz_fake' ));
 	}
 	public function final( $arrr ){
 		echo json_encode( $arrr );
@@ -70,20 +67,6 @@ class K8Ajax
 		exit();
 	}
 
-	#Lazyload shortcodes
-	public function k8laz_fake(){
-		$arrr = array();
-		$html = '';
-		extract( $_POST );
-		// write_log(get_defined_vars());
-		if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
-	    $arrr['error'] = 'Submit via website, please';
-			$this->final($arrr);
-	  }
-	 	$arrr['html'] = do_shortcode("[$shrt id='$id']");
-		echo json_encode( $arrr );
-		exit();
-	}
 
 
 	//Success Captcha

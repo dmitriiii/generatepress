@@ -38,7 +38,7 @@ class K8H
 	 */
 	static function ajxHolder( $args=[] ){
 		$vpnid =	implode(',', array_column ($args['pid_arr'], 'vpnid' ));
-		$str = '<div class="k8laz_load"
+		$str = '<div class="k8laz_load k8laz_comments"
 			data-nonce="%s"
 			data-action="%s"
 			data-vpnid="%s"
@@ -52,22 +52,6 @@ class K8H
 			$args['tag'],
 			$args['output']
 		);
-	}
-
-
-	static function ajxFake( $args=[] ){
-		// write_log(get_defined_vars());
-		$ret = "<div class='k8laz_load' ";
-		$ret.= "data-nonce='" . wp_create_nonce('k8laz__nonce') . "'";
-		$ret.= "data-action='k8laz_fake'";
-		if( isset($args['atts']['id']) && $args['atts']['id'] !== '' )
-			$ret.= "data-id='" . $args['atts']['id'] . "'";
-
-		if( isset($args['atts']['shrt']) && $args['atts']['shrt'] !== '' )
-			$ret.= "data-shrt='" . $args['atts']['shrt'] . "'";
-
-		$ret.= "></div>";
-		return $ret;
 	}
 
 

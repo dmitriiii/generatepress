@@ -94,12 +94,6 @@ class K8Short
 
 		#[K8_SH_VIDEOVPN]
 		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
-
-
-		#Fake shortcodes to increase page speed
-		#[k8fake_pt_view]
-		add_shortcode( 'k8fake', array( $this, 'k8fake') );
-
 	}
 
 	/**
@@ -549,22 +543,6 @@ class K8Short
 		$html = ob_get_clean();
 		return $html;
 	}
-
-
-	#[k8fake] - fake shortcode for ajax loading
-	public function k8fake( $atts, $content, $tag ){
-		$a = shortcode_atts( array(), $atts );
-		// write_log( get_defined_vars() );
-		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
-			return K8H::ajxFake([
-				'atts' => $atts,
-				'a' => $a,
-				'tag' => $tag
-			]);
-		// $html = do_shortcode('[pt_view id="7345988d1h"]');
-		return $html;
-	}
-
 }
 new K8Short([
 	'true' => '<svg class="k8-t-f" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
