@@ -22,6 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'generate_before_footer' );
 ?>
 
+<!-- <div class="k8goto__wrr">
+	<div class="k8goto__butt">
+		Inhaltsverzeichnis
+	</div>
+
+</div> -->
+<!-- .k8goto__wrr -->
+
 <div <?php generate_do_element_classes( 'footer' ); ?>>
 	<?php
 	/**
