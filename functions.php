@@ -104,17 +104,24 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 
 
 
-remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
-remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
-remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
-remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
 
-add_action( 'wp', function(){
+add_action( 'init', 'k8_disable_feed_for_pages' );
+
+function k8_disable_feed_for_pages() {
+
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
 	remove_action( 'wp_head', 'feed_links', 2 );
 	remove_action( 'wp_head', 'rsd_link' );
-});
 
+	if(home_url($_SERVER['REQUEST_URI']) != site_url('feed')) {
+
+		remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
+		remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
+		remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
+		remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
+
+	}
+}
 
 
 
