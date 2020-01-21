@@ -118,19 +118,70 @@ add_action( 'wp', function(){
 
 
 
+function k8_deregister_scripts () {
+	$common_scripts = [
+		'supsystic-tables-notify',
+		'supsystic-tables-featherlight-js',
+		'supsystic-tables-exporter-js',
+		'supsystic-tables-datatables-fixed-headers-js',
+		'supsystic-tables-datatables-fixed-columns-js',
+		'generate-a11y',
+		'generate-classlist',
+		'affcoups-script',
+		'eafl-public'
+	];
+	foreach ($common_scripts as $script) {
+		wp_deregister_script ($script);
+		wp_dequeue_script ($script);
+	}
+}
+add_action ( 'wp_print_scripts', 'k8_deregister_scripts', 999);
 
-// function your_prefix_detect_shortcode()
-// {
-//   global $post;
-//   $pattern = get_shortcode_regex();
+function k8_deregister_styles() {
+	$common_css = [
+		'aalb_basics_css',
+		'generate-secondary-nav',
+		'generate-secondary-nav-mobile',
+		'generate-blog',
+		'supsystic-tables-tables-featherlight-css',
+		'supsystic-tables-datatables-fixed-headers-css'
+	];
+	foreach ($common_css as $css) {
+		wp_deregister_style ($css);
+		wp_dequeue_style ($css);
+	}
+}
+add_action('wp_print_styles', 'k8_deregister_styles', 999);
 
-//   if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
-//       && array_key_exists( 2, $matches )
-//       && in_array( 'K8_SH_SUPPORT', $matches[2] ) )
-//   {
-//       echo '<pre>';
-//       print_r( $matches );
-//       echo '</pre>';
-//   }
-// }
-// add_action( 'wp', 'your_prefix_detect_shortcode' );
+/* ANSPRESS FILTER */
+add_filter( 'the_content', 'k8_filter_anspress_assets' );
+function k8_filter_anspress_assets( $content ) {
+	if(!strripos($content, '[anspress')) {
+		$anspress_scripts = [
+			'anspress-form',
+			'anspress-main',
+			'syntaxhighlighter-core',
+			'syntaxhighlighter-autoloader',
+			'syntaxhighlighter',
+			'ap-recaptcha',
+			'selectize'
+		];
+		foreach ($anspress_scripts as $script) {
+			wp_deregister_script ($script);
+			wp_dequeue_script ($script);
+		}
+
+		$anspress_css = [
+			'syntaxhighlighter-core',
+			'syntaxhighlighter-theme-default',
+			'anspress-fonts',
+			'anspress-main',
+			'ap-overrides'
+		];
+		foreach ($anspress_css as $css) {
+			wp_deregister_style ($css);
+			wp_dequeue_style ($css);
+		}
+	}
+	return $content;
+}
