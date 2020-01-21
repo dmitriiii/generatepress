@@ -113,7 +113,7 @@ function k8_disable_feed_for_pages() {
 	remove_action( 'wp_head', 'feed_links', 2 );
 	remove_action( 'wp_head', 'rsd_link' );
 
-	if(home_url($_SERVER['REQUEST_URI']) != site_url('feed')) {
+	if(home_url($_SERVER['REQUEST_URI']) != site_url('feed/')) {
 
 		remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
 		remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
