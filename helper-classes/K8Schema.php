@@ -144,7 +144,7 @@ class K8Schema
 			"@type" => "HowTo",
 			"totalTime" => "PT3M",
 			"name" => $k8_title,
-  		"description" => $k8_content,
+  		"description" => wp_strip_all_tags($k8_content),
 		];
 		if( is_array($k8_acf_howto_stp) && count( $k8_acf_howto_stp ) > 0 ){
 			$c = 1;
@@ -152,7 +152,7 @@ class K8Schema
 				$datta['step'][] = [
 					"@type" => "HowToStep",
 					"name" => $item["head"],
-					"text" => $item["txt"],
+					"text" => wp_strip_all_tags($item["txt"]),
 					"image" => wp_get_attachment_image_src( $item["img"] )[0],
 					"url" => $k8_current_url . '/#howto_' . $c,
 				];
