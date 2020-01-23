@@ -1,0 +1,67 @@
+/* body{
+	background-color: red;
+} */
+
+.k8howto__wrr{
+	background-color: #eee;
+	padding: 30px;
+}
+.k8howto__item{
+	background: #fff;
+	/* margin-bottom: 30px; */
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+.k8howto__item:last-child{
+	margin-bottom: 0;
+}
+.k8howto__img{
+	text-align: center;
+	font-size: 0;
+}
+
+.k8howto__txt{
+	background-color: #3C9;
+	color: #fff;
+}
+
+.k8howto__num{
+	background-color: #fff;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+
+.k8howto__txt h3,
+.k8howto__txt h2{
+	color: #fff;
+}
+
+.k8howto__num{
+	background-color: #00b2e2;
+	font-size: 30px;
+	font-weight: bold;
+	float: left;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+}
+
+.k8howto__head{
+	padding: 10px;
+	/* margin-top: 15px; */
+	font-size: 20px;
+	font-weight: bold;
+	font-style: italic;
+	/* border: 1px solid #fff; */
+}
+
+.k8howto__txt2{
+	padding: 5px 15px;
+}

@@ -28,6 +28,8 @@ class K8Assets
 		#[K8_SH_SPEEDTEST]
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
 		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), rand(1,1000), 'all' );
+		wp_register_style( 'k8_sh_howto-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_howto.css', array(), rand(1,1000), 'all' );
+		
 		#END SHORTCODE's JS & CSS
 
 		if( is_single() && get_post_type()=='downloads' ){

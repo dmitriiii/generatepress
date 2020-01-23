@@ -123,4 +123,61 @@ class K8Schema
 		);
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
+
+
+	/**
+	 * [getHowTo description]
+	 * @param  array  $args [
+	 *  'pid' => how to' post id
+	 *  'k8_title' => how to's post title
+	 *  'k8_content' => how to's post content
+	 *  'k8_acf_howto_stp' => acf steps array
+	 *  'k8_acf_howto_supply' => acf supply array
+	 *  'k8_acf_howto_tool' => acf tool array
+ 	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getHowTo( $args=[] ){
+		extract( $args );
+		$datta = [
+			"@context" => "https://schema.org",
+			"@type" => "HowTo",
+			"totalTime" => "PT3M",
+			"name" => $k8_title,
+  		"description" => $k8_content,
+		];
+		if( is_array($k8_acf_howto_stp) && count( $k8_acf_howto_stp ) > 0 ){
+			$c = 1;
+			foreach ($k8_acf_howto_stp as $item) :
+				$datta['step'][] = [
+					"@type" => "HowToStep",
+					"name" => $item["head"],
+					"text" => $item["txt"],
+					"image" => wp_get_attachment_image_src( $item["img"] )[0],
+					"url" => $k8_current_url . '/#howto_' . $c,
+				];
+				$c++;
+			endforeach;
+		}
+
+		if( is_array($k8_acf_howto_supply) && count($k8_acf_howto_supply) > 0 ){
+			foreach ($k8_acf_howto_supply as $item) {
+				$datta['supply'][] = [
+					"@type" => "HowToSupply",
+					"name" => $item["txt"],
+				];
+			}
+		}
+
+		if( is_array($k8_acf_howto_tool) && count($k8_acf_howto_tool) > 0 ){
+			foreach ($k8_acf_howto_tool as $item) {
+				$datta['tool'][] = [
+					"@type" => "HowToTool",
+					"name" => $item["txt"],
+				];
+			}
+		}
+
+		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	}
 }

@@ -12,6 +12,9 @@ class K8Acf
 		add_action( 'acf/init', array( $this, 'faq' ) );
 		add_action( 'acf/init', array( $this, 'slider' ) );
 		add_action( 'acf/init', array( $this, 'iframesAsync' ) );
+
+		add_action( 'acf/init', array( $this, 'howto' ) );
+
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
@@ -1066,6 +1069,220 @@ class K8Acf
 			'active' => true,
 			'description' => '',
 		));
+	}
+
+
+	#HOWTO
+	public function howto(){
+		if( function_exists('acf_add_local_field_group') ):
+			acf_add_local_field_group(array(
+				'key' => 'group_5df4b76c17916',
+				'title' => 'HowTo',
+				'fields' => array(
+					array(
+						'key' => 'field_5e26f08d49f08',
+						'label' => 'Steps',
+						'name' => 'k8_acf_howto_stp',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'table',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5e26fd1ca9f71',
+								'label' => 'Number',
+								'name' => 'num',
+								'type' => 'number',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '5',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'min' => '',
+								'max' => '',
+								'step' => '',
+							),
+							array(
+								'key' => 'field_5e26f0bf49f09',
+								'label' => 'Head',
+								'name' => 'head',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '25',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_5e26f0dc49f0a',
+								'label' => 'Text',
+								'name' => 'txt',
+								'type' => 'wysiwyg',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '50',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'tabs' => 'all',
+								'toolbar' => 'full',
+								'media_upload' => 1,
+								'delay' => 0,
+							),
+							array(
+								'key' => 'field_5e26f0f549f0b',
+								'label' => 'Image',
+								'name' => 'img',
+								'type' => 'image',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '20',
+									'class' => '',
+									'id' => '',
+								),
+								'return_format' => 'id',
+								'preview_size' => 'medium',
+								'library' => 'all',
+								'min_width' => '',
+								'min_height' => '',
+								'min_size' => '',
+								'max_width' => '',
+								'max_height' => '',
+								'max_size' => '',
+								'mime_types' => '',
+							),
+						),
+					),
+					array(
+						'key' => 'field_5e297d2bb5f65',
+						'label' => 'Supply',
+						'name' => 'k8_acf_howto_supply',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'table',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5e297d45b5f66',
+								'label' => 'Text',
+								'name' => 'txt',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+						),
+					),
+					array(
+						'key' => 'field_5e297d62b5f67',
+						'label' => 'Tool',
+						'name' => 'k8_acf_howto_tool',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'table',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5e297d73b5f68',
+								'label' => 'Text',
+								'name' => 'txt',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+						),
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'k8pt_howto',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+		endif;
 	}
 
 }

@@ -94,6 +94,10 @@ class K8Short
 
 		#[K8_SH_VIDEOVPN]
 		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
+
+
+		#[K8_SH_HOWTO]
+		add_shortcode( 'K8_SH_HOWTO', array( $this, 'howto') );
 	}
 
 	/**
@@ -543,6 +547,45 @@ class K8Short
 		$html = ob_get_clean();
 		return $html;
 	}
+
+	#K8_SH_HOWTO
+	public function howto( $atts, $content, $tag ){
+		// write_log(get_defined_vars());
+		if( !isset( $atts['id'] ) || !filter_var($atts['id'], FILTER_VALIDATE_INT) ){
+			echo __('Sorry nothing found. Please pass valid howto id' , 'k8lang_domain');
+			return;
+		}
+		if( 'publish' !== get_post_status ( $atts['id'] ) ){
+			echo __('Publish how to article first, please' , 'k8lang_domain');
+			return;
+		}
+		global $wp;
+		$k8_current_url = home_url( add_query_arg( array(), $wp->request ) );
+
+		$k8_title = get_the_title( $atts['id'] );
+		$k8_content = get_the_content( null, false, $atts['id'] );
+		$k8_acf_howto_stp =	get_field('k8_acf_howto_stp', $atts['id']);
+		$k8_acf_howto_supply =	get_field('k8_acf_howto_supply', $atts['id']);
+		$k8_acf_howto_tool =	get_field('k8_acf_howto_tool', $atts['id']);
+
+		$schema = K8Schema::getHowTo([
+			'pid' => $atts['id'],
+			'k8_title' => $k8_title,
+	   	'k8_content' => $k8_content,
+			'k8_acf_howto_stp' => $k8_acf_howto_stp,
+			'k8_current_url' => $k8_current_url,
+			'k8_acf_howto_supply' => $k8_acf_howto_supply,
+			'k8_acf_howto_tool' => $k8_acf_howto_tool
+		]);
+		echo '<script type="application/ld+json">' . $schema . '</script>';
+
+		wp_enqueue_style( 'k8_sh_howto-css' );
+		ob_start();
+		include $this->templ_url . $tag . '/design1.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
 }
 new K8Short([
 	'true' => '<svg class="k8-t-f" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

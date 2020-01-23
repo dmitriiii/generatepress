@@ -346,6 +346,42 @@ class K8Cpt
 		if( !taxonomy_exists( 'sicherheitslevel' ) ):
 			register_taxonomy( "sicherheitslevel", [ "post" ], $args );
 		endif;
+
+
+
+		/**
+	 * Post Type: HowTo's.
+	 */
+		$labels = [
+			"name" => __( "HowTo's", "k8lang_domain" ),
+			"singular_name" => __( "HowTo", "k8lang_domain" ),
+		];
+
+		$args = [
+			"label" => __( "HowTo's", "k8lang_domain" ),
+			"labels" => $labels,
+			"description" => "",
+			"public" => false,
+			"publicly_queryable" => false,
+			"show_ui" => true,
+			"show_in_rest" => false,
+			"rest_base" => "",
+			"rest_controller_class" => "WP_REST_Posts_Controller",
+			"has_archive" => false,
+			"show_in_menu" => true,
+			"show_in_nav_menus" => false,
+			"delete_with_user" => false,
+			"exclude_from_search" => false,
+			"capability_type" => "post",
+			"map_meta_cap" => true,
+			"hierarchical" => false,
+			"rewrite" => false,
+			"query_var" => false,
+			"menu_icon" => "dashicons-excerpt-view",
+			"supports" => [ "title", "editor", "thumbnail" ],
+		];
+
+		register_post_type( "k8pt_howto", $args );
 	}
 }
 new K8Cpt();
