@@ -577,6 +577,8 @@ class K8Short
 			'k8_acf_howto_supply' => $k8_acf_howto_supply,
 			'k8_acf_howto_tool' => $k8_acf_howto_tool
 		]);
+		wp_enqueue_style( 'k8-libs-lightgallery-css' );
+		wp_enqueue_script( 'k8-libs-lightgallery-js' );
 		wp_enqueue_style( 'k8_sh_howto-css' );
 		ob_start();
 		echo '<script type="application/ld+json">' . $schema . '</script>';

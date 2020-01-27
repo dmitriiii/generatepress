@@ -3,11 +3,11 @@
 get_header();
 
 
-echo '<pre>';
-print_r( K8Help::getAllImgSizes() );
-echo '</pre>';
+// echo '<pre>';
+// print_r( K8Help::getAllImgSizes() );
+// echo '</pre>';
 
-echo 'Bingobongo';
+// echo 'Bingobongo';
 
 ?>
 
@@ -59,55 +59,55 @@ echo 'Bingobongo';
 //$data[39] - 49
 //$data[40] - 50
 
-$vpn_names = [];
-$vpn_id_arr = [	0, 1, 2, 3, 4, 5, 6, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 38, 39, 41, 42, 43, 44, 45, 46, 47, 49, 50 ];
-// $combinedd = [];
-$srch = [];
+// $vpn_names = [];
+// $vpn_id_arr = [	0, 1, 2, 3, 4, 5, 6, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 38, 39, 41, 42, 43, 44, 45, 46, 47, 49, 50 ];
+// // $combinedd = [];
+// $srch = [];
 
-$tax_label = '';
-$taxx;
+// $tax_label = '';
+// $taxx;
 
 
-$csv_file = K8_PATH_LOC . '/csv/countries-vpn.csv';
-$row = 0;
-if (($handle = fopen($csv_file, "r")) !== FALSE) {
-	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-		// if( $row >  )
-		// 	break;
+// $csv_file = K8_PATH_LOC . '/csv/countries-vpn.csv';
+// $row = 0;
+// if (($handle = fopen($csv_file, "r")) !== FALSE) {
+// 	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+// 		// if( $row >  )
+// 		// 	break;
 		
-		if( $row == 0 ){
-			$vpn_names = $data;
-			$row++;
-			continue;
-		}
+// 		if( $row == 0 ){
+// 			$vpn_names = $data;
+// 			$row++;
+// 			continue;
+// 		}
 		
-		$srch =	array_keys($data, 'X');
-		$tax_label = $data[0];
+// 		$srch =	array_keys($data, 'X');
+// 		$tax_label = $data[0];
 
-		$taxx = get_term_by( 'name', $tax_label, 'vpnstandortelaender' );
+// 		$taxx = get_term_by( 'name', $tax_label, 'vpnstandortelaender' );
 
 
-		echo '<pre>';
-		print_r( $row );
-		echo '<hr>';
-		print_r( $taxx );
-		print_r( $srch );
-		print_r( $data );
-		print_r( $tax_label );
-		echo '</pre>';
+// 		echo '<pre>';
+// 		print_r( $row );
+// 		echo '<hr>';
+// 		print_r( $taxx );
+// 		print_r( $srch );
+// 		print_r( $data );
+// 		print_r( $tax_label );
+// 		echo '</pre>';
 		
-		$row++;
+// 		$row++;
 		
 
 
-	}
-	fclose($handle);
-}
+// 	}
+// 	fclose($handle);
+// }
 
-echo '<h2>VPN ID List</h2>';
-echo '<pre> ';
-print_r($vpn_id_arr );
-echo '</pre>';
+// echo '<h2>VPN ID List</h2>';
+// echo '<pre> ';
+// print_r($vpn_id_arr );
+// echo '</pre>';
 
 
 
