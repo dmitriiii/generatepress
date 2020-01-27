@@ -15,6 +15,11 @@ class K8Hooks
 
 		#Create json array of anbieter vpnid=>postid vallues
 		add_action( 'save_post', array( $this, 'onSavePost' ), 10, 3 );
+
+
+		#Add how to shortcode to admin
+		add_filter( 'manage_k8pt_howto_posts_columns', array( $this, 'k8pt_howto_cols' ) );
+		add_action( 'manage_k8pt_howto_posts_custom_column' , array( $this, 'k8pt_howto_col' ), 10, 2 );
 	}
 	public function upload_mimes( $mimes ){
 		$mimes['exe'] = 'application/octet-stream';
@@ -87,5 +92,17 @@ class K8Hooks
 		fwrite($fp, json_encode($vpnidPid_arr));
 		fclose($fp);
 	}
+
+	#Add how to shortcode to admin
+	public function k8pt_howto_cols($columns){
+		$columns['howto_shrt'] = __( 'Shortcode', 'k8lang_domain' );
+		return $columns;
+	}
+	public function k8pt_howto_col($column, $post_id){
+		if( $column == 'howto_shrt' ){
+			echo "<code>[K8_SH_HOWTO id='$post_id']</code>";
+		}
+	}
+
 }
 new K8Hooks();
