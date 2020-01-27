@@ -577,10 +577,9 @@ class K8Short
 			'k8_acf_howto_supply' => $k8_acf_howto_supply,
 			'k8_acf_howto_tool' => $k8_acf_howto_tool
 		]);
-		echo '<script type="application/ld+json">' . $schema . '</script>';
-
 		wp_enqueue_style( 'k8_sh_howto-css' );
 		ob_start();
+		echo '<script type="application/ld+json">' . $schema . '</script>';
 		include $this->templ_url . $tag . '/design1.php';
 		$html = ob_get_clean();
 		return $html;
