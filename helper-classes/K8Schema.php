@@ -153,7 +153,7 @@ class K8Schema
 					"@type" => "HowToStep",
 					"name" => $item["head"],
 					"text" => wp_strip_all_tags($item["txt"]),
-					"image" => wp_get_attachment_image_src( $item["img"] )[0],
+					"image" => wp_get_attachment_image_src( $item["img"], 'large' )[0],
 					"url" => $k8_current_url . '/#howto_' . $c,
 				];
 				$c++;
