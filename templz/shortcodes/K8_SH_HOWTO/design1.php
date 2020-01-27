@@ -18,7 +18,7 @@ if( is_array( $k8_acf_howto_stp ) && count( $k8_acf_howto_stp ) > 0 ) : ?>
 		foreach ($k8_acf_howto_stp as $item): ?>
 			<div class="k8howto__item" id="howto_<?php echo $c; ?>">
 				<div class="k8howto__img k8-lg__wrr">
-					<a href="<?php echo K8Help::getImgUrl($item['img'],'full'); ?>" class="k8-lg__item" rel="nofollow">
+					<a href="<?php echo K8Help::getImgUrl($item['img'],'full'); ?>" class="k8-lg__item k8howto__link" rel="nofollow">
 						<?php echo K8Html::getImgHtml([
 							'img_id' => $item['img'],
 							'size' => 'large',

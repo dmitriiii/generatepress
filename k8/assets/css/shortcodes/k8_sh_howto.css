@@ -70,3 +70,63 @@
 .k8howto__txt2{
 	padding: 5px 15px;
 }
+
+.k8howto__link{
+	position: relative;
+	display: inline-block;
+}
+
+.k8howto__link::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background-color: rgba(0,0,0,0.7);
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+.k8howto__link::after{
+	font-family: 'Font Awesome 5 Free';
+  content: "\f002";
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  font-size: 30px;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateX(-30px);
+  -ms-transform: translateX(-30px);
+  -o-transform: translateX(-30px);
+  transform: translateX(-30px);
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.k8howto__link:hover::before,
+.k8howto__link:hover::after{
+	visibility: visible;
+	opacity: 1;
+}
+
+.k8howto__link:hover::after{
+	-webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  -o-transform: translateX(0px);
+}
