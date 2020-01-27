@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // echo '</pre>';
 
 if( is_array( $k8_acf_howto_stp ) && count( $k8_acf_howto_stp ) > 0 ) : ?>
-	<div class="k8howto__wrr">
+	<div class="k8howto__wrr clearfix">
 		<h2><?php echo $k8_title; ?></h2>
 		<div class="clearfix">
 			<?php echo apply_filters('the_content', $k8_content); ?>
