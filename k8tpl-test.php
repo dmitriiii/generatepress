@@ -24,9 +24,9 @@ echo '<pre>';
 print_r( _get_all_image_sizes() );
 echo '</pre>';
 
+echo 'Bingobongo';
 
 ?>
-
 
 
 
