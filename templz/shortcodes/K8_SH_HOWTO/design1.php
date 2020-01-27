@@ -20,7 +20,7 @@ if( is_array( $k8_acf_howto_stp ) && count( $k8_acf_howto_stp ) > 0 ) : ?>
 				<div class="k8howto__img">
 					<?php echo K8Html::getImgHtml([
 						'img_id' => $item['img'],
-						'size' => 'medium',
+						'size' => 'large',
 					]); ?>
 				</div>
 				<div class="k8howto__txt clearfix">
