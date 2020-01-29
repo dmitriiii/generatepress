@@ -60,7 +60,7 @@ jQuery(document).ready(function($){
 	k8animFun();
 
 	//Lazy load contents of html
-	const k8laz_load = function(){
+	const k8laz_loadFun = function(){
 		var k8laz_load = document.querySelectorAll('.k8laz_load');
 		if( k8laz_load.length > 0 ){
 			var observer = new IntersectionObserver((entries) => {
@@ -90,7 +90,7 @@ jQuery(document).ready(function($){
 			});
 		}
 	}
-	k8laz_load();
+	k8laz_loadFun();
 
 
 	// Set blocks with equal height
