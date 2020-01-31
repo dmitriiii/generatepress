@@ -101,7 +101,7 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 	}
 // 	return $user_caps;
 // }, 10, 4 );
-// 
+//
 
 
 
@@ -192,3 +192,43 @@ function k8_disable_feed_for_pages() {
 // 	}
 // 	return $content;
 // }
+//
+//
+//
+//
+
+
+add_action('wp', 'k8_start_caching');
+function k8_start_caching() {
+  ob_start();
+}
+
+add_action('shutdown', 'k8_stop_caching', 0);
+function k8_stop_caching() {
+  $final = '';
+  $levels = ob_get_level();
+
+  for ($i = 0; $i < $levels; $i++) {
+      $final .= ob_get_clean();
+  }
+  echo apply_filters('k8_filter_links', $final);
+}
+
+add_filter('k8_filter_links', function ( $content ) {
+  $html = new \DOMDocument();
+  libxml_use_internal_errors(true); //suppress errors triggered by html 5
+  $html->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+  libxml_use_internal_errors(false);
+  $site_url = parse_url(get_site_url(), PHP_URL_HOST);
+  $good_sites = ['vpn-blog.de','vpntester.ch','twitter.com','plus.google.com','vpntester.de', 'vpntester.at', $site_url];
+  $links = array();
+   //Loop through each <a> tag in the dom and add it to the link array
+   foreach($html->getElementsByTagName('a') as $link) {
+       $href = parse_url($link->getAttribute('href'), PHP_URL_HOST);
+       $domain = $href ? $href : $site_url;
+      if(!strpos($link, $site_url.'/link/') && !in_array($domain, $good_sites)) {
+          $link->setAttribute('rel', 'noopener noreferrer nofollow');
+      }
+  }
+  return $html->saveHTML();
+});
