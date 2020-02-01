@@ -63,7 +63,7 @@ class K8Schema
 				'name' => wp_strip_all_tags( $value['quest'], true ),
 				'acceptedAnswer' => array(
 					'@type' => 'Answer',
-					'text' => $value['ans']
+					'text' => wp_strip_all_tags( $value['ans'], true )
 				)
 			);
 		}
