@@ -199,6 +199,7 @@ function k8_disable_feed_for_pages() {
 //
 
 
+#Bulk change external links to nofollow
 add_action('wp_head', 'k8_start_caching',0);
 function k8_start_caching() {
 	ob_start();
@@ -206,7 +207,7 @@ function k8_start_caching() {
 
 add_action('wp_footer', 'k8_stop_caching',999);
 function k8_stop_caching() {
-	$final .= ob_get_clean();
+	$final = ob_get_clean();
 	echo apply_filters('k8_filter_links', $final);
 }
 
@@ -217,7 +218,7 @@ add_filter('k8_filter_links', function ( $content ) {
 	$html->loadHTML('<?xml encoding="utf-8" ?>' . $content);
 	libxml_use_internal_errors(false);
 	$site_url = parse_url(get_site_url(), PHP_URL_HOST);
-	$good_sites = ['vpn-blog.de','vpntester.ch','twitter.com','plus.google.com','vpntester.de', 'vpntester.at', 'vpntester.net', 'vpntester.ru', $site_url];
+	$good_sites = ['vpn-blog.de','vpntester.ch','twitter.com','plus.google.com','vpntester.de', 'vpntester.at', 'vpntester.net', 'vpntester.ru','vpn-anbieter-vergleich-test.de', 'vavt.de', $site_url];
 	$links = array();
 
 	 foreach($html->getElementsByTagName('a') as $link) {
