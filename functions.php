@@ -197,37 +197,3 @@ function k8_disable_feed_for_pages() {
 //
 //
 //
-
-
-#Bulk change external links to nofollow
-add_action('wp_head', 'k8_start_caching',0);
-function k8_start_caching() {
-	ob_start();
-}
-
-add_action('wp_footer', 'k8_stop_caching',999);
-function k8_stop_caching() {
-	$final = ob_get_clean();
-	echo apply_filters('k8_filter_links', $final);
-}
-
-add_filter('k8_filter_links', function ( $content ) {
-
-	$html = new \DOMDocument();
-	libxml_use_internal_errors(true); //suppress errors triggered by html 5
-	$html->loadHTML('<?xml encoding="utf-8" ?>' . $content);
-	libxml_use_internal_errors(false);
-	$site_url = parse_url(get_site_url(), PHP_URL_HOST);
-	$good_sites = ['vpn-blog.de','vpntester.ch','twitter.com','plus.google.com','vpntester.de', 'vpntester.at', 'vpntester.net', 'vpntester.ru','vpn-anbieter-vergleich-test.de', 'vavt.de', $site_url];
-	$links = array();
-
-	 foreach($html->getElementsByTagName('a') as $link) {
-		 $href = parse_url($link->getAttribute('href'), PHP_URL_HOST);
-		 $domain = $href ? $href : $site_url;
-		if(!strpos($link->getAttribute('href'), $site_url.'/link/') && !in_array($domain, $good_sites)) {
-			$link->setAttribute('rel', 'noopener noreferrer nofollow');
-		}
-	}
-
-	return $html->saveHTML();
-});
