@@ -139,6 +139,7 @@ class K8Schema
 	 */
 	static function getHowTo( $args=[] ){
 		extract( $args );
+		(trim($k8_content) == '') ? $k8_content = 'Sehr nützlicher Artikel zum Selbermachen' : '';
 		$datta = [
 			"@context" => "https://schema.org",
 			"@type" => "HowTo",
