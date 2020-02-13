@@ -429,7 +429,7 @@ class K8Acf
 						'prepend' => '',
 						'append' => 'kbps',
 						'min' => 1,
-						'max' => 400000,
+						'max' => 40000000,
 						'step' => '',
 					),
 					array(
@@ -450,7 +450,7 @@ class K8Acf
 						'prepend' => '',
 						'append' => 'kbps',
 						'min' => 1,
-						'max' => '',
+						'max' => 40000000,
 						'step' => '',
 					),
 					array(
