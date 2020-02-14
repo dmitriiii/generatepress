@@ -12,7 +12,7 @@ if( isset( $rows ) && is_array( $rows ) && count( $rows ) > 0 ) : ?>
 			foreach ($rows as $sld) : ?>
 				<div>
 					<div class="k8-sl__itt">
-						<a href="<?php echo K8Help::getImgUrl( $sld['image'], 'large' ); ?>" rel="nofollow" class="k8-lg__item">
+						<a href="<?php echo K8Help::getImgUrl( $sld['image'], 'full' ); ?>" rel="nofollow" class="k8-lg__item">
 							<?php
 								echo K8Html::getImgHtml(array(
 									'img_id' => $sld['image'],
