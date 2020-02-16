@@ -152,4 +152,41 @@ class K8Help
 		}
 		return $image_sizes;
 	}
+
+
+	#Get menu items array
+	/**
+	 * [getMenuArray description]
+	 * @param  [type] $menu_name [
+	 *  'string' - menu location
+	 * ]
+	 * @return [type]            [description]
+	 */
+	static function getMenuArray($menu_name) {
+		$locations = get_nav_menu_locations();
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+
+		$menu = array();
+		foreach ($menuitems as $m) {
+			if (empty($m->menu_item_parent)) {
+				$menu[$m->ID] = array();
+				$menu[$m->ID]['ID']      =   $m->ID;
+				$menu[$m->ID]['title']       =   $m->title;
+				$menu[$m->ID]['url']         =   $m->url;
+				$menu[$m->ID]['children']    =   array();
+			}
+		}
+		$submenu = array();
+		foreach ($menuitems as $m) {
+			if ($m->menu_item_parent) {
+				$submenu[$m->ID] = array();
+				$submenu[$m->ID]['ID']       =   $m->ID;
+				$submenu[$m->ID]['title']    =   $m->title;
+				$submenu[$m->ID]['url']  =   $m->url;
+				$menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];
+			}
+		}
+		return $menu;
+	}
 }

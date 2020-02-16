@@ -11,8 +11,11 @@ class K8Assets
 		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' ){
 			add_action( 'admin_head', array($this, 'acf_fix') );
 		}
+
+
 	}
 	public function load_scripts() {
+
 		wp_register_style( 'k8-slick-css', get_template_directory_uri() . '/k8/assets/css/slick.css', array(), false, 'all' );
 		wp_register_style( 'k8-boot4grid-css', get_template_directory_uri() . '/k8/assets/css/grid.min.css', array(), false, 'all' );
 		wp_register_style( 'k8-vpn-security-css', get_template_directory_uri() . '/k8/assets/css/tpl/vpn-security.css', array(), false, 'all' );
@@ -61,6 +64,9 @@ class K8Assets
 			wp_enqueue_style( 'k8-boot4grid-css' );
 			wp_enqueue_style( 'k8-vpn-security-css' );
 		}
+
+
+
 	}
 
 	#add css for admin dashboard

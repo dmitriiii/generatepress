@@ -15,6 +15,8 @@ class K8Acf
 
 		add_action( 'acf/init', array( $this, 'howto' ) );
 
+		add_action( 'acf/init', array( $this, 'amp' ) );
+
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
@@ -450,7 +452,7 @@ class K8Acf
 						'prepend' => '',
 						'append' => 'kbps',
 						'min' => 1,
-						'max' => 40000000,
+						'max' => '',
 						'step' => '',
 					),
 					array(
@@ -1270,6 +1272,97 @@ class K8Acf
 							'param' => 'post_type',
 							'operator' => '==',
 							'value' => 'k8pt_howto',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+		endif;
+	}
+
+	#AMP support
+	public function amp(){
+		if( function_exists('acf_add_local_field_group') ):
+			acf_add_local_field_group(array(
+				'key' => 'group_5e4564086c382',
+				'title' => 'Site Options',
+				'fields' => array(
+					array(
+						'key' => 'field_5e4566a16a884',
+						'label' => 'AMP',
+						'name' => '',
+						'type' => 'tab',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'placement' => 'top',
+						'endpoint' => 0,
+					),
+					array(
+						'key' => 'field_5e4566bc6a885',
+						'label' => 'Enabled',
+						'name' => 'k8_optz_amp',
+						'type' => 'true_false',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'message' => '',
+						'default_value' => 0,
+						'ui' => 0,
+						'ui_on_text' => '',
+						'ui_off_text' => '',
+					),
+					array(
+						'key' => 'field_5e456750b9f98',
+						'label' => 'Google Analitics ID',
+						'name' => 'k8_optz_amp_ga',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5e4566bc6a885',
+									'operator' => '==',
+									'value' => '1',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'options_page',
+							'operator' => '==',
+							'value' => 'acf-options',
 						),
 					),
 				),

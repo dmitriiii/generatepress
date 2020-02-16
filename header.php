@@ -7,12 +7,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+$apid = get_the_ID();
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php 
+	if( is_single() && in_category('news', $apid) ) : ?>
+		<link rel="amphtml" href="<?php the_permalink( $apid ); ?>amp/">
+	<?php 
+	endif; ?>
+
 	<?php wp_head(); ?>
 </head>
 <?php 

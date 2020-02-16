@@ -1,5 +1,35 @@
 <?php
+// ****************************************************************************************************	
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page(); 
+}
+
 require_once( __DIR__ . '/K8Init.php');
+
+
+// AMP support
+if( get_field('k8_optz_amp','option') == 1 ){
+	define( 'AMP_QUERY_VAR', apply_filters( 'amp_query_var', 'amp' ) );
+	add_rewrite_endpoint( AMP_QUERY_VAR, EP_PERMALINK );
+	add_filter( 'template_include', 'amp_page_template', 99 );
+	function amp_page_template( $template ) {
+		if( get_query_var( AMP_QUERY_VAR, false ) !== false ) {
+			if ( is_single() && in_category('news') ) {
+				$template = get_template_directory() .  '/amp/tpl/single-news.php';
+			}
+		}
+		return $template;
+	}
+}
+
+
+
+
+
+
+
+
+
 /**
  * GeneratePress.
  *
@@ -84,16 +114,11 @@ require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/post-meta.php';
 require get_template_directory() . '/inc/structure/sidebars.php';
-
-
 remove_action('load-update-core.php', 'wp_update_themes' );
 // add_filter('pre_site_transient_update_themes', create_function( '$a', "return null;" ) );
 # no auto updates (should be manual to prevent breaking stuff without noticing)
 add_filter( 'auto_update_theme', '__return_false' );
 add_filter( 'auto_update_plugin', '__return_false' );
-
-
-
 // add_filter( 'user_has_cap', function( $user_caps, $required_caps, $args, $user ) {
 // 	// write_log( $user->data->user_email );
 // 	if ( $user->data->user_email !== 'dk@geroy.ooo' ) {
@@ -102,29 +127,18 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 	return $user_caps;
 // }, 10, 4 );
 //
-
-
-
 add_action( 'init', 'k8_disable_feed_for_pages' );
-
 function k8_disable_feed_for_pages() {
-
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
 	remove_action( 'wp_head', 'feed_links', 2 );
 	remove_action( 'wp_head', 'rsd_link' );
-
 	if(home_url($_SERVER['REQUEST_URI']) != site_url('feed/')) {
-
 		remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
 		remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
 		remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
 		remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
-
 	}
 }
-
-
-
 // function k8_deregister_scripts () {
 // 	$common_scripts = [
 // 		'supsystic-tables-notify',
@@ -143,7 +157,6 @@ function k8_disable_feed_for_pages() {
 // 	}
 // }
 // add_action ( 'wp_print_scripts', 'k8_deregister_scripts', 999);
-
 // function k8_deregister_styles() {
 // 	$common_css = [
 // 		'aalb_basics_css',
@@ -159,7 +172,6 @@ function k8_disable_feed_for_pages() {
 // 	}
 // }
 // add_action('wp_print_styles', 'k8_deregister_styles', 999);
-
 // /* ANSPRESS FILTER */
 // add_filter( 'the_content', 'k8_filter_anspress_assets' );
 // function k8_filter_anspress_assets( $content ) {
@@ -177,7 +189,6 @@ function k8_disable_feed_for_pages() {
 // 			wp_deregister_script ($script);
 // 			wp_dequeue_script ($script);
 // 		}
-
 // 		$anspress_css = [
 // 			'syntaxhighlighter-core',
 // 			'syntaxhighlighter-theme-default',
@@ -197,3 +208,6 @@ function k8_disable_feed_for_pages() {
 //
 //
 //
+//
+//
+
