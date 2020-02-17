@@ -114,7 +114,7 @@ ob_start("k8_amp_callback");
 		<link rel="canonical" href="<?php echo $k8_can; ?>" data-k8req>
 		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript data-k8req><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 		
-		<link href="https://fonts.googleapis.com/css?family=Lora:700|Ubuntu&display=swap&subset=latin-ext" rel="stylesheet">
+		<!-- <link href="https://fonts.googleapis.com/css?family=Lora:700|Ubuntu&display=swap&subset=latin-ext" rel="stylesheet"> -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 		<?php wp_head(); ?>
@@ -125,11 +125,11 @@ ob_start("k8_amp_callback");
 				line-height: 1.5;
 				font-size: 15px;
 				/* font-family: 'Open Sans', sans-serif; */
-				font-family: 'Ubuntu', sans-serif;
+				/* font-family: 'Ubuntu', sans-serif; */
 				font-weight: 400;
 			}
 			h1,h2,h3,h4,h5,h6,strong,b{
-				font-family: 'Lora', serif;
+				/* font-family: 'Lora', serif; */
 				font-weight: 700;
 			}
 			h1{
