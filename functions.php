@@ -6,9 +6,9 @@ if( function_exists('acf_add_options_page') ) {
 
 require_once( __DIR__ . '/K8Init.php');
 
-
+write_log( get_field('k8_optz_amp','option') );
 // AMP support
-if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') === 1 ){
+if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 ){
 	write_log( 'Herrre' );
 	define( 'AMP_QUERY_VAR', apply_filters( 'amp_query_var', 'amp' ) );
 	add_rewrite_endpoint( AMP_QUERY_VAR, EP_PERMALINK );
