@@ -15,7 +15,7 @@ $apid = get_the_ID();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php 
-	if( is_single() && in_category('news', $apid) ) : ?>
+	if( is_single() && in_category('news', $apid) && get_field('k8_optz_amp','option') == 1 ) : ?>
 		<link rel="amphtml" href="<?php the_permalink( $apid ); ?>amp/">
 	<?php 
 	endif; ?>
