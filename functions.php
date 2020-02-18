@@ -8,7 +8,8 @@ require_once( __DIR__ . '/K8Init.php');
 
 
 // AMP support
-if( get_field('k8_optz_amp','option') == 1 ){
+if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') === 1 ){
+	write_log( 'Herrre' );
 	define( 'AMP_QUERY_VAR', apply_filters( 'amp_query_var', 'amp' ) );
 	add_rewrite_endpoint( AMP_QUERY_VAR, EP_PERMALINK );
 	add_filter( 'template_include', 'amp_page_template', 99 );
@@ -22,14 +23,7 @@ if( get_field('k8_optz_amp','option') == 1 ){
 	}
 }
 
-
-
-
-
-
-
-
-
+ 
 /**
  * GeneratePress.
  *
