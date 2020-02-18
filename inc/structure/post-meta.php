@@ -113,10 +113,11 @@ if ( ! function_exists( 'generate_posted_on' ) ) {
 		$author = apply_filters( 'generate_post_author', true );
 
 		// $time_string = '<time class="entry-date published" datetime="%1$s" itemprop="datePublished">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="updated" datetime="%3$s" itemprop="dateModified">%4$s</time>';
-		}
-
+		// if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			
+		// }
+		$time_string = '<time class="updated" datetime="%3$s" itemprop="dateModified">%4$s</time>';
+		
 		$time_string = sprintf( $time_string,
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
