@@ -64,10 +64,22 @@
 }
 
 @media (max-width: 650px){
-	.k8_sh_speedtest-graphic1 .tbl,
-	.k8_sh_speedtest-graphic1 .tbl-row,
+	.k8_sh_speedtest-graphic1 .tbl{
+		width: 100%;
+		display: block;
+	}
+	.k8_sh_speedtest-graphic1 .tbl-row{
+		width: 100%;
+		display: block;
+	}
 	.k8_sh_speedtest-graphic1 .tbl-cell{
 		width: 100%;
 		display: block;
+		max-width: 180px;
+		margin: 10px auto;
+	}
+	.k8_sh_speedtest-graphic1 .wrr{
+		margin: 0;
+		padding: 15px 0px;
 	}
 }

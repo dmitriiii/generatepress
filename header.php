@@ -23,10 +23,7 @@ $apid = get_the_ID();
 	<?php wp_head(); ?>
 </head>
 <?php 
-$k8_mob_clss = "";
-if ( !wp_is_mobile() ) {
-	$k8_mob_clss = 'k8_desktop';
-} ?>
+(wp_is_mobile()) ? $k8_mob_clss = 'k8body__mob' : $k8_mob_clss = 'k8_desktop' ;?>
 <body <?php body_class( $k8_mob_clss ); ?> <?php generate_do_microdata( 'body' ); ?>>
 	<?php
 	/**

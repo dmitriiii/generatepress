@@ -39,9 +39,12 @@
 	border: none;
 	border-collapse: collapse;
 }
+
+
 .k8_compare-tbl td{
 	border-collapse: collapse;
 	border: 1px solid rgba(0, 0, 0, 0.03);
+	vertical-align: top;
 }
 
 .k8_compare-tbl mark{
@@ -75,6 +78,14 @@
 	fill: #33CC99;
 }
 
+strong.labb {
+  padding: 2px 5px;
+  font-size: 12px;
+  color: #fff;
+  background: #999;
+  display: inline-block;
+  margin: 0 3px 3px 0;
+}
 
 .tbl{
 	display: table;
