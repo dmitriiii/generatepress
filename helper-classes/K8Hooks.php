@@ -29,6 +29,7 @@ class K8Hooks
 		$mimes['msi'] = 'application/x-msi';
 		$mimes['deb'] = 'application/x-debian-package';
 		$mimes['rpm'] = 'audio/x-pn-realaudio-plugin';
+		$mimes['rar'] = 'application/x-rar-compressed';
 		return $mimes;
 	}
 	#Allow WP work with sessions
