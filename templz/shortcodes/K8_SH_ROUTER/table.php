@@ -62,7 +62,9 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]).
 		 		$new_valz_arr[] = $v;
 		 	}
 		endforeach;
-		echo implode(", ",$new_valz_arr) .
+		echo "<strong class='labb'>" .
+					implode("</strong><strong class='labb'>",$new_valz_arr) .
+				 "</strong>";
 		$this->_td;
 	}
 	echo $this->_tr .

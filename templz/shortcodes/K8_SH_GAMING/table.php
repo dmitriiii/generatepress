@@ -30,7 +30,7 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 	$this->tr . K8Html::tdHead( ['txt'=>__('Nutzung auf Spielekonsolen' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
 		echo $this->td .
-					((has_term( 'smartdns', 'sonderfunktionen', $item['pid'] ) ) ? '<strong>PlayStation, XBox</strong>' : $this->false_icon) .
+					((has_term( 'smartdns', 'sonderfunktionen', $item['pid'] ) ) ? '<strong class=\'labb\'>PlayStation</strong><strong class=\'labb\'>XBox</strong>' : $this->false_icon) .
 				 $this->_td;
 	}
 	echo $this->_tr .
