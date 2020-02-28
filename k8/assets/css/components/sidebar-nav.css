@@ -1,0 +1,97 @@
+.k8side__wraper{
+	position: fixed;
+	bottom: 20px;
+	padding: 0;
+	z-index: 999999999;
+	font-size: 0;
+	box-sizing: border-box;
+	left: 15px;
+}
+.k8side__wraper *{
+	box-sizing: border-box;
+}
+.k8side__button{
+	width: 50px;
+	color: #fff;
+	background-color: #00B2E2;
+	cursor: pointer;
+	text-align: center;
+	padding: 0;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+}
+.k8side__button:focus{
+	background-color: #00B2E2;
+}
+.k8side__button:hover{
+	background-color: #3C9;
+}
+.k8side__button-1{
+	height: 50px;
+	line-height: 50px;
+	font-size: 24px;
+}
+.k8side__button.active{
+	background-color: #3C9;
+}
+.k8side__button i{
+	animation: crescendo 1s alternate infinite ease-in;
+}
+
+.k8side__menu{
+	font-size: 14px;
+	list-style-type: none;
+	position: absolute;
+	bottom: 0;
+	left: 50px;
+	width: 290px;
+	margin: 0;
+	display: none;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 5px #666;
+	box-shadow: 0 0 5px #666;
+	min-height: 250px;
+	animation-name: appr;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+}
+.k8side__menu a{
+	color: #00B2E2;
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+.k8side__menu a:visited{
+	color: #00B2E2;
+}
+.k8side__menu.active{
+	display: block;
+}
+
+.k8side__over{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.9);
+	display: none;
+	z-index: 9999;
+}
+.k8side__over.active{
+	display: block;
+}
+
+@keyframes appr {
+  0%{
+  	opacity: 0;
+  }
+  100%{
+  	opacity: 1;
+  }
+}
+@keyframes crescendo {
+  0%   {transform: scale(0.8);}
+  100% {transform: scale(1.1);}
+}
