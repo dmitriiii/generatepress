@@ -22,9 +22,11 @@
 }
 .k8side__button:focus{
 	background-color: #00B2E2;
+	color: #fff;
 }
 .k8side__button:hover{
 	background-color: #3C9;
+	color: #fff;
 }
 .k8side__button-1{
 	height: 50px;
