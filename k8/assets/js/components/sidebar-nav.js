@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 				c = 1;
 		/*For desktop margin left*/
 		if(!window.mobilecheckk()){
-			let	$content = $('#content.site-content'),
+			let	$content = $('.footer-widgets-container'),
 					left = (($content.outerWidth() / 2) + $wrapper.outerWidth());
 			$wrapper.css({
 				'margin-left': '-' + left + 'px',
