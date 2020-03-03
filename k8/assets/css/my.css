@@ -751,16 +751,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9;
-	
-/*	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
-	background: -moz-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
-	background: -o-linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
-	background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 1));
-	
-	opacity: 0;*/
-	/*background-size: 100% 100%;*/
-
-
+	cursor: pointer;
 }
 
 .k8_yt-link:after{
