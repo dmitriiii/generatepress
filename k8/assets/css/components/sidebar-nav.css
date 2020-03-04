@@ -49,6 +49,8 @@
 	width: 290px;
 	margin: 0;
 	display: none;
+	max-height: 400px;
+	overflow: auto;
 	background-color: #fff;
 	-webkit-box-shadow: 0 0 5px #666;
 	box-shadow: 0 0 5px #666;
