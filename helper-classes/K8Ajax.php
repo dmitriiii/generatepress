@@ -33,10 +33,10 @@ class K8Ajax
 		$arrr = array();
 		$html = '';
 		extract( $_POST );
-		if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
-	    $arrr['error'] = 'Submit via website, please';
-			$this->final($arrr);
-	  }
+		// if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
+	 //    $arrr['error'] = 'Submit via website, please';
+		// 	$this->final($arrr);
+	 //  }
 	 	$arrr['html'] = do_shortcode("[$tag vpnid='$vpnid' output='$output' is_ajax='true']");
 		echo json_encode( $arrr );
 		exit();
@@ -47,10 +47,10 @@ class K8Ajax
 		$arrr = array();
 		$html = '';
 		extract( $_POST );
-		if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
-	    $arrr['error'] = 'Submit via website, please';
-			$this->final($arrr);
-	  }
+		// if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
+	 //    $arrr['error'] = 'Submit via website, please';
+		// 	$this->final($arrr);
+	 //  }
 	  ob_start();
 	  echo '<ol class="comment-list">';
 	 	$commz = get_comments(

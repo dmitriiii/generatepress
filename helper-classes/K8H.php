@@ -39,14 +39,12 @@ class K8H
 	static function ajxHolder( $args=[] ){
 		$vpnid =	implode(',', array_column ($args['pid_arr'], 'vpnid' ));
 		$str = '<div class="k8laz_load k8laz_comments"
-			data-nonce="%s"
 			data-action="%s"
 			data-vpnid="%s"
 			data-tag="%s"
 			data-output="%s"></div>';
 		return sprintf(
 			$str,
-			wp_create_nonce('k8laz__nonce'),
 			'k8laz_short',
 			$vpnid,
 			$args['tag'],
