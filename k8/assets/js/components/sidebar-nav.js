@@ -25,9 +25,9 @@ jQuery(document).ready(function($) {
 	const Setup = function(){
 		let html_els = '<div class="k8side__item k8side__item-1"><button class="k8side__button k8side__button-1"><i class="fas fa-ellipsis-v"></i></button><ul class="k8side__menu"></ul></div>',
 				$wrapper = $('.k8side__wraper'),
-				$titlz = $('body main#main h2').not(".wppr-review-container h2");
+				$titlz = $('body main#main h2:visible').not(".wppr-review-container h2");
 		if( $titlz.length == 0 ){
-			$titlz = $('body main#main h1')
+			$titlz = $('body main#main h1:visible')
 		}
 		if( $titlz.length == 0 ){
 			return false;
