@@ -216,14 +216,24 @@ class K8Html
 	 * [tbl_start description]
 	 * @param  array  $attr [
 	 *   'add_clss' - class of shortcode
+	 *   'scroll' - true || false
+	 *   'without_head' - true || false
+	 *   'anim_clss' - true || false
 	 * ]
 	 * @return [type]       [description]
 	 */
 	static function tbl_start( $attr = array() ){
-		$str = '<div class="k8_tbl-resp %s %s"><table class="k8_compare-tbl mtb-30"><tbody>';
+		$str = '<div class="k8_tbl-resp %s %s %s"><table class="k8_compare-tbl mtb-30"><tbody>';
+		if( isset($attr['without_head']) ){
+			$str = '<div class="k8_tbl-resp %s %s %s"><table class="k8_compare-tbl mtb-30">';
+		}
 		( isset( $attr['add_clss'] ) ) ? $add_clss = $attr['add_clss'] : $add_clss = '';
-		(	!wp_is_mobile() ) ? $anim_clss = "k8anim k8anim_th" : $anim_clss = "";
-		return sprintf( $str, $anim_clss, $add_clss );
+		(	isset( $attr['anim_clss'] ) ) ? $anim_clss = "" : $anim_clss = "k8anim k8anim_th";
+		( isset( $attr['scroll'] ) ) ? $scroll = 'table-scroll' : $scroll = '';
+		return sprintf( $str,
+			$add_clss,
+			$anim_clss,
+			$scroll );
 	}
 	static function tbl_end(){
 		return '</tbody></table></div>';

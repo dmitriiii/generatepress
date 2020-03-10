@@ -95,9 +95,11 @@ class K8Short
 		#[K8_SH_VIDEOVPN]
 		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
 
-
 		#[K8_SH_HOWTO]
 		add_shortcode( 'K8_SH_HOWTO', array( $this, 'howto') );
+
+		#[K8_SH_BEST]
+		add_shortcode( 'K8_SH_BEST', array( $this, 'best') );
 	}
 
 	/**
@@ -583,6 +585,27 @@ class K8Short
 		ob_start();
 		echo '<script type="application/ld+json">' . $schema . '</script>';
 		include $this->templ_url . $tag . '/design1.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	#Best VPN Services list
+	#[K8_SH_BEST]
+	public function best( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'table',
+			'vpnid' => get_the_ID(),
+		), $atts );
+		if( !isset($atts['vpnid']) || trim($atts['vpnid']) == '' )
+			return '<b>Please, provide vpn ids</b>';
+		// write_log('Continueing!');
+		$pid_arr = K8H::shortPrep( $a, $atts );
+		if( count($pid_arr) == 0 )
+			return '<b>Please, provide valid vpn ids that exists on website!</b>';
+		wp_enqueue_style( 'k8_sh_best-css' );
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}

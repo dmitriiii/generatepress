@@ -29,10 +29,10 @@ class K8Assets
 		wp_register_script( 'k8-libs-lightgallery-js', get_template_directory_uri() . '/k8/assets/js/libs/lightgallery.min.js', array('jquery'), null, false );
 
 		#SHORTCODE's JS & CSS
-		#[K8_SH_SPEEDTEST]
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
 		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_howto-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_howto.css', array(), false, 'all' );
+		wp_register_style( 'k8_sh_best-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_best.css', array(), rand(1,9999), 'all' );
 		#END SHORTCODE's JS & CSS
 
 		#Components&Modules
