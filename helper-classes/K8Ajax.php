@@ -33,11 +33,16 @@ class K8Ajax
 		$arrr = array();
 		$html = '';
 		extract( $_POST );
+		// write_log(get_defined_vars());
 		// if ( !isset( $nonce ) || !wp_verify_nonce( $nonce, "k8laz__nonce") ) {
 	 //    $arrr['error'] = 'Submit via website, please';
 		// 	$this->final($arrr);
 	 //  }
-	 	$arrr['html'] = do_shortcode("[$tag vpnid='$vpnid' output='$output' is_ajax='true']");
+	 	$shrtcd = "[$tag vpnid='$vpnid' output='$output'";
+	 	if(isset($ver))
+	 		$shrtcd .= " ver='$ver'";
+	 	$shrtcd .= " is_ajax='true']";
+	 	$arrr['html'] = do_shortcode( $shrtcd );
 		echo json_encode( $arrr );
 		exit();
 	}

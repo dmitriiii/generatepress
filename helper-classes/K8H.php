@@ -42,13 +42,20 @@ class K8H
 			data-action="%s"
 			data-vpnid="%s"
 			data-tag="%s"
-			data-output="%s"></div>';
+			data-output="%s"';
+		$ver = '';
+		if( isset($args['ver']) ){
+			$ver = $args['ver'];
+			$str.= ' data-ver="%s"';
+		}
+		$str.= '></div>';
 		return sprintf(
 			$str,
 			'k8laz_short',
 			$vpnid,
 			$args['tag'],
-			$args['output']
+			$args['output'],
+			$ver
 		);
 	}
 

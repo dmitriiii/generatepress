@@ -267,11 +267,13 @@ class K8Short
 			'ver' => 'de'
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
+		// write_log(get_defined_vars());
 		if( !isset( $atts['is_ajax'] ) || $atts['is_ajax'] !== 'true' )
 			return K8H::ajxHolder([
 				'pid_arr' => $pid_arr,
 				'tag' => $tag,
-				'output' => $a["output"]
+				'output' => $a["output"],
+				'ver' => $a["ver"]
 			]);
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
