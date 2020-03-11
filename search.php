@@ -4,7 +4,7 @@
  *
  * @package GeneratePress
  */
-
+ob_end_flush();
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
