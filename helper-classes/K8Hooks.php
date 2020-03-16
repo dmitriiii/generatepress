@@ -20,6 +20,13 @@ class K8Hooks
 		#Add how to shortcode to admin
 		add_filter( 'manage_k8pt_howto_posts_columns', array( $this, 'k8pt_howto_cols' ) );
 		add_action( 'manage_k8pt_howto_posts_custom_column' , array( $this, 'k8pt_howto_col' ), 10, 2 );
+
+		#301 redirect on coupons single pages
+		if( get_site_url() == 'https://vpntester.net' ){
+			add_action( 'template_redirect', array( $this, 'redirect_to_home_page' ) );
+		}
+		
+
 	}
 	public function upload_mimes( $mimes ){
 		$mimes['exe'] = 'application/octet-stream';
@@ -103,6 +110,14 @@ class K8Hooks
 		if( $column == 'howto_shrt' ){
 			echo "<code>[K8_SH_HOWTO id='$post_id']</code>";
 		}
+	}
+
+	#301 redirect on coupons single pages
+	public function redirect_to_home_page() {
+	  if ( is_single() && 'affcoups_coupon' == get_post_type() ) {
+	   wp_redirect( home_url(), 301 );
+	    exit;
+	  }
 	}
 
 }
