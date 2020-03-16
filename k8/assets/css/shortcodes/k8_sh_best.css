@@ -1,34 +1,30 @@
+.table-scroll,
+.table-scroll *{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .table-scroll {
   position: relative;
   width:100%;
   z-index: 1;
   margin: auto;
   overflow: auto;
-  height: 350px;
 }
 .table-scroll table {
   width: 100%;
-  min-width: 1280px;
   margin: auto;
-  /* border-collapse: separate; */
-  /* border-spacing: 0; */
 }
 .table-wrap {
   position: relative;
 }
-/* .table-scroll th,
-.table-scroll td {
-  padding: 5px 10px;
-  border: 1px solid #000;
-  background: #fff;
-  vertical-align: top;
-} */
 .table-scroll thead th {
-  /* background: #333;
-  color: #fff; */
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  min-width: 150px;
+  font-size: 11px;
+  border-right: 1px solid #fff;
 }
 /* safari and ios need the tfoot itself to be position:sticky also */
 .table-scroll tfoot,
@@ -42,18 +38,160 @@
   z-index:4;
 }
 
-/* a:focus {
-  background: red;
-} */ /* testing links*/
 
 th:first-child {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
   z-index: 2;
-  background: #ccc;
 }
 thead th:first-child,
 tfoot th:first-child {
   z-index: 5;
+}
+
+.k8progress{
+  margin: 0px auto;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  text-align: center;
+  display: block;
+}
+
+.list--compare{
+  list-style-type: none;
+  margin: 0;
+  font-size: 9px;
+  color: #fff;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.list--compare>li{
+  width: 50%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+  background: #666;
+  padding: 2px 6px;
+  border: .6px solid #fff;
+}
+.list--compare .k8-t-f{
+  height: 18px;
+  width: 18px;
+  min-height: 18px;
+  min-width: 18px;
+  margin: 0;
+}
+
+.k8_sh_best .recommendation,
+.k8_sh_best .streaming-de,
+.k8_sh_best .description,
+.k8_sh_best .text{
+  min-width: 300px;
+}
+
+.k8_sh_best .streaming-int{
+  min-width: 400px;
+}
+.k8_sh_best .applications,
+.k8_sh_best .security,
+.k8_sh_best .links{
+  width: 230px;
+  max-width: 230px;
+  min-width: 230px;
+}
+.k8_sh_best .rating{
+  width: 100px;
+  max-width: 100px;
+  min-width: 100px;
+}
+.k8_sh_best .logo{
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  background-color: rgba(0,178,226,0.75);
+}
+
+.k8_sh_best .speed{
+  width: 70px;
+  max-width: 70px;
+  min-width: 70px;
+}
+
+
+.k8_sh_best tbody .logo{
+  border-top: 1px solid #fff;
+}
+.k8_sh_best thead .logo{
+  background-color: #00B2E2;
+}
+
+.k8_sh_best .title{
+  vertical-align: middle;
+  width: 90px;
+  max-width: 90px;
+  min-width: 90px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.k8_sh_best .pricing{
+  text-align: center;
+}
+
+.k8_sh_best .labb{
+  margin: 0 2px 0 0;
+}
+
+.k8_sh_best .dwnd__butt{
+  letter-spacing: 0;
+  text-transform: none;
+   padding: 5px 10px;
+  max-width: 170px;
+  margin: 7px auto;
+  min-height: 40px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.k8_sh_best .dwnd__butt.grn{
+  text-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.k8_sh_best .links{
+  vertical-align: middle;
+}
+
+.k8_sh_best .links i{
+  font-size: 13px;
+}
+.k8_sh_best .speed{
+  text-align: center;
+  /* vertical-align: middle; */
+}
+.k8_sh_best .speed b{
+  display: inline-block;
+  text-align: center;
+  background-color: #444;
+  color: #fff;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1;
 }

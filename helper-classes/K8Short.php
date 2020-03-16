@@ -8,16 +8,21 @@ class K8Short
 
 	public $td;
 	public $_td;
+
 	public $tr;
 	public $_tr;
+
 	public $b;
 	public $_b;
+
 	public $s;
 	public $_s;
+
 	public $mark1;
 	public $_mark1;
 
-
+	public $_ul;
+	
 	public function __construct( $atts ){
 
 		$this->true_icon = $atts['true'];
@@ -25,18 +30,29 @@ class K8Short
 		$this->tbl_end = '</tbody></table></div>';
 		$this->templ_url = get_template_directory() . '/templz/shortcodes/';
 
+		$this->th = '<th scope="col">';
+		$this->_th = '</th>';
+
 		$this->td = '<td>';
 		$this->_td = '</td>';
+
 		$this->tr = '<tr>';
 		$this->_tr = '</tr>';
+
 		$this->b = '<b>';
 		$this->_b = '</b>';
+
 		$this->s = '<strong>';
 		$this->_s = '</strong>';
+
 		$this->mark1 = '<mark>';
 		$this->_mark1 = '</mark>';
+
 		$this->em = '<em>';
 		$this->_em = '</em>';
+
+		$this->_ul = '</ul>';
+		$this->_li = '</li>';
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -111,6 +127,33 @@ class K8Short
 	 */
 	private function td( $args = array() ){
 		$str = "<td class='%s'>";
+		$class = '';
+		if( isset($args['class']) ){
+			$class = $args['class'];
+		}
+		return sprintf( $str, $class );
+	}
+
+	private function th( $args = array() ){
+		$str = "<th class='%s'>";
+		$class = '';
+		if( isset($args['class']) ){
+			$class = $args['class'];
+		}
+		return sprintf( $str, $class );
+	}
+
+	private function ul( $args = array() ){
+		$str = "<ul class='%s'>";
+		$class = '';
+		if( isset($args['class']) ){
+			$class = $args['class'];
+		}
+		return sprintf( $str, $class );
+	}
+
+	private function li( $args = array() ){
+		$str = "<li class='%s'>";
 		$class = '';
 		if( isset($args['class']) ){
 			$class = $args['class'];
@@ -598,6 +641,7 @@ class K8Short
 		$a = shortcode_atts( array(
 			'output' => 'table',
 			'vpnid' => get_the_ID(),
+			'cols' => 'logo,title,description,text,speed,rating,recommendation,streaming-de,streaming-int,applications,security,pricing,links'
 		), $atts );
 		if( !isset($atts['vpnid']) || trim($atts['vpnid']) == '' )
 			return '<b>Please, provide vpn ids</b>';
@@ -605,7 +649,9 @@ class K8Short
 		$pid_arr = K8H::shortPrep( $a, $atts );
 		if( count($pid_arr) == 0 )
 			return '<b>Please, provide valid vpn ids that exists on website!</b>';
+		$cols_arr = explode(',', $a['cols']);
 		wp_enqueue_style( 'k8_sh_best-css' );
+		wp_enqueue_script( 'k8-lib-progressbar-js' );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();

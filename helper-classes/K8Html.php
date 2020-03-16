@@ -228,7 +228,8 @@ class K8Html
 			$str = '<div class="k8_tbl-resp %s %s %s"><table class="k8_compare-tbl mtb-30">';
 		}
 		( isset( $attr['add_clss'] ) ) ? $add_clss = $attr['add_clss'] : $add_clss = '';
-		(	isset( $attr['anim_clss'] ) ) ? $anim_clss = "" : $anim_clss = "k8anim k8anim_th";
+		// (	isset( $attr['anim_clss'] ) ) ? $anim_clss = "" : $anim_clss = "k8anim k8anim_th";
+		(	isset( $attr['anim_clss'] ) ) ? $anim_clss = "" : $anim_clss = "";
 		( isset( $attr['scroll'] ) ) ? $scroll = 'table-scroll' : $scroll = '';
 		return sprintf( $str,
 			$add_clss,

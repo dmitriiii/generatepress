@@ -30,14 +30,16 @@ class K8Assets
 
 		#SHORTCODE's JS & CSS
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
+		wp_register_script( 'k8-lib-progressbar-js', get_template_directory_uri() . '/k8/assets/js/libs/progressbar.min.js', array(), false, true );
+
 		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_howto-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_howto.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_best-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_best.css', array(), rand(1,9999), 'all' );
 		#END SHORTCODE's JS & CSS
 
 		#Components&Modules
-		wp_register_script( 'k8-sidebar-nav-js', get_template_directory_uri() . '/k8/assets/js/components/sidebar-nav.js', array('jquery'), rand(1,9999), true );
-		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), rand(1,9999), 'all' );
+		wp_register_script( 'k8-sidebar-nav-js', get_template_directory_uri() . '/k8/assets/js/components/sidebar-nav.js', array('jquery'), false, true );
+		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), false, 'all' );
 		#END Components&Modules
 		
 
@@ -53,14 +55,14 @@ class K8Assets
 		}
 
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
-		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), false, 'all' );
+		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,9999), 'all' );
 		
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
 		wp_enqueue_script( 'k8-sidebar-nav-js' );
 		#END Components&Modules
 
-		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), false, true );
+		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,9999), true );
 		wp_localize_script( 'reacher89-my-js', 'k8All', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		));

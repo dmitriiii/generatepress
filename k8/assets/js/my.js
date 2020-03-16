@@ -1,5 +1,52 @@
 jQuery(document).ready(function($){
 
+
+
+	const progrezBar = function( obj ){
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+		let bar = new ProgressBar.Circle( obj.id, {
+		  color: '#3C9',
+		  // This has to be the same size as the maximum width to
+		  // prevent clipping
+		  strokeWidth: 6,
+		  trailWidth: 1,
+		  easing: 'easeInOut',
+		  duration: 1400,
+		  text: {
+		    autoStyleContainer: false
+		  },
+		  from: { color: '#00B2E2', width: 1 },
+		  to: { color: '#3C9', width: 6 },
+		  // Set default step function for all animate calls
+		  step: function(state, circle) {
+		    circle.path.setAttribute('stroke', state.color);
+		    circle.path.setAttribute('stroke-width', state.width);
+		    var value = (circle.value() * 10).toFixed(1);
+		    if (value === 0) {
+		      circle.setText('');
+		    } else {
+		      circle.setText(value);
+		    }
+		  }
+		});
+		bar.text.style.fontSize = '1.4rem';
+		bar.animate( obj.to/10 );  // Number from 0.0 to 1.0
+	}
+
+	if( $('.k8progress').length > 0 ){
+		let $prgrs = $('.k8progress');
+		$prgrs.each(function(index, el) {
+			// console.log( $(el) );
+			progrezBar({
+				id: '#' + $(el).attr('id'),
+				to: $(el).attr('data-to')
+			});
+		});
+	}
+	
+
+
 	//Set compare tables equalwidth
 	const setEqWidth = function(){
 		$('.k8_compare-tbl').each(function(index, el) {
@@ -7,6 +54,9 @@ jQuery(document).ready(function($){
 			$tr =	$tbl.find('tbody>tr:nth-child(2)'),
 			$tds = $tr.find('td'),
 			amnt = $tds.length -1;
+			if( $tbl.parent().hasClass('not-equal-width') ){
+				return;
+			}
 			if( $tds.length > 2 ){
 				var wdth = 70 / amnt;
 				$tds.each(function(index, el) {
@@ -47,6 +97,15 @@ jQuery(document).ready(function($){
 						if (typeof $el.data('k8countup') !== 'undefined') {
 							triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
 						}
+
+						// if (typeof $el.data('k8progress') !== 'undefined') {
+						// 	// triggerCountUp( $el.attr('id'), $el.attr('data-from'), $el.attr('data-to') );
+						// 	progrezBar({
+						// 		id:'#'+$el.attr('id'),
+						// 	});
+						// }
+						
+
 					} else {
 						entry.target.classList.remove('k8anim--visible');
 					}
