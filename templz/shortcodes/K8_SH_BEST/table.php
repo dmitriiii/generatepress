@@ -175,10 +175,10 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							if( is_array($linkz) && count($linkz)>0 ):
 								foreach ( $linkz as $kl ) :
 									echo '<a rel="nofollow" class="dwnd__butt sm" target="__blank" href="'.$kl.'" >' .
-									K8Html::getImgHtml([
-										'img_id'=>get_post_thumbnail_id($p['pid']),
-										'size'=>array(30,30)
-									]) .
+									// K8Html::getImgHtml([
+									// 	'img_id'=>get_post_thumbnail_id($p['pid']),
+									// 	'size'=>array(30,30)
+									// ]) .
 									__('Webseite' , 'k8lang_domain') .
 									'<i class="fas fa-sitemap"></i> </a>';
 								endforeach;
