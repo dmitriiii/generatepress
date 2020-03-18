@@ -154,7 +154,7 @@ tfoot th:first-child {
 }
 
 .k8_sh_best .labb{
-  margin: 0 2px 0 0;
+  font-size: 10px;
 }
 
 .k8_sh_best .dwnd__butt{
@@ -195,3 +195,6 @@ tfoot th:first-child {
   font-size: 12px;
   line-height: 1;
 }
+/* .k8_sh_best .labb{
+  
+} */
