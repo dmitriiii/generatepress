@@ -26,9 +26,9 @@ if( isset($cols_arr) && is_array($cols_arr) && count($cols_arr) > 0 ) :?>
 					case 'speed':
 						_e('Download' , 'k8lang_domain');
 						echo $this->_th . $this->th(['class'=>$col.' '.$col.'--th']) .
-								 __('Upload' , 'k8lang_domain') .
-								 $this->_th . $this->th(['class'=>$col.' '.$col.'--th']) .
-								 __('Ping' , 'k8lang_domain');
+								 __('Upload' , 'k8lang_domain');
+								 // $this->_th . $this->th(['class'=>$col.' '.$col.'--th']) .
+								 // __('Ping' , 'k8lang_domain');
 						break;
 					case 'rating':
 						_e('Bewertung' , 'k8lang_domain');
@@ -95,8 +95,9 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							break;
 						case 'speed':
 							echo $this->b . get_field('k8_acf_vpndet_down', $p['pid']) . ' kbps'. $this->_b . $this->_td .
-									 $this->td(['class'=>$col.' '.$col.'--td']) . $this->b .	get_field('k8_acf_vpndet_up', $p['pid']) . ' kbps' . $this->_b . $this->_td .
-									 $this->td(['class'=>$col.' '.$col.'--td']) . $this->b . get_field('k8_acf_vpndet_ping', $p['pid']) .' ms' . $this->_b . $this->_td;
+									 $this->td(['class'=>$col.' '.$col.'--td']) . $this->b .	get_field('k8_acf_vpndet_up', $p['pid']) . ' kbps' . $this->_b;
+									  // . $this->_td .
+									 // $this->td(['class'=>$col.' '.$col.'--td']) . $this->b . get_field('k8_acf_vpndet_ping', $p['pid']) .' ms' . $this->_b . $this->_td;
 							break;
 						case 'rating':
 							$progr = round( (get_post_meta( $p['pid'],'wppr_rating',true ) / 10), 1);
