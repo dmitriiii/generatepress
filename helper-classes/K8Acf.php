@@ -346,6 +346,8 @@ class K8Acf
 							'pro7' => __( 'Pro7 (DE)', 'k8lang_domain' ),
 							'sat1' => __( 'Sat1 (DE)', 'k8lang_domain' ),
 							'kab1' => __( 'Kabel1 (DE)', 'k8lang_domain' ),
+							'disn_de' => __( 'Disney+ (DE)', 'k8lang_domain' ),
+							'magtv_de' => __( 'MagentaTV (DE)', 'k8lang_domain' ),
 							'orf' => __( 'ORF (AT)', 'k8lang_domain' ),
 							'srf' => __( 'SRF (CH)', 'k8lang_domain' ),
 							'serv' => __( 'Servus TV (DE, AT, CH)', 'k8lang_domain' ),
