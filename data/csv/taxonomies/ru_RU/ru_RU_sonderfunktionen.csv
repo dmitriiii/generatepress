@@ -1,0 +1,25 @@
+slug,name
+alwayson-server,Всегда на сервере
+autom-ip-wechsel,Смена IP
+dedicated-server,Выделенный сервер
+eigene-dns,Собственный DNS
+firewall,Firewall
+geteilte-ipadressen,Совместный IP
+ipv4-klassisch,IPv4
+ipv6-neu,IPv6 (новый)
+keine-logfiles,Отсутствие лог-файлов
+loadbalancing,Баланс загрузки
+malwarefilter,Фильтр Malware
+multi-hop-vpn,Multi Hop VPN
+neurorouting,NeuroRouting
+obfsproxy,Затемнение (маска)
+own-hardware,Собственное оборудование
+own-ip-adresses,Собственные IP-адреса
+own-torrent-server,Собственный сервер для торрентов
+portweiterleitungen,Перенаправление порта
+ram-disk-k-hdd,RAM-диск (k.HDD)
+smartdns,Smart DNS
+statische-ipadresse,Статический IP
+tracking-blocker,Блокировщик отслеживаний
+virtuelle-server,Виртуальные сервера
+vpn-zu-tor,VPN с TOR

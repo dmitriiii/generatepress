@@ -1,0 +1,11 @@
+slug,name
+eigenes-protokoll,Собственный протокол
+ikev2,IKEv2
+l2tpipsec,L2TP/IPSec
+multi-hop-vpn,Multi-Hop-VPN
+openvpn-tcp,OpenVPN (TCP)
+openvpn-udp,OpenVPN (UDP)
+pptp,PPTP
+shadowsocks,Shadowsocks
+socks5,SOCKS5
+sslproxy-verbindung,SSL/Proxy
