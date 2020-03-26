@@ -130,9 +130,10 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							];
 							echo $this->ul(['class'=>'list--compare']);
 							foreach ($arz as $k => $v):
+								$k_term_lab = get_term_by('slug', $k, $v)->name;
 								echo $this->li().
 										 	$this->b.
-										 		get_term_by('slug', $k, $v)->name.
+										 		str_replace("(ASUS)", "", $k_term_lab).
 										 	$this->_b.
 										 	((has_term( $k, $v, $p['pid'] ) ) ? $this->true_icon : $this->false_icon).
 										 $this->_li;
@@ -145,7 +146,8 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 								'killswitch'=>'sonderfunktionen',
 								'eigene-dns'=>'sonderfunktionen',
 								'dedicated-server'=>'sonderfunktionen',
-								'vpn-zu-tor'=>'sonderfunktionen'
+								'vpn-zu-tor'=>'sonderfunktionen',
+								'own-hardware'=>'sonderfunktionen'
 							];
 							echo $this->ul(['class'=>'list--compare']);
 							foreach ($arz as $k => $v):
