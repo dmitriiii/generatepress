@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 		  text: {
 		    autoStyleContainer: false
 		  },
-		  from: { color: '#00B2E2', width: 1 },
+		  from: { color: '#DC143C', width: 1 },
 		  to: { color: '#3C9', width: 6 },
 		  // Set default step function for all animate calls
 		  step: function(state, circle) {
