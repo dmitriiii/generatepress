@@ -39,8 +39,11 @@ jQuery(document).ready(function($) {
 				c = 1;
 		/*For desktop margin left*/
 		if(!window.mobilecheckk()){
-			let	$content = $('.footer-widgets-container'),
-					left = (($content.outerWidth() / 2) + $wrapper.outerWidth());
+			let	$content = $('.footer-widgets-container');
+			if( $content.length == 0 ){
+				$content = $('.copyright-bar');
+			}
+			let	left = (($content.outerWidth() / 2) + $wrapper.outerWidth());
 			$wrapper.css({
 				'margin-left': '-' + left + 'px',
 				'left' : 50 + '%',
