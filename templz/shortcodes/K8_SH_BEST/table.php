@@ -101,7 +101,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							break;
 						case 'rating':
 							$progr = round( (get_post_meta( $p['pid'],'wppr_rating',true ) / 10), 1);
-							echo "<span class='k8anim k8progress' data-k8progress data-to='$progr' id='k8_prgr_" . uniqid() . "'></span>";
+							echo "<span class='k8progress' data-to='$progr' id='k8_prgr_" . uniqid() . "'></span>";
 							break;
 						case 'recommendation':
 							$anwendungen = get_the_terms( $p['pid'], 'anwendungen' );
