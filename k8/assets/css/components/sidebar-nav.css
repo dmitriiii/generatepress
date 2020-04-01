@@ -19,8 +19,8 @@
 	cursor: pointer;
 	text-align: center;
 	padding: 0;
-	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #666666;
+	box-shadow: 0 0 5px #666666;
 	-webkit-transition: all .5s ease;
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
