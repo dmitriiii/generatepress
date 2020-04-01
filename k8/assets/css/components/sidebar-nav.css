@@ -14,23 +14,23 @@
 	width: 50px;
 	color: #fff;
 	background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%);
-	/* background-color: #00B2E2; */
+	background-size: 200% auto;
+	background-color: #0284db;
 	cursor: pointer;
 	text-align: center;
 	padding: 0;
 	-webkit-box-shadow: 0 0 5px #ccc;
 	box-shadow: 0 0 5px #ccc;
 }
-.k8side__button:focus{
-	background-position: right center;
-	/* background-color: #00B2E2; */
-	color: #fff;
-}
+.k8side__button:focus,
 .k8side__button:hover{
 	background-position: right center;
-	/* background-color: #3C9; */
 	color: #fff;
 }
+/* .k8side__button:hover{
+	background-position: right center;
+	color: #fff;
+} */
 .k8side__button-1{
 	height: 50px;
 	line-height: 50px;
