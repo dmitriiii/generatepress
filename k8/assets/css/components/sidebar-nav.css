@@ -21,6 +21,9 @@
 	padding: 0;
 	-webkit-box-shadow: 0 0 5px #ccc;
 	box-shadow: 0 0 5px #ccc;
+	-webkit-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
 }
 .k8side__button:focus,
 .k8side__button:hover{
