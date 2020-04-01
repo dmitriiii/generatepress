@@ -177,7 +177,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							// print_r($linkz);
 							if( is_array($linkz) && count($linkz)>0 ):
 								foreach ( $linkz as $kl ) :
-									echo '<a rel="nofollow" class="dwnd__butt sm" target="__blank" href="'.$kl.'" >' .
+									echo '<a rel="nofollow" class="dwnd__butt grn" target="__blank" href="'.$kl.'" >' .
 									// K8Html::getImgHtml([
 									// 	'img_id'=>get_post_thumbnail_id($p['pid']),
 									// 	'size'=>array(30,30)
@@ -187,7 +187,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 								endforeach;
 							endif;
 
-							echo '<a class="dwnd__butt grn" href="' . get_permalink( $p['pid'] ) . '">
+							echo '<a class="dwnd__butt sm" href="' . get_permalink( $p['pid'] ) . '">
 										 Testbericht
 										 <i class="fas fa-vial"></i>
 										</a>';
