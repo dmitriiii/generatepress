@@ -189,7 +189,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 
 							echo '<a class="dwnd__butt sm" href="' . get_permalink( $p['pid'] ) . '">
 										 Testbericht
-										 <i class="fas fa-vial"></i>
+										 <i class="fas fa-cubes"></i>
 										</a>';
 							break;
 						default:
