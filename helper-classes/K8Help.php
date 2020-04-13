@@ -214,7 +214,6 @@ class K8Help
       // we have found the short code
       $found = true;
     }
-    // return our final results
     return $found;
 	}
 }
