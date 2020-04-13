@@ -189,4 +189,32 @@ class K8Help
 		}
 		return $menu;
 	}
+
+	/**
+	 * [hasShort description]
+	 * @param  [type]  $args[
+	 		'shortcode' - string,
+	 		'pid' - int
+	 * ]
+	 * @return boolean            [description]
+	 */
+	static function hasShort($args = array()){
+		if( !isset($args['pid']) ){
+			$args['pid'] = get_the_ID();
+		}
+    $post_to_check = get_post( $args['pid'] );
+    // false because we have to search through the post content first
+    $found = false;
+    // if no short code was provided, return false
+    if (!$args['shortcode']) {
+      return $found;
+    }
+    // check the post content for the short code
+    if ( stripos($post_to_check->post_content, '[' . $args['shortcode']) !== false ) {
+      // we have found the short code
+      $found = true;
+    }
+    // return our final results
+    return $found;
+	}
 }
