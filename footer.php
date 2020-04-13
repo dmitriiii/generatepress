@@ -106,19 +106,36 @@ wp_footer();
 <div class="k8side__wraper"></div>
 <div class="k8side__over"></div>
 
+<div class="k8-prld">
+	<div class="k8-prld__inn">
+		<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+</div>
+<div class="modd" id="modd__err">
+	<div class="modd__content">
+		<div class="modd__clz">&times;</div>
+		<!-- <div class="modd__title" style="color: red;">
+			Fehler bei <br> der Übermittlung.
+		</div> -->
+		<div class="modd__txt" style="color: red;"></div>
+  </div>
+</div>
+<div class="modd" id="modd__succ">
+	<div class="modd__content">
+		<div class="modd__clz">&times;</div>
+		<!-- <div class="modd__title" style="color: green;">
+			Erfolgreich.
+		</div> -->
+		<div class="modd__txt" style="color: green;">
+			<p>
+				Coupon wurde erfolgreich gesendet.
+			</p>
+			<p>
+				Nimm Dein Telefon zu Hand.
+			</p>
+		</div>
+  </div>
+</div>
 
-<!--Start of Tawk.to Script-->
-<!-- <script type="text/javascript" async defer>
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5e562603a89cda5a1887fbcb/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script> -->
-<!--End of Tawk.to Script-->
 </body>
 </html>
