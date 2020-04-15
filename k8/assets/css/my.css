@@ -1154,8 +1154,37 @@
 
 
 
-
-
+/* NOTIFICAtion */
+.m5-notif{
+	position: relative;
+}
+.m5-notif__inner{
+	text-align: center;
+	color: #fff;
+	background-color: #33CC99;
+	padding: 15px;
+	font-size: 18px;
+}
+.m5-notif__close{
+	cursor: pointer;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: #fff;
+	font-size: 20px;
+	line-height: 20px;
+}
+.m5-notif__inner b{
+	background-color: #333;
+  padding: 1px 5px;
+}
+.m5-notif__inner a{
+	font-style: italic;
+	text-decoration: underline;
+	color: #fff;
+	font-weight: bold;
+}
+/*END NOTIFICAtion */
 
 
 
@@ -1340,6 +1369,8 @@
     width: 50%;
   }
 }
+
+
 
 
 

@@ -1,6 +1,52 @@
 jQuery(document).ready(function($){
 
 
+	// let retrievedObject = localStorage.getItem('k8PhnSucc');
+	// console.log(){
+
+	// }
+
+	const retrieveLocal = function(){
+		// console.log('Bananza!');
+		let k8PhnSucc = localStorage.getItem('k8PhnSucc');
+		if( k8PhnSucc != null ){
+
+			let $body = $('body'),
+					parsedd = JSON.parse(k8PhnSucc),
+					notif = "<div class='m5-notif'>" +
+										"<span class='m5-notif__close'><i class='fas fa-times'></i></span>" +
+										"<div class='m5-notif__inner'>" +
+											"<div class='m5-notif__txt'>" +
+												"<p>Wir möchten Sie daran erinnern, dass Sie die telefonische Überprüfung erfolgreich abgeschlossen haben. <br />Ihr Gutscheincode lautet <b>" + parsedd.code +
+												"</b>. Aktivieren Sie es <a rel='nofollow' href='" + parsedd.redirect_url + "'>" + parsedd.anbieter + "</a>, bitte</p>" +
+											"</div>" +
+											"<div class='m5-notif__btnz'>" +
+												"<button class='m5-notif__btn'>Ich habe die Suppe bereits aktiviert</button>" +
+											"</div>" +
+										"</div>" +
+									"</div>";
+			$body.prepend(notif);
+
+			// localStorage.getItem('testObject');
+			// console.log('Not null!');
+			// console.log(parsedd);
+		}
+		// console.log(k8PhnSucc);
+		$('body').on('click', '.m5-notif__close', function(e) {
+			e.preventDefault();
+			let $cls = $(this),
+					$notif = $cls.closest('.m5-notif');
+			$notif.css('display','none');
+		});
+		$('body').on('click', '.m5-notif__btn', function(e) {
+			e.preventDefault();
+			let $btn = $(this),
+					$notif = $btn.closest('.m5-notif');
+			$notif.css('display','none');
+			localStorage.removeItem('k8PhnSucc')
+		});
+	}
+	retrieveLocal();
 
 	const progrezBar = function( obj ){
 		// progressbar.js@1.0.0 version is used
@@ -44,7 +90,7 @@ jQuery(document).ready(function($){
 			});
 		});
 	}
-	
+
 
 
 	//Set compare tables equalwidth
@@ -104,7 +150,7 @@ jQuery(document).ready(function($){
 						// 		id:'#'+$el.attr('id'),
 						// 	});
 						// }
-						
+
 
 					} else {
 						entry.target.classList.remove('k8anim--visible');

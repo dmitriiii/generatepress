@@ -57,7 +57,7 @@ class K8Assets
 		}
 
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
-		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), false, 'all' );
+		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,9999), 'all' );
 		
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
