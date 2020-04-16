@@ -17,11 +17,11 @@ jQuery(document).ready(function($){
 										"<span class='m5-notif__close'><i class='fas fa-times'></i></span>" +
 										"<div class='m5-notif__inner'>" +
 											"<div class='m5-notif__txt'>" +
-												"<p>Wir möchten Sie daran erinnern, dass Sie die telefonische Überprüfung erfolgreich abgeschlossen haben. <br />Ihr Gutscheincode lautet <b>" + parsedd.code +
-												"</b>. Aktivieren Sie es <a rel='nofollow' href='" + parsedd.redirect_url + "'>" + parsedd.anbieter + "</a>, bitte</p>" +
+												"<p>Du hast die telefonische Verifikation bereits abgeschlossen.  <br />Dein Gutscheincode lautet: <b>" + parsedd.code +
+												"</b>. Du kannst diesen Coupon hier <a rel='nofollow' href='" + parsedd.redirect_url + "'>" + parsedd.anbieter + "</a> einlösen.</p>" +
 											"</div>" +
 											"<div class='m5-notif__btnz'>" +
-												"<button class='m5-notif__btn'>Ich habe die Suppe bereits aktiviert</button>" +
+												"<button class='m5-notif__btn'>Ich habe den Coupon bereits aktiviert</button>" +
 											"</div>" +
 										"</div>" +
 									"</div>";
