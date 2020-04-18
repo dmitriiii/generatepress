@@ -1,7 +1,7 @@
 <?php
 class K8AcfRouter
 {
-	function __construct(argument)
+	function __construct()
 	{
 		add_action( 'acf/init', array( $this, 'router' ) );
 	}
