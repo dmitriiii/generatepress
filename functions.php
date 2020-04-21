@@ -132,6 +132,12 @@ function k8_disable_feed_for_pages() {
 		remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
 	}
 }
+
+add_action( 'init', 'stop_heartbeat', 1 );
+function stop_heartbeat() {
+	wp_deregister_script('heartbeat');
+}
+
 // function k8_deregister_scripts () {
 // 	$common_scripts = [
 // 		'supsystic-tables-notify',
