@@ -65,7 +65,7 @@ class K8Ajax
 				'order' => 'ASC'
 			)
 		);
-		write_log($commz);
+		// write_log($commz);
 		wp_list_comments( array('callback' => 'K8generate_comment'), $commz );
 	 	echo '</ol>';
 	  $html = ob_get_clean();
