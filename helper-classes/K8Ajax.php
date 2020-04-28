@@ -62,8 +62,7 @@ class K8Ajax
 			array(
 				'status' => 'approve',
 				'post_id' => $pid,
-				'orderby' => 'comment_approved',
-				'order' => 'DESC'
+				'order' => 'ASC'
 			)
 		);
 		write_log($commz);
