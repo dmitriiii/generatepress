@@ -60,10 +60,12 @@ class K8Ajax
 	  echo '<ol class="comment-list">';
 	 	$commz = get_comments(
 			array(
+				'status' => 'approve',
 				'post_id' => $pid,
-				'order' => 'ASC'
+				'order' => 'DESC'
 			)
 		);
+		write_log($commz);
 		wp_list_comments( array('callback' => 'K8generate_comment'), $commz );
 	 	echo '</ol>';
 	  $html = ob_get_clean();
