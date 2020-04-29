@@ -751,6 +751,7 @@ class K8AcfRouter
 							2 => 'Double',
 							3 => 'Quad-Core',
 							4 => 'Octa-Core',
+							5 => 'Tri-Core',
 						),
 						'allow_null' => 0,
 						'other_choice' => 0,
