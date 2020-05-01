@@ -47,8 +47,8 @@ class K8Hooks
  //    }
 	// }
 	public function add_admin_column($column) {
-		$column['k8_acf_vpnid'] = '<span style="color: red; font-weight: bold;">VPN ID *</span>';
-		$column['m5_rou_id'] = '<span style="color: red; font-weight: bold;">Router ID *</span>';
+		$column['k8_acf_vpnid'] = '<span style="color: red; font-weight: bold;">VPN ID</span>';
+		$column['m5_rou_id'] = '<span style="color: red; font-weight: bold;">Router ID</span>';
 		return $column;
 	}
 	public function add_admin_column_show($column_name) {
