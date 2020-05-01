@@ -8,7 +8,7 @@ class K8Hooks
 		# Add column with custom field vpn_id and m5_rou_id to Posts Admin Column
 		add_filter('manage_post_posts_columns', array( $this,'add_admin_column' ));
 		add_action('manage_post_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
-		
+
 		#Multiple Languages
 		add_action('after_setup_theme', array($this,'setup_theme'));
 		#Remove ACF for others
@@ -26,7 +26,7 @@ class K8Hooks
 		if( get_site_url() == 'https://vpntester.net' ){
 			add_action( 'template_redirect', array( $this, 'redirect_to_home_page' ) );
 		}
-		
+
 
 	}
 	public function upload_mimes( $mimes ){
