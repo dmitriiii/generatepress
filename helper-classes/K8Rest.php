@@ -16,6 +16,8 @@ class K8Rest
 			add_filter( 'register_post_type_args', array( $this, 'my_post_type_args' ), 10, 2 );
 			#Custom route for bulk update posts under VPN Ambieter
 			add_action( 'rest_api_init', array( $this, 'my_register_route' ) );
+			#Custom route to get all router data
+			add_action( 'rest_api_init', array( $this, 'getRouters' ) );
 		}
 	}
 	#Custom route for bulk update posts under VPN Ambieter
@@ -26,6 +28,17 @@ class K8Rest
 			array(
 				'methods' => 'GET',
 				'callback' => array( $this, 'my_posts' )
+			)
+		);
+	}
+	#Custom route to get all router data
+	public function getRouters() {
+		register_rest_route(
+			'm5-route',
+			'm5-routers',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'routers_callback' )
 			)
 		);
 	}
@@ -58,6 +71,42 @@ class K8Rest
 		endif;
 		return rest_ensure_response( $post_data );
 	}
+
+	#Custom route to get all router data
+	public function routers_callback() {
+		$post_data = array();
+		$argzz = array(
+			'post_type'   => 'post',
+			'posts_per_page' => -1,
+			'category_name' => 'router',
+			'post_status' => 'any'
+		);
+		$the_query = new WP_Query( $argzz );
+		if ( $the_query->have_posts() ) :
+		 	$cust_fields = json_decode( file_get_contents( K8_PATH_GLOB . '/json/routers/routers.json' ), true );
+		 // 	write_log($this->cust_fields);
+			// write_log($cust_fields);
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				$pid = get_the_ID();
+				$m5_rou_id = get_field( 'm5_rou_id', $pid );
+				$post_data[ $m5_rou_id ][ 'pid' ] = $pid;
+				$post_data[ $m5_rou_id ][ 'title' ] = get_the_title( $pid );
+				#Custom Fields
+				foreach ($cust_fields as $k) {
+					$post_data[ $m5_rou_id ]['cust_fields'][ $k ] = get_field( $k, $pid );
+				}
+				// #Taxonomies
+				// foreach ($this->taxz as $k) {
+				// 	$post_data[ $k8_acf_vpnid ]['taxz'][ $k ] = get_the_terms( $pid, $k );
+				// }
+				// $post_data[ $k8_acf_vpnid ]['taxz']['betriebssystem'] = get_the_terms( $pid, 'betriebssystem' );
+			endwhile;
+			wp_reset_postdata();
+		endif;
+		return rest_ensure_response( $post_data );
+	}
+
+
 	public function create_api_posts_meta_field(){
 		register_rest_field( 'affcoups_coupon', 'k8_pm', array(
 		 'get_callback' => array( $this,'get_post_meta_for_api' ),
