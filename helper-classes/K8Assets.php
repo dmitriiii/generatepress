@@ -43,7 +43,7 @@ class K8Assets
 		wp_register_script( 'k8-sidebar-nav-js', get_template_directory_uri() . '/k8/assets/js/components/sidebar-nav.js', array('jquery'), false, true );
 		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), rand(1,999), 'all' );
 		#END Components&Modules
-		
+
 
 		if( is_single() && get_post_type()=='downloads' ){
 			// wp_enqueue_script( 'k8-slick-js' );
@@ -58,10 +58,14 @@ class K8Assets
 
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,9999), 'all' );
-		
+
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
-		wp_enqueue_script( 'k8-sidebar-nav-js' );
+
+		if( get_the_ID() !== 4435 ){
+			wp_enqueue_script( 'k8-sidebar-nav-js' );
+		}
+
 		#END Components&Modules
 
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,9999), true );
