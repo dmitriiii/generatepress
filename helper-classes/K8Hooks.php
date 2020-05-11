@@ -17,6 +17,8 @@ class K8Hooks
 		#Create json array of anbieter vpnid=>postid vallues
 		add_action( 'save_post', array( $this, 'onSavePost' ), 10, 3 );
 
+		#Create json array of rouid=>postid vallues
+		add_action( 'save_post', array( $this, 'rouid' ), 10, 3 );
 
 		#Add how to shortcode to admin
 		add_filter( 'manage_k8pt_howto_posts_columns', array( $this, 'k8pt_howto_cols' ) );
@@ -73,20 +75,16 @@ class K8Hooks
 
 	#Create json array of anbieter vpnid=>postid vallues
 	public function onSavePost( $post_ID, $post, $update ) {
-		if ( !$update ){
+    if ( wp_is_post_revision( $post_ID ) )
+    	return;
+    if ( 'post' !== $post->post_type )
       return;
-    }
-    if ( 'post' !== $post->post_type ) {
+    if( !in_category( array( 'anbieter', 'vpn-anbieter' ), $post_ID ) )
       return;
-    }
-    if( !in_category( array( 'anbieter', 'vpn-anbieter' ), $post_ID ) ){
-      return;
-    }
+    // write_log('anbieter Zone!');
     $args = array(
 			'post_type'   => 'post',
-			'post_status' => array(
-				'publish'
-			),
+			'post_status' => 'any',
 			'category_name' => 'anbieter,vpn-anbieter',
 			'posts_per_page' => -1,
 		);
@@ -103,6 +101,36 @@ class K8Hooks
 		endif;
 		$fp = fopen( K8_PATH_LOC . '/vpnidPid.json' , 'w');
 		fwrite($fp, json_encode($vpnidPid_arr));
+		fclose($fp);
+	}
+
+	#Create json array of rouid=>postid vallues
+	public function rouid( $post_ID, $post, $update ) {
+    if ( wp_is_post_revision( $post_ID ) )
+    	return;
+    if ( 'post' !== $post->post_type )
+      return;
+    if( !in_category( array( 'router' ), $post_ID ) )
+      return;
+    $args = array(
+			'post_type'   => 'post',
+			'post_status' => 'any',
+			'category_name' => 'router',
+			'posts_per_page' => -1,
+		);
+		$querr = new WP_Query( $args );
+	 	if ( $querr->have_posts() ) :
+			$rouidPid_arr = array();
+			while ( $querr->have_posts() ) : $querr->the_post();
+				$pid = get_the_ID();
+				$m5_rou_id = get_field( 'm5_rou_id', $pid );
+				if( $m5_rou_id )
+					$rouidPid_arr[] = array( 'rouid' => $m5_rou_id, 'pid' => $pid );
+			endwhile;
+			wp_reset_postdata();
+		endif;
+		$fp = fopen( K8_PATH_LOC . '/rouidPid.json' , 'w');
+		fwrite($fp, json_encode($rouidPid_arr));
 		fclose($fp);
 	}
 

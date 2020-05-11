@@ -83,6 +83,30 @@ class K8H
 		return $pid_arr;
 	}
 
+	#Prepare for routers
+	static function shortPrepRou( $a, $atts ){
+		$pid_arr = array();
+		#If passed list of vpnids
+		if( isset( $atts['rouid'] ) && !empty( $atts['rouid'] ) ){
+			$vpnid_arr = explode(',', $a['rouid']);
+			$vpnidPid =	json_decode( file_get_contents( K8_PATH_LOC . '/' . 'rouidPid.json'), true );
+			foreach( $vpnid_arr as $vpnid ){
+				$pos = array_search((int)$vpnid, array_column($vpnidPid, 'rouid'));
+				if( $pos !== false ){
+					$pid_arr[] = $vpnidPid[$pos];
+				}
+			}
+		}
+		#without vpnid list just current post id
+		else{
+			$pid_arr[] = array(
+				'rouid' => get_field( 'm5_rou_id', (int)$a['rouid'] ),
+				'pid' => (int)$a['rouid']
+			);
+		}
+		return $pid_arr;
+	}
+
 
 	static function getPerMonth( $price, $duration ){
 		$avg = $price / $duration;
