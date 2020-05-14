@@ -138,6 +138,8 @@ function stop_heartbeat() {
 	wp_deregister_script('heartbeat');
 }
 
+add_filter( 'term_description', 'do_shortcode' );
+
 // function k8_deregister_scripts () {
 // 	$common_scripts = [
 // 		'supsystic-tables-notify',
