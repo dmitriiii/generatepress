@@ -16,6 +16,15 @@ get_header();
 
 <?php
 
+if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
+	$m5country = new M5Country();
+	// $m5country->createTax();
+	echo '<pre>';
+	print_r($m5country->createTax());
+	echo '</pre>';
+}
+
+
 
 
 //$data[1] - 1
