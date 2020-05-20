@@ -71,7 +71,7 @@ class K8Hooks
 		// echo '<pre>';
 		// print_r($m5_nav_m);
 		// echo '</pre>';
-		
+
 		foreach ($menu_locations as $menu_location) :
 			$menus = wp_get_nav_menu_items($menu_location->term_id);
 			foreach ($menus as $link) {
@@ -85,7 +85,7 @@ class K8Hooks
 			// echo '</pre>';
 			// echo K8Schema::getSiteNavEl(['menu'=>$menu]);
 		endforeach;
-		
+
 	}
 
 	#Multiple Languages

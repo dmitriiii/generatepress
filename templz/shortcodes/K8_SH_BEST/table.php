@@ -1,8 +1,9 @@
-<?php 
+<?php
 if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	echo __('Sorry nothing found. Please check shortcode attributes!' , 'k8lang_domain');
 	return;
 }
+$m5_schema = array();
 
 echo K8Html::tbl_start([
 	'add_clss' => strtolower( $tag ) . ' not-equal-width',
@@ -13,8 +14,8 @@ echo K8Html::tbl_start([
 if( isset($cols_arr) && is_array($cols_arr) && count($cols_arr) > 0 ) :?>
 	<thead>
   	<tr>
-			<?php 
-			foreach ($cols_arr as $col) : 
+			<?php
+			foreach ($cols_arr as $col) :
 				echo $this->th(['class'=>$col.' '.$col.'--th']);
 				switch ( trim($col) ) {
 					case 'title':
@@ -62,17 +63,19 @@ if( isset($cols_arr) && is_array($cols_arr) && count($cols_arr) > 0 ) :?>
 			endforeach;?>
 		</tr>
 	</thead>
-<?php 
+<?php
 endif; ?>
 
 
 
 <tbody>
-<?php 
-if( is_array($pid_arr) && count($pid_arr)>0 ): 
-	foreach ($pid_arr as $p):?>
+<?php
+if( is_array($pid_arr) && count($pid_arr)>0 ):
+	$vpn_c = 1;
+	foreach ($pid_arr as $p):
+		$m5_schema[$vpn_c]['position'] = $vpn_c; ?>
 		<tr>
-			<?php 
+			<?php
 			if( is_array($cols_arr) && count($cols_arr) > 0 ) :
 				$i = 1;
 				foreach ($cols_arr as $col) :
@@ -85,7 +88,9 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							]);
 							break;
 						case 'title':
-							echo get_post_meta( $p['pid'], 'cwp_rev_product_name', true );
+							$nm = get_post_meta( $p['pid'], 'cwp_rev_product_name', true );
+							$m5_schema[$vpn_c]['name'] = $nm;
+							echo $nm;
 							break;
 						case 'description':
 							echo K8Help::excerptPid(30,$p['pid']);
@@ -164,7 +169,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							echo "<p>" .
 										__('ab' , 'k8lang_domain') . ' ' .
 										$this->b . get_field( 'k8_acf_vpndet_avg', $p['pid'] ) . ' ' .
-											$this->em . get_field('k8_acf_vpndet_curr', $p['pid'])['label'] . $this->_em  . 
+											$this->em . get_field('k8_acf_vpndet_curr', $p['pid'])['label'] . $this->_em  .
 										$this->_b .
 									 "<br/>\n".__('pro Monat' , 'k8lang_domain')."<br/>\n".
 									 		get_field('k8_acf_vpndet_conn', $p['pid'])['label'] . ' ' .
@@ -174,6 +179,8 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							break;
 						case 'links':
 							$linkz = get_post_meta( $p['pid'],'wppr_links',true );
+							$article_link = get_permalink( $p['pid'] );
+							$m5_schema[$vpn_c]['url'] = $article_link;
 							// print_r($linkz);
 							if( is_array($linkz) && count($linkz)>0 ):
 								foreach ( $linkz as $kl ) :
@@ -187,7 +194,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 								endforeach;
 							endif;
 
-							echo '<a class="dwnd__butt sm" href="' . get_permalink( $p['pid'] ) . '">
+							echo '<a class="dwnd__butt sm" href="' . $article_link . '">
 										 Testbericht
 										 <i class="fab fa-artstation"></i>
 										</a>';
@@ -201,19 +208,14 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 				endforeach;
 			endif; ?>
 		</tr>
-	<?php 
+	<?php
+		$vpn_c++;
 	endforeach;
-endif ?>
+endif;
 
-
-
-<?php
 echo K8Html::tbl_end();
-?>
-
-
-<!-- <div class="table-scroll">
-  <table>
-   
-  </table>
-</div> -->
+echo '<script type="application/ld+json">' .
+		 		K8Schema::getItemList([
+				'prep'=>$m5_schema,
+				]) .
+			'</script>';

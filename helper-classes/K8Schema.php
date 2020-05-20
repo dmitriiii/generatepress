@@ -192,7 +192,7 @@ class K8Schema
     [term_group] => 0
     [term_taxonomy_id] => 199
     [taxonomy] => nav_menu
-    [description] => 
+    [description] =>
     [parent] => 0
     [count] => 5
     [filter] => raw
@@ -209,16 +209,31 @@ class K8Schema
 			"name" => $link->title,
 			"url" => $link->url
 		];
-		
+		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	}
 
-		// $c=0;
-		// foreach ($m5_nav as $menu_item) :
-		// 	// $datta[]['@context'] = "https://schema.org";
-		// 	// $datta[]['@type'] = "SiteNavigationElement";
-		// 	$datta[$c]['name'] = $menu_item->title;
-		// 	$datta[$c]['url'] = $menu_item->url;
-		// 	$c++;
-		// endforeach;
+	/**
+	 * [getItemList description]
+	 * @param  array  $args [
+	 * 'prep'-array
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getItemList( $args = array() ){
+		extract( $args );
+		unset( $args );
+		$datta = [
+			"@context" => "https://schema.org",
+			"@type" => "ItemList",
+		];
+		$i=0;
+		foreach ($prep as $value) {
+			$datta["itemListElement"][$i]["@type"] = "ListItem";
+			$datta["itemListElement"][$i]["position"] = $value["position"];
+			$datta["itemListElement"][$i]["name"] = $value["name"];
+			$datta["itemListElement"][$i]["url"] = $value["url"];
+			$i++;
+		}
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
 }
