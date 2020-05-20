@@ -181,4 +181,44 @@ class K8Schema
 
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
+
+	/**
+	 * [getSiteNavEl description]
+	 * @param  array  $args [
+	 *   'menu' - WP_Term Object(
+    [term_id] => 192
+    [name] => Footer
+    [slug] => footer
+    [term_group] => 0
+    [term_taxonomy_id] => 199
+    [taxonomy] => nav_menu
+    [description] => 
+    [parent] => 0
+    [count] => 5
+    [filter] => raw
+    )
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function getSiteNavEl( $args = array() ){
+		extract( $args );
+		unset( $args );
+		$datta = [
+			"@context" => "https://schema.org",
+			"@type" => "SiteNavigationElement",
+			"name" => $link->title,
+			"url" => $link->url
+		];
+		
+
+		// $c=0;
+		// foreach ($m5_nav as $menu_item) :
+		// 	// $datta[]['@context'] = "https://schema.org";
+		// 	// $datta[]['@type'] = "SiteNavigationElement";
+		// 	$datta[$c]['name'] = $menu_item->title;
+		// 	$datta[$c]['url'] = $menu_item->url;
+		// 	$c++;
+		// endforeach;
+		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	}
 }
