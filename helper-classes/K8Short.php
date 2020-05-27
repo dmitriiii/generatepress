@@ -188,9 +188,9 @@ class K8Short
 							<img class='of-cv' src='https://img.youtube.com/vi/%s/%s'/>
 						</div>";
 		ob_start();
-		echo '<script type="application/ld+json">';
-		print_r( K8Schema::getYTdata(['id'=>$a['id']]) );
-		echo '</script>';
+		// echo '<script type="application/ld+json">';
+		// print_r( K8Schema::getYTdata(['id'=>$a['id']]) );
+		// echo '</script>';
 		echo sprintf(
 			$str,
 			$a['id'],
