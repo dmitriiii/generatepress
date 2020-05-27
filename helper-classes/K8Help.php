@@ -40,6 +40,21 @@ class K8Help
 		return $html;
 	}
 
+	/**
+	 * [getYTdata description]
+	 * @param  [type] $args [
+	 *   'id' - youtube video id
+	 * ]
+	 * @return [type]       [description]
+	 */
+	// static function getYTdata( $args ){
+	// 	// $vId = "Jer8XjMrUB4";
+	// 	$gkey = "AIzaSyAdABVx-DzIYbRE5glc75eDyEWE1GQeKww";
+	// 	$dur = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=".$args['id']."&key=".$gkey."");
+	// 	$data = json_decode($dur, true);
+	//   return $data;
+	// }
+
 	static function ratingText( $rat ){
 		if ( $rat >= 75 ) {
 			return 'wppr-very-good';

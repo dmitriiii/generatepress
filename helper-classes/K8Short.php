@@ -187,12 +187,19 @@ class K8Short
 							</span>
 							<img class='of-cv' src='https://img.youtube.com/vi/%s/%s'/>
 						</div>";
-		return sprintf(
+		ob_start();
+		echo '<script type="application/ld+json">';
+		print_r( K8Schema::getYTdata(['id'=>$a['id']]) );
+		echo '</script>';
+		echo sprintf(
 			$str,
 			$a['id'],
 			$a['id'],
 			$img_name
 		);
+		$html = ob_get_clean();
+		return $html;
+		// return
 	}
 
 	#[k8_short_prod] Show table with taxonomies Data
