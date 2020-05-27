@@ -241,26 +241,22 @@ class K8Schema
 	/**
 	 * [getYTdata description]
 	 * @param  array  $args [
-	 *   'id' - youtube video ID
+	 *   'decoded' - array from youtube
+	 *   'id' - youtube id
 	 * ]
 	 * @return [type]       [description]
 	 */
 	static function getYTdata( $args = array() ){
 		extract( $args );
-		// unset( $args );
-		$gkey = "AIzaSyAdABVx-DzIYbRE5glc75eDyEWE1GQeKww";
-		$dur = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=".$args['id']."&key=".$gkey."");
-		$decoded = json_decode($dur, true);
-
 		$datta = [
 			"@context" => "https://schema.org",
 			"@type" => "VideoObject",
 			"name" => $decoded['items'][0]['snippet']['title'],
 			"description" => $decoded['items'][0]['snippet']['description'],
-			"thumbnailUrl" => $decoded['items'][0]['snippet']['thumbnails']['maxres']['url'],
+			"thumbnailUrl" => $decoded['items'][0]['snippet']['thumbnails']['medium']['url'],
 			"uploadDate" => $decoded['items'][0]['snippet']['publishedAt'],
 			"duration" => $decoded['items'][0]['contentDetails']['duration'],
-			"embedUrl" => "https://www.youtube.com/embed/" . $args['id'],
+			"embedUrl" => "https://www.youtube.com/embed/" . $id,
 			"interactionCount" => $decoded['items'][0]['statistics']['viewCount']
 		];
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);

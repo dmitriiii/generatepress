@@ -231,4 +231,50 @@ class K8Help
     }
     return $found;
 	}
+
+	/**
+	 * [ytPrepare description]
+	 * @param  [type] $args [
+	 *   'id' - string - youtube video id
+	 * ]
+	 * @return [type]       [description]
+	 */
+	static function ytPrepare($args){
+		global $wpdb;
+		$rez = $wpdb->get_results(
+							$wpdb->prepare(
+								"SELECT * FROM wp_vavt_de_k8_yt WHERE yt_id='%s'",
+								$args['id']
+							)
+						);
+
+		#Already inserted to DB
+		if($rez){
+			return K8Schema::getYTdata( [
+								'decoded' => unserialize($rez[0]->code),
+								'id' => $args['id']
+							] );
+		}
+
+
+		$urll =	"https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=" . $args['id'] . "&key=AIzaSyBGfYUWczhAM59mqhfFaJstMVaYW-Zy9pY";
+		$dur = file_get_contents($urll);
+
+		#Google API quota ended
+		if(!$dur)
+			return;
+
+		#insert for cache purposes
+		$wpdb->insert(
+			'wp_vavt_de_k8_yt',
+			array(
+				'yt_id' => $args['id'],
+				'code' => serialize(json_decode($dur, true))
+			),
+			array(
+				'%s',
+				'%s'
+			)
+		);
+	}
 }
