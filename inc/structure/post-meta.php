@@ -255,7 +255,7 @@ if ( ! function_exists( 'generate_post_meta' ) ) {
 			$k8_acf_u_ph = get_field( 'k8_acf_u_ph', 'user_' . $uid );?>
 			<div class="entry-meta tbl k8-meta__tbl">
 				<div class="tbl-cell mdl k8-meta__img">
-					<img class="k8-round" src="<?php echo ( $k8_acf_u_ph ) ? K8Help::getImgUrl( $k8_acf_u_ph, 'thumbnail' ) : bloginfo( 'template_directory' ) . '/img/default-user-100.jpg' ; ?>">
+					<img class="k8-round" width="70" height="70" src="<?php echo ( $k8_acf_u_ph ) ? K8Help::getImgUrl( $k8_acf_u_ph, 'thumbnail' ) : bloginfo( 'template_directory' ) . '/img/default-user-100.jpg' ; ?>">
 				</div>
 				<div class="tbl-cell mdl k8-meta__txt">
 					<?php generate_posted_on(); ?>
