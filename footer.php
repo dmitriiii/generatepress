@@ -114,7 +114,7 @@ wp_footer();
 	<?php
 	if( is_single() ):
 		$pid = get_the_ID();
-		if( in_category( array('anbieter'), $pid ) ) :
+		if( in_category( array('anbieter','vpn-anbieter'), $pid ) ) :
 			$linkz = get_post_meta( $pid,'wppr_links',true ); 
 			if( is_array($linkz) && count($linkz) > 0 ):
 				foreach ($linkz as $k=>$v) :?>
