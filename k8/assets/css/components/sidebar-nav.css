@@ -40,7 +40,9 @@
 	background-color: #e43f5a;
 	/* border-radius: 5px; */
 }
-
+.k8side__button:visited {
+  color: #fff;
+}
 /* .k8side__button-1{
 	height: 50px;
 	line-height: 50px;
