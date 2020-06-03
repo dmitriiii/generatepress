@@ -43,7 +43,7 @@ class K8Assets
 
 		#Components&Modules
 		wp_register_script( 'k8-sidebar-nav-js', get_template_directory_uri() . '/k8/assets/js/components/sidebar-nav.js', array('jquery'), false, true );
-		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), false, 'all' );
+		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), rand(1,9999), 'all' );
 		#END Components&Modules
 
 

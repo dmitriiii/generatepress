@@ -1,49 +1,61 @@
 .k8side__wraper{
 	position: fixed;
-	bottom: 20px;
+	bottom: 10px;
 	padding: 0;
 	z-index: 999999999;
 	font-size: 0;
 	box-sizing: border-box;
-	left: 15px;
+	left: 10px;
 }
 .k8side__wraper *{
 	box-sizing: border-box;
 }
 .k8side__button{
-	width: 50px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 19px;
+	/* margin: 3px 0; */
+	margin-top: 6px;
+	display: inline-block;
 	color: #fff;
-	background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%);
-	background-size: 200% auto;
-	background-color: #0284db;
+	/* background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%); */
+	/* background-size: 200% auto; */
+	background-color: #1f4068;
 	cursor: pointer;
 	text-align: center;
 	padding: 0;
-	-webkit-box-shadow: 0 0 5px #666666;
-	box-shadow: 0 0 5px #666666;
+	-webkit-box-shadow: 0 0 5px #999999;
+	box-shadow: 0 0 5px #999999;
 	-webkit-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
 }
-.k8side__button:focus,
+/* .k8side__button:focus, */
 .k8side__button:hover{
-	background-position: right center;
+	/* background-position: right center; */
 	color: #fff;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	border-radius: 5px;
+	background-color: #e43f5a;
+	/* border-radius: 5px; */
 }
 
-.k8side__button-1{
+/* .k8side__button-1{
 	height: 50px;
 	line-height: 50px;
 	font-size: 24px;
-}
+} */
 .k8side__button.active{
-	background-color: #3C9;
+	background-color: #e43f5a;
 }
-.k8side__button i{
+.k8side__button-1 i{
 	animation: crescendo 1s alternate infinite ease-in;
+}
+.k8side__button-2{
+	animation: shake-animation 4s ease infinite;
+	background-color: #fc7e2f;
+  /* transform-origin: 50% 50%; */
 }
 
 .k8side__menu{
@@ -104,4 +116,21 @@
 @keyframes crescendo {
   0%   {transform: scale(0.8);}
   100% {transform: scale(1.1);}
+}
+
+@keyframes shake-animation {
+   0% { transform:translate(0,0) }
+  1.78571% { transform:translate(3px,0) }
+  3.57143% { transform:translate(0,0) }
+  5.35714% { transform:translate(-3px,0) }
+  7.14286% { transform:translate(0,0) }
+  8.92857% { transform:translate(3px,0) }
+  10.71429% { transform:translate(0,0) }
+  12% { transform:translate(-3px,0) }
+  14% { transform:translate(0,0) }
+  16% { transform:translate(2px,0) }
+  18% { transform:translate(0,0) }
+  19% { transform:translate(-2px,0) }
+  20% { transform:translate(0,0) }
+  100% { transform:translate(0,0) }
 }

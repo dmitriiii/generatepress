@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 		if( $titlz.length == 0 ){
 			return false;
 		}
-		$wrapper.html(html_els);
+		$wrapper.append(html_els);
 		let $btn = $wrapper.find('.k8side__button-1'),
 				$item = $btn.parent('.k8side__item'),
 				$menu = $btn.siblings('.k8side__menu'),

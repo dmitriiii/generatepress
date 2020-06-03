@@ -101,9 +101,32 @@ endif;
 do_action( 'generate_after_footer' );
 
 wp_footer();
+
+
+
+// echo "<pre>";
+// print_r(get_the_ID());
+// echo "</pre>";
+
 ?>
 
-<div class="k8side__wraper"></div>
+<div class="k8side__wraper">
+	<?php
+	if( is_single() ):
+		$pid = get_the_ID();
+		if( in_category( array('anbieter'), $pid ) ) :
+			$linkz = get_post_meta( $pid,'wppr_links',true ); 
+			if( is_array($linkz) && count($linkz) > 0 ):
+				foreach ($linkz as $k=>$v) :?>
+					<div class="k8side__item k8side__item-2">
+						<a class="k8side__button k8side__button-2" rel="nofollow" href="<?php echo $v; ?>" target="__blank"><i class="fas fa-shopping-basket"></i></a>
+					</div>
+				<?php
+				endforeach;
+			endif;
+		endif;
+	endif;?>
+</div>
 <div class="k8side__over"></div>
 
 <?php
@@ -139,7 +162,7 @@ if( K8Help::hasShort(['shortcode'=>'k8coupon_mng_form']) ): ?>
 	  </div>
 	</div>
 <?php
-endif; 
+endif;
 
 if (get_site_url() == 'https://vpn-anbieter-vergleich-test.de') : ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
