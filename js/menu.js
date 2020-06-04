@@ -55,8 +55,10 @@
 			}
 
 			var nav = parentContainer.getElementsByTagName( 'ul' )[0];
+			var bbody = document.getElementsByTagName('body')[0];
 
 			if ( parentContainer.classList.contains( 'toggled' ) ) {
+				bbody.classList.remove('ov-hidd');
 				parentContainer.classList.remove( 'toggled' );
 				htmlEl.classList.remove( 'mobile-menu-open' );
 				nav.setAttribute( 'aria-hidden', 'true' );
@@ -71,6 +73,7 @@
 					}
 				}
 			} else {
+				bbody.classList.add('ov-hidd');
 				parentContainer.classList.add( 'toggled' );
 				htmlEl.classList.add( 'mobile-menu-open' );
 				nav.setAttribute( 'aria-hidden', 'false' );

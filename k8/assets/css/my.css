@@ -1,3 +1,7 @@
+.ov-hidd{
+	overflow: hidden !important;
+}
+
 .ta-c{
 	text-align: center;
 }
@@ -1555,9 +1559,16 @@
 		width: 100%;
 		min-width: 500px;
 	}
-	/**{
-		width: 100% !important;
-	}*/
+
+	/* #quick fix of mobile menu */
+	.both-sticky-menu .main-navigation:not(#mobile-header).toggled .main-nav>ul{
+		position: fixed !important;
+    /* height: 100%; */
+    overflow: auto;
+    top: 60px;
+    bottom: 60px;
+	}
+
 }
 
 @media (max-width: 480px){
