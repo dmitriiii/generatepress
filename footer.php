@@ -173,6 +173,11 @@ if (get_site_url() == 'https://vpn-anbieter-vergleich-test.de') : ?>
   gtag('js', new Date());
 
   gtag('config', 'UA-55894537-1');
+
+
+  gtag('event', 'a1_play', {
+  'event_category': 'a1_videos',
+	});
 </script>
 <?php
 endif; ?>
