@@ -164,8 +164,8 @@ if( K8Help::hasShort(['shortcode'=>'k8coupon_mng_form']) ): ?>
 <?php
 endif;
 
-if (get_site_url() == 'https://deeeweewwe') : ?>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
+if (get_site_url() == 'https://vpn-anbieter-vergleich-test.de/') : ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55894537-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
