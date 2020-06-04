@@ -110,7 +110,7 @@ wp_footer();
 
 ?>
 
-<div class="k8side__wraper">
+<div class="k8side__wraper" style="display: none;">
 	<?php
 	if( is_single() ):
 		$pid = get_the_ID();
@@ -174,9 +174,11 @@ if (get_site_url() == 'https://vpn-anbieter-vergleich-test.de') : ?>
 
   gtag('config', 'UA-55894537-1');
 
-  gtag('event', 'a1_play', {
-  'event_category': 'a1_videos',
-	});
+ //  gtag('event', 'a1_play', {
+ //  'event_category': 'a1_videos',
+	// });
+	// document.querySelectorAll('');
+
 </script>
 <?php
 endif; ?>
