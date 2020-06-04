@@ -182,7 +182,7 @@ class K8Short
 		if( !K8Help::UR_exists( "http://img.youtube.com/vi/".$a['id']."/maxresdefault.jpg" ) )
 			$img_name = 'hqdefault.jpg';
 		$str = "<div class='k8_yt-wrr'>
-							<span href='%s' rel='nofollow' class='k8_yt-link'>
+							<span href='%s' rel='nofollow' class='k8_yt-link' onclick='console.log('plus')'>
 								<span class='btn-blu pls'><i class='far fa-play-circle' aria-hidden='true'></i></span>
 							</span>
 							<img class='of-cv' src='https://img.youtube.com/vi/%s/%s'/>
