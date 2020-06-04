@@ -46,6 +46,10 @@ class K8Assets
 		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), rand(1,9999), 'all' );
 		#END Components&Modules
 
+		#Fix for wppr
+		wp_register_style( 'wp-product-review-widget-css', '/wp-content/plugins/wp-product-review/assets/css/cwppos-widget.css',[], rand(1,9999), 'all' );
+		wp_enqueue_style( 'wp-product-review-widget-css' );
+		#END fix
 
 		if( is_single() && get_post_type()=='downloads' ){
 			// wp_enqueue_script( 'k8-slick-js' );
