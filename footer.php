@@ -119,7 +119,7 @@ wp_footer();
 			if( is_array($linkz) && count($linkz) > 0 ):
 				foreach ($linkz as $k=>$v) :?>
 					<div class="k8side__item k8side__item-2">
-						<a class="k8side__button k8side__button-2" rel="nofollow" href="<?php echo $v; ?>" target="__blank"><i class="fas fa-shopping-basket"></i></a>
+						<a class="k8side__button k8side__button-2" rel="nofollow" href="<?php echo $v; ?>" target="__blank"><i class="fas fa-shopping-cart"></i></a>
 					</div>
 				<?php
 				endforeach;
