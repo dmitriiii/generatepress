@@ -284,9 +284,9 @@ ob_start("k8_amp_callback");
 				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
 			endwhile;
 			endif;?>
-			<div class="k8amp-sb">
-				<?php get_sidebar(); ?>
-			</div>
+			<!-- <div class="k8amp-sb"> -->
+				<?php // get_sidebar(); ?>
+			<!-- </div> -->
 		</div>
 		<?php
 		wp_footer();
