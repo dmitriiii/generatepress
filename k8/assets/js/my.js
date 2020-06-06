@@ -245,7 +245,7 @@ jQuery(document).ready(function($){
 		
 		var $link = $(this),
 				$wrr = $link.parents('.k8_yt-wrr'),
-				url = $link.attr('href'),
+				url = $link.attr('data-href'),
 				w = $wrr.width(),
 				h = $wrr.height();
 		var htm = '<iframe width="' + w + '" height="' + h + '" src="https://www.youtube.com/embed/' + url + '?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
