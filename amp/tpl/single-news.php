@@ -7,8 +7,8 @@ $k8_optz_amp_ga = get_field('k8_optz_amp_ga','option');
 $k8_menu = K8Help::getMenuArray('primary');
 
 function k8_amp_callback($buffer) {
+	$buffer = str_replace("!important", "", $buffer);
 	$document = new Document($buffer);
-
 	#Replacing Images
 	$imgzz = $document->find('img');
 	if( count($imgzz) > 0 ):
@@ -284,6 +284,9 @@ ob_start("k8_amp_callback");
 				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
 			endwhile;
 			endif;?>
+			<div class="k8amp-sb">
+				<?php get_sidebar(); ?>
+			</div>
 		</div>
 		<?php
 		wp_footer();
