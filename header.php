@@ -14,14 +14,16 @@ $apid = get_the_ID();
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<? 
-	/**
-	 * Only for IE11
-	 */
-	$ua = htmlentities($_SERVER['HTTP_USER_AGENT'], ENT_QUOTES, 'UTF-8');
-	if (preg_match('~MSIE|Internet Explorer~i', $ua) || (strpos($ua, 'Trident/7.0') !== false && strpos($ua, 'rv:11.0') !== false)) {?>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=Symbol%2CArray.from%2CSymbol.asyncIterator%2CSymbol.for%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.keyFor%2CSymbol.match%2CSymbol.prototype.description%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.%40%40iterator%2CIntersectionObserver%2CArray.prototype.forEach%2CNodeList.prototype.forEach"></script>
-	<? } ?>
+	<script>
+		/**
+		 * Only for IE11
+		 */
+		if (navigator.userAgent.toUpperCase().indexOf("TRIDENT/") != -1 || navigator.userAgent.toUpperCase().indexOf("MSIE") != -1) {
+			var polyfillScript = document.createElement('script');
+			polyfillScript.src = 'https://polyfill.io/v3/polyfill.min.js?features=Symbol%2CArray.from%2CSymbol.asyncIterator%2CSymbol.for%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.keyFor%2CSymbol.match%2CSymbol.prototype.description%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.%40%40iterator%2CIntersectionObserver%2CArray.prototype.forEach%2CNodeList.prototype.forEach';
+			document.head.appendChild(polyfillScript);
+		}
+	</script>
 	<?php 
 	if( is_single() && in_category('news', $apid) && get_field('k8_optz_amp','option') == 1 ) : ?>
 		<link rel="amphtml" href="<?php the_permalink( $apid ); ?>amp/">
