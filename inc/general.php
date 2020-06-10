@@ -30,15 +30,6 @@ if ( ! function_exists( 'generate_scripts' ) ) {
 			wp_enqueue_style( 'font-awesome', $dir_uri . "/css/font-awesome{$suffix}.css", false, '4.7', 'all' );
 		}
 
-		/**
-		 * Only for IE11
-		 */
-		$ua = htmlentities($_SERVER['HTTP_USER_AGENT'], ENT_QUOTES, 'UTF-8');
-		if (preg_match('~MSIE|Internet Explorer~i', $ua) || (strpos($ua, 'Trident/7.0') !== false && strpos($ua, 'rv:11.0') !== false)) {
-			// ie11 polyfills
-			wp_enqueue_script( 'polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=Symbol%2CArray.from%2CSymbol.asyncIterator%2CSymbol.for%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.keyFor%2CSymbol.match%2CSymbol.prototype.description%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.%40%40iterator%2CIntersectionObserver%2CArray.prototype.forEach%2CNodeList.prototype.forEach', array(), GENERATE_VERSION, false );
-		}
-
 		if ( function_exists( 'wp_script_add_data' ) ) {
 			wp_enqueue_script( 'generate-classlist', $dir_uri . "/js/classList{$suffix}.js", array(), GENERATE_VERSION, true );
 			wp_script_add_data( 'generate-classlist', 'conditional', 'lte IE 11' );
