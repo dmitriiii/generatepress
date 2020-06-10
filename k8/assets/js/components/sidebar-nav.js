@@ -13,18 +13,18 @@ jQuery(document).ready(function($) {
 	}
 
 	const Icon = function($icon){
-		if( $icon.hasClass('fa-ellipsis-v') ){
-			$icon.removeClass('fa-ellipsis-v');
+		if( $icon.hasClass('fa-list-ul') ){
+			$icon.removeClass('fa-list-ul');
 			$icon.addClass('fa-times-circle');
 		}
 		else{
 			$icon.removeClass('fa-times-circle');
-			$icon.addClass('fa-ellipsis-v');
+			$icon.addClass('fa-list-ul');
 		}
 	}
 
 	const Setup = function(){
-		let html_els = '<div class="k8side__item k8side__item-1"><button class="k8side__button k8side__button-1"><i class="fas fa-ellipsis-v"></i></button><ul class="k8side__menu"></ul></div>',
+		let html_els = '<div class="k8side__item k8side__item-1"><button class="k8side__button k8side__button-1" style="display: flex; flex-direction: column; align-items: center; padding: 10px;"><i class="fas fa-list-ul"></i> <span style=" writing-mode: tb-rl; transform: rotate(180deg); margin-bottom: 12px;">Inhaltsverzeichnis</span> </button><ul class="k8side__menu"></ul></div>',
 				$wrapper = $('.k8side__wraper'),
 				$titlz = $('body main#main h2:visible').not(".wppr-review-container h2");
 		if( $titlz.length == 0 ){

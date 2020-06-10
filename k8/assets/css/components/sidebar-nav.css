@@ -19,8 +19,6 @@
 	margin-top: 6px;
 	display: inline-block;
 	color: #fff;
-	/* background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%); */
-	/* background-size: 200% auto; */
 	background-color: #1f4068;
 	cursor: pointer;
 	text-align: center;
@@ -31,6 +29,9 @@
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
 }
+.k8side__button i{
+	color:  #fff;
+}
 /* .k8side__button:focus, */
 .k8side__button:hover{
 	/* background-position: right center; */
@@ -40,23 +41,32 @@
 	background-color: #e43f5a;
 	/* border-radius: 5px; */
 }
-.k8side__button:visited,
-.k8side__button:focus{
+.k8side__button-1:visited,
+.k8side__button-1:focus,
+.k8side__button-1:active{
   color: #fff;
+  background-color: #1f4068;
+}
+.k8side__button-1{
+	height: auto;
 }
 
-/* .k8side__button:focus{
+.k8side__button-1 span{
+	font-size: 15px;
+}
 
-} */
-/* .k8side__button-1{
-	height: 50px;
-	line-height: 50px;
-	font-size: 24px;
-} */
+.k8side__button-2 a,
+.k8side__button-2 a:active,
+.k8side__button-2 a:visited,
+.k8side__button-2 a:focus{
+	color:  #fff;
+}
+
 .k8side__button.active{
 	background-color: #e43f5a;
 }
 .k8side__button-1 i{
+	margin-bottom: 10px;
 	animation: crescendo 1s alternate infinite ease-in;
 }
 .k8side__button-2{
@@ -86,13 +96,20 @@
   animation-delay: 0s;
 }
 .k8side__menu a{
-	color: #00B2E2;
+	color: #1f4068;
 	display: block;
 	padding: 10px;
 	border-bottom: 1px solid #eee;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
 }
 .k8side__menu a:visited{
-	color: #00B2E2;
+	color: #1f4068;
+}
+.k8side__menu a:hover{
+	color: #fff;
+	background-color: #1f4068;
 }
 .k8side__menu.active{
 	display: block;
