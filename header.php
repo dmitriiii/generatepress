@@ -22,6 +22,11 @@ $apid = get_the_ID();
 			var polyfillScript = document.createElement('script');
 			polyfillScript.src = 'https://polyfill.io/v3/polyfill.min.js?features=Symbol%2CArray.from%2CSymbol.asyncIterator%2CSymbol.for%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.keyFor%2CSymbol.match%2CSymbol.prototype.description%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.%40%40iterator%2CIntersectionObserver%2CArray.prototype.forEach%2CNodeList.prototype.forEach';
 			document.head.appendChild(polyfillScript);
+
+			var supportStyle = document.createElement('link');
+			supportStyle.rel = 'stylesheet';
+			supportStyle.href = '<? echo get_template_directory_uri() ?>/k8/assets/css/ie-support.css';
+			document.head.appendChild(supportStyle);
 		}
 	</script>
 	<?php 

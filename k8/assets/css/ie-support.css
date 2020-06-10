@@ -1,0 +1,6 @@
+/*ie support*/
+@media all and (-ms-high-contrast: none) {
+  .k8_sh_videovpn svg {
+    max-width: 50px;
+  }
+}
