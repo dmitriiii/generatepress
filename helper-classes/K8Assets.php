@@ -26,6 +26,10 @@ class K8Assets
 		wp_register_style( 'k8-my-mob-css', get_template_directory_uri() . '/k8/assets/css/my-mob.css', array(), false, 'all' );
 
 
+		#SERVICES
+		wp_register_script( 'check-mobile-js', get_template_directory_uri() . '/k8/assets/js/services/check-mobile.js', array('jquery'), null, false );
+
+		#
 		wp_register_script( 'k8-slick-js', get_template_directory_uri() . '/k8/assets/js/slick.min.js', array('jquery'), null, false );
 		wp_register_script( 'k8-sticky-js', get_template_directory_uri() . '/k8/assets/js/jquery.sticky-kit.min.js', array('jquery'), null, false );
 		wp_register_script( 'k8-libs-lightgallery-js', get_template_directory_uri() . '/k8/assets/js/libs/lightgallery.min.js', array('jquery'), null, false );
@@ -65,8 +69,12 @@ class K8Assets
 		wp_enqueue_style( 'reacher89-fa-all-css', get_template_directory_uri() . '/k8/assets/css/fa-all.css', array(), false, 'all' );
 		wp_enqueue_style( 'reacher89-my-css', get_template_directory_uri() . '/k8/assets/css/my.css', array(), rand(1,9999), 'all' );
 
+
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
+
+		#MU Services
+		wp_enqueue_script( 'check-mobile-js' );
 
 		if( get_the_ID() !== 4435 ){
 			wp_enqueue_script( 'k8-sidebar-nav-js' );
