@@ -72,13 +72,10 @@ class K8Assets
 
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
+		wp_enqueue_script( 'k8-sidebar-nav-js' );
 
 		#MU Services
 		wp_enqueue_script( 'check-mobile-js' );
-
-		if( get_the_ID() !== 4435 ){
-			wp_enqueue_script( 'k8-sidebar-nav-js' );
-		}
 
 		#END Components&Modules
 
