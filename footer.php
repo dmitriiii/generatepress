@@ -109,7 +109,7 @@ wp_footer();
 // echo "</pre>";
 
 ?>
-
+<button class="chat-btn-open js-tawk-btn-open"><? echo __('Chatte mit uns') ?>!</button>
 <div class="k8side__wraper" style="display: none;">
 	<?php
 	if( is_single() ):

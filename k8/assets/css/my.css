@@ -1612,3 +1612,25 @@
 		margin-bottom: 15px;
 	}
 }
+
+/**
+ * chat btn
+**/
+.chat-btn-open {
+	background-color: #01b2e2;
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+	min-width: 220px;
+	border-radius: 5px 5px 0px 0px;
+	padding: 7px 15px;
+	font-size: 16px;
+	transition: all 150ms;
+}
+.chat-btn-open--loading {
+	background-image: url('../../img/loading.svg');
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: center;
+	color: transparent;
+}
