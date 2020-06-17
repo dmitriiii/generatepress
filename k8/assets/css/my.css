@@ -1627,6 +1627,7 @@
 	font-size: 16px;
 	transition: all 150ms;
 	display: none;
+	z-index: 999;
 }
 .chat-btn-open--loading {
 	background-image: url('../../../img/loading.svg');
