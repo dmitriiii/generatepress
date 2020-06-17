@@ -14,6 +14,13 @@ $apid = get_the_ID();
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-regular-400.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/fonts/generatepress.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/wp-content/plugins/content-views-query-and-display-post-page/public/assets/fonts/glyphicons-halflings-regular.woff2" crossorigin>
+    <link href="https://www.googletagmanager.com" rel="preconnect">
+	<link href="https://www.google-analytics.com" rel="preconnect">
+	<link href="https://s.w.org" rel="preconnect" crossorigin>
 	<script>
 		/**
 		 * Only for IE11
