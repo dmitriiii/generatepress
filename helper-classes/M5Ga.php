@@ -33,26 +33,42 @@ class M5Ga
 					getLinkz : function(){
 						return this.linkz
 					},
-					setEventz: function(){
-						$('body').on('click', 'a[href*="/link/"]', function(e) {
-							gtag('event', 'a1_affiliate_links', {
-							  'event_category': $(this).attr('href'),
-							  // 'event_label': <label>,
-							  // 'value': <value>
-							});
-							// e.preventDefault();
-							// console.log('fewfewfwfw');
-							// return false;
-							// setTimeout( function() {
-							// 	window.location = $(this).attr('href');
-							// }, 500);
-						});
-					},
-					init: function(){
-						this.setEventz();
+					isInArray : function(value, array) {
+					  return array.indexOf(value) > -1;
 					}
+					// setEventz: function(){
+
+					// },
+					// init: function(){
+					// 	this.setEventz();
+					// }
 				};
-				m5ga.init();
+				// m5ga.init();
+
+				$('body').on('click', 'a[href*="/link/"]', function(e) {
+					// e.preventDefault();
+					var $link = $(this),
+							href = $link.attr('href');
+			  	// console.log('work2');
+
+			  	if ( m5ga.isInArray( href, m5ga.linkz ) ) {
+			  		console.log('worki');
+			  		gtag('event', 'Click on Affiliate Link', {
+						  'event_category': href,
+						  // 'event_label': 'cust Label',
+						  // 'value': '111'
+						});
+			  	}
+					// console.log('');
+
+					// e.preventDefault();
+					// console.log('fewfewfwfw');
+					// return false;
+					// setTimeout( function() {
+					// 	window.location = $(this).attr('href');
+					// }, 500);
+				});
+
 				// console.log( m5ga.getLinkz() );
 			});
 		</script>

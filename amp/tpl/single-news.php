@@ -129,12 +129,12 @@ function k8_amp_callback($buffer) {
 	endif;
 
 	#remove product review block
-	$wppr = $document->find('.wppr-review-container');
-	if( count($wppr) > 0 ) :
-		foreach ($wppr as $wpr) :
-			$wpr->remove();
-		endforeach;
-	endif;
+	// $wppr = $document->find('.wppr-review-container');
+	// if( count($wppr) > 0 ) :
+	// 	foreach ($wppr as $wpr) :
+	// 		$wpr->remove();
+	// 	endforeach;
+	// endif;
 
 	return $document->format()->html();
 }
@@ -179,22 +179,22 @@ ob_start("k8_amp_callback");
 				font-weight: 700;
 			}
 			h1{
-				font-size: 28px;
-			}
-			h2{
 				font-size: 26px;
 			}
-			h3{
+			h2{
 				font-size: 24px;
 			}
-			h4{
-				font-size: 22px;
+			h3{
+				font-size: 23px;
 			}
-			h5{
+			h4{
 				font-size: 20px;
 			}
-			h6{
+			h5{
 				font-size: 18px;
+			}
+			h6{
+				font-size: 16px;
 			}
 			a{
 				color: #00b2e2;
@@ -231,7 +231,7 @@ ob_start("k8_amp_callback");
 				left: 0;
 				right: 0;
 				padding: 0 10px;
-				background-color: #00B2E2;
+				background-color: #428bca;
 				z-index: 99;
 				display: -webkit-flex;
 				display: -moz-flex;
@@ -261,7 +261,7 @@ ob_start("k8_amp_callback");
 				list-style-type: none;
 				padding: 15px;
 			}
-			
+
 			.k8amp-menu li{
 				padding: 10px 0;
 				border-bottom: 1px solid #ccc;
@@ -289,8 +289,81 @@ ob_start("k8_amp_callback");
 			}
 			/*END TOP MENU */
 
+			/*PRODUCT REVIEW StYLEs*/
+			.wppr-template{
+				background-color: #eee;
+				padding: 10px 10px 30px;
+			}
+			.wppr-template h3{
+				margin: 10px 0;
+				font-size: 17px;
+			}
+			.rev-option .cwpr_clearfix,
+			.cwpr-review-top{
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				justify-content: space-between;
+				-ms-align-items: center;
+				align-items: center;
+			}
+
+			.affiliate-button{
+				text-align: center;
+			}
+		/* 	.affiliate-button a{
+				display: inline-block;
+			} */
+			.rev-option ul{
+				list-style-type: none;
+				margin-top: 0;
+				padding: 0;
+			}
+			.rev-option li{
+				display: inline-block;
+				width: 18px;
+				height: 6px;
+				margin-right: 4px;
+				background-color: #c7c9c8;
+			}
+			.rev-option .wppr-very-good li.colored{
+				background-color: #33cc99;
+			}
+			.rev-option .wppr-good li.colored{
+				background-color: #32cccd;
+			}
+			.cwp-item-price{
+				padding: 3px 10px;
+				display: inline-block;
+				background: #33CC99;
+				font-weight: bold;
+				color: #fff;
+				font-size: 18px;
+			}
+			.review-wu-grade span{
+				width: 40px;
+				height: 40px;
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				-ms-align-items: center;
+				align-items: center;
+				justify-content: center;
+				background-color: #428bca;
+				color: #fff;
+				/* margin-left: auto; */
+		    margin: 15px auto 0;
+    		font-weight: bold;
+			}
+			/*END PRODUCT REVIEW StYLEs*/
+
 			/* Buttons */
-			.dwnd__butt {
+			.dwnd__butt,
+			.affiliate-button a {
 				color: #ffffff;
 				background-color: #0284db;
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
@@ -306,28 +379,49 @@ ob_start("k8_amp_callback");
 				max-width: 250px;
 				margin-left: auto;
 				margin-right: auto;
-				display: -webkit-flex;
+				display: block;
+				margin: 10px auto;
+	/* 			display: -webkit-flex;
 				display: -moz-flex;
 				display: -ms-flex;
 				display: -o-flex;
 				display: flex;
 				-ms-align-items: center;
 				align-items: center;
-				justify-content: space-between;
+				justify-content: space-between; */
 				letter-spacing: 2px;
 				-webkit-transition: all 0.5s ease;
 				-o-transition: all 0.5s ease;
 				transition: all 0.5s ease;
 				background-size: 200% auto;
 			}
-			.dwnd__butt.sm {
+			.dwnd__butt.sm,
+			.affiliate-button a{
 				/* font-size: 14px; */
 				background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%);
 			}
-			.dwnd__butt.sm:active {
+			.dwnd__butt.sm:active,
+			.affiliate-button a:active {
 				background-position: right center;
 			}
-
+			.k8amp-wrr__buy{
+				position: fixed;
+				left: 10px;
+				bottom: 10px;
+				width: 40px;
+		    height: 40px;
+		    line-height: 40px;
+		    font-size: 19px;
+		    display: inline-block;
+		    color: #fff;
+		    background-color: #fc7e2f;
+		    cursor: pointer;
+		    text-align: center;
+		    padding: 0;
+		    -webkit-box-shadow: 0 0 5px #999999;
+		    box-shadow: 0 0 5px #999999;
+		    text-decoration: none;
+			}
 			/*
 				SHORTCODE TABLES
 			*/
@@ -381,7 +475,7 @@ ob_start("k8_amp_callback");
 				margin: 0 2px 0 0;
 			}
 			/*END SHORTCODE TABLES */
-			
+
 
 
 		</style>
@@ -471,6 +565,19 @@ ob_start("k8_amp_callback");
 			<!-- <div class="k8amp-sb"> -->
 				<?php // get_sidebar(); ?>
 			<!-- </div> -->
+
+			<?php
+			if( in_category( array('anbieter','vpn-anbieter'), $q_o->ID ) ) :
+			$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
+			if( is_array($linkz) && count($linkz) > 0 ):
+				foreach ($linkz as $k=>$v) :?>
+					<a class="k8amp-wrr__buy" rel="nofollow" href="<?php echo $v; ?>">&#128722;</a>
+				<?php
+				endforeach;
+			endif;
+		endif; ?>
+
+
 		</div>
 		<?php
 		wp_footer();
