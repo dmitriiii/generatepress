@@ -571,7 +571,7 @@ ob_start("k8_amp_callback");
 			$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
 			if( is_array($linkz) && count($linkz) > 0 ):
 				foreach ($linkz as $k=>$v) :?>
-					<a class="k8amp-wrr__buy" rel="nofollow" href="<?php echo $v; ?>" target="__blank">&#128722;</a>
+					<a class="k8amp-wrr__buy" rel="nofollow" href="<?php echo $v; ?>">&#128722;</a>
 				<?php
 				endforeach;
 			endif;
