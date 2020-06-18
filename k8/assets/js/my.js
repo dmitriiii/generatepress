@@ -229,7 +229,7 @@ jQuery(document).ready(function ($) {
       $(".eq-h-blck", this).height(highestBox);
     });
 
-    if ($(".k8_acf_ifr_url").length > 0 && !checkMobile()) {
+    if ($(".k8_acf_ifr_url").length > 0) {
       $(".k8_acf_ifr_url").each(function (index, el) {
         var f = document.createElement("iframe");
         f.src = $(el).attr("data-url");
