@@ -149,7 +149,7 @@ ob_start("k8_amp_callback");
 		<script data-k8req async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 		<script data-k8req async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 
-		<script async custom-element="amp-nested-menu" src="https://cdn.ampproject.org/v0/amp-nested-menu-0.1.js"></script>
+		<!-- <script data-k8req async custom-element="amp-nested-menu" src="https://cdn.ampproject.org/v0/amp-nested-menu-0.1.js"></script> -->
 
 
 		<link rel="canonical" href="<?php echo $k8_can; ?>" data-k8req>
@@ -219,12 +219,6 @@ ob_start("k8_amp_callback");
 			.k8amp-wrr{
 				padding: 50px 10px 30px;
 			}
-/* 			.k8amp-sb{
-				padding: 15px;
-			} */
-			/* .k8amp-menu__wrr{
-				padding: 15px;
-			} */
 			.k8amp-head{
 				position: fixed;
 				top: 0;
@@ -488,9 +482,6 @@ ob_start("k8_amp_callback");
 			<div role="button" on="tap:sidebar1.toggle" tabindex="0" class="k8amp-hamb">☰</div>
 		</div>
 		<amp-sidebar class="k8amp-sb" id="sidebar1" layout="nodisplay" side="left">
-			<!-- <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div> -->
-			<!-- <p class="k8amp-sb__head"></p> -->
-
 
 			<?php
 			if ( is_array($k8_menu) && count($k8_menu) > 0 ): ?>
@@ -561,12 +552,9 @@ ob_start("k8_amp_callback");
 				// echo "<h4>See more details at <a href='" . $k8_can . "'>" . get_site_url() . "</a></h4>";
 				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
 			endwhile;
-			endif;?>
-			<!-- <div class="k8amp-sb"> -->
-				<?php // get_sidebar(); ?>
-			<!-- </div> -->
+			endif;
 
-			<?php
+			
 			if( in_category( array('anbieter','vpn-anbieter'), $q_o->ID ) ) :
 			$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
 			if( is_array($linkz) && count($linkz) > 0 ):

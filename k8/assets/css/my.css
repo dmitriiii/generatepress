@@ -1200,6 +1200,7 @@
 .k8anim_lines{
 	position: relative;
 	padding: 30px 0 20px;
+	clear: both;
 }
 .k8anim_lines::before,
 .k8anim_lines::after{
