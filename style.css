@@ -882,12 +882,6 @@ nav ul ul .menu-item-has-children .dropdown-menu-toggle,
 nav:not(.toggled) ul ul .dropdown-menu-toggle:before {
 	text-align: right;
 }
-
-.dropdown-hover .sub-menu-left ul ul .dropdown-menu-toggle {
-	-webkit-transform: rotateY(180deg);
-	transform: rotateY(180deg);
-}
-
 .dropdown-click .menu-item-has-children.sfHover > a .dropdown-menu-toggle:before {
 	content: "\f106";
 }
