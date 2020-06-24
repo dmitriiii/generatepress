@@ -1568,6 +1568,7 @@
     overflow: auto;
     top: 60px;
     bottom: 60px;
+    width: 100%;
 	}
 
 }
