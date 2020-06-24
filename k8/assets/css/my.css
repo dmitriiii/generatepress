@@ -1562,7 +1562,7 @@
 	}
 
 	/* #quick fix of mobile menu */
-	.both-sticky-menu .main-navigation:not(#mobile-header).toggled .main-nav>ul{
+	.main-navigation:not(#mobile-header).toggled .main-nav>ul{
 		position: fixed !important;
     /* height: 100%; */
     overflow: auto;
