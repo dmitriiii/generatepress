@@ -158,3 +158,13 @@
   20% { transform:translate(0,0) }
   100% { transform:translate(0,0) }
 }
+
+
+@media (max-width: 749px){
+	.k8side__button-1 span{
+		display: none;
+	}
+	.k8side__button-1 i{
+		margin-bottom: 0;
+	}
+}
