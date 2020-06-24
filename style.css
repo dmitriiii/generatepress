@@ -2072,8 +2072,14 @@ ol.comment-list {
 	object-fit: contain;
 }
 
-.sf-menu>li>a>i:before {
+.sf-menu>li>a>i {
 	width: 18px;
-	height: 14px;
-	display: inline-block;
+    height: 0px;
+    position: relative;
+}
+.sf-menu>li>a>i:before {
+	position: absolute;
+    top: 0;
+    left: 0px;
+    transform: translateY(-83%);
 }
