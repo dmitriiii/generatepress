@@ -1563,12 +1563,20 @@
 
 	/* #quick fix of mobile menu */
 	.main-navigation:not(#mobile-header).toggled .main-nav>ul{
-		position: fixed !important;
+		position: fixed;
     /* height: 100%; */
     overflow: auto;
     top: 60px;
     bottom: 60px;
     width: 100%;
+    z-index: 9999;
+	}
+	.main-navigation.toggled li{
+		border-top: 1px solid #ffffff73;
+	}
+	.dropdown-menu-toggle{
+		background-color: #01b2e2;
+		border-left: 1px solid #ffffff73;
 	}
 
 }
