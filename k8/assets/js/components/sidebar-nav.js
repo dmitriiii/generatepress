@@ -62,18 +62,19 @@ jQuery(document).ready(function($) {
 				$over = $('.k8side__over'),
 				btn = '.k8side__button-1',
 				$btn = $(btn),
-				$icon = $btn.find('i');
+				$icon = $btn.find('i'),
+				b = 'body';
 		if( $menu.length == 0 || $btn.length == 0 || $icon.length == 0 ){
 			console.log('Not enough elements');
 			return false;
 		}
-		$('body').on('click', btn, function(e) {
+		$(b).on('click', btn, function(e) {
 			e.preventDefault();
 			Icon( $icon );
 			$btn.toggleClass('active');
 			$menu.toggleClass('active');
 		});
-		$('body').on('click', '.k8side__menu a', function(e) {
+		$(b).on('click', '.k8side__menu a', function(e) {
 			$over.addClass('active');
 			Reset({
 				'btn' : $btn,
@@ -87,6 +88,27 @@ jQuery(document).ready(function($) {
 					$over.removeClass('active');
 				});
 			}, 100);
+		});
+		// Open||Close fast affiliate links
+		$(b).on('change', '.k8side__fast-open', function(e) {
+			e.preventDefault();
+			let $check = $(this),
+					$parent = $check.parent(),
+					$i = $check.siblings('.k8side__fast-open-button').find('i');
+
+			if(this.checked) {
+				$(b).addClass('ov-hidd')
+	      $parent.addClass('active');
+	      $over.addClass('active');
+	      $i.attr('class', 'fas fa-times-circle');
+	    }
+	    else{
+				$(b).removeClass('ov-hidd')
+	      $parent.removeClass('active');
+				$over.removeClass('active');
+				$i.attr('class', 'fas fa-arrow-circle-right');
+	    }
+			/* Act on the event */
 		});
 	}
 	Clickz();

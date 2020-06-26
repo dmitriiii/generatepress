@@ -103,19 +103,15 @@ do_action( 'generate_after_footer' );
 wp_footer();
 
 
-
-// echo "<pre>";
-// print_r(get_the_ID());
-// echo "</pre>";
-
 ?>
 <button class="chat-btn-open js-tawk-btn-open"><? echo __('Chatte mit uns') ?>!</button>
 <div class="k8side__wraper" style="display: none;">
 	<?php
-	if( is_single() ):
-		$pid = get_the_ID();
-		if( in_category( array('anbieter','vpn-anbieter'), $pid ) ) :
-			$linkz = get_post_meta( $pid,'wppr_links',true ); 
+	$pid = get_the_ID();
+	if( is_single() && in_category( array('anbieter','vpn-anbieter'), $pid ) ):
+		// $pid = get_the_ID();
+		// if( in_category( array('anbieter','vpn-anbieter'), $pid ) ) :
+			$linkz = get_post_meta( $pid,'wppr_links',true );
 			if( is_array($linkz) && count($linkz) > 0 ):
 				foreach ($linkz as $k=>$v) :?>
 					<div class="k8side__item k8side__item-2">
@@ -124,9 +120,32 @@ wp_footer();
 				<?php
 				endforeach;
 			endif;
+	else :
+
+		if(get_field('m5_opt_fast_tf','option')):
+			$m5_opt_fast = get_field('m5_opt_fast','option');?>
+			<div class="k8side__item k8side__item-2">
+				<nav class="k8side__fast">
+				  <input type="checkbox" href="#" class="k8side__fast-open" name="k8side__fast-open" id="k8side__fast-open"/>
+				  <label class="k8side__fast-open-button k8side__button-2 k8side__button" for="k8side__fast-open">
+				  	<i class="fas fa-arrow-circle-right"></i>
+				  </label>
+					<?php
+					if (is_array($m5_opt_fast) && count($m5_opt_fast)>0):
+						foreach ($m5_opt_fast as $affil):?>
+				  		<a href="<?php echo $affil['url']; ?>" class="k8side__fast-item" target="_blank" rel="nofollow" title="<?php echo $affil['name']; ?>">
+				  			<?php echo wp_get_attachment_image( $affil['logo'], 'thumbnail', false ,['class'=>''] ); ?>
+				  		</a>
+						<?php
+						endforeach;
+					endif ?>
+				</nav>
+			</div>
+		<?php
 		endif;
 	endif;?>
-</div>
+
+</div><!-- .k8side__wraper -->
 <div class="k8side__over"></div>
 
 <?php
