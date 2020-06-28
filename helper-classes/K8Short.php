@@ -185,7 +185,7 @@ class K8Short
 							<span data-href='%s' rel='nofollow' class='k8_yt-link'>
 								<span class='btn-blu pls'><i class='far fa-play-circle' aria-hidden='true'></i></span>
 							</span>
-							<img class='of-cv' src='https://img.youtube.com/vi/%s/%s' width='1280' height='720'/>
+							<img src='https://img.youtube.com/vi/%s/%s' width='1280' height='720'/>
 						</div>";
 		ob_start();
 
