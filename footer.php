@@ -105,11 +105,6 @@ wp_footer();
 
 ?>
 <div class="k8side__wraper" style="display: none;">
-	<div class="k8side__item k8side__item-3">
-		<button class="k8side__button k8side__button-3 js-tawk-btn-open">
-			<i class="fas fa-comments"></i>
-		</button>
-	</div>
 	<?php
 	$pid = get_the_ID();
 	if( is_single() && in_category( array('anbieter','vpn-anbieter'), $pid ) ):
@@ -148,6 +143,11 @@ wp_footer();
 		<?php
 		endif;
 	endif;?>
+	<div class="k8side__item k8side__item-3">
+		<button class="k8side__button k8side__button-3 js-tawk-btn-open">
+			<i class="fas fa-comments"></i>
+		</button>
+	</div>
 </div><!-- .k8side__wraper -->
 <div class="k8side__over"></div>
 
