@@ -100,10 +100,6 @@ video {
 	display: inline-block;
 	vertical-align: baseline;
 }
-video {
-	max-width: 100%;
-	height: auto;
-}
 audio:not([controls]) {
 	display: none;
 	height: 0;
@@ -2057,26 +2053,4 @@ ol.comment-list {
 .main-navigation .slideout-toggle a:before,
 .slide-opened .slideout-overlay .slideout-exit:before {
 	font-family: GeneratePress;
-}
-
-/*
- * CLS fix
- */
-
- .cwp_rev_image > img {
-	width: 50px;
-	height: 50px;
-	object-fit: contain;
-}
-
-.sf-menu>li>a>i {
-	width: 18px;
-    height: 0px;
-    position: relative;
-}
-.sf-menu>li>a>i:before {
-	position: absolute;
-    top: 0;
-    left: 0px;
-    transform: translateY(-83%);
 }
