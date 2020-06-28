@@ -128,7 +128,7 @@ wp_footer();
 				<nav class="k8side__fast">
 				  <input type="checkbox" href="#" class="k8side__fast-open" name="k8side__fast-open" id="k8side__fast-open"/>
 				  <label class="k8side__fast-open-button k8side__button-2 k8side__button" for="k8side__fast-open">
-				  	<i class="fas fa-arrow-circle-right"></i>
+				  	<i class="fas fa-trophy"></i>
 				  </label>
 					<?php
 					if (is_array($m5_opt_fast) && count($m5_opt_fast)>0):
