@@ -1635,6 +1635,16 @@
 	}
 }
 
+.js-tawk-btn--loading {
+	background-image: url('../../../img/loading.svg');
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: center;
+}
+.k8side__button.js-tawk-btn--loading i {
+	color: transparent;
+}
+
 /*
  * CLS fix
  */
