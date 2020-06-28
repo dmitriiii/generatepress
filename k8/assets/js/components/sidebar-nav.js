@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
 				$(b).removeClass('ov-hidd')
 	      $parent.removeClass('active');
 				$over.removeClass('active');
-				$i.attr('class', 'fas fa-arrow-circle-right');
+				$i.attr('class', 'fas fa-trophy');
 	    }
 			/* Act on the event */
 		});
