@@ -248,7 +248,7 @@ if ( ! function_exists( 'generate_add_viewport' ) ) {
 	 * @since 1.1.0
 	 */
 	function generate_add_viewport() {
-		echo apply_filters( 'generate_meta_viewport', '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">' ); // WPCS: XSS ok.
+		echo apply_filters( 'generate_meta_viewport', '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">' ); // WPCS: XSS ok.
 	}
 }
 
