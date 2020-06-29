@@ -144,7 +144,7 @@ wp_footer();
 		endif;
 	endif;?>
 	<div class="k8side__item k8side__item-3">
-		<button class="k8side__button k8side__button-3 js-tawk-btn-open">
+		<button class="k8side__button k8side__button-3 js-tawk-btn-open" aria-label="chat">
 			<i class="fas fa-comments"></i>
 		</button>
 	</div>
