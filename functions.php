@@ -1,7 +1,7 @@
 <?php
-// ****************************************************************************************************	
+// ****************************************************************************************************
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(); 
+	acf_add_options_page();
 }
 
 require_once( __DIR__ . '/K8Init.php');
@@ -22,7 +22,7 @@ if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 
 	}
 }
 
- 
+
 /**
  * GeneratePress.
  *
@@ -225,7 +225,7 @@ add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 /**
  * Change wp product review's tables plugin output from short content to real excerpt
  */
-add_filter( 'wppr_content', 'wppr_use_true_excerpt', 10, 2 );
-function wppr_use_true_excerpt( $content, $id ) {
-	return get_the_excerpt($id);
-}
+// add_filter( 'wppr_content', 'wppr_use_true_excerpt', 10, 2 );
+// function wppr_use_true_excerpt( $content, $id ) {
+// 	return get_the_excerpt($id);
+// }
