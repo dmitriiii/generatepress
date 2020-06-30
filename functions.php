@@ -220,3 +220,12 @@ function smartwp_remove_wp_block_library_css(){
     wp_dequeue_style( 'wp-block-library-theme' );
 }
 add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
+
+
+/**
+ * Change wp product review's tables plugin output from short content to real excerpt
+ */
+add_filter( 'wppr_content', 'wppr_use_true_excerpt', 10, 2 );
+function wppr_use_true_excerpt( $content, $id ) {
+	return get_the_excerpt($id);
+}
