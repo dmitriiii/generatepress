@@ -101,12 +101,24 @@ jQuery(document).ready(function($) {
 	      $parent.addClass('active');
 	      $over.addClass('active');
 	      $i.attr('class', 'fas fa-times-circle');
+	      if (gtag) {
+	      	// console.log('open');
+	      	gtag('event', 'Click on Fast Affiliates', {
+					  'event_category': 'Fast Affiliates open',
+					});
+	      }
 	    }
 	    else{
 				$(b).removeClass('ov-hidd')
 	      $parent.removeClass('active');
 				$over.removeClass('active');
 				$i.attr('class', 'fas fa-trophy');
+				if (gtag) {
+	      	// console.log('close');
+					gtag('event', 'Click on Fast Affiliates', {
+					  'event_category': 'Fast Affiliates close',
+					});
+				}
 	    }
 			/* Act on the event */
 		});
