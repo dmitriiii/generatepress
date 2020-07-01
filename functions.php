@@ -231,3 +231,12 @@ if(in_array(get_site_url(), ['https://vpn-anbieter-vergleich-test.de', 'https://
 	 	return get_the_excerpt($id);
 	 }
 }
+
+
+
+add_action('admin_head','vavt_hide_login_weak');
+add_action('login_enqueue_scripts','vavt_hide_login_weak');
+
+function vavt_hide_login_weak() {
+	wp_enqueue_script( 'vavt-disable-weak-password', get_template_directory_uri() . '/k8/admin/js/disable-weak.js');
+}
