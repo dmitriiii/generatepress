@@ -11,10 +11,14 @@
 	box-sizing: border-box;
 }
 .k8side__button{
-	width: 40px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+	/* width: 40px;
 	height: 40px;
-	line-height: 40px;
-	font-size: 19px;
+	line-height: 40px; */
+	/* font-size: 19px; */
 	/* margin: 3px 0; */
 	margin-top: 6px;
 	display: inline-block;
@@ -205,9 +209,9 @@
 
 .k8side__fast-open-button {
 	background: #f68000;
-	width: 40px;
+/* 	width: 40px;
 	height: 40px;
-	line-height: 40px;
+	line-height: 40px; */
 	position: relative;
 	display: block;
 	z-index: 2;
