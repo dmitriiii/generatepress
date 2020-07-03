@@ -129,41 +129,9 @@ nav.toggled ul ul.sub-menu {
 }
 
 /*--------------------------------------------------------------
-# Breakpoint (768px)
+# Breakpoint (1024px)
 --------------------------------------------------------------*/
-
-@media (max-width: 768px) {
-	/*--------------------------------------------------------------
-	## Links
-	--------------------------------------------------------------*/
-
-	a, body, button, input, select, textarea {
-		-webkit-transition: all 0s ease-in-out;
-		-moz-transition: all 0s ease-in-out;
-		-o-transition: all 0s ease-in-out;
-		transition: all 0s ease-in-out;
-	}
-
-	/*--------------------------------------------------------------
-	## Top Bar
-	--------------------------------------------------------------*/
-
-	.top-bar.top-bar-align-left,
-	.top-bar.top-bar-align-right {
-		text-align: center;
-	}
-
-	.top-bar .widget {
-		float: none !important;
-		margin: 0 10px !important;
-	}
-
-	.top-bar .widget_nav_menu li {
-		float: none;
-		display: inline-block;
-		padding: 5px 0;
-	}
-
+@media (max-width: 1024px) {
 	/*--------------------------------------------------------------
 	## Header
 	--------------------------------------------------------------*/
@@ -200,6 +168,68 @@ nav.toggled ul ul.sub-menu {
 	[class*="nav-float-"] .site-header .inside-header > * {
 		float: none;
 		clear: both;
+	}
+	
+	.sticky-menu-logo .navigation-stick:not(.mobile-header-navigation) .menu-toggle, .menu-logo .main-navigation:not(.mobile-header-navigation) .menu-toggle {
+		display: inline-block;
+		clear: none;
+		width: auto;
+		float: right;
+	}
+
+	.main-navigation .main-nav ul li a, .menu-toggle, .main-navigation .mobile-bar-items a {
+		line-height: 60px;
+	}
+
+	.menu-toggle, .main-navigation .mobile-bar-items a {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.main-navigation:not(.slideout-navigation) a, .menu-toggle {
+		font-size: 16px;
+	}
+
+	.sticky-menu-logo .navigation-stick:not(.mobile-header-navigation) .mobile-bar-items, .menu-logo .main-navigation:not(.mobile-header-navigation) .mobile-bar-items {
+		position: relative;
+		float: right;
+	}
+}
+
+/*--------------------------------------------------------------
+# Breakpoint (768px)
+--------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+	/*--------------------------------------------------------------
+	## Links
+	--------------------------------------------------------------*/
+
+	a, body, button, input, select, textarea {
+		-webkit-transition: all 0s ease-in-out;
+		-moz-transition: all 0s ease-in-out;
+		-o-transition: all 0s ease-in-out;
+		transition: all 0s ease-in-out;
+	}
+
+	/*--------------------------------------------------------------
+	## Top Bar
+	--------------------------------------------------------------*/
+
+	.top-bar.top-bar-align-left,
+	.top-bar.top-bar-align-right {
+		text-align: center;
+	}
+
+	.top-bar .widget {
+		float: none !important;
+		margin: 0 10px !important;
+	}
+
+	.top-bar .widget_nav_menu li {
+		float: none;
+		display: inline-block;
+		padding: 5px 0;
 	}
 
 	/*--------------------------------------------------------------
