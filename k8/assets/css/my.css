@@ -1664,3 +1664,18 @@
     left: 0px;
     transform: translateY(-83%);
 }
+
+/*
+ * Overflow fix
+ */
+ @media (max-width: 414px){
+	.affiliate-button2 {
+		display: block;
+		width: 100%!important;
+		float: none;
+	}
+	.affiliate-button2 > a {
+		display: block;
+    	text-align: center;
+	}
+}
