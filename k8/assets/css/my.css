@@ -1500,6 +1500,9 @@
 		background-color: #01b2e2;
 		border-left: 1px solid #ffffff73;
 	}
+	.k8_tbl-resp{
+		overflow-x: auto;
+	}
 }
 
 
@@ -1581,10 +1584,6 @@
 	}
 	.k8_cnt .dwnd__butt{
 		margin-left: auto;
-	}
-
-	.k8_tbl-resp{
-		overflow-x: auto;
 	}
 	.k8_tbl-resp table{
 		width: 100%;
