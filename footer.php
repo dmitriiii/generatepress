@@ -120,13 +120,12 @@ wp_footer();
 				endforeach;
 			endif;
 	else :
-
 		if(get_field('m5_opt_fast_tf','option')):
 			$m5_opt_fast = get_field('m5_opt_fast','option');?>
 			<div class="k8side__item k8side__item-2">
 				<nav class="k8side__fast">
-				  <input type="checkbox" href="#" class="k8side__fast-open" name="k8side__fast-open" id="k8side__fast-open"/>
-				  <label class="k8side__fast-open-button k8side__button-2 k8side__button" for="k8side__fast-open">
+				  <input type="checkbox" href="#" class="k8side__fast-open k8side__fast-open--affiliate" name="k8side__fast-open" id="k8side__affiliate"/>
+				  <label class="k8side__fast-open-button k8side__button-2 k8side__button" for="k8side__affiliate">
 				  	<i class="fas fa-trophy"></i>
 				  </label>
 					<?php
@@ -143,6 +142,28 @@ wp_footer();
 		<?php
 		endif;
 	endif;?>
+	<? if(is_single()):?>
+		<div class="k8side__item k8side__item-4">
+			<nav class="k8side__fast">
+				<input type="checkbox" href="#" class="k8side__fast-open k8side__fast-open--share" name="k8side__fast-open--share" id="k8side__share"/>
+				<label class="k8side__fast-open-button k8side__button k8side__button-4" for="k8side__share">
+				<i class="fas fa-share-alt"></i>
+				</label>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--fb" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="https://twitter.com/home?status=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--tw" target="_blank" rel="noopener noreferrer" title="Share on Twitter" aria-label="Share on Twitter">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="mailto:info@example.com?&subject=<? echo esc_attr(get_the_title()); ?>&body=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--mail" target="_blank" rel="noopener noreferrer" title="Share by Email" aria-label="Share by Email">
+					<i class="fas fa-envelope"></i>
+				</a>
+				<a href="https://web.whatsapp.com/send?text=<? echo esc_attr(get_the_title()); ?>:<? echo get_page_link(); ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
+					<i class="fab fa-whatsapp"></i>
+				</a>
+			</nav>
+		</div>
+	<?php endif;?>
 	<div class="k8side__item k8side__item-3">
 		<button class="k8side__button k8side__button-3 js-tawk-btn-open" aria-label="chat">
 			<i class="fas fa-comments"></i>
