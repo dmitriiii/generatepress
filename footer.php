@@ -161,7 +161,7 @@ wp_footer();
 				<a href="mailto:?&subject=<? echo $title ?>&body=<?php echo $link ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--mail" target="_blank" rel="noopener noreferrer" title="Share by Email" aria-label="Share by Email">
 					<i class="fas fa-envelope"></i>
 				</a>
-				<a href="<? if (!isMobile()) {?>https://web.whatsapp.com/send?text=<? echo $title.':%0A'.$link ?><? } else {?>whatsapp://send?text=<? echo urlencode($title) ?>:%0A<? echo $link ?><? } ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
+				<a href="<? if (!isMobile()) {?>https://web.whatsapp.com/send?text=<? echo $title.':%0A'.$link ?><? } else {?>whatsapp://send?text=<? echo $title.':%0A'.$link ?><? } ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
 					<i class="fab fa-whatsapp"></i>
 				</a>
 			</nav>
