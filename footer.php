@@ -105,6 +105,7 @@ wp_footer();
 
 ?>
 <div class="k8side__wraper" style="display: none;">
+	<div class="k8side__over"></div>
 	<?php
 	$pid = get_the_ID();
 	if( is_single() && in_category( array('anbieter','vpn-anbieter'), $pid ) ):
@@ -173,7 +174,6 @@ wp_footer();
 		</button>
 	</div>
 </div><!-- .k8side__wraper -->
-<div class="k8side__over"></div>
 
 <?php
 if( K8Help::hasShort(['shortcode'=>'k8coupon_mng_form']) ): ?>
