@@ -1054,7 +1054,12 @@ nav:not(.toggled) ul ul .dropdown-menu-toggle:before {
 	display: inline-block;
 	max-width: 100%;
 }
-
+/*
+ * Fixed blurry logo
+ */
+.site-logo img{
+	transform: translate3d(0px, 0px, 0px);
+}
 .header-aligned-center .site-header {
 	text-align: center;
 }
