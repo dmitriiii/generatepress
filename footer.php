@@ -142,23 +142,26 @@ wp_footer();
 		<?php
 		endif;
 	endif;?>
-	<? if(is_single()):?>
+	<? if(is_single()):
+		$title = isset($post) ? rawurlencode($post->post_title) : str_replace('%26%23038%3B', '%26', rawurlencode(get_the_title()));
+		$link = esc_url(get_page_link());
+		?>
 		<div class="k8side__item k8side__item-4">
 			<nav class="k8side__fast">
 				<input type="checkbox" href="#" class="k8side__fast-open k8side__fast-open--share" name="k8side__fast-open--share" id="k8side__share"/>
 				<label class="k8side__fast-open-button k8side__button k8side__button-4" for="k8side__share">
 				<i class="fas fa-share-alt"></i>
 				</label>
-				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--fb" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--fb" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook">
 					<i class="fab fa-facebook-f"></i>
 				</a>
-				<a href="https://twitter.com/home?status=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--tw" target="_blank" rel="noopener noreferrer" title="Share on Twitter" aria-label="Share on Twitter">
+				<a href="https://twitter.com/intent/tweet?url=<?php echo $link ?>&text=<? echo $title ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--tw" target="_blank" rel="noopener noreferrer" title="Share on Twitter" aria-label="Share on Twitter">
 					<i class="fab fa-twitter"></i>
 				</a>
-				<a href="mailto:info@example.com?&subject=<? echo esc_attr(get_the_title()); ?>&body=<?php echo get_page_link() ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--mail" target="_blank" rel="noopener noreferrer" title="Share by Email" aria-label="Share by Email">
+				<a href="mailto:?&subject=<? echo $title ?>&body=<?php echo $link ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--mail" target="_blank" rel="noopener noreferrer" title="Share by Email" aria-label="Share by Email">
 					<i class="fas fa-envelope"></i>
 				</a>
-				<a href="https://web.whatsapp.com/send?text=<? echo esc_attr(get_the_title()); ?>:<? echo get_page_link(); ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
+				<a href="<? if (!isMobile()) {?>https://web.whatsapp.com/send?text=<? echo $title.':%0A'.$link ?><? } else {?>whatsapp://send?text=<? echo urlencode($title) ?>:%0A<? echo $link ?><? } ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
 					<i class="fab fa-whatsapp"></i>
 				</a>
 			</nav>
