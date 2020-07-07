@@ -143,7 +143,7 @@ wp_footer();
 		<?php
 		endif;
 	endif;?>
-	<? if(is_single()):
+	<? if( !is_front_page() ):
 		$title = isset($post) ? rawurlencode($post->post_title) : str_replace('%26%23038%3B', '%26', rawurlencode(get_the_title()));
 		$link = esc_url(get_page_link());
 		?>
@@ -162,8 +162,14 @@ wp_footer();
 				<a href="mailto:?&subject=<? echo $title ?>&body=<?php echo $link ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--mail" target="_blank" rel="noopener noreferrer" title="Share by Email" aria-label="Share by Email">
 					<i class="fas fa-envelope"></i>
 				</a>
-				<a href="<? if (!isMobile()) {?>https://web.whatsapp.com/send?text=<? echo $title.':%0A'.$link ?><? } else {?>whatsapp://send?text=<? echo $title.':%0A'.$link ?><? } ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
+					<a href="https://web.whatsapp.com/send?text=<? echo $title.':%0A'.$link ?>" onclick="if (checkMobile(true)) {window.open('whatsapp://send?text=<? echo $title.':%0A'.$link ?>');return false}" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--wa" target="_blank" rel="noopener noreferrer" title="Share on Whatsapp" aria-label="Share on Whatsapp">
 					<i class="fab fa-whatsapp"></i>
+				</a>
+				<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $link ?>" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--in" target="_blank" rel="noopener noreferrer" title="Share by Linkedin" aria-label="Share by Linkedin">
+					<i class="fab fa-linkedin-in"></i>
+				</a>
+				<a href="https://t.me/share/url?url=<?php echo $link ?>&text=<? echo $title ?>" onclick="if (checkMobile(true)) {window.open('tg://msg_url?url=<?php echo $link ?>&text=<? echo $title ?>');return false}" class="k8side__fast-item k8side__fast-item--share k8side__fast-item--tg" target="_blank" rel="noopener noreferrer" title="Share on Telegram" aria-label="Share on Telegram">
+					<i class="fab fa-telegram-plane"></i>
 				</a>
 			</nav>
 		</div>

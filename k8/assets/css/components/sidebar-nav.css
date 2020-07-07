@@ -2,7 +2,7 @@
 	position: fixed;
 	bottom: 10px;
 	padding: 0;
-	z-index: 9995;
+	z-index: 999999999;
 	font-size: 0;
 	box-sizing: border-box;
 	left: 10px;
@@ -127,7 +127,7 @@
 	height: 100%;
 	background-color: rgba(255,255,255,0.9);
 	display: none;
-	z-index: 10000;
+	z-index: 9999;
 }
 .k8side__over.active{
 	display: block;
@@ -154,7 +154,6 @@
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 10005;
 }
 
 .k8side__fast-item, .k8side__fast-open-button {
@@ -211,6 +210,14 @@
 }
 .k8side__fast-item--wa {
 	background: #00e676;
+	font-size: 30px;
+}
+.k8side__fast-item--in {
+	background: #0077b5;
+	font-size: 30px;
+}
+.k8side__fast-item--tg {
+	background: #35a9dc;
 	font-size: 30px;
 }
 .k8side__fast-open {
@@ -312,15 +319,6 @@
 					transform: translate3d(-0.25084px, -104.9997px, 0);
 }
 
-.k8side__fast-open:checked ~ .k8side__fast-item--share:nth-child(4) {
-	transform: translate3d(90.9466px, 0, 0);
-}
-.k8side__fast-open:checked ~ .k8side__fast-item--share:nth-child(5) {
-	transform: translate3d(0.08361px, 104.99997px, 0);
-}
-.k8side__fast-open:checked ~ .k8side__fast-item--share:nth-child(6) {
-	transform: translate3d(-90.9466px, 0, 0);
-}
 
 /* END Gooey */
 
