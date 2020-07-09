@@ -134,12 +134,14 @@ jQuery(document).ready(function ($) {
     })
     $(b).on("change", ".k8side__fast-open--share", function (e) {
       if (this.checked && gtag) {
-        gtag("event", "Click on Fast Share", {
-          event_category: "Fast Share open",
+        gtag("event", "Open fast share", {
+          event_category: "Social Network",
+          non_interaction: true
         });
       } else if (gtag) {
-        gtag("event", "Click on Fast Share", {
-          event_category: "Fast Share close",
+        gtag("event", "Close fast share", {
+          event_category: "Social Network",
+          non_interaction: true
         });
       }
     })
