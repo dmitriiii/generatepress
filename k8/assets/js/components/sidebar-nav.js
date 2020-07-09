@@ -145,6 +145,20 @@ jQuery(document).ready(function ($) {
         });
       }
     })
+    $(b).on("click", ".k8side__fast-item--share", function (e) {
+      if (gtag) {
+        let postIdEl = document.querySelector('meta[name="post:id"]')
+        let postTypeEl = document.querySelector('meta[name="post:type"]')
+        gtag("event", "share", {
+          event_category: "Social Network",
+          event_label: this.dataset.name,
+          method: this.dataset.name,
+          content_id: postIdEl ? postIdEl.content : undefined,
+          content_type: postTypeEl ? postTypeEl.content : undefined,
+          non_interaction: true
+        });
+      }
+    })
   };
   Clickz();
 });
