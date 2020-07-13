@@ -218,6 +218,38 @@ endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>
-
+<? /*
+<div class="popup-wrapper">
+	<section id="sales" class="popup popup--white">
+		<img src="/wp-content/themes/generatepress/img/popup_ex.jpg" alt="" class="popup__bg">
+		<button class="popup__btn-close" aria-label="close">
+			<i class="fas fa-times"></i>
+		</button>
+		<div class="popup__inner popup__inner--centered">
+			<img width="220" src="/wp-content/themes/generatepress/img/sales_ex.png" alt="">
+			<h2 class="popup__title">Lorem ipsum dolor sit amet consectetur</h2>
+			<div class="popup__content">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<p>
+				<div class="timer" data-date="<?
+					$date = new DateTime('2020-07-14');
+					$date->setTime(14, 55, 24);
+					echo $date->format('Y-m-d H:i:s');
+				?>">
+					<div class="timer__tt"><span class="timer__dd">00</span><span class="timer__tooltip">days</span></div>
+					<div class="timer__delimiter">:</div>
+					<div class="timer__tt"><span class="timer__hh">00</span><span class="timer__tooltip">hours</span></div>
+					<div class="timer__delimiter">:</div>
+					<div class="timer__tt"><span class="timer__mm">00</span><span class="timer__tooltip">minutes</span></div>
+					<div class="timer__delimiter">:</div>
+					<div class="timer__tt"><span class="timer__ss">00</span><span class="timer__tooltip">seconds</span></div>
+				</div>
+			</div>
+			<div class="popup__actions">
+				<a href="" target="_blank" class="button button--theme_sales">Odit quas facere</a>
+			</div>
+		</div>
+	</section>
+</div>
+<? */ ?>
 </body>
 </html>

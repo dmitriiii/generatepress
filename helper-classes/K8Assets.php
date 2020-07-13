@@ -48,6 +48,10 @@ class K8Assets
 		#Components&Modules
 		wp_register_script( 'k8-sidebar-nav-js', get_template_directory_uri() . '/k8/assets/js/components/sidebar-nav.js', array('jquery'), rand(1,9999), true );
 		wp_register_style( 'k8-sidebar-nav-css', get_template_directory_uri() . '/k8/assets/css/components/sidebar-nav.css', array(), rand(1,9999), 'all' );
+		wp_register_script( 'k8-popup', get_template_directory_uri() . '/k8/assets/js/components/popup.js', array('jquery'), rand(1,9999), true );
+		wp_register_style( 'k8-popup', get_template_directory_uri() . '/k8/assets/css/components/popup.css', array(), rand(1,9999), 'all' );
+		wp_register_script( 'k8-timer', get_template_directory_uri() . '/k8/assets/js/components/timer.js', array('jquery'), rand(1,9999), true );
+		wp_register_style( 'k8-timer', get_template_directory_uri() . '/k8/assets/css/components/timer.css', array(), rand(1,9999), 'all' );
 		#END Components&Modules
 
 		#Fix for wppr
@@ -73,7 +77,10 @@ class K8Assets
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
 		wp_enqueue_script( 'k8-sidebar-nav-js' );
-
+		wp_enqueue_style( 'k8-popup' );
+		wp_enqueue_script( 'k8-popup' );
+		wp_enqueue_style( 'k8-timer' );
+		wp_enqueue_script( 'k8-timer' );
 		#MU Services
 		wp_enqueue_script( 'check-mobile-js' );
 
