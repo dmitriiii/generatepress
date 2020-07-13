@@ -485,6 +485,16 @@ a:focus {
 	letter-spacing: .5px;
 	text-transform: capitalize;
 }
+a.button--theme_sales[href],
+a.button--theme_sales:visited[href] {
+	background-color: #dc3127;
+	transition: background-color 150ms;
+}
+a.button--theme_sales[href]:hover {
+	background-color: #e65120;
+	color: white;
+}
+
 .wp-block-button .wp-block-button__link {
 	font-size: inherit;
 	line-height: inherit;
