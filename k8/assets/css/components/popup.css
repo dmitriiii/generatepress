@@ -86,3 +86,9 @@
 .popup__actions > * {
   margin: 5px;
 }
+
+@media (max-width: 560px) {
+    .popup {
+        padding: 24px 40px;
+    }
+}
