@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+jQuery(document).ready(function ($) {
   $(".timer").each(function (i, el) {
     var expDate = new Date(el.dataset.date);
     var timer = setInterval(function () {
