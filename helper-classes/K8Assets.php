@@ -82,11 +82,12 @@ class K8Assets
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
 		wp_enqueue_script( 'k8-sidebar-nav-js' );
-		wp_enqueue_style( 'k8-popup' );
-		wp_enqueue_script( 'k8-popup' );
-		wp_enqueue_style( 'k8-timer' );
-		wp_enqueue_script( 'k8-timer' );
-		wp_enqueue_script( 'k8-sales-popup' );
+		// wp_enqueue_style( 'k8-popup' );
+		// wp_enqueue_script( 'k8-popup' );
+		// wp_enqueue_style( 'k8-timer' );
+		// wp_enqueue_script( 'k8-timer' );
+		// wp_enqueue_script( 'k8-sales-popup' );
+
 		#END Components&Modules
 
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,9999), true );
