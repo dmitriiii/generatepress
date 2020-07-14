@@ -77,10 +77,10 @@ class K8Assets
 		#Components&Modules
 		wp_enqueue_style( 'k8-sidebar-nav-css' );
 		wp_enqueue_script( 'k8-sidebar-nav-js' );
-		wp_enqueue_style( 'k8-popup' );
-		wp_enqueue_script( 'k8-popup' );
-		wp_enqueue_style( 'k8-timer' );
-		wp_enqueue_script( 'k8-timer' );
+		// wp_enqueue_style( 'k8-popup' );
+		// wp_enqueue_script( 'k8-popup' );
+		// wp_enqueue_style( 'k8-timer' );
+		// wp_enqueue_script( 'k8-timer' );
 		#MU Services
 		wp_enqueue_script( 'check-mobile-js' );
 
