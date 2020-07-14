@@ -219,7 +219,7 @@ endif;
 echo M5Ga::getGa(); ?>
 <? /*
 <div class="popup-wrapper">
-	<section id="sales" class="popup popup--white">
+	<section id="sales" class="popup popup--white" data-times="3">
 		<img src="/wp-content/themes/generatepress/img/popup_ex.jpg" alt="" class="popup__bg">
 		<button class="popup__btn-close" aria-label="close">
 			<i class="fas fa-times"></i>
@@ -244,7 +244,7 @@ echo M5Ga::getGa(); ?>
 				</div>
 			</div>
 			<div class="popup__actions">
-				<a href="" target="_blank" class="button button--theme_sales">Odit quas facere</a>
+				<a href="" target="_blank" class="button button--red">Odit quas facere</a>
 			</div>
 		</div>
 	</section>

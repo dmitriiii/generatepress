@@ -478,19 +478,19 @@ a:focus {
 	padding: 10px 20px;
 	display: inline-block;
 }
-.button--theme_sales {
+.button--red {
     border-radius: 5px;
     font-size: 16px;
     font-weight: 600;
 	letter-spacing: .5px;
 	text-transform: capitalize;
 }
-a.button--theme_sales[href],
-a.button--theme_sales:visited[href] {
+a.button--red[href],
+a.button--red:visited[href] {
 	background-color: #dc3127;
 	transition: background-color 150ms;
 }
-a.button--theme_sales[href]:hover {
+a.button--red[href]:hover {
 	background-color: #e65120;
 	color: white;
 }
