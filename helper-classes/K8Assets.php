@@ -53,6 +53,7 @@ class K8Assets
 		wp_register_style( 'k8-popup', get_template_directory_uri() . '/k8/assets/css/components/popup.css', array(), rand(1,9999), 'all' );
 		wp_register_script( 'k8-timer', get_template_directory_uri() . '/k8/assets/js/components/timer.js', array('jquery'), rand(1,9999), true );
 		wp_register_style( 'k8-timer', get_template_directory_uri() . '/k8/assets/css/components/timer.css', array(), rand(1,9999), 'all' );
+		wp_register_script( 'k8-sales-popup', get_template_directory_uri() . '/k8/assets/js/components/sales-popup.js', array('k8-popup'), rand(1,9999), true );
 		#END Components&Modules
 
 		#Fix for wppr
@@ -85,7 +86,7 @@ class K8Assets
 		wp_enqueue_script( 'k8-popup' );
 		wp_enqueue_style( 'k8-timer' );
 		wp_enqueue_script( 'k8-timer' );
-
+		wp_enqueue_script( 'k8-sales-popup' );
 		#END Components&Modules
 
 		wp_register_script( 'reacher89-my-js', get_template_directory_uri() . '/k8/assets/js/my.js', array(), rand(1,9999), true );
