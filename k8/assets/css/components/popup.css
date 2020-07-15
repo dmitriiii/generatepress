@@ -37,7 +37,8 @@
   display: flex;
 }
 
-.popup__bg {
+.popup__bg,
+.popup__bg>img{
   position: absolute;
   top: 0;
   left: 0;

@@ -27,6 +27,11 @@ class K8Hooks
 		add_filter( 'manage_k8pt_howto_posts_columns', array( $this, 'k8pt_howto_cols' ) );
 		add_action( 'manage_k8pt_howto_posts_custom_column' , array( $this, 'k8pt_howto_col' ), 10, 2 );
 
+		#Add Popup shortcode to admin
+		add_filter( 'manage_m5pt_popup_posts_columns', array( $this, 'm5pt_popup_cols' ) );
+		add_action( 'manage_m5pt_popup_posts_custom_column' , array( $this, 'm5pt_popup_col' ), 10, 2 );
+		
+
 		#301 redirect on coupons single pages
 		if( get_site_url() == 'https://vpntester.net' ){
 			add_action( 'template_redirect', array( $this, 'redirect_to_home_page' ) );
@@ -169,6 +174,17 @@ class K8Hooks
 	public function k8pt_howto_col($column, $post_id){
 		if( $column == 'howto_shrt' ){
 			echo "<code>[K8_SH_HOWTO id='$post_id']</code>";
+		}
+	}
+
+	#Add Popup shortcode to admin
+	public function m5pt_popup_cols($columns){
+		$columns['m5pt_popup_shrt'] = __( 'Shortcode', 'k8lang_domain' );
+		return $columns;
+	}
+	public function m5pt_popup_col($column, $post_id){
+		if( $column == 'm5pt_popup_shrt' ){
+			echo "<code>[K8_SH_POPUP id='$post_id']</code>";
 		}
 	}
 
