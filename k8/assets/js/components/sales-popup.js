@@ -8,8 +8,13 @@ jQuery(document).ready(function($) {
     samesite: "strict",
     "max-age": secToTomorrow(),
   });
-  if (!spe) openPopup($("#sales"));
+  if (!spe && isNotExpTimer()) openPopup($("#sales"));
 
+  function isNotExpTimer() {
+    let timerEl = popup.querySelector('.timer')
+    if (!timerEl) return true;
+    return (new Date(timerEl.dataset.date)).getTime() - Date.now() > 0 ? true : false;
+  }
   function secToTomorrow() {
     let now = new Date();
     let tomorrow = new Date(Date.now() + 86400e3);
@@ -17,4 +22,3 @@ jQuery(document).ready(function($) {
     return Math.round((tomorrow - now) / 1000);
   }
 })
-
