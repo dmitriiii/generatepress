@@ -123,6 +123,9 @@ class K8Short
 
 		#[K8_SH_ROUTER_INFO]
 		add_shortcode( 'K8_SH_ROUTER_INFO', array( $this, 'router_info') );
+
+		#[K8_SH_POPUP]
+		add_shortcode( 'K8_SH_POPUP', array( $this, 'popup') );
 	}
 
 	/**
@@ -726,6 +729,28 @@ class K8Short
 		wp_enqueue_script( 'k8_sh_router_info-js' );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	#[K8_SH_POPUP]
+	public function popup( $atts, $content, $tag ){
+		// write_log(get_defined_vars());
+		if( !isset( $atts['id'] ) || !filter_var($atts['id'], FILTER_VALIDATE_INT) )
+			return __('Sorry nothing found. Please pass valid popup id' , 'k8lang_domain');
+
+		if( 'publish' !== get_post_status ( $atts['id'] ) )
+			return __('Publish popup first, please' , 'k8lang_domain');
+
+			wp_enqueue_style( 'k8-popup' );
+			wp_enqueue_script( 'k8-popup' );
+			wp_enqueue_style( 'k8-timer' );
+			wp_enqueue_script( 'k8-timer' );
+			wp_enqueue_script( 'k8-sales-popup' );
+
+		ob_start();
+		include $this->templ_url . $tag . '/design1.php';
 		$html = ob_get_clean();
 		return $html;
 	}

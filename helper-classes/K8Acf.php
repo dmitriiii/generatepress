@@ -17,6 +17,8 @@ class K8Acf
 
 		add_action( 'acf/init', array( $this, 'amp' ) );
 
+		add_action( 'acf/init', array( $this, 'popup' ) );
+
 	}
 	public function anbieter_cf(){
 		if( function_exists('acf_add_local_field_group') ):
@@ -1644,6 +1646,119 @@ class K8Acf
 				'active' => true,
 				'description' => '',
 			));
+		endif;
+	}
+
+	#popup
+	public function popup(){
+
+		if( function_exists('acf_add_local_field_group') ):
+			// echo 'Herre!';
+			acf_add_local_field_group(array(
+				'key' => 'group_5ece4797eaf5e',
+				'title' => 'Popups',
+				'fields' => array(
+					array(
+						'key' => 'field_5f0e8be7d015e',
+						'label' => 'How many times dont show before show',
+						'name' => 'm5_acf_pop_times',
+						'type' => 'number',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '50',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => 3,
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'min' => 1,
+						'max' => 9999,
+						'step' => '',
+					),
+					array(
+						'key' => 'field_5f0e8bfa19d88',
+						'label' => 'Date until end of timer',
+						'name' => 'm5_acf_pop_date_to',
+						'type' => 'date_picker',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '50',
+							'class' => '',
+							'id' => '',
+						),
+						'display_format' => 'Y-m-d',
+						'return_format' => 'Y-m-d',
+						'first_day' => 1,
+					),
+					array(
+						'key' => 'field_5f0e8c116659e',
+						'label' => 'Logo image',
+						'name' => 'm5_acf_pop_logo',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'id',
+						'preview_size' => 'medium',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+					array(
+						'key' => 'field_5f0e8c28805ad',
+						'label' => 'Button\'s Url',
+						'name' => 'm5_acf_pop_url',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'm5pt_popup',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+
 		endif;
 	}
 

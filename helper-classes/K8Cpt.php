@@ -382,6 +382,42 @@ class K8Cpt
 		];
 
 		register_post_type( "k8pt_howto", $args );
+
+
+		/**
+		 * Post type popups
+		 */
+		$labels = [
+			"name" => __( "Popups", "k8lang_domain" ),
+			"singular_name" => __( "Popup", "k8lang_domain" ),
+		];
+
+		$args = [
+			"label" => __( "Popups", "k8lang_domain" ),
+			"labels" => $labels,
+			"description" => "",
+			"public" => false,
+			"publicly_queryable" => false,
+			"show_ui" => true,
+			"show_in_rest" => false,
+			"rest_base" => "",
+			// "rest_controller_class" => "WP_REST_Posts_Controller",
+			"has_archive" => false,
+			"show_in_menu" => true,
+			"show_in_nav_menus" => false,
+			"delete_with_user" => false,
+			"exclude_from_search" => true,
+			"capability_type" => "post",
+			"map_meta_cap" => true,
+			"hierarchical" => false,
+			"rewrite" => false,
+			"query_var" => false,
+			"menu_icon" => "dashicons-welcome-widgets-menus",
+			"supports" => [ "title", "editor", "thumbnail" ],
+		];
+
+		register_post_type( "m5pt_popup", $args );
+
 	}
 }
 new K8Cpt();

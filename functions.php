@@ -133,10 +133,10 @@ function k8_disable_feed_for_pages() {
 	}
 }
 
-add_action( 'init', 'stop_heartbeat', 1 );
-function stop_heartbeat() {
-	wp_deregister_script('heartbeat');
-}
+// add_action( 'init', 'stop_heartbeat', 1 );
+// function stop_heartbeat() {
+// 	wp_deregister_script('heartbeat');
+// }
 
 add_filter( 'term_description', 'do_shortcode' );
 
