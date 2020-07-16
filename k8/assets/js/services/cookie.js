@@ -1,30 +1,29 @@
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+
 var Cookie = {
-  get(name) {
-    let matches = document.cookie.match(
-      new RegExp(
-        "(?:^|; )" +
-          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-          "=([^;]*)"
-      )
-    );
+  get: function get(name) {
+    var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"));
     return matches ? decodeURIComponent(matches[1]) : undefined;
   },
-  set(name, value, options = {}) {
-    options = {
-      path: "/",
-      ...options,
-    };
+  set: function set(name, value, options) {
+    if (options === void 0) {
+      options = {};
+    }
 
-    if (options.expires instanceof Date) {
+    options = Object.assign({
+      path: "/"
+    }, options);
+
+    if (_instanceof(options.expires, Date)) {
       options.expires = options.expires.toUTCString();
     }
 
-    let updatedCookie =
-      encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    var updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
 
-    for (let optionKey in options) {
+    for (var optionKey in options) {
       updatedCookie += "; " + optionKey;
-      let optionValue = options[optionKey];
+      var optionValue = options[optionKey];
+
       if (optionValue !== true) {
         updatedCookie += "=" + optionValue;
       }
@@ -32,9 +31,9 @@ var Cookie = {
 
     document.cookie = updatedCookie;
   },
-  delete(name) {
+  delete: function _delete(name) {
     setCookie(name, "", {
-      "max-age": -1,
+      "max-age": -1
     });
-  },
+  }
 };
