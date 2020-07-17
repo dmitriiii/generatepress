@@ -10,7 +10,7 @@
 				<?= get_the_title( $atts['id'] ); ?>
 			</h2>
 			<div class="popup__content">
-				<?= apply_filters('the_content', get_post_field('post_content', $atts['id'])); ?>
+				<p><?= get_the_content($atts['id']); ?></p>
 				<div class="timer" data-date="<?
 					$date = new DateTime( get_field('m5_acf_pop_date_to', $atts['id']) );
 					$date->setTime(14, 55, 24);
