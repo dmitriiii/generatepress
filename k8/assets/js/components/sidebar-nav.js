@@ -1,5 +1,11 @@
 jQuery(document).ready(function ($) {
-  $(".k8side__wraper").css("display", "block");
+  $(".k8side__wraper").css("display", "flex");
+  // if(checkMobile()){
+  //   $(".k8side__wraper").css("display", "flex");
+  // }
+  // else{
+  //   $(".k8side__wraper").css("display", "block");
+  // }
   const Reset = function (obj) {
     obj.btn.removeClass("active");
     obj.menu.removeClass("active");
