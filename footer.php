@@ -104,7 +104,7 @@ wp_footer();
 
 
 ?>
-<div class="k8side__wraper" style="display: none;">
+<div class="k8side__wraper" style="display: none;" data-txt="<?php _e( 'Inhaltsverzeichnis', 'k8lang_domain' ); ?>">
 	<div class="k8side__over"></div>
 	<?php
 	$pid = get_the_ID();

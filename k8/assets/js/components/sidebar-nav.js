@@ -17,9 +17,10 @@ jQuery(document).ready(function ($) {
   };
 
   const Setup = function () {
-    let html_els =
-        '<div class="k8side__item k8side__item-1"><button class="k8side__button k8side__button-1" style="display: flex; flex-direction: column; align-items: center; padding: 10px;"><i class="fas fa-list-ul"></i> <span style=" writing-mode: tb-rl; transform: rotate(180deg); margin-bottom: 12px;">Inhaltsverzeichnis</span> </button><ul class="k8side__menu"></ul></div>',
-      $wrapper = $(".k8side__wraper"),
+    let $wrapper = $(".k8side__wraper"),
+      txt = $wrapper.attr('data-txt'),
+      html_els = '<div class="k8side__item k8side__item-1"><button class="k8side__button k8side__button-1" style="display: flex; flex-direction: column; align-items: center; padding: 10px;"><i class="fas fa-list-ul"></i> <span style=" writing-mode: tb-rl; transform: rotate(180deg); margin-bottom: 12px;">'+txt+'</span> </button><ul class="k8side__menu"></ul></div>',
+
       $titlz = $("body main#main h2:visible").not(".wppr-review-container h2");
     if ($titlz.length == 0) {
       $titlz = $("body main#main h1:visible");
