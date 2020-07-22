@@ -156,6 +156,26 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 // }
 
 
+
+#Translating 
+
+// if(isset($_GET['k8transl']) && $_GET['k8transl'] == 1){
+// 	$countries = file_get_contents( get_template_directory() . "/data/json/countries/countries.json" );
+// 	$countries_arr = json_decode($countries, true);
+// 	$tax = 'unternehmen';
+// 	foreach ($countries_arr as $country) :
+
+// 		$exist = get_term_by( 'slug', strtolower( $country['cca2'] ), $tax, OBJECT );
+// 		if ( $exist ) {
+// 			$argzz = array(
+// 				'name' => $country['translations']['rus']['common'],
+// 			);
+// 			wp_update_term( $exist->term_id, $tax, $argzz );
+// 		}
+// 	endforeach;
+// }
+
+
 #Importing speedtest data
 # $data[1] - $k8_acf_vpnid
 # $data[5] - $k8_acf_vpndet_down
