@@ -19,6 +19,7 @@ $apid = get_the_ID();
 	<link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-solid-900.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-regular-400.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/fonts/generatepress.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-brands-400.woff2" crossorigin>
     <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
 	<link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
 	<link href="https://s.w.org" rel="preconnect" crossorigin>
@@ -37,15 +38,15 @@ $apid = get_the_ID();
 			document.head.appendChild(supportStyle);
 		}
 	</script>
-	<?php 
+	<?php
 	if( is_single() && in_category('news', $apid) && get_field('k8_optz_amp','option') == 1 ) : ?>
 		<link rel="amphtml" href="<?php the_permalink( $apid ); ?>amp/">
-	<?php 
+	<?php
 	endif; ?>
 
 	<?php wp_head(); ?>
 </head>
-<?php 
+<?php
 (wp_is_mobile()) ? $k8_mob_clss = 'k8body__mob' : $k8_mob_clss = 'k8_desktop' ;?>
 <body <?php body_class( $k8_mob_clss ); ?> <?php generate_do_microdata( 'body' ); ?>>
 	<?php
