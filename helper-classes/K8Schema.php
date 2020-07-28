@@ -248,6 +248,9 @@ class K8Schema
 	 */
 	static function getYTdata( $args = array() ){
 		extract( $args );
+		write_log(get_defined_vars());
+		if( !is_array($decoded['items']) || count($decoded['items']) == 0 )
+			return;
 		$datta = [
 			"@context" => "https://schema.org",
 			"@type" => "VideoObject",
@@ -259,6 +262,18 @@ class K8Schema
 			"embedUrl" => "https://www.youtube.com/embed/" . $id,
 			"interactionCount" => $decoded['items'][0]['statistics']['viewCount']
 		];
+		if ( !isset($datta['name']) || trim($datta['name']) == '' )
+			$datta['name'] = get_bloginfo('name');
+
+		if ( !isset($datta['description']) || trim($datta['description']) == '' )
+			$datta['description'] = get_bloginfo('description');
+
+		if ( !isset($datta['thumbnailUrl']) || trim($datta['thumbnailUrl']) == '' )
+			$datta['thumbnailUrl'] = 'https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2019/09/VPNtester-logo-white.png';
+
+		if ( !isset($datta['uploadDate']) || trim($datta['uploadDate']) == '' )
+			$datta['uploadDate'] = '2020-01-08T09:58:11Z';
+
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
 
