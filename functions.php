@@ -240,3 +240,8 @@ add_action('login_enqueue_scripts','vavt_hide_login_weak');
 function vavt_hide_login_weak() {
 	wp_enqueue_script( 'vavt-disable-weak-password', get_template_directory_uri() . '/k8/admin/js/disable-weak.js');
 }
+
+
+if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
+	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
+}
