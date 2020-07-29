@@ -725,6 +725,10 @@ class K8Short
 			]
 		);
 		$cust_fields = json_decode( file_get_contents( K8_PATH_GLOB . '/json/routers/routers.json' ), true );
+		wp_enqueue_style( 'k8-slick-css' );
+		wp_enqueue_style( 'k8-libs-lightgallery-css' );
+		wp_enqueue_script( 'k8-slick-js' );
+		wp_enqueue_script( 'k8-libs-lightgallery-js' );
 		wp_enqueue_style( 'k8_sh_router_info-css' );
 		wp_enqueue_script( 'k8_sh_router_info-js' );
 		ob_start();

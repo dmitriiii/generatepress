@@ -12,7 +12,63 @@ if( !is_array( $cust_fields ) || count( $pid_arr ) == 0 ){
 	echo 'Sorry no custom fields found';
 	return;
 }
+// echo '<pre>';
+// print_r( get_defined_vars() );
+// echo '</pre>';
+
+// echo '<pre>';
+$m5_rou_id_prod_img = get_field('m5_rou_id_prod_img',$pid_arr[0]['pid']);
+$m5_rou_id_var_img = get_field('m5_rou_id_var_img',$pid_arr[0]['pid']); 
+
+$img_ids = array_merge( [$m5_rou_id_prod_img], $m5_rou_id_var_img );
+
+// print_r( get_field('m5_rou_id_prod_img',$pid_arr[0]['pid']) );
+// print_r( get_field('m5_rou_id_var_img',$pid_arr[0]['pid']) );
+
+// echo '<pre>';
+// print_r( $img_ids );
+// echo '</pre>';
+
+// echo '</pre>';
 ?>
+
+
+<?php 
+if ( is_array($img_ids) && count($img_ids) > 0 ): ?>
+	<div class="m5-rou__wrapper">
+		<div class="m5-rou__carousel--wrapper m5-rou__carousel--wrapper-1 wrapper">
+			<div class="m5-rou__carousel m5-rou__carousel-1">
+				<?php 
+				foreach ($img_ids as $img_id): ?>
+					<div>
+						<div class="m5-rou__item">
+							<a href="<?php echo wp_get_attachment_image_src( $img_id, 'full' )[0]; ?>" class="m5-rou__item-link" rel="nofollow noreferer noopener">
+								<?php echo wp_get_attachment_image( $img_id, 'medium_large', false, $attr = ['class'=>'m5-rou__img'] ); ?>
+							</a>
+						</div>
+					</div>
+				<?php 
+				endforeach ?>
+			</div>
+		</div>
+
+		<div class="m5-rou__carousel--wrapper m5-rou__carousel--wrapper-2 wrapper">
+			<div class="m5-rou__carousel m5-rou__carousel-2">
+				<?php 
+				foreach ($img_ids as $img_id): ?>
+					<div>
+						<div class="m5-rou__item">
+							<?php echo wp_get_attachment_image( $img_id, [80,80], false, $attr = ['class'=>'m5-rou__img'] ); ?>
+						</div>
+					</div>
+				<?php 
+				endforeach ?>
+			</div>
+		</div>
+	</div><!-- .m5-rou__wraper -->
+<?php 
+endif ?>
+
 
 <div class="m5-tab__wrapper">
 	<ul class="m5-tab__buttons">
