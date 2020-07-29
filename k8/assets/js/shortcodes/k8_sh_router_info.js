@@ -23,11 +23,12 @@ jQuery(document).ready(function($) {
         // $prev = $wrr.find(".prev"),
         // $next = $wrr.find(".next");
       $(el).slick({
-        infinite: false,
+        // infinite: false,
+        infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
-        autoplay: false,
+        autoplay: true,
+        // autoplay: false,
         centerMode: false,
         variableWidth: false,
         // swipeToSlide: true,
@@ -60,11 +61,12 @@ jQuery(document).ready(function($) {
         // $prev = $wrr.find(".prev"),
         // $next = $wrr.find(".next");
       $(el).slick({
-        infinite: false,
+        // infinite: false,
+        infinite: true,
         slidesToShow: 5,
         slidesToScroll: 1,
-        // autoplay: true,
-        autoplay: false,
+        autoplay: true,
+        // autoplay: false,
         // centerMode: true,
         // adaptiveHeight: true,
 
