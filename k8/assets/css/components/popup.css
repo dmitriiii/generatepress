@@ -1,7 +1,9 @@
 .popup {
+  box-sizing: border-box;
   position: relative;
-  width: 680px;
+  width: 800px;
   padding: 24px 60px;
+  margin: 15px;
   background-color: white;
   border-radius: 5px;
   overflow: hidden;
@@ -90,6 +92,10 @@
 
 @media (max-width: 560px) {
     .popup {
-        padding: 24px 40px;
+        padding: 24px 30px;
+    }
+    .popup__btn-close {
+      top: 5px;
+      right: 5px;
     }
 }
