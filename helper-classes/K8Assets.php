@@ -38,7 +38,7 @@ class K8Assets
 		#SHORTCODE's JS & CSS
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
 		wp_register_script( 'k8-lib-progressbar-js', get_template_directory_uri() . '/k8/assets/js/libs/progressbar.min.js', array(), false, true );
-		wp_register_script( 'k8_sh_router_info-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/k8_sh_router_info.js', array('jquery'), false, true );
+		wp_register_script( 'k8_sh_router_info-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/k8_sh_router_info.js', array('jquery'), rand(1,9999), true );
 		wp_register_script( 'k8-popup', get_template_directory_uri() . '/k8/assets/js/components/popup.js', array('jquery'), rand(1,9999), true );
 		wp_register_script( 'k8-timer', get_template_directory_uri() . '/k8/assets/js/components/timer.js', array('jquery'), rand(1,9999), true );
 		wp_register_script( 'k8-sales-popup', get_template_directory_uri() . '/k8/assets/js/components/sales-popup.js', array('k8-popup'), rand(1,9999), true );
@@ -48,7 +48,7 @@ class K8Assets
 		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_howto-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_howto.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_best-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_best.css', array(), false, 'all' );
-		wp_register_style( 'k8_sh_router_info-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_router_info.css', array(), false, 'all' );
+		wp_register_style( 'k8_sh_router_info-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_router_info.css', array(), rand(1,9999), 'all' );
 		#END SHORTCODE's JS & CSS
 
 		#Components&Modules

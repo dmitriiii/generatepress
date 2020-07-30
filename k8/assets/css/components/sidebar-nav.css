@@ -1,4 +1,5 @@
 .k8side__wraper{
+	flex-direction: column;
 	position: fixed;
 	bottom: 10px;
 	padding: 0;
@@ -361,10 +362,31 @@
 
 
 @media (max-width: 749px){
+	body{
+		padding-bottom: 45px !important;
+	}
 	.k8side__button-1 span{
 		display: none;
 	}
 	.k8side__button-1 i{
 		margin-bottom: 0;
+	}
+
+	.k8side__wraper{
+		flex-direction: row;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-around;
+    background-color: rgba(34,34,34,0.79);
+    padding: 6px 3px 2px;
+	}
+	.k8side__menu{
+		bottom: 45px;
+    left: auto;
+    right: 10px;
+	}
+	.k8side__button{
+		margin-top: 0;
 	}
 }

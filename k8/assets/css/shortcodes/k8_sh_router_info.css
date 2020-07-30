@@ -65,5 +65,44 @@
 .m5-tab__text tr:hover{
 	background-color: #1d1d1d;
 }
-/* .m5-tab__text td:last-child{
-} */
+
+
+/* Router carousel */
+.m5-rou__wrapper{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	/* margin: 0 0 20px; */
+	margin: 20px 0 0px;
+	-ms-align-items: center;
+	align-items: center;
+	box-shadow: 0 0 15px #ccc;
+	/* background-color: #eeeeee6e; */
+}
+.m5-rou__carousel--wrapper-1{
+	width: 80%;
+}
+.m5-rou__carousel--wrapper-2{
+	width: 20%;
+}
+
+.m5-rou__item{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	cursor: pointer;
+	/* max-height: 450px; */
+}
+.m5-rou__carousel-2 .slick-current .m5-rou__item{
+	background: #3c9;
+}
+/*END Router carousel */
+
