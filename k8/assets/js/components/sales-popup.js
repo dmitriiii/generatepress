@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
   let popup = document.getElementById("sales");
   if (!popup) return;
+  let delay = popup.dataset.delay ? +popup.dataset.delay : 0
   let cSpe = parseInt(Cookie.get("_sale_modal"))
   let dSpe = parseInt(popup.dataset.times)
   let spe = (isNaN(cSpe) ? 1 : cSpe) || dSpe || 1;
@@ -8,7 +9,7 @@ jQuery(document).ready(function($) {
     samesite: "strict",
     "max-age": secToTomorrow(),
   });
-  if (!spe && isNotExpTimer()) openPopup($("#sales"));
+  if (!spe && isNotExpTimer()) setTimeout(function() {openPopup($("#sales"));}, delay) 
 
   function isNotExpTimer() {
     let timerEl = popup.querySelector('.timer')

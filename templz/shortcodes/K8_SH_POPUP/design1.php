@@ -3,7 +3,7 @@ $cnt = $c_post->post_content;
 $cnt = apply_filters('the_content', $cnt);
 $cnt = str_replace(']]>', ']]&gt;', $cnt); ?>
 <div class="popup-wrapper">
-	<section id="sales" class="popup popup--white" data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
+	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
 		<button class="popup__btn-close" aria-label="close">
 			<i class="fas fa-times"></i>
