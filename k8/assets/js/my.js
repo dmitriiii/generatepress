@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
           "<div class='m5-notif__txt'>" +
           "<p>Du hast die telefonische Verifikation bereits abgeschlossen.  <br />Dein Gutscheincode lautet: <b>" +
           parsedd.code +
-          "</b>. Du kannst diesen Coupon hier <a rel='nofollow' target='__blank' href='" +
+          "</b>. Du kannst diesen Coupon hier <a rel='nofollow' target='_blank' href='" +
           parsedd.redirect_url +
           "'>" +
           parsedd.anbieter +
