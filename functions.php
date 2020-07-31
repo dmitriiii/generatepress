@@ -14,7 +14,7 @@ if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 
 	add_filter( 'template_include', 'amp_page_template', 99 );
 	function amp_page_template( $template ) {
 		if( get_query_var( AMP_QUERY_VAR, false ) !== false ) {
-			if ( is_single() && in_category('news') ) {
+			if ( is_single() && has_category( get_field('k8_optz_amp_cat','option'), get_the_ID() ) ) {
 				$template = get_template_directory() .  '/amp/tpl/single-news.php';
 			}
 		}

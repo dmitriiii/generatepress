@@ -1334,6 +1334,36 @@ class K8Acf
 						'ui_off_text' => '',
 					),
 					array(
+						'key' => 'field_5eec9bc8dfda6',
+						'label' => 'Categories where works',
+						'name' => 'k8_optz_amp_cat',
+						'type' => 'taxonomy',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field' => 'field_5e4566bc6a885',
+									'operator' => '==',
+									'value' => '1',
+								),
+							),
+						),
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'taxonomy' => 'category',
+						'field_type' => 'checkbox',
+						'add_term' => 0,
+						'save_terms' => 0,
+						'load_terms' => 0,
+						'return_format' => 'id',
+						'multiple' => 0,
+						'allow_null' => 0,
+					),
+					array(
 						'key' => 'field_5e456750b9f98',
 						'label' => 'Google Analitics ID',
 						'name' => 'k8_optz_amp_ga',
