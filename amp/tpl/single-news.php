@@ -128,6 +128,14 @@ function k8_amp_callback($buffer) {
 		endforeach;
 	endif;
 
+	#remove Iframes ( videos from youtube etc. )
+	$iframes = $document->find('iframe');
+	if( count($iframes) > 0 ) :
+		foreach ($iframes as $iframe) :
+			$iframe->remove();
+		endforeach;
+	endif;
+
 	#remove product review block
 	// $wppr = $document->find('.wppr-review-container');
 	// if( count($wppr) > 0 ) :
