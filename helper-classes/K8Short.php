@@ -747,7 +747,7 @@ class K8Short
 		if( 'publish' !== get_post_status ( $atts['id'] ) )
 			return __('Publish popup first, please' , 'k8lang_domain');
 
-		global $wp_filter;
+		// global $wp_filter;
 		wp_enqueue_style( 'k8-popup' );
 		wp_enqueue_script( 'k8-popup' );
 		wp_enqueue_style( 'k8-timer' );
@@ -755,10 +755,10 @@ class K8Short
 		wp_enqueue_script( 'k8-sales-popup' );
 
 		ob_start();
-		add_filter('wppr_is_review_active', false);
+		// add_filter('wppr_is_review_active', false);
 		include $this->templ_url . $tag . '/design1.php';
 		$html = ob_get_clean();
-    array_pop( $wp_filter['wppr_is_review_active']->callbacks );
+    // array_pop( $wp_filter['wppr_is_review_active']->callbacks );
 		return $html;
 	}
 
