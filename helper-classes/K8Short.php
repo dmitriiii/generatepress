@@ -246,34 +246,35 @@ class K8Short
 		return $html;
 	}
 	// generates schema markup for FAQ pages
+	// [K8_SHORT_FAQ]
 	public function faq( $atts, $content, $tag ){
-		ob_start();
+		$a = shortcode_atts( array(
+			'output' => 'design1',
+			'vpnid' => get_the_ID(),
+		), $atts );
 		$q_o = get_queried_object();
 		$k8_acf_faq = get_field('k8_acf_faq', $q_o->ID);
-		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq ) > 0 ) : ?>
-			<div class="k8_accord-wrr">
-				<div class="k8_accord">
-					<?php
-					$i = 1;
-					foreach ($k8_acf_faq as $value): ?>
-						<div class="k8_accord-blck">
-							<input type="checkbox" <?php echo ( $i !== 1 ) ? 'checked' : ''; ?>>
-							<i></i>
-							<div class="k8_accord-head">
-								<span><?php echo $value['quest']; ?></span>
-							</div>
-							<div class="k8_accord-txt">
-								<div class="k8_accord-inn">
-									<?php echo $value['ans']; ?>
-								</div>
-							</div>
-						</div>
-					<?php
-					$i++;
-					endforeach ?>
-				</div>
-			</div><!-- .k8_accord-wrr -->
-			<?php
+		// write_log(get_defined_vars());
+		// write_log($_SERVER['REQUEST_URI']);
+		if(strpos($_SERVER['REQUEST_URI'], '/amp/')){
+			$a["output"] = 'amp/'.$a["output"];
+		}
+		
+		// write_log(get_defined_vars());
+
+		ob_start();
+		if ( $k8_acf_faq && is_array( $k8_acf_faq ) && count( $k8_acf_faq ) > 0 ) :
+			
+			// include_once $this->templ_url . $tag . '/amp/' . $a["output"] . '.php';
+			// if( strpos($_SERVER['REQUEST_URI'], '/amp/') ){
+			// 	require_once $this->templ_url . $tag . '/amp/' . $a["output"] . '.php';
+			// }
+			// else{
+			// 	require_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
+			// }
+			require_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
+			// include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+			
 			$schema = K8Schema::getFaqPage([
 				'k8_acf_faq' => $k8_acf_faq
 			]);
@@ -281,6 +282,7 @@ class K8Short
 		endif;
 		$html = ob_get_clean();
 		return $html;
+		// exit();
 	}
 
 	#[k8_short_vpndet] Show table with vpn details

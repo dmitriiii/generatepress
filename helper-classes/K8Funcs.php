@@ -18,6 +18,18 @@ class K8Funcs
 			}
 		 }
 		}
+
+		#check if AMP
+		// if ( ! function_exists('is_amp')) {
+		// 	function is_amp(){
+		// 		$ampp = false;
+		// 		if(strpos($_SERVER['REQUEST_URI'], '/amp/'))
+		// 			$ampp = true;
+		// 		return $ampp;
+		// 	}
+		// }
+
 	}
 }
+
 new K8Funcs();

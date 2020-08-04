@@ -13,6 +13,10 @@ if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 
 	add_rewrite_endpoint( AMP_QUERY_VAR, EP_PERMALINK );
 	add_filter( 'template_include', 'amp_page_template', 99 );
 	function amp_page_template( $template ) {
+		// global $wp_query;
+		// $post_type = get_query_var('post_type');
+
+		// write_log(get_defined_vars());
 		if( get_query_var( AMP_QUERY_VAR, false ) !== false ) {
 			if ( is_single() && has_category( get_field('k8_optz_amp_cat','option'), get_the_ID() ) ) {
 				$template = get_template_directory() .  '/amp/tpl/single-news.php';

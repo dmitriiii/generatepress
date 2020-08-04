@@ -49,6 +49,7 @@ class K8Assets
 		wp_register_style( 'k8_sh_howto-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_howto.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_best-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_best.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_router_info-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_router_info.css', array(), rand(1,9999), 'all' );
+		wp_register_style( 'K8_SHORT_FAQ-css', get_template_directory_uri() . '/templz/shortcodes/K8_SHORT_FAQ/css/style.css', array(), rand(1,9999), 'all' );
 		#END SHORTCODE's JS & CSS
 
 		#Components&Modules
