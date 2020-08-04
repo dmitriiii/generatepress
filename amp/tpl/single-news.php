@@ -180,8 +180,6 @@ ob_start("k8_amp_callback");
 				box-sizing: border-box;
 				line-height: 1.5;
 				font-size: 15px;
-				/* font-family: 'Open Sans', sans-serif; */
-				/* font-family: 'Ubuntu', sans-serif; */
 				font-weight: 400;
 			}
 			h1,h2,h3,h4,h5,h6,strong,b{
@@ -255,7 +253,30 @@ ob_start("k8_amp_callback");
 			.k8amp-hamb{
 				font-size: 25px;
 				line-height: 25px;
-				color: #fff;
+				background: #428bca;
+				border: none;
+				width: 30px;
+				height: 30px;
+				padding: 3px;
+				border-radius: 5px;
+				position: relative;
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				-webkit-flex-direction: column;
+				-moz-flex-direction: column;
+				-ms-flex-direction: column;
+				-o-flex-direction: column;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.k8amp-hamb span{
+				height: 3px;
+				display: block;
+				width: 100%;
+				background-color: #ffffff;
 			}
 
 			/* TOP MENU */
@@ -385,14 +406,6 @@ ob_start("k8_amp_callback");
 				margin-right: auto;
 				display: block;
 				margin: 10px auto;
-	/* 			display: -webkit-flex;
-				display: -moz-flex;
-				display: -ms-flex;
-				display: -o-flex;
-				display: flex;
-				-ms-align-items: center;
-				align-items: center;
-				justify-content: space-between; */
 				letter-spacing: 2px;
 				-webkit-transition: all 0.5s ease;
 				-o-transition: all 0.5s ease;
@@ -480,7 +493,25 @@ ob_start("k8_amp_callback");
 			}
 			/*END SHORTCODE TABLES */
 
-
+			
+			/*Accordeon FAQ*/
+			.k8amp-accord{
+				line-height: 1.2;
+			}
+			.k8amp-accord h4{
+				padding: 8px 10px;
+				background-color: #00B2E2;
+				color: #ffffff;
+				font-size: 16px;
+			}
+			.k8amp-accord p{
+				background: #eee;
+   			padding: 5px 10px;
+			}
+			.k8amp-accord>section[expanded] h4{
+				background-color: #33CC99;
+			}
+			/*END Accordeon FAQ*/
 
 		</style>
 	</head>
@@ -489,7 +520,7 @@ ob_start("k8_amp_callback");
 			<a href="<?php echo home_url('/'); ?>" class="k8amp-head__link">
 				<img width="200" height="57" src="<?php echo bloginfo('template_directory')?>/k8/assets/img/vpn-logo-wh-200-fin.png" alt="Vpntester">
 			</a>
-			<div role="button" on="tap:sidebar1.toggle" tabindex="0" class="k8amp-hamb">☰</div>
+			<button role="button" on="tap:sidebar1.toggle" tabindex="0" class="k8amp-hamb"><span></span><span></span><span></span></button>
 		</div>
 		<amp-sidebar class="k8amp-sb" id="sidebar1" layout="nodisplay" side="left">
 
