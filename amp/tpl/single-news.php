@@ -278,6 +278,11 @@ ob_start("k8_amp_callback");
 				width: 100%;
 				background-color: #ffffff;
 			}
+			
+			body .k8amp-wrr figure.wp-caption{
+				width: 100%;
+		    margin: 20px auto;
+			}
 
 			/* TOP MENU */
 			.k8amp-menu,
