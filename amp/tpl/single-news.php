@@ -512,7 +512,32 @@ ob_start("k8_amp_callback");
 				background-color: #33CC99;
 			}
 			/*END Accordeon FAQ*/
-
+				
+			.k8_sh_speedtest-graphic1{
+				margin: 20px 0;
+				text-align: center;
+			}
+			.k8_sh_speedtest-graphic1 .tbl-row{
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				-webkit-flex-wrap: wrap;
+				-moz-flex-wrap: wrap;
+				-ms-flex-wrap: wrap;
+				-o-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			.k8_sh_speedtest-graphic1 .tbl-cell{
+				width: 50%;
+			}
+			.k8_sh_speedtest-graphic1 .wrr{
+				background-color: #eee;
+				max-width: 150px;
+				margin: 10px auto;
+				padding: 6px;
+			}
 		</style>
 	</head>
 	<body>

@@ -481,6 +481,9 @@ class K8Short
 			wp_enqueue_script('reacher89-countUp-min-js');
 			wp_enqueue_style('k8_sh_speedtest-css');
 		}
+		if(strpos($_SERVER['REQUEST_URI'], '/amp/')){
+			$a["output"] = 'amp/'.$a["output"];
+		}
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
