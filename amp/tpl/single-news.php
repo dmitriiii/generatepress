@@ -7,6 +7,16 @@ $k8_optz_amp_ga = get_field('k8_optz_amp_ga','option');
 // $k8_menu = K8Help::getMenuArray('primary');
 
 
+// retrieves the attachment ID from the file URL
+// function pippin_get_image_id($image_url){
+// 	global $wpdb;
+// 	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+// 	return $attachment;
+// }
+
+write_log( attachment_url_to_postid('https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2016/04/shellfire-box-klein-min.png') );
+
+
 
 function buildTree( array &$elements, $parentId = 0 )
 {
@@ -44,32 +54,44 @@ function k8_amp_callback($buffer) {
 	$imgzz = $document->find('img');
 	if( count($imgzz) > 0 ):
 		foreach ($imgzz as $img) :
+			if($img->hasAttribute('data-k8req'))
+				continue;
+
 			$attrz = array();
-			if($img->hasAttribute('src')){
+			if($img->hasAttribute('src'))
 				$attrz['src'] = $img->getAttribute('src');
-			}
-			if($img->hasAttribute('alt')){
+			if($img->hasAttribute('alt'))
 				$attrz['alt'] = $img->getAttribute('alt');
-			}
-
-			if($img->hasAttribute('width')):
-				$attrz['width'] = $img->getAttribute('width');
-			else:
-				$attrz['width'] = 400;
-			endif;
-
-			if($img->hasAttribute('height')):
-				$attrz['height'] = $img->getAttribute('height');
-			else:
-				$attrz['height'] = 300;
-			endif;
-
-			// $attrz['width'] = 1.5;
-			// $attrz['height'] = 1;
-
-			if($img->hasAttribute('title')){
+			if($img->hasAttribute('title'))
 				$attrz['title'] = $img->getAttribute('title');
+
+			// if($img->hasAttribute('width') && $img->hasAttribute('height')):
+			// 	$attrz['width'] = $img->getAttribute('width');
+			// 	$attrz['height'] = $img->getAttribute('height');
+			// else:
+			// 	$re = '/(-[0-9]*x[0-9]*)/';
+			// 	$imge = preg_replace($re, '', $attrz['src']);
+			// 	$imge_id = attachment_url_to_postid($imge);
+			// 	$attach = wp_get_attachment_image_src($imge_id,'full');
+			// 	$attrz['src'] = $attach[0];
+			// 	$attrz['width'] = $attach[1];
+			// 	$attrz['height'] = $attach[2];
+			// endif;
+			
+			$re = '/(-[0-9]*x[0-9]*)/';
+			$imge = preg_replace($re, '', $attrz['src']);
+			$imge_id = attachment_url_to_postid($imge);
+			$attach = wp_get_attachment_image_src($imge_id,'full');
+			if( is_array($attach) && count($attach) > 0 ){
+				$attrz['src'] = $attach[0];
+				$attrz['width'] = $attach[1];
+				$attrz['height'] = $attach[2];
 			}
+			else{
+				$attrz['width'] = $img->getAttribute('width');
+				$attrz['height'] = $img->getAttribute('height');
+			}
+
 			$attrz['layout'] = 'responsive';
 			$amp_img = new Element('amp-img', '', $attrz);
 			$img->replace($amp_img);
@@ -246,7 +268,7 @@ ob_start("k8_amp_callback");
 
 			.k8amp-head__link{
 				display: block;
-				width: 160px;
+				/* width: 160px; */
 				z-index: 999;
 			}
 			.k8amp-hamb{
@@ -557,7 +579,7 @@ ob_start("k8_amp_callback");
 		endif; ?>
 		<div class="k8amp-head headerbar">
 			<a href="<?php echo home_url('/'); ?>" class="k8amp-head__link">
-				<img width="200" height="57" src="<?php echo bloginfo('template_directory')?>/k8/assets/img/vpn-logo-wh-200-fin.png" alt="Vpntester">
+				<amp-img width="200" height="57" src="<?php echo bloginfo('template_directory')?>/k8/assets/img/vpn-logo-wh-200-fin.png" alt="Vpntester" layout="fixed" data-k8req></amp-img>
 			</a>
 			<button role="button" on="tap:sidebar1.toggle" tabindex="0" class="k8amp-hamb"><span></span><span></span><span></span></button>
 		</div>
