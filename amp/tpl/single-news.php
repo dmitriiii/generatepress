@@ -143,6 +143,16 @@ function k8_amp_callback($buffer) {
 		endforeach;
 	endif;
 
+
+
+	#fix image figure style issue
+	$wp_capt = $document->find('figure.wp-caption');
+	if( count($wp_capt) > 0 ) :
+		foreach ($wp_capt as $figure) :
+			$figure->attr('style', 'width: 100%; margin: 20px auto 30px;');
+		endforeach;
+	endif;
+
 	#remove Iframes ( videos from youtube etc. )
 	$iframes = $document->find('iframe');
 	if( count($iframes) > 0 ) :
@@ -551,6 +561,7 @@ ob_start("k8_amp_callback");
 				max-width: 150px;
 				margin: 10px auto;
 				padding: 6px;
+				box-shadow: 0 0 5px #999;
 			}
 		</style>
 	</head>
@@ -649,20 +660,16 @@ ob_start("k8_amp_callback");
 			endif;
 
 			if( in_category( array('anbieter','vpn-anbieter'), $q_o->ID ) ) :
-			$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
-			if( is_array($linkz) && count($linkz) > 0 ):
-				foreach ($linkz as $k=>$v) :?>
-					<a class="k8amp-wrr__buy" rel="nofollow" href="<?php echo $v; ?>">&#128722;</a>
-				<?php
-				endforeach;
-			endif;
+				$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
+				if( is_array($linkz) && count($linkz) > 0 ):
+					foreach ($linkz as $k=>$v) :?>
+						<a class="k8amp-wrr__buy" rel="nofollow" href="<?php echo $v; ?>">&#128722;</a>
+					<?php
+					endforeach;
+				endif;
+			endif; ?>
 
-
-
-		endif; ?>
-
-
-		</div>
+		</div><!-- .k8amp-wrr -->
 		<?php
 		wp_footer();
 
