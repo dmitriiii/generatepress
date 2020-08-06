@@ -7,14 +7,7 @@ $k8_optz_amp_ga = get_field('k8_optz_amp_ga','option');
 // $k8_menu = K8Help::getMenuArray('primary');
 
 
-// retrieves the attachment ID from the file URL
-// function pippin_get_image_id($image_url){
-// 	global $wpdb;
-// 	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
-// 	return $attachment;
-// }
-
-write_log( attachment_url_to_postid('https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2016/04/shellfire-box-klein-min.png') );
+// write_log( attachment_url_to_postid('https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2016/04/shellfire-box-klein-min.png') );
 
 
 
@@ -77,7 +70,7 @@ function k8_amp_callback($buffer) {
 			// 	$attrz['width'] = $attach[1];
 			// 	$attrz['height'] = $attach[2];
 			// endif;
-			
+
 			$re = '/(-[0-9]*x[0-9]*)/';
 			$imge = preg_replace($re, '', $attrz['src']);
 			$imge_id = attachment_url_to_postid($imge);
@@ -299,7 +292,7 @@ ob_start("k8_amp_callback");
 				width: 100%;
 				background-color: #ffffff;
 			}
-			
+
 
 			/* TOP MENU */
 			.k8amp-menu,
@@ -515,7 +508,6 @@ ob_start("k8_amp_callback");
 			}
 			/*END SHORTCODE TABLES */
 
-			
 			/*Accordeon FAQ*/
 			.k8amp-accord{
 				line-height: 1.2;
@@ -534,7 +526,7 @@ ob_start("k8_amp_callback");
 				background-color: #33CC99;
 			}
 			/*END Accordeon FAQ*/
-				
+
 			.k8_sh_speedtest-graphic1{
 				margin: 20px 0;
 				text-align: center;
@@ -664,11 +656,11 @@ ob_start("k8_amp_callback");
 				<?php
 				endforeach;
 			endif;
-			
-			
+
+
 
 		endif; ?>
-		
+
 
 		</div>
 		<?php
