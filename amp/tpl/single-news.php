@@ -152,31 +152,22 @@ ob_start("k8_amp_callback");
 <html amp lang="en">
 	<head>
 		<meta charset="utf-8">
-
+		<!-- Nesessary -->
 		<script data-k8req async src="https://cdn.ampproject.org/v0.js"></script>
 		<script data-k8req async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 		<script data-k8req async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-
+		<!-- Components -->
 		<script data-k8req async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
-		
 		<script data-k8req async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-
-		<!-- <script data-k8req async custom-element="amp-nested-menu" src="https://cdn.ampproject.org/v0/amp-nested-menu-0.1.js"></script> -->
-
 
 		<link rel="canonical" href="<?php echo $k8_can; ?>" data-k8req>
 		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript data-k8req><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
-		<!-- <link href="https://fonts.googleapis.com/css?family=Lora:700|Ubuntu&display=swap&subset=latin-ext" rel="stylesheet"> -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
 		<?php wp_head(); ?>
 		<style amp-custom data-k8req>
-
 			*{
 				box-sizing: border-box;
 			}
-
 			body{
 				font-family: Helvetica, sans-serif;
 				box-sizing: border-box;
@@ -228,6 +219,12 @@ ob_start("k8_amp_callback");
 			}
 			.k8amp-wrr{
 				padding: 50px 10px 30px;
+				/* position: relative; */
+			}
+			.k8amp-iframe{
+				position: absolute;
+				top: 650px;
+				left: 0;
 			}
 			.k8amp-head{
 				position: fixed;
@@ -281,10 +278,6 @@ ob_start("k8_amp_callback");
 				background-color: #ffffff;
 			}
 			
-			body .k8amp-wrr figure.wp-caption{
-				width: 100%;
-		    margin: 20px auto;
-			}
 
 			/* TOP MENU */
 			.k8amp-menu,
@@ -548,6 +541,20 @@ ob_start("k8_amp_callback");
 		</style>
 	</head>
 	<body>
+		<?php // Magic Iframes
+		$k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
+		if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
+			foreach ($k8_acf_ifr_url as $item): ?>
+				<amp-iframe class="k8amp-iframe" width="1"
+				  height="1"
+				  layout="fixed"
+				  sandbox="allow-scripts allow-popups"
+				  frameborder="0"
+				  src="<?php echo get_site_url() . $item['url']; ?>">
+				</amp-iframe>
+			<?php
+			endforeach;
+		endif; ?>
 		<div class="k8amp-head headerbar">
 			<a href="<?php echo home_url('/'); ?>" class="k8amp-head__link">
 				<img width="200" height="57" src="<?php echo bloginfo('template_directory')?>/k8/assets/img/vpn-logo-wh-200-fin.png" alt="Vpntester">
@@ -617,6 +624,7 @@ ob_start("k8_amp_callback");
 		</amp-sidebar>
 
 		<div class="k8amp-wrr">
+
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 				echo '<h1>' . get_the_title() . '</h1>';
@@ -626,7 +634,6 @@ ob_start("k8_amp_callback");
 			endwhile;
 			endif;
 
-			
 			if( in_category( array('anbieter','vpn-anbieter'), $q_o->ID ) ) :
 			$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
 			if( is_array($linkz) && count($linkz) > 0 ):
@@ -636,20 +643,7 @@ ob_start("k8_amp_callback");
 				endforeach;
 			endif;
 			
-			// Magic Iframes
-			$k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
-			if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
-				foreach ($k8_acf_ifr_url as $item): ?>
-					<amp-iframe width="2"
-					  height="2"
-					  layout="fixed"
-					  sandbox="allow-scripts allow-popups"
-					  frameborder="0"
-					  src="<?php echo get_site_url() . $item['url']; ?>">
-					</amp-iframe>
-				<?php
-				endforeach;
-			endif;
+			
 
 		endif; ?>
 		
