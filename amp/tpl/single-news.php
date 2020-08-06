@@ -158,6 +158,8 @@ ob_start("k8_amp_callback");
 		<script data-k8req async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
 
 		<script data-k8req async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+		
+		<script data-k8req async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
 
 		<!-- <script data-k8req async custom-element="amp-nested-menu" src="https://cdn.ampproject.org/v0/amp-nested-menu-0.1.js"></script> -->
 
@@ -620,7 +622,6 @@ ob_start("k8_amp_callback");
 				echo '<h1>' . get_the_title() . '</h1>';
 				echo '<hr>';
 				the_content();
-				// echo "<h4>See more details at <a href='" . $k8_can . "'>" . get_site_url() . "</a></h4>";
 				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
 			endwhile;
 			endif;
@@ -634,8 +635,24 @@ ob_start("k8_amp_callback");
 				<?php
 				endforeach;
 			endif;
-		endif; ?>
+			
+			// Magic Iframes
+			$k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
+			if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
+				foreach ($k8_acf_ifr_url as $item): ?>
+					<amp-iframe width="2"
+					  height="2"
+					  layout="fixed"
+					  sandbox="allow-scripts allow-popups"
+					  frameborder="0"
+					  src="<?php echo get_site_url() . $item['url']; ?>">
+					</amp-iframe>
+				<?php
+				endforeach;
+			endif;
 
+		endif; ?>
+		
 
 		</div>
 		<?php
