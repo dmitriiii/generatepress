@@ -271,7 +271,8 @@ ob_start("k8_amp_callback");
 
 			.k8amp-head__link{
 				display: block;
-				/* width: 160px; */
+				width: 200px;
+				height: 57px;
 				z-index: 999;
 			}
 			.k8amp-hamb{
