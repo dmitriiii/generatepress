@@ -591,10 +591,15 @@ class K8Short
 		), $atts );
 		$pid = (int)$a['pid'];
 		$rows = get_field('k8_acf_dwn_slider', $pid);
-		wp_enqueue_style( 'k8-slick-css' );
-		wp_enqueue_style( 'k8-libs-lightgallery-css' );
-		wp_enqueue_script( 'k8-slick-js' );
-		wp_enqueue_script( 'k8-libs-lightgallery-js' );
+		if(strpos($_SERVER['REQUEST_URI'], '/amp/')){
+			$a["output"] = 'amp/'.$a["output"];
+		}
+		else{
+			wp_enqueue_style( 'k8-slick-css' );
+			wp_enqueue_style( 'k8-libs-lightgallery-css' );
+			wp_enqueue_script( 'k8-slick-js' );
+			wp_enqueue_script( 'k8-libs-lightgallery-js' );
+		}
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
