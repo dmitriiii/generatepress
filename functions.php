@@ -220,8 +220,8 @@ add_filter( 'term_description', 'do_shortcode' );
  * Remove Gutenberg Block Library CSS from loading on the frontend
  */
 function smartwp_remove_wp_block_library_css(){
-    wp_dequeue_style( 'wp-block-library' );
-    wp_dequeue_style( 'wp-block-library-theme' );
+		wp_dequeue_style( 'wp-block-library' );
+		wp_dequeue_style( 'wp-block-library-theme' );
 }
 add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
@@ -245,20 +245,19 @@ function vavt_hide_login_weak() {
 	wp_enqueue_script( 'vavt-disable-weak-password', get_template_directory_uri() . '/k8/admin/js/disable-weak.js');
 }
 
-
+#Redirect for routers pages
 if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
 	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
 }
 
 
 
-
+# Fix issue with product review plugin
 add_filter('do_shortcode_tag', 'k8_clean_wppr_shortcodes', 10, 3);
-
 function k8_clean_wppr_shortcodes($output, $tag, $attr){
-  if(!in_array($tag, ['wpr_landing']) ){ //make sure it is the right shortcode
-    return $output;
-  }
-  $regexp = '/(\[[^\[\]]+(\]|\.\.\.))/'; //displayed tag or not closed tag
-  return preg_replace($regexp, '', $output);
+	if(!in_array($tag, ['wpr_landing']) ){ //make sure it is the right shortcode
+		return $output;
+	}
+	$regexp = '/(\[[^\[\]]+(\]|\.\.\.))/'; //displayed tag or not closed tag
+	return preg_replace($regexp, '', $output);
 }
