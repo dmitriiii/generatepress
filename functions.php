@@ -249,3 +249,16 @@ function vavt_hide_login_weak() {
 if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
 	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
 }
+
+
+
+
+add_filter('do_shortcode_tag', 'k8_clean_wppr_shortcodes', 10, 3);
+
+function k8_clean_wppr_shortcodes($output, $tag, $attr){
+  if(!in_array($tag, ['wpr_landing']) ){ //make sure it is the right shortcode
+    return $output;
+  }
+  $regexp = '/(\[[^\[\]]+(\]|\.\.\.))/'; //displayed tag or not closed tag
+  return preg_replace($regexp, '', $output);
+}
