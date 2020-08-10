@@ -58,6 +58,10 @@ function k8_amp_callback($buffer) {
 			if($img->hasAttribute('title'))
 				$attrz['title'] = $img->getAttribute('title');
 
+			// $attrz['layout'] = 'responsive';
+			$attrz['layout'] = 'intrinsic';
+			
+
 			// if($img->hasAttribute('width') && $img->hasAttribute('height')):
 			// 	$attrz['width'] = $img->getAttribute('width');
 			// 	$attrz['height'] = $img->getAttribute('height');
@@ -75,17 +79,29 @@ function k8_amp_callback($buffer) {
 			$imge = preg_replace($re, '', $attrz['src']);
 			$imge_id = attachment_url_to_postid($imge);
 			$attach = wp_get_attachment_image_src($imge_id,'full');
+			#Try to get full size image
 			if( is_array($attach) && count($attach) > 0 ){
 				$attrz['src'] = $attach[0];
 				$attrz['width'] = $attach[1];
 				$attrz['height'] = $attach[2];
 			}
+			#If image url is external
 			else{
-				$attrz['width'] = $img->getAttribute('width');
-				$attrz['height'] = $img->getAttribute('height');
+				list($width, $height) = getimagesize($attrz['src']);
+					$attrz['width'] = $width;
+					$attrz['height'] = $height;
+
+				// if($img->getAttribute('width') && $img->getAttribute('height')){
+				// 	$attrz['width'] = $img->getAttribute('width');
+				// 	$attrz['height'] = $img->getAttribute('height');
+				// }
+				// else{
+				// 	list($width, $height) = getimagesize($attrz['src']);
+				// 	$attrz['width'] = $width;
+				// 	$attrz['height'] = $height;
+				// }
 			}
 
-			$attrz['layout'] = 'responsive';
 			$amp_img = new Element('amp-img', '', $attrz);
 			$img->replace($amp_img);
 		endforeach;
@@ -409,6 +425,9 @@ ob_start("k8_amp_callback");
 				/* margin-left: auto; */
 		    margin: 15px auto 0;
     		font-weight: bold;
+			}
+			.rev-wu-image{
+				text-align: center;
 			}
 			/*END PRODUCT REVIEW StYLEs*/
 
