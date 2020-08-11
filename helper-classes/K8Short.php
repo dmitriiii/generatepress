@@ -126,6 +126,9 @@ class K8Short
 
 		#[K8_SH_POPUP]
 		add_shortcode( 'K8_SH_POPUP', array( $this, 'popup') );
+
+		#[K8_SCHEMA_ORG]
+		add_shortcode( 'K8_SCHEMA_ORG', array( $this, 'organization') );
 	}
 
 	/**
@@ -770,6 +773,14 @@ class K8Short
 		$html = ob_get_clean();
     // array_pop( $wp_filter['wppr_is_review_active']->callbacks );
 		return $html;
+	}
+
+	// generates schema markup for organization
+	public function organization( $atts, $content, $tag ){
+		$schema = K8Schema::getOrganization([
+			'org' => get_field('k8_schema_org_data', 'option')
+		]);
+		return '<script type="application/ld+json">' . $schema . '</script>';
 	}
 
 }

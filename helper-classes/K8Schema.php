@@ -277,4 +277,56 @@ class K8Schema
 		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 	}
 
+
+	/**
+	 * [getOrganization description]
+	 * @return [type]       [description]
+	 */
+	static function getOrganization( $args = [] ) {
+		extract( $args );
+		$main_info = [
+			"@context" => "https://schema.org",
+			"@type" => "Organization",
+			"name" => $org['name'],
+			"legalName" => $org['legalName'] ? $org['legalName']: $org['name'],
+			"url" => home_url(),
+			"logo" => [
+		      "@type" => "ImageObject",
+		      "url" =>  $org['logo'] ? $org['logo'] : "https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
+		    ],
+		    "foundingDate" => $org['founding_year'],
+		    "founders" => [
+				"@type" => "Person",
+				"name" => $org['founder_name']
+			],
+		];
+
+		if(isset($org['k8_schema_social_links'])) {
+			$social = [];
+			foreach ($org['k8_schema_social_links'] as $link) {
+				$social['sameAs'][] = $link['url'];
+			}
+			$main_info = array_merge($main_info, $social); 
+		}
+
+		$contact_data = [
+			"address" => [
+				"@type" => "PostalAddress",
+				"addressRegion" => $org['address_region'],
+				"addressCountry" => [
+					"@type" => "Country",
+					"name" => $org['address_country']
+				],
+			],
+			"contactPoint" => [
+				"@type" => "ContactPoint",
+				"contactType" => $org['contact_type'],
+				"telephone" => $org['phone'],
+				"email" => $org['email']
+			],
+		];
+		$datta = array_merge($main_info, $contact_data);
+		return json_encode($datta, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+	}
+
 }
