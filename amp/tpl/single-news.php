@@ -18,8 +18,6 @@ $imgz = get_posts( $argz );
 if (is_array($imgz) && count($imgz) > 0)
 	$imgz = array_column($imgz, 'guid');
 
-// write_log( $imgz );
-
 
 
 function buildTree( array &$elements, $parentId = 0 )
@@ -249,11 +247,9 @@ ob_start("k8_amp_callback");
 				}
 			</script>
 		<?php
-		endif ?>
+		endif;
 
-
-
-		<?php wp_head(); ?>
+		wp_head(); ?>
 		<style amp-custom data-k8req>
 			*{
 				box-sizing: border-box;
