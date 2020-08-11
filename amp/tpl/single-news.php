@@ -7,7 +7,18 @@ $k8_optz_amp_ga = get_field('k8_optz_amp_ga','option');
 // $k8_menu = K8Help::getMenuArray('primary');
 
 
-// write_log( attachment_url_to_postid('https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2016/04/shellfire-box-klein-min.png') );
+$argz = array(
+	'post_type' => 'attachment',
+	'post_mime_type' => 'image',
+	'numberposts' => -1,
+	'post_status' => null,
+	'post_parent' => $q_o->ID
+);
+$imgz = get_posts( $argz );
+if (is_array($imgz) && count($imgz) > 0)
+	$imgz = array_column($imgz, 'guid');
+
+// write_log( $imgz );
 
 
 
@@ -60,7 +71,7 @@ function k8_amp_callback($buffer) {
 
 			// $attrz['layout'] = 'responsive';
 			$attrz['layout'] = 'intrinsic';
-			
+
 
 			// if($img->hasAttribute('width') && $img->hasAttribute('height')):
 			// 	$attrz['width'] = $img->getAttribute('width');
@@ -193,6 +204,9 @@ ob_start("k8_amp_callback");
 <html amp lang="en">
 	<head>
 		<meta charset="utf-8">
+		<link rel="canonical" href="<?php echo $k8_can; ?>" data-k8req>
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript data-k8req><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
 		<!-- Nesessary -->
 		<script data-k8req async src="https://cdn.ampproject.org/v0.js"></script>
 		<script data-k8req async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
@@ -200,14 +214,44 @@ ob_start("k8_amp_callback");
 		<!-- Components -->
 		<script data-k8req async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
 		<script data-k8req async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-		<!-- Import the amp-lightbox-gallery component in the header.  -->
-	  <script data-k8req async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
-	  <!-- Optionally import the amp-carousel component in the header if you are using lightbox with carousel. -->
-	  <script data-k8req async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+		<!-- amp-lightbox-gallery component.  -->
+		<script data-k8req async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
+		<!-- amp-carousel component if you are using lightbox with carousel. -->
+		<script data-k8req async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+
+		<?php
+		#Fix amp image warnings
+		if ( is_array($imgz) && count($imgz)>0 ): ?>
+			<script data-k8req type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "NewsArticle",
+					"mainEntityOfPage": {
+						"@type": "WebPage",
+						"@id": "<?= $k8_can; ?>"
+					},
+					"headline": "<?= get_the_title( $q_o->ID ); ?>",
+					"image": ["<?= implode('","', $imgz); ?>"],
+					"datePublished": "<?= get_the_date('c', $q_o->ID); ?>",
+					"dateModified": "<?= get_the_modified_date('c', $q_o->ID); ?>",
+					"author": {
+						"@type": "Person",
+						"name": "Markus Hanf"
+					},
+					 "publisher": {
+						"@type": "Organization",
+						"name": "vpntester",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "https://vpntester.de/wp-content/uploads/VPNtester-logo-white-background.png"
+						}
+					}
+				}
+			</script>
+		<?php
+		endif ?>
 
 
-		<link rel="canonical" href="<?php echo $k8_can; ?>" data-k8req>
-		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript data-k8req><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
 		<?php wp_head(); ?>
 		<style amp-custom data-k8req>
@@ -338,10 +382,10 @@ ob_start("k8_amp_callback");
 				padding: 10px 0;
 				border-bottom: 1px solid #ccc;
 				line-height: 1.2;
-    		font-size: 14px;
-    		display: flex;
-			  justify-content: space-between;
-			  align-items: center;
+				font-size: 14px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
 			}
 			li.k8amp-menu__head{
 				font-weight: bold;
@@ -352,9 +396,9 @@ ob_start("k8_amp_callback");
 			.k8amp-menu__next,
 			.k8amp-menu__prev span{
 				margin-left: 15px;
-		    font-weight: 900;
-		    text-align: center;
-		    font-size: 17px;
+				font-weight: 900;
+				text-align: center;
+				font-size: 17px;
 			}
 			.k8amp-menu__prev span{
 				margin-left: 0;
@@ -428,8 +472,8 @@ ob_start("k8_amp_callback");
 				background-color: #428bca;
 				color: #fff;
 				/* margin-left: auto; */
-		    margin: 15px auto 0;
-    		font-weight: bold;
+				margin: 15px auto 0;
+				font-weight: bold;
 			}
 			.rev-wu-image{
 				text-align: center;
@@ -476,18 +520,18 @@ ob_start("k8_amp_callback");
 				left: 10px;
 				bottom: 10px;
 				width: 40px;
-		    height: 40px;
-		    line-height: 40px;
-		    font-size: 19px;
-		    display: inline-block;
-		    color: #fff;
-		    background-color: #fc7e2f;
-		    cursor: pointer;
-		    text-align: center;
-		    padding: 0;
-		    -webkit-box-shadow: 0 0 5px #999999;
-		    box-shadow: 0 0 5px #999999;
-		    text-decoration: none;
+				height: 40px;
+				line-height: 40px;
+				font-size: 19px;
+				display: inline-block;
+				color: #fff;
+				background-color: #fc7e2f;
+				cursor: pointer;
+				text-align: center;
+				padding: 0;
+				-webkit-box-shadow: 0 0 5px #999999;
+				box-shadow: 0 0 5px #999999;
+				text-decoration: none;
 			}
 			/*
 				SHORTCODE TABLES
@@ -555,7 +599,7 @@ ob_start("k8_amp_callback");
 			}
 			.k8amp-accord p{
 				background: #eee;
-   			padding: 5px 10px;
+				padding: 5px 10px;
 			}
 			.k8amp-accord>section[expanded] h4{
 				background-color: #33CC99;
@@ -596,11 +640,11 @@ ob_start("k8_amp_callback");
 		if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
 			foreach ($k8_acf_ifr_url as $item): ?>
 				<amp-iframe class="k8amp-iframe" width="1"
-				  height="1"
-				  layout="fixed"
-				  sandbox="allow-scripts allow-popups"
-				  frameborder="0"
-				  src="<?php echo get_site_url() . $item['url']; ?>">
+					height="1"
+					layout="fixed"
+					sandbox="allow-scripts allow-popups"
+					frameborder="0"
+					src="<?php echo get_site_url() . $item['url']; ?>">
 				</amp-iframe>
 			<?php
 			endforeach;
