@@ -1,6 +1,6 @@
 <?php
 if( isset( $rows ) && is_array( $rows ) && count( $rows ) > 0 ) : ?>
-<div>
+<div class="k8amp-carousel">
 	<amp-carousel lightbox width="400" height="300" layout="responsive" type="slides">
 		<?php
 		foreach ($rows as $sld) :

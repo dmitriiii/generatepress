@@ -601,6 +601,7 @@ ob_start("k8_amp_callback");
 				background-color: #33CC99;
 			}
 			/*END Accordeon FAQ*/
+			
 
 			.k8_sh_speedtest-graphic1{
 				margin: 20px 0;
@@ -628,23 +629,28 @@ ob_start("k8_amp_callback");
 				padding: 6px;
 				box-shadow: 0 0 5px #999;
 			}
+
+			.k8amp-carousel{
+				padding: 20px;
+				background-color: #33CC99;
+			}
 		</style>
 	</head>
 	<body>
 		<?php // Magic Iframes
-		$k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
-		if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
-			foreach ($k8_acf_ifr_url as $item): ?>
-				<amp-iframe class="k8amp-iframe" width="1"
-					height="1"
-					layout="fixed"
-					sandbox="allow-scripts allow-popups"
-					frameborder="0"
-					src="<?php echo get_site_url() . $item['url']; ?>">
-				</amp-iframe>
-			<?php
-			endforeach;
-		endif; ?>
+		// $k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
+		// if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
+		// 	foreach ($k8_acf_ifr_url as $item):
+		 // 		<amp-iframe class="k8amp-iframe" width="1"
+		 // 			height="1"
+		// 			layout="fixed"
+		// 			sandbox="allow-scripts allow-popups"
+		// 			frameborder="0"
+		 // 			src="// echo get_site_url() . $item['url'];">
+		// 		</amp-iframe>
+		// 	endforeach;
+		// endif;
+		 ?>
 		<div class="k8amp-head headerbar">
 			<a href="<?php echo home_url('/'); ?>" class="k8amp-head__link">
 				<amp-img width="200" height="57" src="<?php echo bloginfo('template_directory')?>/k8/assets/img/vpn-logo-wh-200-fin.png" alt="Vpntester" layout="fixed" data-k8req></amp-img>
