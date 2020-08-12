@@ -467,7 +467,6 @@ ob_start("k8_amp_callback");
 				justify-content: center;
 				background-color: #428bca;
 				color: #fff;
-				/* margin-left: auto; */
 				margin: 15px auto 0;
 				font-weight: bold;
 			}
@@ -488,9 +487,7 @@ ob_start("k8_amp_callback");
 				text-decoration: none;
 				padding: 13px 20px;
 				border-radius: 4px;
-				/* font-weight: bold; */
 				text-transform: uppercase;
-				/* font-size: 18px; */
 				max-width: 250px;
 				margin-left: auto;
 				margin-right: auto;
