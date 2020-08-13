@@ -253,6 +253,7 @@ ob_start("k8_amp_callback");
 		<style amp-custom data-k8req>
 			*{
 				box-sizing: border-box;
+				max-width: 100%
 			}
 			body{
 				font-family: Helvetica, sans-serif;
@@ -260,6 +261,9 @@ ob_start("k8_amp_callback");
 				line-height: 1.5;
 				font-size: 15px;
 				font-weight: 400;
+			}
+			body *{
+				max-width: 100%
 			}
 			h1,h2,h3,h4,h5,h6,strong,b{
 				/* font-family: 'Lora', serif; */
@@ -476,6 +480,20 @@ ob_start("k8_amp_callback");
 			/*END PRODUCT REVIEW StYLEs*/
 
 			/* Buttons */
+			.k8amp-wrr__side{
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				padding: 5px;
+				/* height: 40px; */
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				justify-content: space-between;
+			}
 			.dwnd__butt,
 			.affiliate-button a {
 				color: #ffffff;
@@ -509,14 +527,14 @@ ob_start("k8_amp_callback");
 				background-position: right center;
 			}
 			.k8amp-wrr__buy{
-				position: fixed;
+				/* position: fixed;
 				left: 10px;
-				bottom: 10px;
+				bottom: 10px; */
 				width: 40px;
 				height: 40px;
 				line-height: 40px;
 				font-size: 19px;
-				display: inline-block;
+				/* display: inline-block; */
 				color: #fff;
 				background-color: #fc7e2f;
 				cursor: pointer;
@@ -526,6 +544,10 @@ ob_start("k8_amp_callback");
 				box-shadow: 0 0 5px #999999;
 				text-decoration: none;
 			}
+			.k8amp-wrr__buy.grn{
+				background-color: #428bca;
+			}
+			
 			/*
 				SHORTCODE TABLES
 			*/
@@ -717,7 +739,6 @@ ob_start("k8_amp_callback");
 		</amp-sidebar>
 
 		<div class="k8amp-wrr">
-
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 				echo '<h1>' . get_the_title() . '</h1>';
@@ -725,8 +746,10 @@ ob_start("k8_amp_callback");
 				the_content();
 				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
 			endwhile;
-			endif;
+			endif;?>
+		</div><!-- .k8amp-wrr -->
 
+		<div class="k8amp-wrr__side"><?
 			if( in_category( array('anbieter','vpn-anbieter'), $q_o->ID ) ) :
 				$linkz = get_post_meta( $q_o->ID,'wppr_links',true );
 				if( is_array($linkz) && count($linkz) > 0 ):
@@ -736,8 +759,9 @@ ob_start("k8_amp_callback");
 					endforeach;
 				endif;
 			endif; ?>
+			<a class="k8amp-wrr__buy grn" href="<?= $k8_can; ?>">&#9741;</a>
+		</div><!-- .k8amp-wrr__side -->
 
-		</div><!-- .k8amp-wrr -->
 		<?php
 		wp_footer();
 
