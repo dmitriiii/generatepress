@@ -119,6 +119,7 @@ class K8Assets
 	public function admin_style(){
 		wp_register_style( 'k8-admin-style-css', get_template_directory_uri() . '/k8/admin/css/k8-admin-style.css', array(), false, 'all' );
 		wp_enqueue_style( 'k8-admin-style-css' );
+		wp_enqueue_script('jquery-migrate');
 	}
 
 	#Fix ACF fonts on vavt.de issue
