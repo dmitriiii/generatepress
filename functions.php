@@ -279,3 +279,21 @@ add_filter('the_content', function($content){
 	}
 	return $content;
 });
+
+
+
+if(isset($_GET['purge_cache']) && $_GET['purge_cache'] == md5($_SERVER['HTTP_HOST'])) {
+	k8_clear_cache();
+}
+
+function k8_clear_cache(){
+	if (has_action('ce_clear_cache')) {
+		do_action('ce_clear_cache');
+	}
+	if(function_exists('fvm_purge_all')) {
+		fvm_purge_all();
+	}
+	if(class_exists('autoptimizeCache')) {
+		autoptimizeCache::clearall();
+	}
+}
