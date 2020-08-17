@@ -281,11 +281,12 @@ add_filter('the_content', function($content){
 });
 
 
-
-if(isset($_GET['purge_cache']) && $_GET['purge_cache'] == md5($_SERVER['HTTP_HOST'])) {
-	k8_clear_cache();
-}
-
+#Bulk clear cache
+add_action( 'init', function(){
+	if(isset($_GET['purge_cache']) && $_GET['purge_cache'] == md5($_SERVER['HTTP_HOST'])) {
+		k8_clear_cache();
+	}
+});
 function k8_clear_cache(){
 	if (has_action('ce_clear_cache')) {
 		do_action('ce_clear_cache');
