@@ -1,7 +1,8 @@
 <? $c_post = get_post($atts['id']);
 $cnt = $c_post->post_content;
-$cnt = apply_filters('the_content', $cnt);
-$cnt = str_replace(']]>', ']]&gt;', $cnt); ?>
+// $cnt = apply_filters('the_content', $cnt);
+// $cnt = str_replace(']]>', ']]&gt;', $cnt);
+?>
 <div class="popup-wrapper">
 	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
@@ -9,7 +10,7 @@ $cnt = str_replace(']]>', ']]&gt;', $cnt); ?>
 			<i class="fas fa-times"></i>
 		</button>
 		<div class="popup__inner popup__inner--centered">
-			<?= wp_get_attachment_image( get_field('m5_acf_pop_logo',$atts['id']), [220,150] ); ?>
+			<?= wp_get_attachment_image( get_field('m5_acf_pop_logo',$atts['id']), 'medium' ); ?>
 			<h2 class="popup__title">
 				<?= $c_post->post_title; ?>
 			</h2>
