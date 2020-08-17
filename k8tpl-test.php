@@ -83,13 +83,13 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 // 	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 // 		// if( $row >  )
 // 		// 	break;
-		
+
 // 		if( $row == 0 ){
 // 			$vpn_names = $data;
 // 			$row++;
 // 			continue;
 // 		}
-		
+
 // 		$srch =	array_keys($data, 'X');
 // 		$tax_label = $data[0];
 
@@ -104,9 +104,9 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 // 		print_r( $data );
 // 		print_r( $tax_label );
 // 		echo '</pre>';
-		
+
 // 		$row++;
-		
+
 
 
 // 	}
@@ -157,7 +157,7 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 
 
 
-#Translating 
+#Translating
 
 // if(isset($_GET['k8transl']) && $_GET['k8transl'] == 1){
 // 	$countries = file_get_contents( get_template_directory() . "/data/json/countries/countries.json" );
@@ -207,7 +207,7 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 // 		$the_query = new WP_Query( $args );
 
 // 		 if ( $the_query->have_posts() ) :
-// 			while ( $the_query->have_posts() ) : $the_query->the_post(); 
+// 			while ( $the_query->have_posts() ) : $the_query->the_post();
 // 				$pid = get_the_ID();
 // 				update_field('k8_acf_vpndet_down', $k8_acf_vpndet_down, $pid);
 // 				update_field('k8_acf_vpndet_up', $k8_acf_vpndet_up, $pid);
@@ -256,6 +256,77 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 // echo '<pre style>';
 // print_r( $queryyy );
 // echo '</pre>';
+
+
+
+if (isset($_GET['list_ifr']) && $_GET['list_ifr'] == 88) {
+		/*
+		 * The WordPress Query class.
+		 *
+		 * @link http://codex.wordpress.org/Function_Reference/WP_Query
+		 */
+		$args = array(
+
+
+			// Type & Status Parameters
+			'post_type'   => 'post',
+			'post_status' => 'any',
+
+
+			// Order & Orderby Parameters
+			'order'               => 'DESC',
+			'orderby'             => 'date',
+			// Pagination Parameters
+			'posts_per_page'         => -1,
+			'offset'                 => 0,
+
+			// Custom Field Parameters
+			// 'meta_key'       => 'key',
+			// 'meta_value'     => 'value',
+			// 'meta_value_num' => 10,
+			// 'meta_compare'   => '=',
+			// 'meta_query'     => array(
+			// 	array(
+			// 		'key'     => 'color',
+			// 		'value'   => 'blue',
+			// 		'type'    => 'CHAR',
+			// 		'compare' => '=',
+			// 	),
+			// 	array(
+			// 		'key'     => 'price',
+			// 		'value'   => array( 1,200 ),
+			// 		'compare' => 'NOT LIKE',
+			// 	),
+			// ),
+
+		);
+
+// the query
+$the_query = new WP_Query( $args );
+ $ress = [];
+ if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post();
+  	$pidd =	get_the_ID();
+  	$k8_acf_ifr_url =	get_field('k8_acf_ifr_url', $pidd);
+
+  	if( is_array($k8_acf_ifr_url) && count($k8_acf_ifr_url)>0 ){
+  		$ress[] = [
+  			'id' => $pidd,
+  			'title' => get_the_title( $pidd ),
+  			'url' => get_the_permalink( $pidd ),
+  			'iframes' => $k8_acf_ifr_url
+  		];
+  	}
+  endwhile;
+  wp_reset_postdata();
+  else :
+endif;
+
+echo '<pre>';
+print_r($ress);
+echo '</pre>';
+
+}
 
 
 
