@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+	console.log('cacche fixez');
 	// let retrievedObject = localStorage.getItem('k8PhnSucc');
 	// console.log(){
 	// }
