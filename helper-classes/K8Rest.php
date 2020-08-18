@@ -125,21 +125,6 @@ class K8Rest
 	public function purgecache_callback() {
 		$post_data=[];
 		if(isset($_GET['purge_cache']) && $_GET['purge_cache'] == md5($_SERVER['HTTP_HOST'])) {
-
-			function rrmdir($dir) {
-				if (is_dir($dir)) {
-					$objects = scandir($dir);
-					foreach ($objects as $object) {
-						if ($object != "." && $object != "..") {
-							if (filetype($dir."/".$object) == "dir")
-								 rrmdir($dir."/".$object);
-							else unlink   ($dir."/".$object);
-						}
-					}
-					reset($objects);
-					rmdir($dir);
-				}
-			 }
 			$upOne = realpath(K8_PATH_LOC . '/..');
 			$post_data = [
 				'get' => $_GET,
