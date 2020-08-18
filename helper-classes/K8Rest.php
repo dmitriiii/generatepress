@@ -19,6 +19,9 @@ class K8Rest
 			#Custom route to get all router data
 			add_action( 'rest_api_init', array( $this, 'getRouters' ) );
 		}
+
+		#Custom route to Purge all cache
+		add_action( 'rest_api_init', array( $this, 'purgeCache' ) );
 	}
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_register_route() {
@@ -42,6 +45,18 @@ class K8Rest
 			)
 		);
 	}
+	#Custom route to Purge all cache
+	public function purgeCache() {
+		register_rest_route(
+			'm5-cache',
+			'purge',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'purgecache_callback' )
+			)
+		);
+	}
+
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_posts() {
 		$post_data = array();
@@ -83,7 +98,7 @@ class K8Rest
 		);
 		$the_query = new WP_Query( $argzz );
 		if ( $the_query->have_posts() ) :
-		 	$cust_fields = json_decode( file_get_contents( K8_PATH_GLOB . '/json/routers/routers.json' ), true );
+			$cust_fields = json_decode( file_get_contents( K8_PATH_GLOB . '/json/routers/routers.json' ), true );
 		 // 	write_log($this->cust_fields);
 			// write_log($cust_fields);
 			while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -105,6 +120,43 @@ class K8Rest
 		endif;
 		return rest_ensure_response( $post_data );
 	}
+
+	#Custom route to Purge all cache
+	public function purgecache_callback() {
+		$post_data=[];
+		if(isset($_GET['purge_cache']) && $_GET['purge_cache'] == md5($_SERVER['HTTP_HOST'])) {
+
+			function rrmdir($dir) {
+				if (is_dir($dir)) {
+					$objects = scandir($dir);
+					foreach ($objects as $object) {
+						if ($object != "." && $object != "..") {
+							if (filetype($dir."/".$object) == "dir")
+								 rrmdir($dir."/".$object);
+							else unlink   ($dir."/".$object);
+						}
+					}
+					reset($objects);
+					rmdir($dir);
+				}
+			 }
+			$upOne = realpath(K8_PATH_LOC . '/..');
+			$post_data = [
+				'get' => $_GET,
+				'vars' => get_defined_vars(),
+				// 'server' => $_SERVER,
+				'path' => dirname(__DIR__),
+				'K8_PATH_LOC' => K8_PATH_LOC,
+				'K8_PATH_GLOB' => K8_PATH_GLOB,
+				'upOne' => $upOne
+			];
+			rrmdir($upOne."/cache/");
+			rrmdir($upOne."/uploads/cache/");
+			rrmdir($upOne."/uploads/fvm/");
+		}
+		return rest_ensure_response( $post_data );
+	}
+
 
 
 	public function create_api_posts_meta_field(){
