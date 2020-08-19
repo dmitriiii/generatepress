@@ -229,7 +229,7 @@ ob_start("k8_amp_callback");
 						"@id": "<?= $k8_can; ?>"
 					},
 					"headline": "<?= get_the_title( $q_o->ID ); ?>",
-					"image": ["<?= implode('","', $imgz); ?>"],
+					"image": ["<?= implode('","', $imgz); ?>","<?= bloginfo('template_directory'); ?>/img/vpntester-logo-white-2000.png"],
 					"datePublished": "<?= get_the_date('c', $q_o->ID); ?>",
 					"dateModified": "<?= get_the_modified_date('c', $q_o->ID); ?>",
 					"author": {
