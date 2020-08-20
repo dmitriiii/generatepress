@@ -269,8 +269,8 @@ if (isset($_GET['list_ifr']) && $_GET['list_ifr'] == 88) {
 
 
 			// Type & Status Parameters
-			'post_type'   => 'post',
-			'post_status' => 'any',
+			'post_type'   => 'any',
+			'post_status' => 'publish',
 
 
 			// Order & Orderby Parameters
