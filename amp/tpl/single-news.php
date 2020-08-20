@@ -657,18 +657,19 @@ ob_start("k8_amp_callback");
 	</head>
 	<body>
 		<?php // Magic Iframes
-		// $k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
-		// if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
-		// 	foreach ($k8_acf_ifr_url as $item):
-		 // 		<amp-iframe class="k8amp-iframe" width="1"
-		 // 			height="1"
-		// 			layout="fixed"
-		// 			sandbox="allow-scripts allow-popups"
-		// 			frameborder="0"
-		 // 			src="// echo get_site_url() . $item['url'];">
-		// 		</amp-iframe>
-		// 	endforeach;
-		// endif;
+		$k8_acf_ifr_url = get_field('k8_acf_ifr_url', $q_o->ID);
+		if( is_array( $k8_acf_ifr_url ) && count($k8_acf_ifr_url) > 0 ):
+			foreach ($k8_acf_ifr_url as $item): ?>
+		 		<amp-iframe class="k8amp-iframe" width="1"
+		 			height="1"
+					layout="fixed"
+					sandbox="allow-scripts allow-popups"
+					frameborder="0"
+		 			src="<?= get_site_url() . $item['url']; ?>">
+				</amp-iframe>
+			<?php
+			endforeach;
+		endif;
 		 ?>
 		<div class="k8amp-head headerbar">
 			<a href="<?php echo home_url('/'); ?>" class="k8amp-head__link">
