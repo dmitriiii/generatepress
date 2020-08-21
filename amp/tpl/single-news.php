@@ -745,7 +745,9 @@ ob_start("k8_amp_callback");
 				echo '<h1>' . get_the_title() . '</h1>';
 				echo '<hr>';
 				the_content();
-				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';
+				echo '<p><a class="dwnd__butt sm" tabindex="0" href="' . $k8_can . '"><span>Quelle einlesen</span> <span>&#10147;</span></a></p>';?>
+				<amp-img src="<?= bloginfo('template_directory'); ?>/img/vpntester-logo-white-2000.png" alt="Vpntester" title="Vpntester" layout="intrinsic" width="2048" height="585"></amp-img>
+			<?php
 			endwhile;
 			endif;?>
 		</div><!-- .k8amp-wrr -->
