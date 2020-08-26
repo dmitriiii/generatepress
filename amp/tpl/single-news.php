@@ -178,11 +178,28 @@ function k8_amp_callback($buffer) {
 		endforeach;
 	endif;
 
-	#remove Iframes ( videos from youtube etc. )
+	#Replace Iframe to AMP-iframe
 	$iframes = $document->find('iframe');
 	if( count($iframes) > 0 ) :
 		foreach ($iframes as $iframe) :
-			$iframe->remove();
+
+			if($iframe->hasAttribute('data-k8req'))
+				continue;
+			$attrz = array();
+			if($iframe->hasAttribute('src'))
+				$attrz['src'] = $iframe->getAttribute('src');
+			($iframe->hasAttribute('width')) ? ( $attrz['width'] = $iframe->getAttribute('width') ) : ($attrz['width'] = 0);
+
+			($iframe->hasAttribute('height')) ? ($attrz['height'] = $iframe->getAttribute('height')) : ($attrz['height'] = 0);
+
+			$attrz['layout'] = 'fixed';
+			$attrz['sandbox'] = 'allow-scripts allow-popups';
+
+			$amp_iframe = new Element('amp-iframe', '', $attrz);
+			$iframe->replace($amp_iframe);
+
+
+			// $iframe->remove();
 		endforeach;
 	endif;
 
