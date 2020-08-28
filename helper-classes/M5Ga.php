@@ -19,7 +19,7 @@ class M5Ga
 		ob_start();
 		$affArr=[];
 		foreach ($m5_opt_ga_aff as $item) {
-			$affArr[] = $item['aff_link'];
+			$affArr[] = substr($item['aff_link'], strpos($item['aff_link'], "/link/"));
 		}
 		// echo '<pre style="display: none;">';
 		// print_r($m5_opt_ga_aff);
@@ -37,13 +37,11 @@ class M5Ga
 					  return array.indexOf(value) > -1;
 					}
 				};
-				// m5ga.init();
-
 				$('body').on('click', 'a[href*="/link/"]', function(e) {
 					var $link = $(this),
-							href = $link.attr('href');
-			  	if ( m5ga.isInArray( href, m5ga.linkz ) ) {
-			  		// console.log('worki');
+							href = $link.attr('href'),
+							href_short = href.substring(href.indexOf('/link/'));
+			  	if ( m5ga.isInArray( href_short, m5ga.linkz ) ) {
 			  		gtag('event', 'Click on Affiliate Link', {
 						  'event_category': href,
 						});
