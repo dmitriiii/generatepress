@@ -25,6 +25,8 @@ class K8Assets
 		wp_register_style( 'k8-libs-lightgallery-css', get_template_directory_uri() . '/k8/assets/css/libs/lightgallery.css', array(), false, 'all' );
 		wp_register_style( 'k8-my-mob-css', get_template_directory_uri() . '/k8/assets/css/my-mob.css', array(), false, 'all' );
 
+		wp_register_style( 'k8-bootstrap-css', get_template_directory_uri() . '/k8/assets/css/libs/bootstrap.min.css', array(), false, 'all' );
+
 
 		#SERVICES
 		wp_register_script( 'check-mobile-js', get_template_directory_uri() . '/k8/assets/js/services/check-mobile.js', array('jquery'), null, false );
@@ -34,6 +36,8 @@ class K8Assets
 		wp_register_script( 'k8-slick-js', get_template_directory_uri() . '/k8/assets/js/slick.min.js', array('jquery'), null, false );
 		wp_register_script( 'k8-sticky-js', get_template_directory_uri() . '/k8/assets/js/jquery.sticky-kit.min.js', array('jquery'), null, false );
 		wp_register_script( 'k8-libs-lightgallery-js', get_template_directory_uri() . '/k8/assets/js/libs/lightgallery.min.js', array('jquery'), null, false );
+		wp_register_script( 'k8-bootstrap-js', get_template_directory_uri() . '/k8/assets/js/libs/bootstrap.min.js', array('jquery'), null, false );
+		
 
 		#SHORTCODE's JS & CSS
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
@@ -103,7 +107,7 @@ class K8Assets
 			wp_enqueue_style( 'k8-vpn-security-css' );
 		}
 
-		#Template for Security Page
+		#Template for Author's Page
 		if( is_page_template( 'k8tpl-authors.php' ) ){
 			wp_enqueue_style( 'k8tpl-authors-css' );
 		}

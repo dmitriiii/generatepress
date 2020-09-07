@@ -1,7 +1,8 @@
 <?php /* Template Name: Test1
 				Template Post Type: post, page */
 get_header();
-
+wp_enqueue_style('k8-bootstrap-css');
+wp_enqueue_script('k8-bootstrap-js');
 
 // echo '<pre>';
 // print_r( K8Help::getAllImgSizes() );
@@ -259,51 +260,28 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 
 
 
-if (isset($_GET['list_ifr']) && $_GET['list_ifr'] == 88) {
+// if (isset($_GET['list_ifr']) && $_GET['list_ifr'] == 88) {
 		/*
 		 * The WordPress Query class.
 		 *
 		 * @link http://codex.wordpress.org/Function_Reference/WP_Query
 		 */
 		$args = array(
-
-
 			// Type & Status Parameters
 			'post_type'   => 'any',
 			'post_status' => 'publish',
-
-
 			// Order & Orderby Parameters
 			'order'               => 'DESC',
 			'orderby'             => 'date',
 			// Pagination Parameters
 			'posts_per_page'         => -1,
 			'offset'                 => 0,
-
-			// Custom Field Parameters
-			// 'meta_key'       => 'key',
-			// 'meta_value'     => 'value',
-			// 'meta_value_num' => 10,
-			// 'meta_compare'   => '=',
-			// 'meta_query'     => array(
-			// 	array(
-			// 		'key'     => 'color',
-			// 		'value'   => 'blue',
-			// 		'type'    => 'CHAR',
-			// 		'compare' => '=',
-			// 	),
-			// 	array(
-			// 		'key'     => 'price',
-			// 		'value'   => array( 1,200 ),
-			// 		'compare' => 'NOT LIKE',
-			// 	),
-			// ),
-
 		);
 
 // the query
 $the_query = new WP_Query( $args );
  $ress = [];
+ $popz = [];
  if ( $the_query->have_posts() ) :
   while ( $the_query->have_posts() ) : $the_query->the_post();
   	$pidd =	get_the_ID();
@@ -317,36 +295,111 @@ $the_query = new WP_Query( $args );
   			'iframes' => $k8_acf_ifr_url
   		];
   	}
+  	if( has_shortcode( get_the_content(), 'K8_SH_POPUP' ) ){
+  		$popz[] = [
+  			'id' => $pidd,
+  			'title' => get_the_title( $pidd ),
+  			'url' => get_the_permalink( $pidd ),
+  		];
+  	}
   endwhile;
   wp_reset_postdata();
   else :
 endif;
 
-echo '<pre>';
-print_r($ress);
-echo '</pre>';
-
-}
+// echo '<pre>';
+// print_r($popz);
+// echo '</pre>';
 
 
+
+
+// }
 
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 	the_title();
 	echo '<hr>';
-	the_content();
+	the_content(); ?>
+
+	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Iframes List</a>
+	  </li>
+	</ul>
+	<div class="tab-content" id="pills-tabContent">
+	  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+	  	<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">ID</th>
+			      <th scope="col">Page Title</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <?php
+			    $i=1;
+			    foreach ($popz as $pop): ?>
+			    	<tr>
+				      <th scope="row"><?php echo $i; ?></th>
+				      <td><?= $pop['id']; ?></td>
+				      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></a></td>
+				    </tr>
+			    <?php
+			    $i++;
+			  	endforeach ?>
+			  </tbody>
+			</table>
+	  </div>
+	  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	  	<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">ID</th>
+			      <th scope="col">Page Title</th>
+			      <!-- <th scope="col">Url</th> -->
+			      <th scope="col">Aff Links</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <?php
+			    $i=1;
+			    foreach ($ress as $res): ?>
+			    	<tr>
+				      <th scope="row"><?php echo $i; ?></th>
+				      <td><?= $res['id']; ?></td>
+				      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></td>
+				      <td>
+				      	<?php
+				      	foreach ($res['iframes'] as $iframe): ?>
+				      		<p><em><?= $iframe['url']; ?></em></p>
+				      	<?php
+				      	endforeach ?>
+				      </td>
+				    </tr>
+			    <?php
+			    $i++;
+			  	endforeach ?>
+			  </tbody>
+			</table>
+	  </div>
+	</div> <?php
+
+	// echo '<pre>';
+	// print_r( K8_VPN_CF );
+	// print_r( K8_VPN_TAX );
+	// echo '</pre>';
 
 
-	echo '<pre>';
-	print_r( K8_VPN_CF );
-	print_r( K8_VPN_TAX );
-	echo '</pre>';
-
-
-	echo __('Geld-Zurück-Garantie' , 'k8lang_domain');
-	echo "<br>";
-	echo __('Das ist fantastish' , 'k8lang_domain');
+	// echo __('Geld-Zurück-Garantie' , 'k8lang_domain');
+	// echo "<br>";
+	// echo __('Das ist fantastish' , 'k8lang_domain');
 
 endwhile; ?>
 <?php else: ?>
