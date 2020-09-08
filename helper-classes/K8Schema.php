@@ -248,7 +248,7 @@ class K8Schema
 	 */
 	static function getYTdata( $args = array() ){
 		extract( $args );
-		write_log(get_defined_vars());
+		// write_log(get_defined_vars());
 		if( !is_array($decoded['items']) || count($decoded['items']) == 0 )
 			return;
 		$datta = [
