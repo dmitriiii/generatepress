@@ -265,20 +265,20 @@ function k8_clean_wppr_shortcodes($output, $tag, $attr){
 
 
 #filter to add iframes to content
-add_filter('the_content', function($content){
-	if( is_singular() && in_the_loop() && is_main_query() ) :
-		$id = get_the_ID();
-		$iframes = get_field( 'k8_acf_ifr_url',$id );
-		if( is_array($iframes) && count($iframes)>0 && !in_category( array('anbieter','vpn-anbieter'), $id ) ) {
-			$prod_name = get_post_meta( $id, 'cwp_rev_product_name', true );
-			$name = $prod_name ? $prod_name : 'TempIframe';
-			foreach ($iframes as $iframe) {
-				$content .= '<iframe src="'.$iframe['url'].'" name="'.$name .'_'. uniqid() .'" width="0" height="0" frameborder="0" scrolling="no"></iframe>';
-			}
-		}
-	endif;
-	return $content;
-});
+// add_filter('the_content', function($content){
+// 	if( is_singular() && in_the_loop() && is_main_query() ) :
+// 		$id = get_the_ID();
+// 		$iframes = get_field( 'k8_acf_ifr_url',$id );
+// 		if( is_array($iframes) && count($iframes)>0 && !in_category( array('anbieter','vpn-anbieter'), $id ) ) {
+// 			$prod_name = get_post_meta( $id, 'cwp_rev_product_name', true );
+// 			$name = $prod_name ? $prod_name : 'TempIframe';
+// 			foreach ($iframes as $iframe) {
+// 				$content .= '<iframe src="'.$iframe['url'].'" name="'.$name .'_'. uniqid() .'" width="0" height="0" frameborder="0" scrolling="no"></iframe>';
+// 			}
+// 		}
+// 	endif;
+// 	return $content;
+// });
 
 
 
