@@ -27,6 +27,26 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 
 
 
+if ( isset($_GET['gpt']) && $_GET['gpt'] == 777 ) {
+	global $wpdb;
+	$rezz =	$wpdb->get_results( "SELECT * FROM `wp_vavt_de_posts` WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%'" );
+	if( is_array($rezz) && count($rezz)>0 ):
+		foreach ($rezz as $rez) :
+			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
+			$eafl_url_arr = explode('&', $eafl_url);
+			foreach ($eafl_url_arr as $key => $url_part) {
+				if (strpos($url_part, 'aff_sub3') !== false)
+					unset( $eafl_url_arr[$key] );
+			}
+			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
+			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );
+		endforeach;
+	endif;
+}
+
+
 
 //$data[1] - 1
 //$data[2] - 2

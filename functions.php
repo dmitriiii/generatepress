@@ -263,6 +263,26 @@ function k8_clean_wppr_shortcodes($output, $tag, $attr){
 }
 
 
+// Cron Updates  Affiliates Links with today's date
+add_action( 'm5_hook_cron_aff', 'm5_hook_cron_aff_fun' );
+function m5_hook_cron_aff_fun(){
+	global $wpdb;
+	$rezz =	$wpdb->get_results( "SELECT * FROM `wp_vavt_de_posts` WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%'" );
+	if( is_array($rezz) && count($rezz)>0 ):
+		foreach ($rezz as $rez) :
+			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
+			$eafl_url_arr = explode('&', $eafl_url);
+			foreach ($eafl_url_arr as $key => $url_part) {
+				if (strpos($url_part, 'aff_sub3') !== false)
+					unset( $eafl_url_arr[$key] );
+			}
+			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
+			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );
+		endforeach;
+	endif;
+}
 
 #filter to add iframes to content
 // add_filter('the_content', function($content){
