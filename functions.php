@@ -269,7 +269,8 @@ function m5_hook_cron_aff_fun(){
 	global $wpdb;
 	$rezz =	$wpdb->get_results( "SELECT * FROM `wp_vavt_de_posts` WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
-																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%'" );
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%protonvpn%'" );
 	if( is_array($rezz) && count($rezz)>0 ):
 		foreach ($rezz as $rez) :
 			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
