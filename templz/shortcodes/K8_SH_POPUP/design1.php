@@ -1,5 +1,4 @@
 <? $c_post = get_post($atts['id']);
-$m5_acf_pop_title = get_field('m5_acf_pop_title',$atts['id']);
 $cnt = $c_post->post_content;
 // $cnt = apply_filters('the_content', $cnt);
 // $cnt = str_replace(']]>', ']]&gt;', $cnt);
@@ -33,7 +32,7 @@ $cnt = $c_post->post_content;
 			</div>
 			<div class="popup__actions">
 				<a href="<?= get_field('m5_acf_pop_url',$atts['id']); ?>" target="_blank" rel="noreferrer" class="button button--red">
-					<?= ($m5_acf_pop_title) ? $m5_acf_pop_title : _('ERHALTEN' , 'k8lang_domain'); ?>
+					Jetzt sichern!
 				</a>
 			</div>
 		</div>
