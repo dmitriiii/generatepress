@@ -1761,7 +1761,7 @@ class K8Acf
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array(
-							'width' => '50%',
+							'width' => '50',
 							'class' => '',
 							'id' => '',
 						),
@@ -1773,14 +1773,14 @@ class K8Acf
 					),
 					array(
 						'key' => 'field_5ece4797eaf5e',
-						'label' => 'Button\'s title',
+						'label' => 'Button title',
 						'name' => 'm5_acf_pop_title',
 						'type' => 'text',
 						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array(
-							'width' => '50%',
+							'width' => '50',
 							'class' => '',
 							'id' => '',
 						),
