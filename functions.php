@@ -267,7 +267,7 @@ function k8_clean_wppr_shortcodes($output, $tag, $attr){
 add_action( 'm5_hook_cron_aff', 'm5_hook_cron_aff_fun' );
 function m5_hook_cron_aff_fun(){
 	global $wpdb;
-	$rezz =	$wpdb->get_results( "SELECT * FROM `wp_vavt_de_posts` WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
+	$rezz =	$wpdb->get_results( "SELECT * FROM {$wpdb->prefix}posts WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%protonvpn%'" );
@@ -284,6 +284,44 @@ function m5_hook_cron_aff_fun(){
 		endforeach;
 	endif;
 }
+
+#Add aff_sub4 on the fly to Affiliate urls
+function m5_eafl_redirect_callback( $link ) {
+	if ( !isset($_SERVER['REQUEST_URI']) ) 
+		return ;
+
+	if( strpos($_SERVER['REQUEST_URI'], 'surfshark') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'nordvpn') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'vyprvpn') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'protonvpn') === FALSE )
+		return ;
+
+	$url = $link->url();
+	$url = str_replace( '@', '%40', $url );
+
+	// Try to prevent click register issues from breaking redirect.
+	try {
+		@EAFL_Clicks::register( $link );
+	} catch( Exception $e ) {}
+
+	$redirect_type = $link->redirect_type();
+	if ( ! in_array( intval( $redirect_type ), array( 301, 302, 307 ) ) ) {
+		$redirect_type = EAFL_Settings::get( 'default_redirect_type' );
+	}
+	// Noindex the redirect page.
+	header( 'X-Robots-Tag: noindex' );
+
+	$eafl_url_arr = explode('&', $url);
+	foreach ($eafl_url_arr as $key => $url_part) {
+		if (strpos($url_part, 'aff_sub4') !== false)
+			unset( $eafl_url_arr[$key] );
+	}
+	$eafl_url_arr[] = 'aff_sub4='.urlencode($_SERVER['HTTP_REFERER']);
+	wp_redirect( implode('&', $eafl_url_arr), intval( $redirect_type ) );
+	exit();
+}
+add_action( 'eafl_redirect', 'm5_eafl_redirect_callback', 10, 2 );
+
 
 #filter to add iframes to content
 // add_filter('the_content', function($content){
