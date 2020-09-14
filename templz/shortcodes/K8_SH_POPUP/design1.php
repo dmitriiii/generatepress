@@ -5,6 +5,7 @@ $cnt = $c_post->post_content;
 ?>
 <div class="popup-wrapper">
 	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
+		<a href="<?= get_field('m5_acf_pop_url',$atts['id']); ?>" target="_blank" rel="nofollow" class="popup__link"></a>
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
 		<button class="popup__btn-close" aria-label="close">
 			<i class="fas fa-times"></i>
@@ -31,7 +32,7 @@ $cnt = $c_post->post_content;
 				</div>
 			</div>
 			<div class="popup__actions">
-				<a href="<?= get_field('m5_acf_pop_url',$atts['id']); ?>" target="_blank" rel="noreferrer" class="button button--red">
+				<a href="<?= get_field('m5_acf_pop_url',$atts['id']); ?>" target="_blank" rel="nofollow" class="button button--red">
 					Jetzt sichern!
 				</a>
 			</div>
