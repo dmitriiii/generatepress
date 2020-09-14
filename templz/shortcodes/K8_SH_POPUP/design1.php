@@ -8,7 +8,7 @@ $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
 	<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="popup__link">&nbsp;</a>
 	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
-		<button class="popup__btn-close" aria-label="close" data-redirect="<?= get_site_url() . $m5_acf_pop_url; ?>">
+		<button class="popup__btn-close" aria-label="close" data-redirect="<?= $m5_acf_pop_url; ?>">
 			<i class="fas fa-times"></i>
 		</button>
 		<div class="popup__inner popup__inner--centered">
