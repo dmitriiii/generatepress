@@ -8,9 +8,9 @@ $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
 	<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="popup__link">&nbsp;</a>
 	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
-		<button class="popup__btn-close" aria-label="close" data-redirect="<?= get_site_url() . $m5_acf_pop_url; ?>">
+		<a class="popup__btn-close" aria-label="close" href="<?= get_site_url() . $m5_acf_pop_url; ?>" rel="nofollow" target="_blank">
 			<i class="fas fa-times"></i>
-		</button>
+		</a>
 		<div class="popup__inner popup__inner--centered">
 			<?= wp_get_attachment_image( get_field('m5_acf_pop_logo',$atts['id']), 'medium' ); ?>
 			<h2 class="popup__title">
@@ -33,7 +33,7 @@ $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
 				</div>
 			</div>
 			<div class="popup__actions">
-				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="button button--red">
+				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="button button--red popup__button">
 					Jetzt sichern!
 				</a>
 			</div>
