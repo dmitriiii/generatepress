@@ -286,27 +286,28 @@ if ( isset($_GET['gpt']) && $_GET['gpt'] == 777 ) {
 		 *
 		 * @link http://codex.wordpress.org/Function_Reference/WP_Query
 		 */
-		$args = array(
-			// Type & Status Parameters
-			'post_type'   => 'any',
-			'post_status' => 'publish',
-			// Order & Orderby Parameters
-			'order'               => 'DESC',
-			'orderby'             => 'date',
-			// Pagination Parameters
-			'posts_per_page'         => -1,
-			'offset'                 => 0,
-		);
+$args = array(
+	// Type & Status Parameters
+	'post_type'   => 'any',
+	'post_status' => 'publish',
+	// Order & Orderby Parameters
+	'order'               => 'DESC',
+	'orderby'             => 'date',
+	// Pagination Parameters
+	'posts_per_page'         => -1,
+	'offset'                 => 0,
+);
 
 // the query
 $the_query = new WP_Query( $args );
  $ress = [];
  $popz = [];
+
  if ( $the_query->have_posts() ) :
   while ( $the_query->have_posts() ) : $the_query->the_post();
   	$pidd =	get_the_ID();
   	$k8_acf_ifr_url =	get_field('k8_acf_ifr_url', $pidd);
-
+  	$pcontent = get_the_content();
   	if( is_array($k8_acf_ifr_url) && count($k8_acf_ifr_url)>0 ){
   		$ress[] = [
   			'id' => $pidd,
@@ -315,11 +316,25 @@ $the_query = new WP_Query( $args );
   			'iframes' => $k8_acf_ifr_url
   		];
   	}
-  	if( has_shortcode( get_the_content(), 'K8_SH_POPUP' ) ){
+  	if( has_shortcode( $pcontent, 'K8_SH_POPUP' ) ){
+  		$popz_ids_arr = [];
+  		preg_match_all(
+		    '/' . get_shortcode_regex() . '/',
+		   	$pcontent,
+		    $matches,
+		    PREG_SET_ORDER
+			);
+			foreach ($matches as $shrtcd) :
+				if( strpos($shrtcd[0], '[K8_SH_POPUP') !== false  ){
+					preg_match_all('/[1-9]/', $shrtcd[3], $output_array);
+					$popz_ids_arr[] = implode('', $output_array[0]);
+				}
+			endforeach;
   		$popz[] = [
   			'id' => $pidd,
   			'title' => get_the_title( $pidd ),
   			'url' => get_the_permalink( $pidd ),
+  			'popz_ids' => $popz_ids_arr
   		];
   	}
   endwhile;
@@ -327,22 +342,10 @@ $the_query = new WP_Query( $args );
   else :
 endif;
 
-// echo '<pre>';
-// print_r($popz);
-// echo '</pre>';
-
-
-
-
-// }
-
-
 if ( have_posts() ) : while ( have_posts() ) : the_post();
-
 	the_title();
 	echo '<hr>';
 	the_content(); ?>
-
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 	  <li class="nav-item">
 	    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
@@ -359,6 +362,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			      <th scope="col">#</th>
 			      <th scope="col">ID</th>
 			      <th scope="col">Page Title</th>
+			      <th scope="col">Affiliate Link on Popup</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -369,6 +373,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 				      <th scope="row"><?php echo $i; ?></th>
 				      <td><?= $pop['id']; ?></td>
 				      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></a></td>
+				      <td>
+				      	<?php
+				      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0): 
+				      		foreach ($pop['popz_ids'] as $popz_id) :?>
+				      			<p><em><?= get_field('m5_acf_pop_url',$popz_id); ?></em></p>
+				      		<?php
+				      		endforeach;
+				      	endif ?>
+				      </td>
 				    </tr>
 			    <?php
 			    $i++;
