@@ -335,7 +335,7 @@ $the_query = new WP_Query( $args );
   			'title' => get_the_title( $pidd ),
   			'url' => get_the_permalink( $pidd ),
   			'popz_ids' => $popz_ids_arr
-  		];
+  		]; 
   	}
   endwhile;
   wp_reset_postdata();
