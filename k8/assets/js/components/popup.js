@@ -25,5 +25,8 @@ jQuery(document).ready(function ($) {
       $popupWrapper.removeClass("popup-wrapper--showed");
     });
     $popupWrapper.removeClass("popup-wrapper--opened");
+    setTimeout(function(){
+      location.reload();
+    }, 2000);
   }
 })
