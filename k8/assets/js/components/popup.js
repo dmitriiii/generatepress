@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     $(popupEl).closest(".popup-wrapper").addClass("popup-wrapper--showed");
     setTimeout(function () {
       $(popupEl).closest(".popup-wrapper").addClass("popup-wrapper--opened");
-    }, 16);
+    }, 2000);
   }
 
   window.closePopup = function closePopup(popupEl) {
