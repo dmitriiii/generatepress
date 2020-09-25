@@ -17,19 +17,15 @@ class M5Ga
 			return '<p>Provide valid Affiliate Links</p>';
 
 		ob_start();
-		$affArr=[];
-		foreach ($m5_opt_ga_aff as $item) {
-			$affArr[] = substr($item['aff_link'], strpos($item['aff_link'], "/link/"));
-		}
-		// echo '<pre style="display: none;">';
-		// print_r($m5_opt_ga_aff);
-		// print_r($affArr);
-		// echo '</pre>';
+		// $affArr=[];
+		// foreach ($m5_opt_ga_aff as $item) {
+		// 	$affArr[] = substr($item['aff_link'], strpos($item['aff_link'], "/link/"));
+		// }
 		?>
-    <script>
+<!--     <script>
 			jQuery(document).ready(function($) {
 				var m5ga = {
-					linkz : <?php echo json_encode($affArr); ?>,
+					linkz : <?php// echo json_encode($affArr); ?>,
 					getLinkz : function(){
 						return this.linkz
 					},
@@ -48,7 +44,7 @@ class M5Ga
 			  	}
 				});
 			});
-		</script>
+		</script> -->
 		<?php
   	return ob_get_clean();
 	}
