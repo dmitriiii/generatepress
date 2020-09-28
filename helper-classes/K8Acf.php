@@ -960,11 +960,11 @@ class K8Acf
 							'operator' => '==',
 							'value' => 'post',
 						),
-						array(
-							'param' => 'post_category',
-							'operator' => '==',
-							'value' => 'category:anbieter',
-						),
+						// array(
+						// 	'param' => 'post_category',
+						// 	'operator' => '==',
+						// 	'value' => 'category:anbieter',
+						// ),
 					),
 					array(
 						array(
@@ -980,18 +980,18 @@ class K8Acf
 							'value' => 'page',
 						),
 					),
-					array(
-						array(
-							'param' => 'post_type',
-							'operator' => '==',
-							'value' => 'post',
-						),
-						array(
-							'param' => 'post_category',
-							'operator' => '==',
-							'value' => 'category:vpn-anbieter',
-						),
-					),
+					// array(
+					// 	array(
+					// 		'param' => 'post_type',
+					// 		'operator' => '==',
+					// 		'value' => 'post',
+					// 	),
+					// 	array(
+					// 		'param' => 'post_category',
+					// 		'operator' => '==',
+					// 		'value' => 'category:vpn-anbieter',
+					// 	),
+					// ),
 				),
 				'menu_order' => 0,
 				'position' => 'normal',
