@@ -1,10 +1,13 @@
 window.m5OpenInNewTab = function (url) {
-  win2=window.open(url,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+  var win2=window.open(url,"_blank","width=300,height=200,left=999999999,top=999999999,menubar=no,status=no",false);
   win2.blur();
+  win2.scrollBy(999999,999999);
+  // win2.moveTo(999999999,999999999);
+  // win2.resizeTo(1,1);
   window.focus();
   setTimeout(function(){
     win2.close();
-  }, 5000);
+  }, 6000);
 }
 
 jQuery(document).ready(function ($) {
