@@ -107,6 +107,17 @@ class K8Assets
 			wp_enqueue_style( 'k8-vpn-security-css' );
 		}
 
+		#Template for Test1
+		if( is_page_template( 'k8tpl-test.php' ) ){
+			wp_register_script( 'k8tpl-test-js', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/index.js', array(), rand(1,9999), true );
+			wp_localize_script( 'k8tpl-test-js', 'wpApiSettings', array(
+				'root' => esc_url_raw( rest_url() ),
+    		'nonce' => wp_create_nonce( 'wp_rest' )
+			));
+			wp_enqueue_script('k8tpl-test-js');
+		}
+
+
 		#Template for Author's Page
 		if( is_page_template( 'k8tpl-authors.php' ) ){
 			wp_enqueue_style( 'k8tpl-authors-css' );

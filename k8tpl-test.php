@@ -47,6 +47,33 @@ if ( isset($_GET['gpt']) && $_GET['gpt'] == 777 ) {
 }
 
 
+#Checking if aff. links are really redirects
+if ( isset($_GET['chk_aff']) && $_GET['chk_aff'] == 88 ) {
+	$args = array(
+		'post_type'   => 'easy_affiliate_link',
+		'post_status' => 'any',
+		'posts_per_page' => -1,
+		'orderby'       => 'date',
+		'order'         => 'DESC',
+	);
+
+	$the_query = new WP_Query( $args );
+	 if ( $the_query->have_posts() ) :
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$pid = get_the_ID();
+			$pm = get_post_meta( $pid );
+			echo '<pre>';
+			print_r( $pm );
+			print_r( unserialize( $pm['eafl_status_details'][0] ) );
+			print_r( get_the_content( $pid ) );
+			// print_r(  );
+			echo '</pre>';
+			echo "<p>" . get_the_title() . "<br>" . get_the_permalink() . "</p><hr/>";
+		endwhile;
+		wp_reset_postdata();
+	endif;
+}
+
 
 //$data[1] - 1
 //$data[2] - 2
@@ -335,7 +362,7 @@ $the_query = new WP_Query( $args );
   			'title' => get_the_title( $pidd ),
   			'url' => get_the_permalink( $pidd ),
   			'popz_ids' => $popz_ids_arr
-  		]; 
+  		];
   	}
   endwhile;
   wp_reset_postdata();
@@ -346,83 +373,145 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 	the_title();
 	echo '<hr>';
 	the_content(); ?>
-	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-	  <li class="nav-item">
-	    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Iframes List</a>
-	  </li>
-	</ul>
-	<div class="tab-content" id="pills-tabContent">
-	  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-	  	<table class="table table-striped">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">ID</th>
-			      <th scope="col">Page Title</th>
-			      <th scope="col">Affiliate Link on Popup</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <?php
-			    $i=1;
-			    foreach ($popz as $pop): ?>
-			    	<tr>
-				      <th scope="row"><?php echo $i; ?></th>
-				      <td><?= $pop['id']; ?></td>
-				      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></a></td>
-				      <td>
-				      	<?php
-				      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0): 
-				      		foreach ($pop['popz_ids'] as $popz_id) :?>
-				      			<p><em><?= get_field('m5_acf_pop_url',$popz_id); ?></em></p>
-				      		<?php
-				      		endforeach;
-				      	endif ?>
-				      </td>
-				    </tr>
-			    <?php
-			    $i++;
-			  	endforeach ?>
-			  </tbody>
-			</table>
-	  </div>
-	  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-	  	<table class="table table-striped">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">ID</th>
-			      <th scope="col">Page Title</th>
-			      <!-- <th scope="col">Url</th> -->
-			      <th scope="col">Aff Links</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <?php
-			    $i=1;
-			    foreach ($ress as $res): ?>
-			    	<tr>
-				      <th scope="row"><?php echo $i; ?></th>
-				      <td><?= $res['id']; ?></td>
-				      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></td>
-				      <td>
-				      	<?php
-				      	foreach ($res['iframes'] as $iframe): ?>
-				      		<p><em><?= $iframe['url']; ?></em></p>
-				      	<?php
-				      	endforeach ?>
-				      </td>
-				    </tr>
-			    <?php
-			    $i++;
-			  	endforeach ?>
-			  </tbody>
-			</table>
-	  </div>
-	</div> <?php
+				
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Iframes List</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-aff-tab" data-toggle="pill" href="#pills-aff" role="tab" aria-controls="pills-aff" aria-selected="false">Affiliates Checker</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="pills-tabContent">
+			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+			  	<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">ID</th>
+					      <th scope="col">Page Title</th>
+					      <th scope="col">Affiliate Link on Popup</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <?php
+					    $i=1;
+					    foreach ($popz as $pop): ?>
+					    	<tr>
+						      <th scope="row"><?php echo $i; ?></th>
+						      <td><?= $pop['id']; ?></td>
+						      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></a></td>
+						      <td>
+						      	<?php
+						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
+						      		foreach ($pop['popz_ids'] as $popz_id) :?>
+						      			<p><em><?= get_field('m5_acf_pop_url',$popz_id); ?></em></p>
+						      		<?php
+						      		endforeach;
+						      	endif ?>
+						      </td>
+						    </tr>
+					    <?php
+					    $i++;
+					  	endforeach ?>
+					  </tbody>
+					</table>
+			  </div>
+			  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+			  	<table class="table table-striped">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">ID</th>
+					      <th scope="col">Page Title</th>
+					      <!-- <th scope="col">Url</th> -->
+					      <th scope="col">Aff Links</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <?php
+					    $i=1;
+					    foreach ($ress as $res): ?>
+					    	<tr>
+						      <th scope="row"><?php echo $i; ?></th>
+						      <td><?= $res['id']; ?></td>
+						      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></td>
+						      <td>
+						      	<?php
+						      	foreach ($res['iframes'] as $iframe): ?>
+						      		<p><em><?= $iframe['url']; ?></em></p>
+						      	<?php
+						      	endforeach ?>
+						      </td>
+						    </tr>
+					    <?php
+					    $i++;
+					  	endforeach ?>
+					  </tbody>
+					</table>
+			  </div>
+
+			  <!-- Aff. Links checker Tool -->
+			  <div class="tab-pane fade" id="pills-aff" role="tabpanel" aria-labelledby="pills-aff-tab">
+			  	<p>
+			  		Run checking process to be sure that affiliate links really redirects to the urls specified in Affiliate Links plugin
+			  	</p>
+			  	<ul class="quoteList"></ul>
+			  	<p><button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button></p>
+			  	<table class="table table-striped pills-aff-tbl" style="word-break: break-all;">
+					  <thead>
+					    <tr>
+					      <th scope="col" width="60px">#</th>
+					      <!-- <th scope="col" width="70px">ID</th> -->
+					      <th scope="col" width="150px">Name</th>
+					      <th scope="col" width="300px">Link</th>
+					      <th scope="col">Url To</th>
+					      <th scope="col" width="100px">Status</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <?php
+
+					    $args = array(
+								'post_type'   => 'easy_affiliate_link',
+								'post_status' => 'any',
+								'posts_per_page' => -1,
+								'orderby'       => 'date',
+								'order'         => 'DESC',
+							);
+
+							$the_query = new WP_Query( $args );
+							 if ( $the_query->have_posts() ) :
+							 	$i=1;
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+									$pid = get_the_ID();
+									$pm = get_post_meta( $pid );?>
+									
+									<tr>
+							      <td data-pid="<?= $pid; ?>" data-counter="<?= $i;?>"><?= $i; ?></td>
+							      <td><?= get_the_title($pid); ?></td>
+							      <td data-link><?= get_the_permalink($pid); ?></td>
+							      <td data-url><?= $pm['eafl_url'][0]; ?></td>
+							      <td data-status class="bg-info"></td>
+							    </tr>
+								<?php
+					    	$i++;
+								endwhile;
+								wp_reset_postdata();
+							endif;?>
+
+					   
+					  </tbody>
+					</table>
+			  </div>
+			</div> 
+
+		
+
+	<?php
 
 	// echo '<pre>';
 	// print_r( K8_VPN_CF );

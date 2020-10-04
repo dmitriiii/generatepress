@@ -22,6 +22,10 @@ class K8Rest
 
 		#Custom route to Purge all cache
 		add_action( 'rest_api_init', array( $this, 'purgeCache' ) );
+
+		#custom route to manage checking aff links
+		add_action( 'rest_api_init', array( $this, 'affCheck' ) );
+
 	}
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_register_route() {
@@ -53,6 +57,17 @@ class K8Rest
 			array(
 				'methods' => 'GET',
 				'callback' => array( $this, 'purgecache_callback' )
+			)
+		);
+	}
+
+	public function affCheck() {
+		register_rest_route(
+			'm5',
+			'affCheck',
+			array(
+				'methods' => 'POST',
+				'callback' => array( $this, 'affCheck_callback' )
 			)
 		);
 	}
@@ -139,6 +154,86 @@ class K8Rest
 			rrmdir($upOne."/uploads/cache/");
 			rrmdir($upOne."/uploads/fvm/");
 		}
+		return rest_ensure_response( $post_data );
+	}
+
+
+	public function affCheck_callback($request_data) {
+		$post_data=[];
+		$nonce = null;
+		#check nonce - if request from our website and user logged in
+		if( isset($_SERVER['HTTP_X_WP_NONCE']) )
+			$nonce = $_SERVER['HTTP_X_WP_NONCE'];
+		if ( !wp_verify_nonce( $nonce, 'wp_rest' ) )
+			return new WP_Error( 'rest_cookie_invalid_nonce', __( 'Cookie nonce is invalid' ), array( 'status' => 403 ) );
+
+		$parameters = $request_data->get_params();
+		
+		// $post_data['params'] = $parameters;
+		// $post_data['body_params'] = $request_data->get_body_params();
+
+		// $post_data['server'] = $_SERVER;
+		// $post_data['errz'] = rest_cookie_check_errors(null);
+
+		
+		// $post_data['params'] = $parameters;
+		$post_data['count'] = $parameters['count'];
+		#does not match
+		$post_data['className'] = 'bg-danger';
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+
+		// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+		// curl_setopt($ch, CURLOPT_MAXREDIRS, 2);
+
+	  curl_setopt($ch, CURLOPT_URL, $parameters['link']);
+	  $out = curl_exec($ch);
+
+	  // line endings is the wonkiest piece of this whole thing
+	  $out = str_replace("\r", "", $out);
+
+	  // echo '<pre>';
+	  // print_r( $out );
+	  // echo '</pre>';
+
+	  // $exploadedd = explode("\n\n", $out);
+	  // echo '<pre>';
+	  // print_r($exploadedd);
+	  // echo '</pre>';
+
+
+
+	  // only look at the headers
+	  $headers_end = strpos($out, "\n\n");
+	  if( $headers_end !== false ) {
+	    $out = substr($out, 0, $headers_end);
+	  }
+
+	  $headers = explode("\n", $out);
+	  foreach($headers as $header) :
+	  	// echo '<pre>';
+	  	// print_r( $header );
+	  	// echo '</pre>';
+      if( substr($header, 0, 10) == "Location: " ) {
+        $target = substr($header, 10);
+        $post_data['target'] = $target;
+        if( $target == $parameters['url'] ){
+        	$post_data['className'] = 'bg-success';
+        }
+        // echo "[$url] redirects to [$target]<br>";
+        continue 1;
+      }
+	  endforeach;
+
+	  // echo "[$url] does not redirect<br>";
+
+
+	  // write_log( $post_data );
+
 		return rest_ensure_response( $post_data );
 	}
 
