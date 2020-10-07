@@ -10,9 +10,38 @@ wp_enqueue_script('k8-bootstrap-js');
 
 // echo 'Bingobongo';
 
+
+
+function smTewdedw( $ppost ){
+	$result = '';
+	//get shortcode regex pattern wordpress function
+	$pattern = get_shortcode_regex(['affcoups']);
+	if (  preg_match_all( '/'. $pattern .'/s', $ppost->post_content, $matches ) ){
+	 $result = implode( '<br/>', $matches[0] );
+	}
+	return $result;
+}
+
+
 ?>
 
-
+<style>
+	.m5-procc{
+		/* color: #fff; */
+		background-color: moccasin !important;
+	}
+	.m5-succ{
+		color: #fff;
+		background-color: mediumseagreen !important;
+	}
+	.m5-err{
+		color: #fff;
+		background-color: coral !important;
+	}
+	body .table.pills-aff-tbl td{
+		padding: 5px;
+	}
+</style>
 
 
 <?php
@@ -370,9 +399,10 @@ $the_query = new WP_Query( $args );
 endif;
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
-	the_title();
-	echo '<hr>';
-	the_content(); ?>
+	// the_title();
+	// echo '<hr>';
+	// the_content(); 
+	?>
 				
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
 			  <li class="nav-item">
@@ -382,7 +412,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Iframes List</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="pills-aff-tab" data-toggle="pill" href="#pills-aff" role="tab" aria-controls="pills-aff" aria-selected="false">Affiliates Checker</a>
+			    <a class="nav-link" id="pills-aff-tab" data-toggle="pill" href="#pills-aff" role="tab" aria-controls="pills-aff" aria-selected="false">Affiliate Links Checker</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-coup-tab" data-toggle="pill" href="#pills-coup" role="tab" aria-controls="pills-coup" aria-selected="false">Affiliate Coupons Pages List</a>
 			  </li>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
@@ -467,9 +500,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					      <th scope="col" width="60px">#</th>
 					      <!-- <th scope="col" width="70px">ID</th> -->
 					      <th scope="col" width="150px">Name</th>
-					      <th scope="col" width="300px">Link</th>
-					      <th scope="col">Url To</th>
-					      <th scope="col" width="100px">Status</th>
+					      <th scope="col" width="300px">Affiliate Link</th>
+					      <th scope="col" width="400px">Expected Redirect To Affiliate's website</th>
+					      <th scope="col">Real redirect</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -495,19 +528,61 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 							      <td><?= get_the_title($pid); ?></td>
 							      <td data-link><?= get_the_permalink($pid); ?></td>
 							      <td data-url><?= $pm['eafl_url'][0]; ?></td>
-							      <td data-status class="bg-info"></td>
+							      <td data-status></td>
 							    </tr>
 								<?php
 					    	$i++;
 								endwhile;
 								wp_reset_postdata();
 							endif;?>
-
-					   
 					  </tbody>
 					</table>
-			  </div>
-			</div> 
+			  </div> <!-- #pills-aff -->
+
+
+			  <!-- Coupons pages list -->
+			  <div class="tab-pane fade" id="pills-coup" role="tabpanel" aria-labelledby="pills-coup-tab">
+			  	<h2>
+			  		List of Pages where are used affiliates coupons
+			  	</h2>
+			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+					  <thead>
+					    <tr>
+					      <th scope="col" style="width: 60px;">#</th>
+					      <th scope="col">Page/Post</th>
+					      <th scope="col">Coupons Shortcode</th>
+					     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
+					      <th scope="col">Real redirect</th> -->
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<?php 
+					  	global $wpdb;
+    					$affcoups = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_content LIKE '%[affcoups%'", ARRAY_N);
+    					$ii = 1;
+    					foreach ($affcoups as $affcoup) :
+    						$ppost = get_post( $affcoup[0] ); ?>
+    						<tr>
+						      <td scope="col"><?= $ii; ?></td>
+						      <td scope="col"><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></td>
+						      <td scope="col"><?= smTewdedw( $ppost );?></td>
+						     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
+						      <th scope="col">Real redirect</th> -->
+						    </tr>
+    					<?php
+    					$ii++;
+    					endforeach;
+    					// echo '<pre>';
+    					// print_r($affcoups);
+    					// echo '</pre>';
+    					?>
+					  </tbody>
+					</table>
+			  </div> <!-- #pills-aff -->
+
+
+
+			</div>
 
 		
 

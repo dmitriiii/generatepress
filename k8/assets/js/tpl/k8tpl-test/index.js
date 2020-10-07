@@ -10,10 +10,12 @@ jQuery(document).ready(function($) {
 		/* This IF block has nothing to do with the OP. It just resets everything so the demo can be ran more than once. */
 		if (count===1) {
 			// $('.quoteList').empty();
-			$('td[data-status]').removeClass('bg-info').addClass('bg-secondary');
+			// $('td[data-status]').removeClass('bg-info').addClass('bg-secondary');
+			$tbl.find('tbody>tr').removeClass('m5-err').removeClass('m5-succ').addClass('m5-procc');
 			// count = 0;
 		}
 		var $counter_td = $tbl.find("tbody>tr>td[data-counter='"+count+"']"),
+		$counter_tr = $counter_td.parent('tr'),
 		formData = {
 			'count': count,
 			'link': $counter_td.siblings('[data-link]').text(),
@@ -32,10 +34,13 @@ jQuery(document).ready(function($) {
 			data: formData,
 			success:function(data){
 				console.log(data);
-				$counter_td.siblings('[data-status]').removeClass('bg-secondary').addClass(data.className);
+				$counter_tr.removeClass('m5-procc').addClass(data.className);
+				// $counter_td.siblings('[data-status]').removeClass('bg-secondary').addClass(data.className);
+				$counter_td.siblings('[data-status]').text(data.target);
 				// $('.quoteList').append('<li>' + data.quote +'</li>');
 				count++;
 				if (count <= count_end) m5AffCheck();
+				// if (count <= 90) m5AffCheck();
 			}
 		});
 	}

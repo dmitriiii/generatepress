@@ -179,7 +179,7 @@ class K8Rest
 		// $post_data['params'] = $parameters;
 		$post_data['count'] = $parameters['count'];
 		#does not match
-		$post_data['className'] = 'bg-danger';
+		$post_data['className'] = 'm5-err';
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HEADER, true);
@@ -222,7 +222,7 @@ class K8Rest
         $target = substr($header, 10);
         $post_data['target'] = $target;
         if( $target == $parameters['url'] ){
-        	$post_data['className'] = 'bg-success';
+        	$post_data['className'] = 'm5-succ';
         }
         // echo "[$url] redirects to [$target]<br>";
         continue 1;
