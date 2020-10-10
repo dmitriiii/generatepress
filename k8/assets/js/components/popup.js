@@ -1,10 +1,10 @@
 window.m5OpenInNewTab = function (url) {
-  win2=window.open(url,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+  win2=window.open(url,"_blank","width=320,height=480,left=0,top=200,menubar=no,status=no",false);
   win2.blur();
   window.focus();
   setTimeout(function(){
     win2.close();
-  }, 7000);
+  }, 8000);
 }
 
 jQuery(document).ready(function ($) {
