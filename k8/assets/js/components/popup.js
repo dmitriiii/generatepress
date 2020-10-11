@@ -1,5 +1,5 @@
 window.m5OpenInNewTab = function (url) {
-  win2=window.open(url,"_blank","width=320,height=480,left=0,top=200,menubar=no,status=no",false);
+  var win2=window.open(url,"_blank","width=320,height=480,left=0,top=200,menubar=no,status=no",true);
   win2.blur();
   window.focus();
   setTimeout(function(){
