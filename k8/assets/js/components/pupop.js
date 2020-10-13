@@ -2,7 +2,7 @@ window.m5OpenInNewTab = function (redirect, currentUrl) {
   var oldWin = window;
   var newWin = oldWin.open( currentUrl, "_blank" );
   oldWin.location.href = redirect;
-}
+} 
 
 jQuery(document).ready(function ($) {
   $(document.body).on("click", ".pupop__btn-close", function (e) {
