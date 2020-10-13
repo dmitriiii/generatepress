@@ -5,19 +5,19 @@ global $wp;
 // $cnt = apply_filters('the_content', $cnt);
 // $cnt = str_replace(']]>', ']]&gt;', $cnt);
 ?>
-<div class="popup-wrapper">
-	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank" class="popup__link">&nbsp;</a>
-	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
-		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
-		<a class="popup__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank">
+<div class="pupop-wrapper">
+	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank" class="pupop__link">&nbsp;</a>
+	<section id="sales" class="pupop pupop--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
+		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'pupop__bg'] ); ?>
+		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank">
 			<i class="fas fa-times"></i>
 		</a>
-		<div class="popup__inner popup__inner--centered">
+		<div class="pupop__inner pupop__inner--centered">
 			<?= wp_get_attachment_image( get_field('m5_acf_pop_logo',$atts['id']), 'medium' ); ?>
-			<h2 class="popup__title">
+			<h2 class="pupop__title">
 				<?= $c_post->post_title; ?>
 			</h2>
-			<div class="popup__content">
+			<div class="pupop__content">
 				<p><?= $cnt; ?></p>
 				<div class="timer" data-date="<?
 					$date = new DateTime( get_field('m5_acf_pop_date_to', $atts['id']) );
@@ -33,8 +33,8 @@ global $wp;
 					<div class="timer__tt"><span class="timer__ss">00</span><span class="timer__tooltip">seconds</span></div>
 				</div>
 			</div>
-			<div class="popup__actions">
-				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="button button--red popup__button">
+			<div class="pupop__actions">
+				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="button button--red pupop__button">
 					Jetzt sichern!
 				</a>
 			</div>

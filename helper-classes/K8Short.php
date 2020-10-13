@@ -639,11 +639,11 @@ class K8Short
 			return __('Publish popup first, please' , 'k8lang_domain');
 
 		// global $wp_filter;
-		wp_enqueue_style( 'k8-popup' );
-		wp_enqueue_script( 'k8-popup' );
+		wp_enqueue_style( 'k8-pupop' );
+		wp_enqueue_script( 'k8-pupop' );
 		wp_enqueue_style( 'k8-timer' );
 		wp_enqueue_script( 'k8-timer' );
-		wp_enqueue_script( 'k8-sales-popup' );
+		wp_enqueue_script( 'k8-sales-pupop' );
 
 		ob_start();
 		// add_filter('wppr_is_review_active', false);

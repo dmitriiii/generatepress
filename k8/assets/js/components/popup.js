@@ -5,35 +5,35 @@ window.m5OpenInNewTab = function (redirect, currentUrl) {
 }
 
 jQuery(document).ready(function ($) {
-  $(document.body).on("click", ".popup__btn-close", function (e) {
+  $(document.body).on("click", ".pupop__btn-close", function (e) {
     e.preventDefault();
-    closePopup(this.closest(".popup"));
+    closePopup(this.closest(".pupop"));
     m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
   });
 
-  $(document.body).on("click", ".popup__link", function (e) {
+  $(document.body).on("click", ".pupop__link", function (e) {
     e.preventDefault();
-    closePopup($(this).siblings(".popup"));
+    closePopup($(this).siblings(".pupop"));
     m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
   });
 
-  $(document.body).on("click", ".popup__button", function () {
-    closePopup($(this).closest(".popup"));
+  $(document.body).on("click", ".pupop__button", function () {
+    closePopup($(this).closest(".pupop"));
   });
 
 
-  window.openPopup = function openPopup(popupEl) {
-    $(popupEl).closest(".popup-wrapper").addClass("popup-wrapper--showed");
+  window.openPopup = function openPopup(pupopEl) {
+    $(pupopEl).closest(".pupop-wrapper").addClass("pupop-wrapper--showed");
     setTimeout(function () {
-      $(popupEl).closest(".popup-wrapper").addClass("popup-wrapper--opened");
+      $(pupopEl).closest(".pupop-wrapper").addClass("pupop-wrapper--opened");
     }, 2000);
   }
 
-  window.closePopup = function closePopup(popupEl) {
-    var $popupWrapper = $(popupEl).closest(".popup-wrapper");
-    $popupWrapper.one("transitionend", function () {
-      $popupWrapper.removeClass("popup-wrapper--showed");
+  window.closePopup = function closePopup(pupopEl) {
+    var $pupopWrapper = $(pupopEl).closest(".pupop-wrapper");
+    $pupopWrapper.one("transitionend", function () {
+      $pupopWrapper.removeClass("pupop-wrapper--showed");
     });
-    $popupWrapper.removeClass("popup-wrapper--opened");
+    $pupopWrapper.removeClass("pupop-wrapper--opened");
   }
 })

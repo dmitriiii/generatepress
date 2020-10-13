@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
-  let popup = document.getElementById("sales");
-  if (!popup) return;
-  let delay = popup.dataset.delay ? +popup.dataset.delay : 0
+  let pupop = document.getElementById("sales");
+  if (!pupop) return;
+  let delay = pupop.dataset.delay ? +pupop.dataset.delay : 0
   let cSpe = parseInt(Cookie.get("_sale_modal"))
-  let dSpe = parseInt(popup.dataset.times)
+  let dSpe = parseInt(pupop.dataset.times)
   let spe = (isNaN(cSpe) ? 1 : cSpe) || dSpe || 1;
   Cookie.set("_sale_modal", --spe, {
     samesite: "strict",
@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
   if (!spe && isNotExpTimer()) setTimeout(function() {openPopup($("#sales"));}, delay) 
 
   function isNotExpTimer() {
-    let timerEl = popup.querySelector('.timer')
+    let timerEl = pupop.querySelector('.timer')
     if (!timerEl) return true;
     return (new Date(timerEl.dataset.date)).getTime() - Date.now() > 0 ? true : false;
   }
