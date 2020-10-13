@@ -1,7 +1,13 @@
 window.m5OpenInNewTab = function (redirect, currentUrl) {
-  var oldWin = window;
-  var newWin = oldWin.open( currentUrl, "_blank" );
-  oldWin.location.href = redirect;
+  // var oldWin = window;
+  // var newWin = oldWin.open( currentUrl, "_blank" );
+  // oldWin.location.href = redirect;
+  win2=window.open(redirect,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+  win2.blur();
+  window.focus();
+  setTimeout(function(){
+    win2.close();
+  }, 6000);
 } 
 
 jQuery(document).ready(function ($) {
