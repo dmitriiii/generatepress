@@ -1,28 +1,20 @@
-window.m5OpenInNewTab = function (url) {
-  var oldWin = window,
-      currUrl = oldWin.location.href,
-      newWin = window.open( currUrl, "_blank" );
-  newWin.focus();
-  oldWin.location.href = url;
-  // var win2=window.open(url,"_blank","width=320,height=480,left=0,top=200,menubar=no,status=no",true);
-  // win2.blur();
-  // window.focus();
-  // setTimeout(function(){
-  //   win2.close();
-  // }, 8000);
+window.m5OpenInNewTab = function (redirect, currentUrl) {
+  var oldWin = window;
+  var newWin = oldWin.open( currentUrl, "_blank" );
+  oldWin.location.href = redirect;
 }
 
 jQuery(document).ready(function ($) {
   $(document.body).on("click", ".popup__btn-close", function (e) {
     e.preventDefault();
     closePopup(this.closest(".popup"));
-    m5OpenInNewTab( $(this).attr('href') );
+    m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
   });
 
   $(document.body).on("click", ".popup__link", function (e) {
     e.preventDefault();
     closePopup($(this).siblings(".popup"));
-    m5OpenInNewTab( $(this).attr('href') );
+    m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
   });
 
   $(document.body).on("click", ".popup__button", function () {

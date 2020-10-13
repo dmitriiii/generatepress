@@ -1,14 +1,15 @@
 <? $c_post = get_post($atts['id']);
 $cnt = $c_post->post_content;
 $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
+global $wp;
 // $cnt = apply_filters('the_content', $cnt);
 // $cnt = str_replace(']]>', ']]&gt;', $cnt);
 ?>
 <div class="popup-wrapper">
-	<a href="<?= get_site_url() . $m5_acf_pop_url; ?>" target="_blank" rel="nofollow" class="popup__link">&nbsp;</a>
+	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank" class="popup__link">&nbsp;</a>
 	<section id="sales" class="popup popup--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'popup__bg'] ); ?>
-		<a class="popup__btn-close" aria-label="close" href="<?= get_site_url() . $m5_acf_pop_url; ?>" rel="nofollow" target="_blank">
+		<a class="popup__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank">
 			<i class="fas fa-times"></i>
 		</a>
 		<div class="popup__inner popup__inner--centered">
