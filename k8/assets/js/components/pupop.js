@@ -7,7 +7,7 @@ window.m5OpenInNewTab = function (redirect, currentUrl) {
   window.focus();
   setTimeout(function(){
     win2.close();
-  }, 6000);
+  }, 9000);
 } 
 
 jQuery(document).ready(function ($) {
