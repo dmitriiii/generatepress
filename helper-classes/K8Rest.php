@@ -26,6 +26,9 @@ class K8Rest
 		#custom route to manage checking aff links
 		add_action( 'rest_api_init', array( $this, 'affCheck' ) );
 
+		#custom route to get data about ip address
+		add_action( 'rest_api_init', array( $this, 'ipaddr' ) );
+
 	}
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_register_route() {
@@ -68,6 +71,18 @@ class K8Rest
 			array(
 				'methods' => 'POST',
 				'callback' => array( $this, 'affCheck_callback' )
+			)
+		);
+	}
+
+	#custom route to get data about ip address
+	public function ipaddr() {
+		register_rest_route(
+			'm5',
+			'ipaddr',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'ipaddr_callback' )
 			)
 		);
 	}
@@ -237,7 +252,16 @@ class K8Rest
 		return rest_ensure_response( $post_data );
 	}
 
-
+	#custom route to get data about ip address
+	public function ipaddr_callback($request_data) {
+		$params = $request_data->get_params();
+		$ip = $_SERVER['REMOTE_ADDR'];
+		if( isset($params['ip']) && $params['ip'] !== '' )
+			$ip = $params['ip'];
+		$fgc = file_get_contents('http://ip-api.com/json/'.$ip.'?fields=status,message,continent,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,asname,reverse,mobile,proxy,hosting,query');
+		$post_data = ['ip_data' => json_decode( $fgc ), 'ip' => $ip];
+		return rest_ensure_response( $post_data );
+	}
 
 	public function create_api_posts_meta_field(){
 		register_rest_field( 'affcoups_coupon', 'k8_pm', array(
