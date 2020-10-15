@@ -99,6 +99,12 @@ class K8Assets
 		#Template with IP detection
 		if( is_page_template( 'k8tpl-ip-test.php' ) ){
 			wp_enqueue_style( 'k8-ip-test-css' );
+			wp_enqueue_style( 'k8-ip-test-css-2', get_template_directory_uri() . '/k8/assets/css/tpl/k8tpl-test/2.8aa5a7f8.chunk.css', array(), false, 'all' );
+			wp_enqueue_style( 'k8-ip-test-css-main', get_template_directory_uri() . '/k8/assets/css/tpl/k8tpl-test/main.3c3a7fcd.chunk.css', array(), false, 'all' );
+
+			wp_enqueue_script( 'k8-ip-test-js-run', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/runtime-main.4dc7fbe5.js', array(), false, true );
+			wp_enqueue_script( 'k8-ip-test-js-2', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/2.2ea7d36a.chunk.js', array(), false, true );
+			wp_enqueue_script( 'k8-ip-test-js-main', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/main.a6d182e4.chunk.js', array(), false, true );
 		}
 
 		#Template for Security Page
