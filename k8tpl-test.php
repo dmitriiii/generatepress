@@ -41,6 +41,16 @@ function smTewdedw( $ppost ){
 	body .table.pills-aff-tbl td{
 		padding: 5px;
 	}
+	.colr-wh{
+		color: #fff !important;
+	}
+	.m5-colr-dng{
+		color: #fff;
+		background-color: #dc3545;
+	}
+	.m5-colr-dng a{
+		color: #fff;
+	}
 </style>
 
 
@@ -53,6 +63,72 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 	print_r($m5country->createTax());
 	echo '</pre>';
 }
+
+
+// echo '<pre>';
+// print_r($_SERVER);
+// echo '</pre>';
+
+// $browser = get_browser(null, true);
+// echo '<pre>';
+// print_r($browser);
+// echo '</pre>';
+//
+//
+//
+
+
+// $arr_browsers = ["Opera", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
+
+// $agent = $_SERVER['HTTP_USER_AGENT'];
+
+// $user_browser = '';
+// foreach ($arr_browsers as $browser) {
+//     if (strpos($agent, $browser) !== false) {
+//         $user_browser = $browser;
+//         break;
+//     }
+// }
+
+// switch ($user_browser) {
+//     case 'MSIE':
+//         $user_browser = 'Internet Explorer';
+//         break;
+
+//     case 'Trident':
+//         $user_browser = 'Internet Explorer';
+//         break;
+
+//     case 'Edg':
+//         $user_browser = 'Microsoft Edge';
+//         break;
+// }
+
+// echo "You are using ".$user_browser." browser";
+
+
+// echo '<pre>';
+// print_r(get_post_meta( 28666 ));
+// echo '</pre>';
+
+// echo '<pre>';
+// print_r(get_post_meta( 28970 ));
+// echo '</pre>';
+
+
+// echo '<pre>';
+// print_r(get_post_meta( 28970, 'm5_acf_pop_url' ));
+// echo '</pre>';
+
+// echo '<pre>';
+// print_r(get_post_meta( 28970, 'm5_acf_pop_url',true ));
+// echo '</pre>';
+
+// get_post_meta( $post_id, $key = '', $single = false )
+
+
+
+
 
 
 
@@ -358,7 +434,7 @@ $args = array(
 $the_query = new WP_Query( $args );
  $ress = [];
  $popz = [];
-
+ $noww = date("Y-m-d");
  if ( $the_query->have_posts() ) :
   while ( $the_query->have_posts() ) : $the_query->the_post();
   	$pidd =	get_the_ID();
@@ -380,9 +456,10 @@ $the_query = new WP_Query( $args );
 		    $matches,
 		    PREG_SET_ORDER
 			);
+
 			foreach ($matches as $shrtcd) :
 				if( strpos($shrtcd[0], '[K8_SH_POPUP') !== false  ){
-					preg_match_all('/[1-9]/', $shrtcd[3], $output_array);
+					preg_match_all('/[0-9]/', $shrtcd[3], $output_array);
 					$popz_ids_arr[] = implode('', $output_array[0]);
 				}
 			endforeach;
@@ -398,12 +475,8 @@ $the_query = new WP_Query( $args );
   else :
 endif;
 
-if ( have_posts() ) : while ( have_posts() ) : the_post();
-	// the_title();
-	// echo '<hr>';
-	// the_content(); 
-	?>
-				
+if ( have_posts() ) : while ( have_posts() ) : the_post();?>
+
 			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
 			  <li class="nav-item">
 			    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
@@ -427,6 +500,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
 					      <th scope="col">Affiliate Link on Popup</th>
+					      <th scope="col" style="width:110px;">Edit Page</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -436,15 +510,29 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					    	<tr>
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $pop['id']; ?></td>
-						      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></a></td>
+						      <td><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></td>
 						      <td>
 						      	<?php
 						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
-						      		foreach ($pop['popz_ids'] as $popz_id) :?>
-						      			<p><em><?= get_field('m5_acf_pop_url',$popz_id); ?></em></p>
+						      		foreach ($pop['popz_ids'] as $popz_id) :
+						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id);
+						      			
+						      			?>
+						      			<p class="<?= ( strtotime($noww) > strtotime($m5_acf_pop_date_to) ) ? 'm5-colr-dng' : ''; ?> p-2">
+						      				<em>
+						      					<u>
+						      						<a target="_blank" href="<?= get_edit_post_link( $popz_id );?>"><?= get_field('m5_acf_pop_url', $popz_id); ?></a>
+						      					</u>
+						      				</em>
+						      				<br>
+						      				<?= $m5_acf_pop_date_to; ?>
+						      			</p>
 						      		<?php
 						      		endforeach;
 						      	endif ?>
+						      </td>
+						      <td>
+						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $pop['id'] );?>" target="_blank">Edit</a>
 						      </td>
 						    </tr>
 					    <?php
@@ -460,8 +548,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					      <th scope="col">#</th>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
-					      <!-- <th scope="col">Url</th> -->
 					      <th scope="col">Aff Links</th>
+					      <th scope="col" style="width:110px;">Edit Page</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -471,13 +559,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					    	<tr>
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $res['id']; ?></td>
-						      <td><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></td>
+						      <td><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></u></td>
 						      <td>
 						      	<?php
 						      	foreach ($res['iframes'] as $iframe): ?>
 						      		<p><em><?= $iframe['url']; ?></em></p>
 						      	<?php
 						      	endforeach ?>
+						      </td>
+						       <td>
+						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $res['id'] );?>" target="_blank">Edit</a>
 						      </td>
 						    </tr>
 					    <?php
@@ -498,7 +589,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					  <thead>
 					    <tr>
 					      <th scope="col" width="60px">#</th>
-					      <!-- <th scope="col" width="70px">ID</th> -->
 					      <th scope="col" width="150px">Name</th>
 					      <th scope="col" width="300px">Affiliate Link</th>
 					      <th scope="col" width="400px">Expected Redirect To Affiliate's website</th>
@@ -522,7 +612,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 								while ( $the_query->have_posts() ) : $the_query->the_post();
 									$pid = get_the_ID();
 									$pm = get_post_meta( $pid );?>
-									
+
 									<tr>
 							      <td data-pid="<?= $pid; ?>" data-counter="<?= $i;?>"><?= $i; ?></td>
 							      <td><?= get_the_title($pid); ?></td>
@@ -551,12 +641,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					      <th scope="col" style="width: 60px;">#</th>
 					      <th scope="col">Page/Post</th>
 					      <th scope="col">Coupons Shortcode</th>
+					      <th scope="col" style="width:110px;">Edit Page</th>
 					     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
 					      <th scope="col">Real redirect</th> -->
 					    </tr>
 					  </thead>
 					  <tbody>
-					  	<?php 
+					  	<?php
 					  	global $wpdb;
     					$affcoups = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_content LIKE '%[affcoups%'", ARRAY_N);
     					$ii = 1;
@@ -566,6 +657,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 						      <td scope="col"><?= $ii; ?></td>
 						      <td scope="col"><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></td>
 						      <td scope="col"><?= smTewdedw( $ppost );?></td>
+						      <td>
+						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $affcoup[0] );?>" target="_blank">Edit</a>
+						      </td>
 						     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
 						      <th scope="col">Real redirect</th> -->
 						    </tr>
@@ -584,7 +678,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			</div>
 
-		
+
 
 	<?php
 
