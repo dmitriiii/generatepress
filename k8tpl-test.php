@@ -508,7 +508,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					    <?php
 					    $i=1;
 					    foreach ($popz as $pop): ?>
-					    	<tr>
+					    	<tr> 
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $pop['id']; ?></td>
 						      <td><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></td>

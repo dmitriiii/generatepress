@@ -1,10 +1,7 @@
 <? $c_post = get_post($atts['id']);
 $cnt = $c_post->post_content;
 $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
-global $wp;
-// $cnt = apply_filters('the_content', $cnt);
-// $cnt = str_replace(']]>', ']]&gt;', $cnt);
-?>
+global $wp;?>
 <div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>">
 	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank" class="pupop__link">&nbsp;</a>
 	<section id="sales" class="pupop pupop--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
