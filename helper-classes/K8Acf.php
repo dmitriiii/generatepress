@@ -1770,7 +1770,31 @@ class K8Acf
 						'prepend' => '',
 						'append' => '',
 						'maxlength' => '',
-					)
+					),
+					array(
+						'key' => 'field_5f8ece4a10299',
+						'label' => 'Type of popup',
+						'name' => 'm5_acf_pop_type',
+						'type' => 'radio',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'small' => 'Affiliate\'s website opens in new small browser\'s tab, then it dissapears after a while',
+							'full' => 'Affiliate\'s website opens in the same browser\'s tab and in new tab opens the same page',
+						),
+						'allow_null' => 0,
+						'other_choice' => 0,
+						'default_value' => 'small',
+						'layout' => 'horizontal',
+						'return_format' => 'value',
+						'save_other_choice' => 0,
+					),
 				),
 				'location' => array(
 					array(
