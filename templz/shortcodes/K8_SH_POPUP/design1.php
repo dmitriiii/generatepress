@@ -3,10 +3,10 @@ $cnt = $c_post->post_content;
 $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
 global $wp;?>
 <div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>">
-	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank" class="pupop__link">&nbsp;</a>
+	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?full=<?= uniqid(); ?>" target="_blank" class="pupop__link">&nbsp;</a>
 	<section id="sales" class="pupop pupop--white" data-delay data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'pupop__bg'] ); ?>
-		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?dta=<?= uniqid(); ?>" target="_blank">
+		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>?full=<?= uniqid(); ?>" target="_blank">
 			<i class="fas fa-times"></i>
 		</a>
 		<div class="pupop__inner pupop__inner--centered">
