@@ -500,6 +500,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
 					      <th scope="col">Affiliate Link on Popup</th>
+					      <th scope="col">Type</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
 					    </tr>
 					  </thead>
@@ -515,9 +516,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      	<?php
 						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
 						      		foreach ($pop['popz_ids'] as $popz_id) :
-						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id);
-						      			
-						      			?>
+						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id); ?>
 						      			<p class="<?= ( strtotime($noww) > strtotime($m5_acf_pop_date_to) ) ? 'm5-colr-dng' : ''; ?> p-2">
 						      				<em>
 						      					<u>
@@ -526,10 +525,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      				</em>
 						      				<br>
 						      				<?= $m5_acf_pop_date_to; ?>
+						      				<br>
 						      			</p>
 						      		<?php
 						      		endforeach;
 						      	endif ?>
+						      </td>
+					      	<? $m5_acf_pop_type = get_field('m5_acf_pop_type', $popz_id) ;
+					      	echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type; ?>
 						      </td>
 						      <td>
 						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $pop['id'] );?>" target="_blank">Edit</a>
