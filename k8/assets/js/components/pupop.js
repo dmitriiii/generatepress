@@ -6,7 +6,7 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
     oldWin.location.href = redirect;
     return;
   }
-  var w = 260, 
+  var w = 260,
       h = 300,
       left = screen.width - w,
       top = screen.height - h,
