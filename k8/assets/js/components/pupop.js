@@ -1,8 +1,16 @@
-window.m5OpenInNewTab = function (redirect, currentUrl) {
-  // var oldWin = window;
-  // var newWin = oldWin.open( currentUrl, "_blank" );
-  // oldWin.location.href = redirect;
-  win2=window.open(redirect,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
+  var type = $curr.closest('.pupop-wrapper').attr('data-type');
+  if( type === 'full' ){
+    var oldWin = window;
+    var newWin = oldWin.open( currentUrl, "_blank" );
+    oldWin.location.href = redirect;
+    return;
+  }
+  var w = 260, 
+      h = 300,
+      left = screen.width - w,
+      top = screen.height - h,
+      win2 = window.open(redirect,'_blank',"width=" + w + ",height=" + h + ",left="+left+",top="+top+",menubar=no,status=no",false);
   win2.blur();
   window.focus();
   setTimeout(function(){
@@ -14,13 +22,16 @@ jQuery(document).ready(function ($) {
   $(document.body).on("click", ".pupop__btn-close", function (e) {
     e.preventDefault();
     closePopup(this.closest(".pupop"));
-    m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
+    var $curr = $(this);
+    m5OpenInNewTab( $curr.attr('data-red'), $curr.attr('href'), $curr );
   });
 
   $(document.body).on("click", ".pupop__link", function (e) {
     e.preventDefault();
     closePopup($(this).siblings(".pupop"));
-    m5OpenInNewTab( $(this).attr('data-red'), $(this).attr('href') );
+    var $curr = $(this);
+    // var $pupop = $curr.closest('.pupop');
+    m5OpenInNewTab( $curr.attr('data-red'), $curr.attr('href'), $curr );
   });
 
   $(document.body).on("click", ".pupop__button", function () {
