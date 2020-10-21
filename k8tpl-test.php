@@ -490,6 +490,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  <li class="nav-item">
 			    <a class="nav-link" id="pills-coup-tab" data-toggle="pill" href="#pills-coup" role="tab" aria-controls="pills-coup" aria-selected="false">Affiliate Coupons Pages List</a>
 			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-sync-tab" data-toggle="pill" href="#pills-sync" role="tab" aria-controls="pills-coup" aria-selected="false">Bulk Sync</a>
+			  </li>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -677,6 +680,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					</table>
 			  </div> <!-- #pills-aff -->
 
+
+			  <!-- Aff. Links checker Tool -->
+			  <div class="tab-pane fade" id="pills-sync" role="tabpanel" aria-labelledby="pills-sync-tab">
+			  	<p>
+			  		If you want to immediatelly syncronise anbieter info on all websites (vavt.de, .at, .ch, .de etc.) - feel free to click the button
+			  	</p>
+			  	<p>
+			  		<a class="btn btn-outline-success" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
+			  		<!-- <button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button> -->
+			  	</p>
+			  </div> <!-- #pills-aff -->
 
 
 			</div>
