@@ -310,11 +310,14 @@ function m5_eafl_redirect_callback( $link ) {
 	}
 	// Noindex the redirect page.
 	header( 'X-Robots-Tag: noindex' );
-
 	$eafl_url_arr = explode('&', $url);
 	foreach ($eafl_url_arr as $key => $url_part) {
+		#remove aff4 attribute if presents
 		if (strpos($url_part, 'aff_sub4') !== false)
 			unset( $eafl_url_arr[$key] );
+		#replace popup with pop_random number
+		if(strpos($url_part, 'popup') !== false)
+			$eafl_url_arr[$key] = str_replace('popup', 'pop_' . rand(10,100), $eafl_url_arr[$key]);
 	}
 	$eafl_url_arr[] = 'aff_sub4='.urlencode($_SERVER['HTTP_REFERER']);
 	wp_redirect( implode('&', $eafl_url_arr), intval( $redirect_type ) );
