@@ -477,7 +477,7 @@ endif;
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 
-			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
+			<ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
 			  <li class="nav-item">
 			    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
 			  </li>
@@ -687,7 +687,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  		If you want to immediatelly syncronise anbieter info on all websites (vavt.de, .at, .ch, .de etc.) - feel free to click the button
 			  	</h5>
 			  	<p>
-			  		<a class="btn btn-success" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
+			  		<a class="btn btn-success colr-wh" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
 			  		<!-- <button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button> -->
 			  	</p>
 			  </div> <!-- #pills-aff -->
