@@ -683,11 +683,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 
 			  <!-- Aff. Links checker Tool -->
 			  <div class="tab-pane fade" id="pills-sync" role="tabpanel" aria-labelledby="pills-sync-tab">
-			  	<p>
+			  	<h5>
 			  		If you want to immediatelly syncronise anbieter info on all websites (vavt.de, .at, .ch, .de etc.) - feel free to click the button
-			  	</p>
+			  	</h5>
 			  	<p>
-			  		<a class="btn btn-outline-success" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
+			  		<a class="btn btn-success" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
 			  		<!-- <button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button> -->
 			  	</p>
 			  </div> <!-- #pills-aff -->
