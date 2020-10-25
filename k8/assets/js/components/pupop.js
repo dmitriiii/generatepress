@@ -1,4 +1,26 @@
+
+
+// if (typeof checkMobile == 'function') { 
+//   // checkMobile(); 
+//   console.log(checkMobile( true ));
+// }
+
 window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
+  // Small popup function
+  function manipulateSmallPopup(redirect){
+    var win2=window.open(redirect,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+    win2.blur();
+    window.focus();
+    setTimeout(function(){
+      win2.close();
+    }, 9000);
+  }
+  //Check if mobile device or tablet similar behavior to all
+  if( checkMobile(true) ){
+    manipulateSmallPopup(redirect);
+    return;
+  }
+  //full page's popup behavior
   var type = $curr.closest('.pupop-wrapper').attr('data-type');
   if( type === 'full' ){
     var oldWin = window;
@@ -6,17 +28,9 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
     oldWin.location.href = redirect;
     return;
   }
-  var w = 260,
-      h = 300,
-      left = screen.width - w,
-      top = screen.height - h,
-      win2 = window.open(redirect,'_blank',"width=" + w + ",height=" + h + ",left="+left+",top="+top+",menubar=no,status=no",false);
-  win2.blur();
-  window.focus();
-  setTimeout(function(){
-    win2.close();
-  }, 9000);
-} 
+  //small popup desktop
+  manipulateSmallPopup(redirect);
+}
 
 jQuery(document).ready(function ($) {
   $(document.body).on("click", ".pupop__btn-close", function (e) {
