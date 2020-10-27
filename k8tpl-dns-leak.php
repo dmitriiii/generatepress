@@ -1,5 +1,8 @@
 <?php /* Template Name: DNS Leak
 Template Post Type: page */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 global $wp;
 get_header();?>
 <style>

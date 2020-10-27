@@ -4,16 +4,15 @@
  *
  * @package GeneratePress
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-?>
 
+if (!is_page_template('k8tpl-passgen.php')): ?>
 	</div><!-- #content -->
-</div><!-- #page -->
+</div><!-- #page --><?php
+endif;
 
-<?php
 /**
  * generate_before_footer hook.
  *

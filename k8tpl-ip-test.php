@@ -1,5 +1,8 @@
 <?php /* Template Name: IP Test
 Template Post Type: page */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 get_header();?>
 
 <div id="primary" <?php generate_do_element_classes( 'content' ); ?>>

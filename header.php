@@ -86,11 +86,12 @@ $apid = get_the_ID();
 	 * @hooked generate_featured_page_header - 10
 	 */
 	do_action( 'generate_after_header' );
-	?>
 
+	if (!is_page_template('k8tpl-passgen.php')): ?>
 	<div id="page" class="hfeed site grid-container container grid-parent">
 		<div id="content" class="site-content">
 			<?php
+	endif;
 			/**
 			 * generate_inside_container hook.
 			 *

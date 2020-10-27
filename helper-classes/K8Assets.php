@@ -107,6 +107,15 @@ class K8Assets
 			wp_enqueue_script( 'k8-ip-test-js-main', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/main.a6d182e4.chunk.js', array(), false, true );
 		}
 
+		#Template Password Generator
+		if( is_page_template( 'k8tpl-passgen.php' ) ){
+			wp_enqueue_style( 'k8tpl-passgen-google-fonts', 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap', false );
+			wp_enqueue_style( 'k8tpl-passgen-app-css', get_template_directory_uri() . '/modules/passgen/css/app.css', array(), false, 'all' );
+			wp_enqueue_script( 'k8tpl-passgen-viewport-js', get_template_directory_uri() . '/modules/passgen/viewport.js', array(), rand(1,9999), true );
+			wp_enqueue_script( 'k8tpl-passgen-app-js', get_template_directory_uri() . '/modules/passgen/app.js', array(), false, true );
+		}
+
+
 		#Template for Security Page
 		if( is_page_template( 'k8tpl-post-vpn-security.php' ) ){
 			wp_enqueue_style( 'k8-boot4grid-css' );
