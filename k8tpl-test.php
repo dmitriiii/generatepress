@@ -168,12 +168,16 @@ if ( isset($_GET['chk_aff']) && $_GET['chk_aff'] == 88 ) {
 			$pid = get_the_ID();
 			$pm = get_post_meta( $pid );
 			echo '<pre>';
-			print_r( $pm );
-			print_r( unserialize( $pm['eafl_status_details'][0] ) );
-			print_r( get_the_content( $pid ) );
-			// print_r(  );
+			// print_r( $pm );
+			// print_r( unserialize( $pm['eafl_status_details'][0] ) );
+			// print_r( get_the_content( $pid ) );
+			$aff_link_id = url_to_postid( get_the_permalink($pid));
+			$aff_url = get_post_meta( $aff_link_id, 'eafl_url', true);
+
+			// print_r( $aff_link_id );
+			print_r( $aff_url ); 
 			echo '</pre>';
-			echo "<p>" . get_the_title() . "<br>" . get_the_permalink() . "</p><hr/>";
+			echo "<p>" . get_the_title($pid) . "<br>" . get_the_permalink($pid) . "</p><hr/>";
 		endwhile;
 		wp_reset_postdata();
 	endif;
@@ -509,7 +513,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      <th scope="col">#</th>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
-					      <th scope="col">Affiliate Link on Popup</th>
+					      <th scope="col">Affiliate Link</th>
+								<th scope="col">Affiliate's Url</th>
 					      <th scope="col">Type</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
 					    </tr>
@@ -521,16 +526,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					    	<tr> 
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $pop['id']; ?></td>
-						      <td><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></td>
+						      <td><u><strong><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></strong></td>
 						      <td>
 						      	<?php
 						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
 						      		foreach ($pop['popz_ids'] as $popz_id) :
-						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id); ?>
+						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id); 
+						      			$m5_acf_pop_url = get_field('m5_acf_pop_url', $popz_id);?>
 						      			<p class="<?= ( strtotime($noww) > strtotime($m5_acf_pop_date_to) ) ? 'm5-colr-dng' : ''; ?> p-2">
 						      				<em>
 						      					<u>
-						      						<a target="_blank" href="<?= get_edit_post_link( $popz_id );?>"><?= get_field('m5_acf_pop_url', $popz_id); ?></a>
+						      						<a target="_blank" href="<?= get_edit_post_link( $popz_id );?>"><?= $m5_acf_pop_url; ?></a>
 						      					</u>
 						      				</em>
 						      				<br>
@@ -540,6 +546,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      		<?php
 						      		endforeach;
 						      	endif ?>
+						      </td>
+						      <td>
+						      	<?php
+						      	$aff_id = url_to_postid( get_option( 'siteurl' ) .'/'. $m5_acf_pop_url );
+						      	$aff_eafl_url = get_post_meta( $aff_id, 'eafl_url', true); ?>
+										<u>
+		      						<a target="_blank" href="<?= $aff_eafl_url; ?>"><?= $aff_eafl_url; ?></a>
+		      					</u>
 						      </td>
 					      	<? $m5_acf_pop_type = get_field('m5_acf_pop_type', $popz_id) ;
 					      	echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type; ?>
@@ -572,7 +586,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					    	<tr>
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $res['id']; ?></td>
-						      <td><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></u></td>
+						      <td><strong><u><a rel="noreferer nofollow noopener" target="_blank" href="<?= $res['url']; ?>"><?= $res['title']; ?></a></u></strong></td>
 						      <td>
 						      	<?php
 						      	foreach ($res['iframes'] as $iframe): ?>
@@ -628,7 +642,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 
 									<tr>
 							      <td data-pid="<?= $pid; ?>" data-counter="<?= $i;?>"><?= $i; ?></td>
-							      <td><?= get_the_title($pid); ?></td>
+							      <td><strong><?= get_the_title($pid); ?></strong></td>
 							      <td data-link><?= get_the_permalink($pid); ?></td>
 							      <td data-url><?= $pm['eafl_url'][0]; ?></td>
 							      <td data-status></td>
@@ -668,7 +682,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
     						$ppost = get_post( $affcoup[0] ); ?>
     						<tr>
 						      <td scope="col"><?= $ii; ?></td>
-						      <td scope="col"><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></td>
+						      <td scope="col"><strong><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></strong></td>
 						      <td scope="col"><?= smTewdedw( $ppost );?></td>
 						      <td>
 						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $affcoup[0] );?>" target="_blank">Edit</a>
