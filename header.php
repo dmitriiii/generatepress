@@ -87,7 +87,7 @@ $apid = get_the_ID();
 	 */
 	do_action( 'generate_after_header' );
 
-	if (!is_page_template('k8tpl-passgen.php')): ?>
+	if (!is_page_template('k8tpl-passgen.php') && !is_page_template('k8tpl-test.php')): ?>
 	<div id="page" class="hfeed site grid-container container grid-parent">
 		<div id="content" class="site-content">
 			<?php

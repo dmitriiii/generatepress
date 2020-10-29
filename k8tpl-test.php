@@ -473,8 +473,15 @@ $the_query = new WP_Query( $args );
   endwhile;
   wp_reset_postdata();
   else :
-endif;
+endif;?>
 
+<br><br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			
+		
+<?php 
 if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 
 			<ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
@@ -712,11 +719,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 endwhile; ?>
 <?php else: ?>
 <!-- no posts found -->
-<?php endif;
+<?php endif;?>
 
+		</div>
+	</div>
+</div><!-- .container-fluid -->
 
-
-
+<?php 
 // $cust_fields = array(
 // 	'k8_acf_vpndet_conn',
 // 	'k8_acf_vpndet_curr',

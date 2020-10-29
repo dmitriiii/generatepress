@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if (!is_page_template('k8tpl-passgen.php')): ?>
+if (!is_page_template('k8tpl-passgen.php') && !is_page_template('k8tpl-test.php')): ?>
 	</div><!-- #content -->
 </div><!-- #page --><?php
 endif;
