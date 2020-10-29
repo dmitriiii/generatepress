@@ -51,6 +51,13 @@ function smTewdedw( $ppost ){
 	.m5-colr-dng a{
 		color: #fff;
 	}
+	.tab-content .p-2{
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+	.tab-content .table td{
+		padding: 10px;
+	}
 </style>
 
 
@@ -513,7 +520,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      <th scope="col">#</th>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
-					      <th scope="col">Affiliate Link</th>
+					      <th scope="col" style="width: 300px;">Affiliate Link</th>
 								<th scope="col">Affiliate's Url</th>
 					      <th scope="col">Type</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
