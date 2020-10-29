@@ -191,6 +191,38 @@ if ( isset($_GET['chk_aff']) && $_GET['chk_aff'] == 88 ) {
 }
 
 
+
+
+if ( isset($_GET['chk_coup']) && $_GET['chk_coup'] == 88 ) {
+	$args = array(
+		'post_type'   => 'affcoups_coupon',
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		'orderby'       => 'date',
+		'order'         => 'DESC',
+		'meta_key'     => 'affcoups_coupon_valid_until',
+    'meta_value'   => time(),
+    'meta_compare' => '>',
+	);
+
+	$the_query = new WP_Query( $args );
+	 if ( $the_query->have_posts() ) :
+	 	$ccc = 1;
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$pid = get_the_ID();
+			$pm = get_post_meta( $pid );
+			echo '<pre>';
+			print_r(get_the_title($pid));
+			print_r($pm);
+			echo '</pre>';
+			echo $ccc . '<hr>';
+			$ccc++;
+		endwhile;
+		wp_reset_postdata();
+	endif;
+}
+
+
 //$data[1] - 1
 //$data[2] - 2
 //$data[3] - 3
