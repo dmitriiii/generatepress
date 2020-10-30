@@ -230,7 +230,7 @@ jQuery(document).ready(function ($) {
 			$(".eq-h-blck", this).height(highestBox);
 		});
 
-		// setTimeout(function(){
+		setTimeout(function(){
 			if ($(".k8_acf_ifr_url").length > 0) {
 				$(".k8_acf_ifr_url").each(function (index, el) {
 					var f = document.createElement("iframe");
@@ -240,7 +240,7 @@ jQuery(document).ready(function ($) {
 					$("body").append(f);
 				});
 			}
-		// }, 4000);
+		}, 3000);
 	
 	});
 
