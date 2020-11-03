@@ -18,7 +18,7 @@ class M5Redirect
 	public function permalink_post( $permalink, $post, $leavename ){
 		# Get the categories for the post
 		$category = get_the_category($post->ID);
-		if (  !empty($category) && $category[0]->slug == $this->slug ) {
+		if ( 'publish' === get_post_status($post->ID) && !empty($category) && $category[0]->slug == $this->slug ) {
 			$permalink = trailingslashit( home_url('/'.$this->slug.'/'. $post->post_name . '/' ) );
 		}
 		return $permalink;
