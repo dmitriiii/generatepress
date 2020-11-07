@@ -29,6 +29,11 @@ class K8Rest
 		#custom route to get data about ip address
 		add_action( 'rest_api_init', array( $this, 'ipaddr' ) );
 
+
+		#rest api for affiliate coupons list
+		if ( get_site_url() == 'https://vpntester.at' ) {
+			add_action( 'rest_api_init', array( $this, 'getCoupons' ) );
+		}
 	}
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_register_route() {
@@ -86,6 +91,19 @@ class K8Rest
 			)
 		);
 	}
+
+	#rest api for affiliate coupons list
+	public function getCoupons() {
+		register_rest_route(
+			'm5',
+			'getCoupons',
+			array(
+				'methods' => 'GET',
+				'callback' => array( $this, 'getCoupons_callback' )
+			)
+		);
+	}
+
 
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_posts() {
@@ -183,14 +201,14 @@ class K8Rest
 			return new WP_Error( 'rest_cookie_invalid_nonce', __( 'Cookie nonce is invalid' ), array( 'status' => 403 ) );
 
 		$parameters = $request_data->get_params();
-		
+
 		// $post_data['params'] = $parameters;
 		// $post_data['body_params'] = $request_data->get_body_params();
 
 		// $post_data['server'] = $_SERVER;
 		// $post_data['errz'] = rest_cookie_check_errors(null);
 
-		
+
 		// $post_data['params'] = $parameters;
 		$post_data['count'] = $parameters['count'];
 		#does not match
@@ -261,6 +279,108 @@ class K8Rest
 		$fgc = file_get_contents('http://ip-api.com/json/'.$ip.'?fields=status,message,continent,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,asname,reverse,mobile,proxy,hosting,query');
 		$post_data = ['ip_data' => json_decode( $fgc ), 'ip' => $ip];
 		return rest_ensure_response( $post_data );
+	}
+
+	#rest api for affiliate coupons list
+	public function getCoupons_callback(){
+		$coup_data = [];
+		$fill_data = [];
+		$all_data = [];
+		$args = array(
+			'post_type'   => 'affcoups_coupon',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'orderby'       => 'date',
+			'order'         => 'DESC',
+			'meta_key'     => 'affcoups_coupon_valid_until',
+	    'meta_value'   => time(),
+	    'meta_compare' => '>',
+		);
+		$the_query = new WP_Query( $args );
+		 if ( $the_query->have_posts() ) :
+		 	$c=0;
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				$pid = get_the_ID();
+				$pm = get_post_meta( $pid, '', true );
+				$image_atts = wp_get_attachment_image_src( $pm['affcoups_coupon_image'][0], 'thumbnail' );
+				$affcoups_coupon_category = get_the_terms($pid,'affcoups_coupon_category');
+				$affcoups_coupon_type = get_the_terms($pid,'affcoups_coupon_type');
+
+				if (isset($pm['affcoups_coupon_title'][0]))
+					$coup_data[$c]['title'] = $pm['affcoups_coupon_title'][0];
+
+				if (isset($pm['affcoups_coupon_url'][0]))
+					$coup_data[$c]['url'] = $pm['affcoups_coupon_url'][0];
+
+				if( is_array($image_atts) && count($image_atts)>0 )
+					$coup_data[$c]['image'] = array('url'=>$image_atts[0], 'width'=>$image_atts[1], 'height'=>$image_atts[2]);
+
+				if (isset($pm['affcoups_coupon_discount'][0]))
+					$coup_data[$c]['discount'] = $pm['affcoups_coupon_discount'][0];
+
+				if (isset($pm['affcoups_coupon_valid_until'][0]))
+					$coup_data[$c]['until'] = date('d.m.Y', $pm['affcoups_coupon_valid_until'][0]);
+
+				if (isset($pm['affcoups_coupon_description'][0]))
+					$coup_data[$c]['description'] = $pm['affcoups_coupon_description'][0];
+
+				if (isset($pm['affcoups_coupon_code'][0]))
+					$coup_data[$c]['code'] = $pm['affcoups_coupon_code'][0];
+
+				if( is_array($affcoups_coupon_category) && count($affcoups_coupon_category)>0 ){
+					$cat_arr=[];
+					foreach ($affcoups_coupon_category as $cat) {
+						$cat_arr[] = $cat->slug;
+					}
+					$coup_data[$c]['category'] = $cat_arr;
+				}
+				if( is_array($affcoups_coupon_type) && count($affcoups_coupon_type)>0 ){
+					$type_arr=[];
+					foreach ($affcoups_coupon_type as $type) {
+						$type_arr[] = $type->slug;
+					}
+					$coup_data[$c]['type'] = $type_arr;
+				}
+				$c++;
+			endwhile;
+			wp_reset_postdata();
+		endif;
+
+		$terms_category = get_terms(array(
+		  'taxonomy' => 'affcoups_coupon_category',
+		  'hide_empty' => true,
+		));
+
+		$terms_type = get_terms(array(
+		  'taxonomy' => 'affcoups_coupon_type',
+		  'hide_empty' => true,
+		));
+
+
+		if( is_array($terms_category) && count($terms_category)>0 ){
+			$i=0;
+			foreach ($terms_category as $term) {
+				$fill_data['category'][$i]['name'] = $term->name;
+				$fill_data['category'][$i]['slug'] = $term->slug;
+				$i++;
+			}
+		}
+
+		if( is_array($terms_type) && count($terms_type)>0 ){
+			$i=0;
+			foreach ($terms_type as $term) {
+				$fill_data['type'][$i]['name'] = $term->name;
+				$fill_data['type'][$i]['slug'] = $term->slug;
+				$i++;
+			}
+		}
+
+		$all_data = [
+			'fill_data' => $fill_data,
+			'coup_data' => $coup_data
+		];
+
+		return rest_ensure_response( $all_data );
 	}
 
 	public function create_api_posts_meta_field(){
