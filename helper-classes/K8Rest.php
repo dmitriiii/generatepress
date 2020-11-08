@@ -31,9 +31,9 @@ class K8Rest
 
 
 		#rest api for affiliate coupons list
-		if ( get_site_url() == 'https://vpntester.at' ) {
+		// if ( get_site_url() == 'https://vpntester.at' ) {
 			add_action( 'rest_api_init', array( $this, 'getCoupons' ) );
-		}
+		// }
 	}
 	#Custom route for bulk update posts under VPN Ambieter
 	public function my_register_route() {
@@ -285,6 +285,8 @@ class K8Rest
 	public function getCoupons_callback(){
 		$coup_data = [];
 		$fill_data = [];
+		$fill_data['category']['all'] = 'All';
+		$fill_data['type']['all'] = 'All';
 		$all_data = [];
 		$args = array(
 			'post_type'   => 'affcoups_coupon',
@@ -328,52 +330,33 @@ class K8Rest
 					$coup_data[$c]['code'] = $pm['affcoups_coupon_code'][0];
 
 				if( is_array($affcoups_coupon_category) && count($affcoups_coupon_category)>0 ){
-					$cat_arr=[];
 					foreach ($affcoups_coupon_category as $cat) {
-						$cat_arr[] = $cat->slug;
+						$coup_data[$c]['category'][] = $cat->slug;
+						if( !isset($fill_data['category'][$cat->slug]) )
+							$fill_data['category'][$cat->slug] = $cat->name;
 					}
-					$coup_data[$c]['category'] = $cat_arr;
+				}
+				else{
+					$coup_data[$c]['category'][] = 'undef';
 				}
 				if( is_array($affcoups_coupon_type) && count($affcoups_coupon_type)>0 ){
-					$type_arr=[];
 					foreach ($affcoups_coupon_type as $type) {
-						$type_arr[] = $type->slug;
+						$coup_data[$c]['type'][] = $type->slug;
+						if( !isset($fill_data['type'][$type->slug]) )
+							$fill_data['type'][$type->slug] = $type->name;
 					}
-					$coup_data[$c]['type'] = $type_arr;
+				}
+				else{
+					$coup_data[$c]['type'][] = 'undef';
 				}
 				$c++;
 			endwhile;
 			wp_reset_postdata();
+			$fill_data['type']['undef'] = 'Undefined';
+			$fill_data['category']['undef'] = 'Undefined';
+
 		endif;
 
-		$terms_category = get_terms(array(
-		  'taxonomy' => 'affcoups_coupon_category',
-		  'hide_empty' => true,
-		));
-
-		$terms_type = get_terms(array(
-		  'taxonomy' => 'affcoups_coupon_type',
-		  'hide_empty' => true,
-		));
-
-
-		if( is_array($terms_category) && count($terms_category)>0 ){
-			$i=0;
-			foreach ($terms_category as $term) {
-				$fill_data['category'][$i]['name'] = $term->name;
-				$fill_data['category'][$i]['slug'] = $term->slug;
-				$i++;
-			}
-		}
-
-		if( is_array($terms_type) && count($terms_type)>0 ){
-			$i=0;
-			foreach ($terms_type as $term) {
-				$fill_data['type'][$i]['name'] = $term->name;
-				$fill_data['type'][$i]['slug'] = $term->slug;
-				$i++;
-			}
-		}
 
 		$all_data = [
 			'fill_data' => $fill_data,
