@@ -47,6 +47,14 @@ class K8Assets
 		wp_register_script( 'k8-timer', get_template_directory_uri() . '/k8/assets/js/components/timer.js', array('jquery'), rand(1,9999), true );
 		wp_register_script( 'k8-sales-pupop', get_template_directory_uri() . '/k8/assets/js/components/sales-pupop.js', array('k8-pupop'), rand(1,9999), true );
 
+		wp_register_script( 'k8_sh_coupon-js-run', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/runtime-main.d7fa5d69.js', array(), false, true );
+		wp_register_script( 'k8_sh_coupon-js-2', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/2.37ce1337.chunk.js', array(), false, true );
+		wp_register_script( 'k8_sh_coupon-js-3', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/3.16466410.chunk.js', array(), false, true );
+		wp_register_script( 'k8_sh_coupon-js-main', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/main.8e5824cb.chunk.js', array(), false, true );
+
+		wp_register_style( 'k8_sh_coupon-css-main', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/css/main.56de8d54.chunk.css', array(), false, 'all' );
+		// wp_register_style( 'k8_sh_coupon-css-main', get_template_directory_uri() . '/k8/assets/css/tpl/k8tpl-test/main.3c3a7fcd.chunk.css', array(), false, 'all' );
+
 		wp_register_style( 'k8-pupop', get_template_directory_uri() . '/k8/assets/css/components/pupop.css', array(), rand(1,9999), 'all' );
 		wp_register_style( 'k8-timer', get_template_directory_uri() . '/k8/assets/css/components/timer.css', array(), rand(1,9999), 'all' );
 		wp_register_style( 'k8_sh_speedtest-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_speedtest.css', array(), false, 'all' );

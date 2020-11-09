@@ -285,8 +285,8 @@ class K8Rest
 	public function getCoupons_callback(){
 		$coup_data = [];
 		$fill_data = [];
-		$fill_data['category']['all'] = 'All';
-		$fill_data['type']['all'] = 'All';
+		$fill_data['category']['all'] = 'All VPNs';
+		$fill_data['type']['all'] = 'All Types';
 		$all_data = [];
 		$args = array(
 			'post_type'   => 'affcoups_coupon',

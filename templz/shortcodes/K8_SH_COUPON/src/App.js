@@ -1,0 +1,172 @@
+import React from 'react';
+import './App.css';
+
+class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFetched: false,
+      selectedCat: 'all',
+      selectedTyp: 'all',
+      inrow: this.props.inrow
+    };
+    this.showAll = this.showAll.bind(this);
+    this.handleCatChange = this.handleCatChange.bind(this);
+    this.handleTypChange = this.handleTypChange.bind(this);
+    this.handleSpecoffer = this.handleSpecoffer.bind(this);
+  }
+
+  componentDidMount(){
+    fetch(this.props.fUrl)
+      .then(response => response.json())
+      .then((jsonData) => {
+        // console.log('fetched!!');
+        this.setState({
+          isFetched: true,
+          fetchedData: jsonData,
+          filteredData: jsonData.coup_data
+        });
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+  showAll() {
+    this.setState(function(state, props) {
+      return {
+        filteredData: state.fetchedData.coup_data,
+        selectedCat: 'all',
+        selectedTyp: 'all'
+      };
+    });    
+  }
+
+  handleCatChange(event) {
+    this.setState(function(state, props) {
+      return {
+        selectedCat: event.target.value
+      };
+    });
+  }
+
+  handleTypChange(event) {
+    this.setState(function(state, props) {
+      return {
+        selectedTyp: event.target.value
+      };
+    });
+  }
+
+  handleSpecoffer(event) {
+    this.setState(function(state, props) {
+      return {
+        selectedTyp: event.target.value
+      };
+    });
+  }
+
+
+  render() {
+    let todoItems = 'Loading..';
+    if(this.state.isFetched){
+      let filteredData = this.state.filteredData;
+      const filtersCat = this.state.fetchedData.fill_data.category;
+      const filtersTyp = this.state.fetchedData.fill_data.type;
+      const maxWidth = (100 / this.state.inrow);
+      const selCat = Object.keys(filtersCat).map(function(keyName, keyIndex) {
+        return <option value={keyName} key={keyIndex}>{filtersCat[keyName]}</option>
+      });
+      
+      const selTyp = Object.keys(filtersTyp).map(function(keyName, keyIndex) {
+        return <option value={keyName} key={keyIndex}>{filtersTyp[keyName]}</option>
+      });
+
+      if( this.state.selectedCat !== 'all' ){
+        filteredData = filteredData.filter(coupon => coupon.category.includes(this.state.selectedCat));
+      }
+      if( this.state.selectedTyp !== 'all' ){
+        filteredData = filteredData.filter(coupon => coupon.type.includes(this.state.selectedTyp));
+      }
+
+      todoItems = filteredData.map((todo, index) =>
+        <div className="gridd__wrr" key={index} style={{maxWidth: maxWidth + "%"}}>
+          <div className="gridd__item">
+            <div className="gridd__head">
+              <img className="gridd__head-logo" src={todo.image.url} width={todo.image.width} height={todo.image.height} alt={todo.title}/> 
+              <p className="gridd__head-until">Gültig bis {todo.until}</p>
+              {todo.discount &&
+                <span className="gridd__head-discount">{todo.discount}</span>
+              }
+            </div> 
+            <div className="gridd__body">
+              <h3>{todo.title}</h3>
+              <p>{todo.description}</p>
+              <div className="gridd__butts">
+                {todo.code ?
+                  <div className="gridd__butt gridd__butt-code">
+                    <span>{todo.code}</span>
+                    <i className="fas fa-copy"></i>
+                  </div> :
+                  <span>&nbsp;</span>
+                }
+                <a href={todo.url} className="gridd__butt gridd__butt-url" rel="nofollow" target="_blank">
+                  ANGEBOT SEHEN
+                  <i className="fas fa-thumbs-up"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+   
+
+    return (
+      <div className="contt">
+        <div className="contt__filterz"> 
+          <select className="contt__control" value={this.state.selectedCat} onChange={this.handleCatChange}>
+            {selCat}
+          </select>
+          <select className="contt__control" value={this.state.selectedTyp} onChange={this.handleTypChange}>
+            {selTyp}
+          </select>
+          <label className="contt__control contt__control-radio">
+            <input
+              name="specoffer"
+              type="radio"
+              value="blackfriday"
+              checked={this.state.selectedTyp === 'blackfriday' ? true : false}
+              onChange={this.handleSpecoffer} />
+              Black Friday
+          </label>
+          <label className="contt__control contt__control-radio">
+            <input
+              name="specoffer"
+              type="radio"
+              value="cybermonday"
+              checked={this.state.selectedTyp === 'cybermonday' ? true : false}
+              onChange={this.handleSpecoffer} />
+              Cyber Monday
+          </label>
+          {this.state.selectedCat !== 'all' || this.state.selectedTyp !== 'all' 
+            ? <button className="contt__control" onClick={this.showAll}>Reset!</button>
+            : ''
+          }
+        </div>
+        <div className="gridd">
+          {todoItems}
+        </div>
+      </div>
+    );
+  }
+    // Not fetched data yet
+    else{
+      return (<div>{todoItems}</div>)
+    }
+  }
+
+}
+
+
+
+export default App;

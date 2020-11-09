@@ -129,6 +129,9 @@ class K8Short
 
 		#[K8_SCHEMA_ORG]
 		add_shortcode( 'K8_SCHEMA_ORG', array( $this, 'organization') );
+
+		#[K8_SH_COUPON]
+		add_shortcode( 'K8_SH_COUPON', array( $this, 'coupon') );
 	}
 
 	/**
@@ -660,6 +663,24 @@ class K8Short
 		]);
 		return '<script type="application/ld+json">' . $schema . '</script>';
 	}
+
+	#[K8_SH_COUPON]
+	public function coupon( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'design1',
+			'inrow' => 4,
+		), $atts );
+		wp_enqueue_style( 'k8_sh_coupon-css-main' );
+		wp_enqueue_script( 'k8_sh_coupon-js-run' );
+		wp_enqueue_script( 'k8_sh_coupon-js-2' );
+		wp_enqueue_script( 'k8_sh_coupon-js-3' );
+		wp_enqueue_script( 'k8_sh_coupon-js-main' );
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
 }
 
 new K8Short([
