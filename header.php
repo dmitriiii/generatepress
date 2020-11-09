@@ -40,13 +40,6 @@ $apid = get_the_ID();
 	</script>
 	<?php
 
-	// echo '<pre>';
-
-	// $k8_optz_amp_cat = get_field('k8_optz_amp_cat','option');
-	// print_r( $k8_optz_amp_cat );
-	// print_r( has_category( $k8_optz_amp_cat, $apid ) );
-	// echo '</pre>';
-
 	if( is_single() && has_category( get_field('k8_optz_amp_cat','option'), $apid ) && get_field('k8_optz_amp','option') == 1 ) : ?>
 		<link rel="amphtml" href="<?php the_permalink( $apid ); ?>amp/">
 	<?php
