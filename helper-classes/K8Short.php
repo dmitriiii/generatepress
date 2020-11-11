@@ -669,6 +669,8 @@ class K8Short
 		$a = shortcode_atts( array(
 			'output' => 'design1',
 			'inrow' => 4,
+			'category'=>'all',
+			'type'=>'all'
 		), $atts );
 		wp_enqueue_style( 'k8_sh_coupon-css-main' );
 		wp_enqueue_script( 'k8_sh_coupon-js-run' );
