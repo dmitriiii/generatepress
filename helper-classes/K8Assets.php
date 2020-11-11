@@ -38,7 +38,7 @@ class K8Assets
 		wp_register_script( 'k8-libs-lightgallery-js', get_template_directory_uri() . '/k8/assets/js/libs/lightgallery.min.js', array('jquery'), null, false );
 		wp_register_script( 'k8-bootstrap-js', get_template_directory_uri() . '/k8/assets/js/libs/bootstrap.min.js', array('jquery'), null, false );
 		
-
+ 
 		#SHORTCODE's JS & CSS
 		wp_register_script( 'reacher89-countUp-min-js', get_template_directory_uri() . '/k8/assets/js/shortcodes/countUp.min.js', array(), false, true );
 		wp_register_script( 'k8-lib-progressbar-js', get_template_directory_uri() . '/k8/assets/js/libs/progressbar.min.js', array(), false, true );
