@@ -5,27 +5,40 @@
 .contt__control{
   margin-right: 20px;
   cursor: pointer;
-  /* font-size: 14px; */
+  font-size: 14px;
 }
 .contt__control input[type="radio"]{
   margin-right: 6px;
 }
 .contt__control-radio{
-  padding: 5px 10px;
-  background-color: #FFFF00;
-  color: #333;
+  padding: 4px 7px;
+  background-color: #f68000;
+  color: #fff;
   letter-spacing: -0.6px;
-  font-size: 14px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 5px #999;
 }
+.contt__control-perrow{
+  margin-right: 0;
+  position: absolute;
+  right: 0;
+}
+.contt__control-perrow select{
+  width: 60px;
+}
+
 button.contt__control{
   color: #fff;
   background-color: #00b2e2;
   border: none;
-  padding: 8px 15px;
-  font-size: 14px;
+  padding: 5px 10px;
+  font-size: 15px;
+  box-shadow: 0 0 5px #999;
 }
 
-select {
+select{
   background-color: #eee;
   color: #222;
   height: 38px;
@@ -36,6 +49,10 @@ select {
   font-size: 14px;
 }
 
+select.contt__control:focus{
+  background-color: #eee;
+}
+
 .contt{
   max-width: 1200px;
   margin: 50px	auto;
@@ -44,6 +61,10 @@ select {
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding: 15px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
 }
 .gridd{
   display: flex;
@@ -123,15 +144,18 @@ select {
   max-width: 48%;
   width: 100%;
 }
-.gridd__butt-url{
+.gridd__butt.gridd__butt-url{
   background-color: #33cc99;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  letter-spacing: -0.6px;
 }
-.gridd__butt-url:hover{
+.gridd__butt.gridd__butt-url:hover,
+.gridd__butt.gridd__butt-url:visited{
   background-color: rgba(51,204,153,0.72);
+  color: #fff;
 }
 .gridd__butts i{
   margin-left: 5px;
@@ -147,17 +171,29 @@ select {
   display: inline-block;
   width: 85%;
   overflow: hidden;
+  font-weight: bold;
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 992px) {
   .gridd__wrr{
-    max-width: 50%;
+    max-width: 50% !important;
+  }
+  .contt__control-perrow{
+    position: static;
+  }
+  .contt__filterz{
+    justify-content: space-between;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .gridd__wrr{
-    max-width: 100%;
+    max-width: 100% !important;
+  }
+  .contt__control{
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 }

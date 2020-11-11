@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 let coupMng = document.getElementById('coupMng');
 ReactDOM.render(
   <React.StrictMode>
-    <App fUrl={coupMng.dataset.fUrl} inrow={coupMng.dataset.inrow}/>
+    <App fUrl={coupMng.dataset.fUrl} inrow={coupMng.dataset.inrow} category={coupMng.dataset.category} type={coupMng.dataset.type}/>
   </React.StrictMode>,
   coupMng
 );

@@ -6,21 +6,21 @@ class App extends React.Component{
     super(props);
     this.state = {
       isFetched: false,
-      selectedCat: 'all',
-      selectedTyp: 'all',
+      selectedCat: this.props.category,
+      selectedTyp: this.props.type,
       inrow: this.props.inrow
     };
     this.showAll = this.showAll.bind(this);
     this.handleCatChange = this.handleCatChange.bind(this);
     this.handleTypChange = this.handleTypChange.bind(this);
     this.handleSpecoffer = this.handleSpecoffer.bind(this);
+    this.updateInRow = this.updateInRow.bind(this);
   }
 
   componentDidMount(){
     fetch(this.props.fUrl)
       .then(response => response.json())
       .then((jsonData) => {
-        // console.log('fetched!!');
         this.setState({
           isFetched: true,
           fetchedData: jsonData,
@@ -37,7 +37,8 @@ class App extends React.Component{
       return {
         filteredData: state.fetchedData.coup_data,
         selectedCat: 'all',
-        selectedTyp: 'all'
+        selectedTyp: 'all',
+        // inrow: props.inrow
       };
     });    
   }
@@ -66,6 +67,13 @@ class App extends React.Component{
     });
   }
 
+  updateInRow(event) {
+    this.setState(function(state, props) {
+      return {
+        inrow: event.target.value
+      };
+    });
+  }
 
   render() {
     let todoItems = 'Loading..';
@@ -149,9 +157,22 @@ class App extends React.Component{
               Cyber Monday
           </label>
           {this.state.selectedCat !== 'all' || this.state.selectedTyp !== 'all' 
-            ? <button className="contt__control" onClick={this.showAll}>Reset!</button>
+            ? <button className="contt__control" onClick={this.showAll}><i className="fas fa-sync"></i></button>
             : ''
           }
+
+          <label className="contt__control contt__control-perrow">
+            Columns :
+            <select value={this.state.inrow} onChange={this.updateInRow}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+          </label>
+
         </div>
         <div className="gridd">
           {todoItems}
