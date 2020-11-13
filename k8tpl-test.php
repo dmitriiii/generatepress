@@ -461,6 +461,7 @@ if ( isset($_GET['chk_coup']) && $_GET['chk_coup'] == 88 ) {
 		 *
 		 * @link http://codex.wordpress.org/Function_Reference/WP_Query
 		 */
+$impp_vpns = ['nordvpn','vyprvpn','surfshark','ovpn','cyberghost'];
 $args = array(
 	// Type & Status Parameters
 	'post_type'   => 'any',
@@ -546,6 +547,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+			  	
+			  <!-- 	<div class="m5-filter">
+			  		<div class="custom-control custom-radio custom-control-inline">
+						  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+						  <label class="custom-control-label" for="customRadioInline1"></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+						  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+						  <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+						</div>
+			  	</div> -->
+
 			  	<table class="table table-striped">
 					  <thead>
 					    <tr>
@@ -699,7 +712,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  <!-- Coupons pages list -->
 			  <div class="tab-pane fade" id="pills-coup" role="tabpanel" aria-labelledby="pills-coup-tab">
 			  	<h2>
-			  		List of Pages where are used affiliates coupons
+			  		List of Posts and Pages where used affiliate coupons
 			  	</h2>
 			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
 					  <thead>
@@ -715,7 +728,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					  <tbody>
 					  	<?php
 					  	global $wpdb;
-    					$affcoups = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE post_status='publish' AND post_content LIKE '%[affcoups%'", ARRAY_N);
+    					$affcoups = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE (post_type LIKE 'post' OR post_type LIKE 'page') AND post_status='publish' AND post_content LIKE '%[affcoups%'", ARRAY_N);
     					$ii = 1;
     					foreach ($affcoups as $affcoup) :
     						$ppost = get_post( $affcoup[0] ); ?>
