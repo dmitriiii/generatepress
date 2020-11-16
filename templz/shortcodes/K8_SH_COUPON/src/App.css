@@ -8,34 +8,44 @@
   font-size: 14px;
 }
 .contt__control input[type="radio"]{
-  margin-right: 6px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
-.contt__control-radio{
+
+.contt__control input[type="radio"] ~ span{
   padding: 4px 7px;
-  background-color: #f68000;
-  color: #fff;
   letter-spacing: -0.6px;
   font-size: 12px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 5px #999;
+  display: inline-block;
+  background-color: #eee;
+  color: #222;
 }
+.contt__control input[type="radio"]:checked ~ span{
+  background-color: #f68000;
+  color: #fff;
+}
+
 .contt__control-perrow{
   margin-right: 0;
   position: absolute;
   right: 0;
+  bottom: 0;
 }
 .contt__control-perrow select{
-  width: 60px;
+  width: 40px;
+  padding: 0 5px;
+  background: transparent;
+  border-bottom: none;
 }
 
 button.contt__control{
-  color: #fff;
-  background-color: #00b2e2;
+  background-color: transparent;
   border: none;
-  padding: 5px 10px;
-  font-size: 15px;
-  box-shadow: 0 0 5px #999;
+  padding: 0;
+  border-bottom: 1px dashed #000;
 }
 
 select{
@@ -43,7 +53,7 @@ select{
   color: #222;
   height: 38px;
   padding: 0px 20px 0px 10px;
-  width: 220px;
+  width: 150px;
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 14px;
@@ -58,11 +68,11 @@ select.contt__control:focus{
   margin: 50px	auto;
 }
 .contt__filterz{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
-  padding: 15px 0;
+  padding: 15px 60px 10px 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
   position: relative;
 }
@@ -74,7 +84,6 @@ select.contt__control:focus{
   flex-direction: row;
 }
 .gridd__wrr{
-  /* max-width: 25%; */
   padding: 15px 10px;
   width: 100%;
 }
@@ -90,15 +99,15 @@ select.contt__control:focus{
   color: #fff;
   position: relative;
   border-radius: 6px 6px 0 0;
-  padding: 15px;
+  padding: 10px 15px;
   display: flex;
   align-items: flex-end;
 }
 .gridd__head-logo{
   margin-right: 15px;
   align-self: center;
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 80px;
+  max-width: 80px;
 }
 .gridd__head-until{
   font-size: 13px;
@@ -129,6 +138,7 @@ select.contt__control:focus{
 .gridd__body h3{
   margin: 0;
   color: #428bca;
+  font-size: 18px;
 }
 .gridd__butts{
   margin-top: auto;
@@ -184,6 +194,9 @@ select.contt__control:focus{
   }
   .contt__filterz{
     justify-content: space-between;
+  }
+  .contt__filterz{
+    padding-right: 0;
   }
 }
 

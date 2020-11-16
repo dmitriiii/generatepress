@@ -8,7 +8,7 @@ class App extends React.Component{
       isFetched: false,
       selectedCat: this.props.category,
       selectedTyp: this.props.type,
-      inrow: this.props.inrow
+      inrow: this.props.inrow,
     };
     this.showAll = this.showAll.bind(this);
     this.handleCatChange = this.handleCatChange.bind(this);
@@ -38,7 +38,6 @@ class App extends React.Component{
         filteredData: state.fetchedData.coup_data,
         selectedCat: 'all',
         selectedTyp: 'all',
-        // inrow: props.inrow
       };
     });    
   }
@@ -131,6 +130,7 @@ class App extends React.Component{
 
     return (
       <div className="contt">
+        {this.props.filters === 'yes' &&
         <div className="contt__filterz"> 
           <select className="contt__control" value={this.state.selectedCat} onChange={this.handleCatChange}>
             {selCat}
@@ -138,31 +138,39 @@ class App extends React.Component{
           <select className="contt__control" value={this.state.selectedTyp} onChange={this.handleTypChange}>
             {selTyp}
           </select>
-          <label className="contt__control contt__control-radio">
-            <input
-              name="specoffer"
-              type="radio"
-              value="blackfriday"
-              checked={this.state.selectedTyp === 'blackfriday' ? true : false}
-              onChange={this.handleSpecoffer} />
-              Black Friday
-          </label>
-          <label className="contt__control contt__control-radio">
-            <input
-              name="specoffer"
-              type="radio"
-              value="cybermonday"
-              checked={this.state.selectedTyp === 'cybermonday' ? true : false}
-              onChange={this.handleSpecoffer} />
-              Cyber Monday
-          </label>
+          <div>
+            <label className="contt__control contt__control-radio">
+              <input
+                type="radio"
+                value="blackfriday"
+                checked={this.state.selectedTyp === 'blackfriday' ? true : false}
+                onChange={this.handleSpecoffer} />
+                <span>Black Friday</span>
+            </label>
+            <label className="contt__control contt__control-radio">
+              <input
+                type="radio"
+                value="cybermonday"
+                checked={this.state.selectedTyp === 'cybermonday' ? true : false}
+                onChange={this.handleSpecoffer} />
+                <span>Cyber Monday</span>
+            </label>
+            <label className="contt__control contt__control-radio">
+              <input
+                type="radio"
+                value="x-mas"
+                checked={this.state.selectedTyp === 'x-mas' ? true : false}
+                onChange={this.handleSpecoffer} />
+                <span>X-mas</span>
+            </label>
+          </div>
+          <span className="contt__control"><i className="fas fa-tags"></i>{todoItems.length}</span>
           {this.state.selectedCat !== 'all' || this.state.selectedTyp !== 'all' 
-            ? <button className="contt__control" onClick={this.showAll}><i className="fas fa-sync"></i></button>
+            ? <button className="contt__control" onClick={this.showAll}>Reset <i className="fas fa-backspace"></i></button>
             : ''
           }
-
           <label className="contt__control contt__control-perrow">
-            Columns :
+            <i className="fas fa-columns"></i> :
             <select value={this.state.inrow} onChange={this.updateInRow}>
               <option>1</option>
               <option>2</option>
@@ -172,8 +180,8 @@ class App extends React.Component{
               <option>6</option>
             </select>
           </label>
-
         </div>
+        }
         <div className="gridd">
           {todoItems}
         </div>
