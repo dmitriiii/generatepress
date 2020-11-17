@@ -45,7 +45,8 @@ button.contt__control{
   background-color: transparent;
   border: none;
   padding: 0;
-  border-bottom: 1px dashed #000;
+  border-bottom: 1px dashed #666;
+  color: #666;
 }
 
 select{
