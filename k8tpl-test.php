@@ -46,7 +46,7 @@ function smTewdedw( $ppost ){
 	}
 	.m5-colr-dng{
 		color: #fff;
-		background-color: #dc3545;
+		background-color: #dc3545 !important;
 	}
 	.m5-colr-dng a{
 		color: #fff;
@@ -182,7 +182,7 @@ if ( isset($_GET['chk_aff']) && $_GET['chk_aff'] == 88 ) {
 			$aff_url = get_post_meta( $aff_link_id, 'eafl_url', true);
 
 			// print_r( $aff_link_id );
-			print_r( $aff_url ); 
+			print_r( $aff_url );
 			echo '</pre>';
 			echo "<p>" . get_the_title($pid) . "<br>" . get_the_permalink($pid) . "</p><hr/>";
 		endwhile;
@@ -523,9 +523,9 @@ endif;?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			
-		
-<?php 
+
+
+<?php
 if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 
 			<ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist" style="margin-left: 0;">
@@ -539,7 +539,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			    <a class="nav-link" id="pills-aff-tab" data-toggle="pill" href="#pills-aff" role="tab" aria-controls="pills-aff" aria-selected="false">Affiliate Links Checker</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="pills-coup-tab" data-toggle="pill" href="#pills-coup" role="tab" aria-controls="pills-coup" aria-selected="false">Affiliate Coupons Pages List</a>
+			    <a class="nav-link" id="pills-outdated-tab" data-toggle="pill" href="#pills-outdated" role="tab" aria-controls="pills-outdated" aria-selected="false">Outdated Coupons</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-coup-tab" data-toggle="pill" href="#pills-coup" role="tab" aria-controls="pills-coup" aria-selected="false">[affcoups] Pages List</a>
 			  </li>
 			  <li class="nav-item">
 			    <a class="nav-link" id="pills-sync-tab" data-toggle="pill" href="#pills-sync" role="tab" aria-controls="pills-coup" aria-selected="false">Bulk Sync</a>
@@ -547,7 +550,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-			  	
+
 			  <!-- 	<div class="m5-filter">
 			  		<div class="custom-control custom-radio custom-control-inline">
 						  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
@@ -575,7 +578,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					    <?php
 					    $i=1;
 					    foreach ($popz as $pop): ?>
-					    	<tr> 
+					    	<tr>
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $pop['id']; ?></td>
 						      <td><u><strong><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></strong></td>
@@ -583,7 +586,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      	<?php
 						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
 						      		foreach ($pop['popz_ids'] as $popz_id) :
-						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id); 
+						      			$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $popz_id);
 						      			$m5_acf_pop_url = get_field('m5_acf_pop_url', $popz_id);?>
 						      			<p class="<?= ( strtotime($noww) > strtotime($m5_acf_pop_date_to) ) ? 'm5-colr-dng' : ''; ?> p-2">
 						      				<em>
@@ -676,7 +679,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					  </thead>
 					  <tbody>
 					    <?php
-
 					    $args = array(
 								'post_type'   => 'easy_affiliate_link',
 								'post_status' => 'any',
@@ -709,11 +711,61 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  </div> <!-- #pills-aff -->
 
 
+			   <!-- Outdated Aff Coupons -->
+			  <div class="tab-pane fade" id="pills-outdated" role="tabpanel" aria-labelledby="pills-outdated-tab">
+			  	<h3>
+			  		List of Affiliate Coupons ( outdated are highlighted )
+			  	</h3>
+			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+					  <thead>
+					    <tr>
+					      <th scope="col" style="width: 60px;">#</th>
+					      <th scope="col">Coupon</th>
+					      <th scope="col">Valid until</th>
+					      <th scope="col" style="width:110px;">Edit Coupon</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<?php
+					    $args = array(
+								'post_type'   => 'affcoups_coupon',
+								'post_status' => 'any',
+								'posts_per_page' => -1,
+								'orderby'       => 'date',
+								'order'         => 'DESC',
+							);
+
+							$the_query = new WP_Query( $args );
+							 if ( $the_query->have_posts() ) :
+							 	$i=1;
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+									$pid = get_the_ID();
+									$untill = get_post_meta($pid,'affcoups_coupon_valid_until',true); ?>
+									<tr class="<?php echo( $untill < time() ) ? 'm5-colr-dng' : ''; ?>">
+							      <td data-pid="<?= $pid; ?>" data-counter="<?= $i;?>"><?= $i; ?></td>
+							      <td><strong><?= get_the_title($pid); ?></strong></td>
+							      <td data-link>
+							      	<?php echo date('Y-m-d', $untill);?>
+							      </td>
+							      <td data-status>
+							      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $id );?>" target="_blank">Edit</a>
+							      </td>
+							    </tr>
+								<?php
+					    	$i++;
+								endwhile;
+								wp_reset_postdata();
+							endif;?>
+					  </tbody>
+					</table>
+			  </div> <!-- #pills-aff -->
+
+
 			  <!-- Coupons pages list -->
 			  <div class="tab-pane fade" id="pills-coup" role="tabpanel" aria-labelledby="pills-coup-tab">
-			  	<h2>
-			  		List of Posts and Pages where used affiliate coupons
-			  	</h2>
+			  	<h3>
+			  		List of Posts and Pages where used [affcoups] shortcode (affiliate coupons)
+			  	</h3>
 			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
 					  <thead>
 					    <tr>
@@ -721,8 +773,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      <th scope="col">Page/Post</th>
 					      <th scope="col">Coupons Shortcode</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
-					     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
-					      <th scope="col">Real redirect</th> -->
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -739,16 +789,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      <td>
 						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $affcoup[0] );?>" target="_blank">Edit</a>
 						      </td>
-						     <!--  <th scope="col">Expected Redirect To Affiliate's website</th>
-						      <th scope="col">Real redirect</th> -->
 						    </tr>
     					<?php
     					$ii++;
-    					endforeach;
-    					// echo '<pre>';
-    					// print_r($affcoups);
-    					// echo '</pre>';
-    					?>
+    					endforeach;?>
 					  </tbody>
 					</table>
 			  </div> <!-- #pills-aff -->
@@ -761,7 +805,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	</h5>
 			  	<p>
 			  		<a class="btn btn-success colr-wh" target="_blank" rel="nofollow" href="http://6.web-hero.xyz/sync/anbieter/cron.php">Sync now!</a>
-			  		<!-- <button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button> -->
 			  	</p>
 			  </div> <!-- #pills-aff -->
 
@@ -769,7 +812,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			</div>
 
 
- 
+
 	<?php
 
 	// echo '<pre>';
@@ -791,7 +834,7 @@ endwhile; ?>
 	</div>
 </div><!-- .container-fluid -->
 
-<?php 
+<?php
 // $cust_fields = array(
 // 	'k8_acf_vpndet_conn',
 // 	'k8_acf_vpndet_curr',
