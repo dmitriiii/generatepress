@@ -12,10 +12,10 @@ wp_enqueue_script('k8-bootstrap-js');
 
 
 
-function smTewdedw( $ppost ){
+function smTewdedw( $ppost, $shrt='affcoups' ){
 	$result = '';
 	//get shortcode regex pattern wordpress function
-	$pattern = get_shortcode_regex(['affcoups']);
+	$pattern = get_shortcode_regex([$shrt]);
 	if (  preg_match_all( '/'. $pattern .'/s', $ppost->post_content, $matches ) ){
 	 $result = implode( '<br/>', $matches[0] );
 	}
@@ -545,6 +545,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			    <a class="nav-link" id="pills-coup-tab" data-toggle="pill" href="#pills-coup" role="tab" aria-controls="pills-coup" aria-selected="false">[affcoups] Pages List</a>
 			  </li>
 			  <li class="nav-item">
+			    <a class="nav-link" id="pills-k8_sh_coup-tab" data-toggle="pill" href="#pills-k8_sh_coup" role="tab" aria-controls="pills-k8_sh_coup" aria-selected="false">[K8_SH_COUPON] Pages List</a>
+			  </li>
+			  <li class="nav-item">
 			    <a class="nav-link" id="pills-sync-tab" data-toggle="pill" href="#pills-sync" role="tab" aria-controls="pills-coup" aria-selected="false">Bulk Sync</a>
 			  </li>
 			</ul>
@@ -786,6 +789,43 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      <td scope="col"><?= $ii; ?></td>
 						      <td scope="col"><strong><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></strong></td>
 						      <td scope="col"><?= smTewdedw( $ppost );?></td>
+						      <td>
+						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $affcoup[0] );?>" target="_blank">Edit</a>
+						      </td>
+						    </tr>
+    					<?php
+    					$ii++;
+    					endforeach;?>
+					  </tbody>
+					</table>
+			  </div> <!-- #pills-aff -->
+
+
+			  <!-- K8_SH_COUPON  pages list -->
+			  <div class="tab-pane fade" id="pills-k8_sh_coup" role="tabpanel" aria-labelledby="pills-k8_sh_coup-tab">
+			  	<h3>
+			  		List of Posts and Pages where used [K8_SH_COUPON] shortcode (affiliate coupons)
+			  	</h3>
+			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+					  <thead>
+					    <tr>
+					      <th scope="col" style="width: 60px;">#</th>
+					      <th scope="col">Page/Post</th>
+					      <th scope="col">Coupons Shortcode</th>
+					      <th scope="col" style="width:110px;">Edit Page</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<?php
+					  	global $wpdb;
+    					$affcoups = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE (post_type LIKE 'post' OR post_type LIKE 'page') AND post_status='publish' AND post_content LIKE '%[K8_SH_COUPON%'", ARRAY_N);
+    					$ii = 1;
+    					foreach ($affcoups as $affcoup) :
+    						$ppost = get_post( $affcoup[0] ); ?>
+    						<tr>
+						      <td scope="col"><?= $ii; ?></td>
+						      <td scope="col"><strong><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $affcoup[0] );?>"><?= get_the_title( $affcoup[0] ); ?></a></u></strong></td>
+						      <td scope="col"><?= smTewdedw( $ppost, 'K8_SH_COUPON' );?></td>
 						      <td>
 						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $affcoup[0] );?>" target="_blank">Edit</a>
 						      </td>
