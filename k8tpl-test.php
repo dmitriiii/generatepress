@@ -548,6 +548,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			    <a class="nav-link" id="pills-k8_sh_coup-tab" data-toggle="pill" href="#pills-k8_sh_coup" role="tab" aria-controls="pills-k8_sh_coup" aria-selected="false">[K8_SH_COUPON] Pages List</a>
 			  </li>
 			  <li class="nav-item">
+			    <a class="nav-link" id="pills-supsystic-tab" data-toggle="pill" href="#pills-supsystic" role="tab" aria-controls="pills-supsystic" aria-selected="false">[supsystic-*] Supsystic Tables</a>
+			  </li>
+			  <li class="nav-item">
 			    <a class="nav-link" id="pills-sync-tab" data-toggle="pill" href="#pills-sync" role="tab" aria-controls="pills-coup" aria-selected="false">Bulk Sync</a>
 			  </li>
 			</ul>
@@ -835,6 +838,42 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
     					endforeach;?>
 					  </tbody>
 					</table>
+			  </div> <!-- #pills-aff -->
+
+			  <!-- supsystic tables pages list -->
+			  <div class="tab-pane fade" id="pills-supsystic" role="tabpanel" aria-labelledby="pills-supsystic-tab">
+			  	<h3>
+			  		List of Posts and Pages where used [supsystic-tables] shortcode
+			  	</h3>
+			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+					  <thead>
+					    <tr>
+					      <th scope="col" style="width: 60px;">#</th>
+					      <th scope="col">Page/Post</th>
+					      <th scope="col">Supsystic-Tables Shortcode</th>
+					      <th scope="col" style="width:110px;">Edit Page</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<?php
+					  	global $wpdb;
+    					$suptables = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE (post_type LIKE 'post' OR post_type LIKE 'page') AND post_status='publish' AND post_content LIKE '%[supsystic-tables%'", ARRAY_N);
+    					$ii = 1;
+    					foreach ($suptables as $suptable) :
+    						$ppost = get_post( $suptable[0] ); ?>
+    						<tr>
+						      <td scope="col"><?= $ii; ?></td>
+						      <td scope="col"><strong><u><a target="_blank" rel="nofollow" href="<?= get_the_permalink( $suptable[0] );?>"><?= get_the_title( $suptable[0] ); ?></a></u></strong></td>
+						      <td scope="col"><?= smTewdedw( $ppost, 'supsystic-tables' );?></td>
+						      <td>
+						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $suptable[0] );?>" target="_blank">Edit</a>
+						      </td>
+						    </tr>
+    					<?php
+    					$ii++;
+    					endforeach;?>
+					  </tbody>
+				</table>
 			  </div> <!-- #pills-aff -->
 
 
