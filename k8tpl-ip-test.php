@@ -9,6 +9,7 @@ get_header();?>
 		<main id="main" <?php generate_do_element_classes( 'main' ); ?>>
 			<?php
 			/**
+			 * 
 			 * generate_before_main_content hook.
 			 *
 			 * @since 0.1
