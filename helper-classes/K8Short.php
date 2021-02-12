@@ -132,6 +132,9 @@ class K8Short
 
 		#[K8_SH_COUPON]
 		add_shortcode( 'K8_SH_COUPON', array( $this, 'coupon') );
+
+		#[K8_SH_ACCOUNT]
+		add_shortcode( 'K8_SH_ACCOUNT', array( $this, 'account') );
 	}
 
 	/**
@@ -678,6 +681,27 @@ class K8Short
 		wp_enqueue_script( 'k8_sh_coupon-js-2' );
 		wp_enqueue_script( 'k8_sh_coupon-js-3' );
 		wp_enqueue_script( 'k8_sh_coupon-js-main' );
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	#[K8_SH_ACCOUNT]
+	public function account( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'design1',
+			// 'inrow' => 4,
+			// 'category'=>'all',
+			// 'type'=>'all',
+			// 'filters'=>'yes'
+		), $atts );
+		wp_enqueue_style( 'k8_sh_account-css-main' );
+		wp_enqueue_script( 'k8_sh_account-js-run' );
+		wp_enqueue_script( 'k8_sh_account-js-2' );
+		wp_enqueue_script( 'k8_sh_account-js-3' );
+		wp_enqueue_script( 'k8_sh_account-js-main' );
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
