@@ -461,7 +461,7 @@ if ( isset($_GET['chk_coup']) && $_GET['chk_coup'] == 88 ) {
 		 *
 		 * @link http://codex.wordpress.org/Function_Reference/WP_Query
 		 */
-$impp_vpns = ['nordvpn','vyprvpn','surfshark','ovpn','cyberghost'];
+// $impp_vpns = ['nordvpn','vyprvpn','surfshark','ovpn','cyberghost'];
 $args = array(
 	// Type & Status Parameters
 	'post_type'   => 'any',
@@ -568,12 +568,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						</div>
 			  	</div> -->
 
-			  	<table class="table table-striped">
+			  	<table class="table table-striped table-hover table-responsive table-sm">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
+					      <th scope="col">Page URL</th>
 					      <th scope="col" style="width: 300px;">Affiliate Link</th>
 								<th scope="col">Affiliate's Url</th>
 					      <th scope="col">Type</th>
@@ -588,6 +589,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      <th scope="row"><?php echo $i; ?></th>
 						      <td><?= $pop['id']; ?></td>
 						      <td><u><strong><a rel="noreferer nofollow noopener" target="_blank" href="<?= $pop['url']; ?>"><?= $pop['title']; ?></u></a></strong></td>
+						      <td><span><?= $pop['url']; ?></span></td>
 						      <td>
 						      	<?php
 						      	if (is_array($pop['popz_ids']) && count($pop['popz_ids']) > 0):
