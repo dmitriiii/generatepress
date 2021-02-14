@@ -1,6 +1,15 @@
 <? $c_post = get_post($atts['id']);
 $cnt = $c_post->post_content;
 $m5_acf_pop_url = get_field('m5_acf_pop_url',$atts['id']);
+$m5_acf_pop_date_to = get_field('m5_acf_pop_date_to', $atts['id']);
+$noww = date("Y-m-d");
+
+if( $noww >= $m5_acf_pop_date_to ){
+	$date = DateTime::createFromFormat('Y-m-d', $noww);
+	$date->modify('+1 day');
+	$m5_acf_pop_date_to = $date->format('Y-m-d');
+}
+
 global $wp;?>
 <div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>">
 	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>" rel="nofollow" target="_blank" class="pupop__link">&nbsp;</a>
@@ -17,7 +26,7 @@ global $wp;?>
 			<div class="pupop__content">
 				<p><?= $cnt; ?></p>
 				<div class="timer" data-date="<?
-					$date = new DateTime( get_field('m5_acf_pop_date_to', $atts['id']) );
+					$date = new DateTime( $m5_acf_pop_date_to );
 					$date->setTime(14, 55, 24);
 					echo $date->format('Y-m-d H:i:s');
 				?>">
