@@ -286,44 +286,48 @@ function m5_hook_cron_aff_fun(){
 }
 
 #Add aff_sub4 on the fly to Affiliate urls
-// function m5_eafl_redirect_callback( $link ) {
-// 	if( strpos($_SERVER['REQUEST_URI'], 'surfshark') === FALSE &&
-// 			strpos($_SERVER['REQUEST_URI'], 'nordvpn') === FALSE &&
-// 			strpos($_SERVER['REQUEST_URI'], 'vyprvpn') === FALSE &&
-// 			strpos($_SERVER['REQUEST_URI'], 'protonvpn') === FALSE )
-// 		return ;
-	
-// 	if ( !isset($_SERVER['HTTP_REFERER']) )
-// 		return ;
+function m5_eafl_redirect_callback( $link ) {
+	if( strpos($_SERVER['REQUEST_URI'], 'surfshark') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'nordvpn') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'vyprvpn') === FALSE &&
+			strpos($_SERVER['REQUEST_URI'], 'protonvpn') === FALSE )
+		return ;
 
-// 	$url = $link->url();
-// 	$url = str_replace( '@', '%40', $url );
+	if ( isset($_SERVER['HTTP_REFERER']) ){
+		$http_referer = $_SERVER['HTTP_REFERER'];
+	}
+	else{
+		$http_referer = $_SERVER['REQUEST_URI'];
+	}
 
-// 	// Try to prevent click register issues from breaking redirect.
-// 	try {
-// 		@EAFL_Clicks::register( $link );
-// 	} catch( Exception $e ) {}
+	$url = $link->url();
+	$url = str_replace( '@', '%40', $url );
 
-// 	$redirect_type = $link->redirect_type();
-// 	if ( ! in_array( intval( $redirect_type ), array( 301, 302, 307 ) ) ) {
-// 		$redirect_type = EAFL_Settings::get( 'default_redirect_type' );
-// 	}
-// 	// Noindex the redirect page.
-// 	header( 'X-Robots-Tag: noindex' );
-// 	$eafl_url_arr = explode('&', $url);
-// 	foreach ($eafl_url_arr as $key => $url_part) {
-// 		#remove aff4 attribute if presents
-// 		if (strpos($url_part, 'aff_sub4') !== false)
-// 			unset( $eafl_url_arr[$key] );
-// 		#replace popup with pop_random number
-// 		if(strpos($url_part, 'popup') !== false)
-// 			$eafl_url_arr[$key] = str_replace('popup', 'pop_' . rand(10,100), $eafl_url_arr[$key]);
-// 	}
-// 	$eafl_url_arr[] = 'aff_sub4='.urlencode($_SERVER['HTTP_REFERER']);
-// 	wp_redirect( implode('&', $eafl_url_arr), intval( $redirect_type ) );
-// 	exit();
-// }
-// add_action( 'eafl_redirect', 'm5_eafl_redirect_callback', 10, 2 );
+	// Try to prevent click register issues from breaking redirect.
+	try {
+		@EAFL_Clicks::register( $link );
+	} catch( Exception $e ) {}
+
+	$redirect_type = $link->redirect_type();
+	if ( ! in_array( intval( $redirect_type ), array( 301, 302, 307 ) ) ) {
+		$redirect_type = EAFL_Settings::get( 'default_redirect_type' );
+	}
+	// Noindex the redirect page.
+	header( 'X-Robots-Tag: noindex' );
+	$eafl_url_arr = explode('&', $url);
+	foreach ($eafl_url_arr as $key => $url_part) {
+		#remove aff4 attribute if presents
+		if (strpos($url_part, 'aff_sub4') !== false)
+			unset( $eafl_url_arr[$key] );
+		#replace popup with pop_random number
+		// if(strpos($url_part, 'popup') !== false)
+		// 	$eafl_url_arr[$key] = str_replace('popup', 'auftauchen_' . rand(10,100), $eafl_url_arr[$key]);
+	}
+	$eafl_url_arr[] = 'aff_sub4='.urlencode($http_referer);
+	wp_redirect( implode('&', $eafl_url_arr), intval( $redirect_type ) );
+	exit();
+}
+add_action( 'eafl_redirect', 'm5_eafl_redirect_callback', 10, 2 );
 
 
 #filter to add iframes to content
