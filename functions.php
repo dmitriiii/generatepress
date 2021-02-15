@@ -293,7 +293,7 @@ function m5_eafl_redirect_callback( $link ) {
 			strpos($_SERVER['REQUEST_URI'], 'protonvpn') === FALSE )
 		return ;
 
-	if ( isset($_SERVER['HTTP_REFERER']) ){
+	if ( isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== '' ){
 		$http_referer = $_SERVER['HTTP_REFERER'];
 	}
 	else{
