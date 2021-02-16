@@ -75,6 +75,7 @@ class K8Acf
 							8 => '8',
 							9 => '9',
 							10 => '10',
+							30 => '30',
 							0 => __( 'unlimitiert', 'k8lang_domain' ),
 						),
 						'allow_null' => 0,
