@@ -7,8 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'test@mail.com',
-      pass: '12345m',
+      email: '',
+      pass: '',
       chosen: 'email',
       error: false,
       accounts: [],
@@ -71,7 +71,7 @@ class App extends React.Component {
     };
     
     Axios.post( 
-      'http://api.pro24web.site/api/account',
+      'https://api.pro24web.site/api/account',
       bodyParameters,
       config
     ).then(function(res){
@@ -114,8 +114,8 @@ class App extends React.Component {
     }
 
     input_field = ( (chosen === 'email') ? 
-      <input type='email' name='email' onChange={this.handleChange} value={this.state.email}/> : 
-      <input type='text' name='pass' onChange={this.handleChange} value={this.state.pass}/>
+      <input type='email' name='email' placeholder='test@mail.com' onChange={this.handleChange} value={this.state.email}/> : 
+      <input type='text' name='pass' placeholder='12345' onChange={this.handleChange} value={this.state.pass}/>
     );
     
     return (
