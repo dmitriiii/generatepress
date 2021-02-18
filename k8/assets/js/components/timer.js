@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
   $(".timer").each(function (i, el) {
-    var expDate = new Date(el.dataset.date);
+    var expDate = new Date(el.dataset.date.replace(/-/g, "/"));
     var timer = setInterval(function () {
       timeBetweenDates(expDate);
     }, 1000);

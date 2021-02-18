@@ -5,6 +5,7 @@ jQuery(document).ready(function($) {
   let cSpe = parseInt(Cookie.get("_sale_modal"))
   let dSpe = parseInt(pupop.dataset.times)
   let spe = (isNaN(cSpe) ? 1 : cSpe) || dSpe || 1;
+
   Cookie.set("_sale_modal", --spe, {
     samesite: "strict",
     "max-age": secToTomorrow(),
@@ -14,7 +15,8 @@ jQuery(document).ready(function($) {
   function isNotExpTimer() {
     let timerEl = pupop.querySelector('.timer')
     if (!timerEl) return true;
-    return (new Date(timerEl.dataset.date)).getTime() - Date.now() > 0 ? true : false;
+    let currentDate = new Date(timerEl.dataset.date.replace(/-/g, "/"));
+    return currentDate.getTime() - Date.now() > 0 ? true : false;
   }
   function secToTomorrow() {
     let now = new Date();
