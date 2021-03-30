@@ -13,7 +13,7 @@ if( $noww >= $m5_acf_pop_date_to ){
 global $wp;?>
 <div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>">
 	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>" rel="nofollow" target="_blank" class="pupop__link">&nbsp;</a>
-	<section id="sales" class="pupop pupop--white" data-delay="<?= get_field('m5_acf_pop_delay', $atts['id']); ?>" data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
+	<section id="sales" class="pupop pupop--white" data-delay="10000" data-times="<?= get_field('m5_acf_pop_times', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'pupop__bg'] ); ?>
 		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>" target="_blank" rel="nofollow">
 			<i class="fas fa-times"></i>
