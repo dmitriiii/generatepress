@@ -1,7 +1,7 @@
 
 
-// if (typeof checkMobile == 'function') { 
-//   // checkMobile(); 
+// if (typeof checkMobile == 'function') {
+//   // checkMobile();
 //   console.log(checkMobile( true ));
 // }
 
@@ -28,6 +28,13 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
   }
   //full page's popup behavior
   var type = $curr.closest('.pupop-wrapper').attr('data-type');
+
+  //Usual popup's behavior
+  if( type === 'usual' ){
+    return;
+  }
+
+  //full popup trick behavior
   if( type === 'full' ){
     var oldWin = window;
     var newWin = oldWin.open( currentUrl, "_blank" );
