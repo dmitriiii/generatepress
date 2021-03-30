@@ -1821,6 +1821,7 @@ class K8Acf
 						'choices' => array(
 							'small' => 'Affiliate\'s website opens in new small browser\'s tab, then it dissapears after a while',
 							'full' => 'Affiliate\'s website opens in the same browser\'s tab and in new tab opens the same page',
+							'usual' => 'Typical popup, which appears without any tricks',
 						),
 						'allow_null' => 0,
 						'other_choice' => 0,
