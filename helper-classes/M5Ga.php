@@ -9,14 +9,14 @@ class M5Ga
 			return;
 
 		the_field('m5_opt_ga_tr', 'option');
-		$m5_opt_ga_aff = get_field('m5_opt_ga_aff', 'option');
+		// $m5_opt_ga_aff = get_field('m5_opt_ga_aff', 'option');
 
-		if( !is_array($m5_opt_ga_aff) )
-			return '<p>Provide Affiliate Links</p>';
-		if( count($m5_opt_ga_aff) == 0 )
-			return '<p>Provide valid Affiliate Links</p>';
+		// if( !is_array($m5_opt_ga_aff) )
+		// 	return '<p>Provide Affiliate Links</p>';
+		// if( count($m5_opt_ga_aff) == 0 )
+		// 	return '<p>Provide valid Affiliate Links</p>';
 
-		ob_start();
+		// ob_start();
 		/*$affArr=[];
 		foreach ($m5_opt_ga_aff as $item) {
 			$affArr[] = substr($item['aff_link'], strpos($item['aff_link'], "/link/"));
@@ -46,6 +46,6 @@ class M5Ga
 			});
 		</script>
 		*/
-  	return ob_get_clean();
+  	// return ob_get_clean();
 	}
 }
