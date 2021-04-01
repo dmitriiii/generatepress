@@ -14,7 +14,7 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
   // }, 9000);
   // Small popup function
   function manipulateSmallPopup(redirect){
-    var win2=window.open(redirect,"_blank","width=100,height=100,left=0,top=200,menubar=no,status=no",false);
+    var win2=window.open(redirect,"_blank","width=300,height=400,left=0,top=200,menubar=no,status=no",false);
     win2.blur();
     window.focus();
     setTimeout(function(){
