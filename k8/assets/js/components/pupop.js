@@ -21,18 +21,20 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
       win2.close();
     }, 9000);
   }
+
+  var type = $curr.closest('.pupop-wrapper').attr('data-type');
+
+   //Usual popup's behavior
+  if( type === 'usual' ){
+    return;
+  }
+
   //Check if mobile device or tablet similar behavior to all
   if( checkMobile(true) ){
     manipulateSmallPopup(redirect);
     return;
   }
-  //full page's popup behavior
-  var type = $curr.closest('.pupop-wrapper').attr('data-type');
 
-  //Usual popup's behavior
-  if( type === 'usual' ){
-    return;
-  }
 
   //full popup trick behavior
   if( type === 'full' ){
