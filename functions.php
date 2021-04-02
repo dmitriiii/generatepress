@@ -278,8 +278,8 @@ function m5_hook_cron_aff_fun(){
 
 			foreach ($eafl_url_arr as $key => $url_part) {
 				#if && signs in url - remove
-				if($url_part == '')
-					unset( $eafl_url_arr[$key] );
+				// if($url_part == '')
+				// 	unset( $eafl_url_arr[$key] );
 
 				#if contains sub3 - remove
 				if (strpos($url_part, 'aff_sub3') !== false)
