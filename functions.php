@@ -275,9 +275,24 @@ function m5_hook_cron_aff_fun(){
 		foreach ($rezz as $rez) :
 			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
 			$eafl_url_arr = explode('&', $eafl_url);
+
 			foreach ($eafl_url_arr as $key => $url_part) {
+				#if && signs in url - remove
+				if($url_part == '')
+					unset( $eafl_url_arr[$key] );
+
+				#if contains sub3 - remove
 				if (strpos($url_part, 'aff_sub3') !== false)
 					unset( $eafl_url_arr[$key] );
+
+				#replace frame to mars
+				if (strpos($url_part, 'frame') !== false)
+					$eafl_url_arr[$key] = str_replace( 'frame', 'mars', $url_part );
+
+				#replace popup to apollo
+				if (strpos($url_part, 'popup') !== false)
+					$eafl_url_arr[$key] = str_replace( 'popup', 'apollo', $url_part );
+
 			}
 			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
 			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );

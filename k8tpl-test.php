@@ -71,6 +71,43 @@ if ( isset($_GET['create_tax']) && $_GET['create_tax'] == 777 ) {
 	echo '</pre>';
 }
 
+#dinalically change aff links
+if( isset($_GET['repl_frame']) && $_GET['repl_frame'] == 777 ){
+
+	global $wpdb;
+	$rezz =	$wpdb->get_results( "SELECT * FROM {$wpdb->prefix}posts WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%' OR
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%protonvpn%'" );
+	if( is_array($rezz) && count($rezz)>0 ):
+		foreach ($rezz as $rez) :
+			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
+			$eafl_url_arr = explode('&', $eafl_url);
+
+			foreach ($eafl_url_arr as $key => $url_part) {
+				#if && signs in url - remove
+				if($url_part == '')
+					unset( $eafl_url_arr[$key] );
+
+				#if contains sub3 - remove
+				if (strpos($url_part, 'aff_sub3') !== false)
+					unset( $eafl_url_arr[$key] );
+
+				#replace frame to mars
+				if (strpos($url_part, 'frame') !== false)
+					$eafl_url_arr[$key] = str_replace( 'frame', 'mars', $url_part );
+
+				#replace popup to apollo
+				if (strpos($url_part, 'popup') !== false)
+					$eafl_url_arr[$key] = str_replace( 'popup', 'apollo', $url_part );
+
+			}
+			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
+			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );
+		endforeach;
+	endif;
+
+}
 
 // echo '<pre>';
 // print_r($_SERVER);
