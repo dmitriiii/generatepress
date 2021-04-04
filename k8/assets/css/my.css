@@ -1159,7 +1159,8 @@
 .pt-cv-ifield .pt-cv-href-thumbnail.pt-cv-thumb-default{
 	width: 100%;
 	float: none;
-	text-align: center; 
+	text-align: center;
+	padding: 15px 10px;
 }
 
 .pt-cv-ifield .pt-cv-colwrap{
@@ -1177,9 +1178,16 @@
 }
 
 
-@media (max-width: 480px){
-	.pt-cv-wrapper .col-xs-6{
+@media (max-width: 768px){
+	/* .pt-cv-wrapper .col-xs-6{
 		width: 100%;
+	} */
+	.pt-cv-page {
+    display: flex;
+    overflow-x: scroll;
+	}
+	.pt-cv-wrapper div[class^="col"]{
+		width: 80%;
 	}
 }
 
