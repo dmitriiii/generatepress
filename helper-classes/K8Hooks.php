@@ -37,6 +37,8 @@ class K8Hooks
 			add_action( 'template_redirect', array( $this, 'redirect_to_home_page' ) );
 		}
 
+		#Custom image sizes
+		add_action( 'after_setup_theme', array($this, 'theme_setup') );
 
 	}
 	public function upload_mimes( $mimes ){
@@ -194,6 +196,11 @@ class K8Hooks
 	   wp_redirect( home_url(), 301 );
 	    exit;
 	  }
+	}
+
+	public function theme_setup() {
+	  // add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
+	  add_image_size( 'pt_view_100x100', 100, 100, true ); // (cropped)
 	}
 
 }
