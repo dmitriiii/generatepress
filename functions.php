@@ -378,3 +378,116 @@ function m5_hook_cron_aff_fun(){
 // 		autoptimizeCache::clearall();
 // 	}
 // }
+// 
+// 
+
+
+
+if(!class_exists('TopRatedListWidget')) {
+
+  class TopRatedListWidget extends WP_Widget {
+
+    /**
+    * Sets up the widgets name etc
+    */
+    public function __construct() {
+      $widget_ops = array(
+        'classname' => 'm5top-wdg',
+        'description' => 'Top Rated list widget',
+      );
+      parent::__construct( 'm5top-wdg', 'Top Rated list widget', $widget_ops );
+    }
+
+    /**
+    * Outputs the content of the widget
+    *
+    * @param array $args
+    * @param array $instance
+    */
+    public function widget( $args, $instance ) {
+    	 wp_enqueue_style('m5top-wdg-css',  get_template_directory_uri() . '/k8/assets/css/widgets/m5top-wdg.css', [], rand(1,99999), 'all');
+       // outputs the content of the widget
+      if ( ! isset( $args['widget_id'] ) ) {
+        $args['widget_id'] = $this->id;
+      }
+
+//       global $_wp_additional_image_sizes; 
+// print '<pre>'; 
+// print_r( $_wp_additional_image_sizes ); 
+// print '</pre>';
+
+      // widget ID with prefix for use in ACF API functions
+      $widget_id = 'widget_' . $args['widget_id'];
+
+      $title = get_field( 'title', $widget_id ) ? get_field( 'title', $widget_id ) : '';
+
+      $links = get_field( 'links', $widget_id );
+
+
+      echo $args['before_widget'];
+
+
+
+      if ( $title ) {
+        echo $args['before_title'] . esc_html($title) . $args['after_title'];
+      }
+
+      // the_field( 'text', $widget_id );
+
+      if(is_array($links) && count($links)>0):
+	      echo '<ul class="m5top-wdg-list">';
+	      foreach ($links as $k=>$v) :
+	      	$url_trgt=($v['url_to_page']['target']=='_blank') ? ' target="_blank" rel="nofollow"' : '';
+	      	$aff_trgt=($v['affiliate_link']['target']=='_blank') ? ' target="_blank" rel="nofollow"' : '';
+	      	echo '<li class="m5top-wdg-list__item">'.
+	      					'<span class="m5top-wdg-list__wrap">'.
+		      					'<a class="m5top-wdg-list__logo-link"'.$aff_trgt.' href="'.$v['affiliate_link']['url'].'">'.
+		      						// K8Html::getImgHtml([ 'img_id'=>$v['logo'], 'size'=>'pt_view_100x100', 'class'=>'m5top-wdg-list__logo']).
+		      						K8Html::getImgHtml([ 'img_id'=>$v['logo'], 'size'=>'wppr-widget', 'class'=>'m5top-wdg-list__logo']).
+		      					'</a>'.
+		      					'<span class="m5top-wdg-list__name">'.
+		      						$v['name'].
+		      						'<br><a class="m5top-wdg-list__name-link"'.$url_trgt.' href="'.$v['url_to_page']['url'].'">Score '.$v['score'].'</a>'.
+		      					'</span>'.
+	      					'</span>'.
+	      					'<a class="m5top-wdg-list__visit" href="'.$v['affiliate_link']['url'].'"'.$aff_trgt.'>'.$v['affiliate_link']['title'].' <i class="fa fa-caret-right" aria-hidden="true"></i></a>'.
+	      			 '</li>';
+	      endforeach;
+	      echo '</ul>';
+    	endif;
+      echo $args['after_widget'];
+    }
+
+    /**
+     * Outputs the options form on admin
+     *
+     * @param array $instance The widget options
+     */
+    public function form( $instance ) {
+    	// outputs the options form on admin
+    }
+
+    /**
+     * Processing widget options on save
+     *
+     * @param array $new_instance The new options
+     * @param array $old_instance The previous options
+     *
+     * @return array
+     */
+    public function update( $new_instance, $old_instance ) {
+    	// processes widget options to be saved
+    }
+
+  }
+
+}
+
+/**
+ * Register our CTA Widget
+ */
+function register_cta_widget()
+{
+  register_widget( 'TopRatedListWidget' );
+}
+add_action( 'widgets_init', 'register_cta_widget' );
