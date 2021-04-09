@@ -858,6 +858,14 @@
 }
 
 
+/* Sticky sidebar */
+#right-sidebar{
+	position: sticky;
+	top: 90px;
+}
+/*END Sticky sidebar */
+
+
 /*Buttons with gradient animation*/
 .btn-blu{
 	background-image: linear-gradient(to right, #56CCF2 0%, #2F80ED 51%, #56CCF2 100%);
@@ -1179,6 +1187,9 @@
 
 
 @media (max-width: 768px){
+	#right-sidebar{
+		position: static;
+	}
 	/* .pt-cv-wrapper .col-xs-6{
 		width: 100%;
 	} */
