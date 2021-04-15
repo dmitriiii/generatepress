@@ -660,8 +660,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      </td>
 					      	<? $m5_acf_pop_type = get_field('m5_acf_pop_type', $popz_id) ;
 					      	if(!$m5_acf_pop_type || $m5_acf_pop_type == 'small'):
-					      		echo '<td style="background: lightblue">small';
-					      	else if($m5_acf_pop_type == 'full'):
+					      		echo '<td style="background: lightblue">'.$m5_acf_pop_type;
+					      	elseif($m5_acf_pop_type == 'full'):
 					      		echo '<td style="background: lightgreen">'.$m5_acf_pop_type;
 					      	else:
 					      		echo '<td style="background: lightsalmon">'.$m5_acf_pop_type;
