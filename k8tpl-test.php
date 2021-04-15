@@ -659,7 +659,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 		      					</u>
 						      </td>
 					      	<? $m5_acf_pop_type = get_field('m5_acf_pop_type', $popz_id) ;
-					      	echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type; ?>
+					      	if(!$m5_acf_pop_type || $m5_acf_pop_type == 'small'):
+					      		echo '<td style="background: lightblue">small';
+					      	else if($m5_acf_pop_type == 'full'):
+					      		echo '<td style="background: lightgreen">'.$m5_acf_pop_type;
+					      	else:
+					      		echo '<td style="background: lightsalmon">'.$m5_acf_pop_type;
+					      	endif;
+					      	// echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type; 
+					      	?>
 						      </td>
 						      <td>
 						      	<a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $pop['id'] );?>" target="_blank">Edit</a>
