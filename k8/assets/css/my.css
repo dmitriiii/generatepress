@@ -1036,7 +1036,7 @@
 /*SCROLLBAR*/
 /* width */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 /* Track */
@@ -1046,7 +1046,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #4e4e4e;
+  background: #999;
 }
 
 /*END SCROLLBAR*/
