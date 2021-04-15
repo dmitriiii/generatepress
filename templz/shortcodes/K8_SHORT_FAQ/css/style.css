@@ -31,7 +31,7 @@
   -ms-user-select: none;
   user-select: none;
 	color: #fff;
-	padding: 15px 25px 15px 15px;
+	padding: 10px 25px 10px 15px;
 	border-bottom: 1px solid #eee;
 	position: relative;
 	background-color: #00B2E2;
@@ -86,7 +86,7 @@
   transform: translate(-6px, 0);
   z-index: 2;
   right: 15px;
-  top: 23px;
+  top: 18px;
 }
 .k8_accord-blck i:before, 
 .k8_accord-blck i:after {
@@ -125,5 +125,12 @@
 .k8_accord-blck input[type=checkbox]:checked ~ i:after {
   transform: translate(-2px, 0) rotate(-45deg);
 }
+
+@media (max-width: 768px){
+  .k8_accord-wrr{
+    padding: 0;
+  }
+}
+
 
 /*END ACCORDION */

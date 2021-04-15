@@ -23,6 +23,29 @@ $apid = get_the_ID();
     <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
 	<link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
 	<link href="https://s.w.org" rel="preconnect" crossorigin>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+	<style>
+		body,
+		body *{
+			font-family: 'Roboto Condensed', sans-serif;
+			/* font-size: 16px !important; */
+			line-height: 1.6;
+		}
+		body h1,
+		body h2,
+		body h3,
+		body h4,
+		body h5,
+		body h6{
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 700;
+		}
+
+	</style>
+
 	<script>
 		/**
 		 * Only for IE11
@@ -46,10 +69,13 @@ $apid = get_the_ID();
 	endif; ?>
 
 	<?php wp_head(); ?>
+
+	
 </head>
 <?php
-(wp_is_mobile()) ? $k8_mob_clss = 'k8body__mob' : $k8_mob_clss = 'k8_desktop' ;?>
-<body <?php body_class( $k8_mob_clss ); ?> <?php generate_do_microdata( 'body' ); ?>>
+// (wp_is_mobile()) ? $k8_mob_clss = 'k8body__mob' : $k8_mob_clss = 'k8_desktop' ;
+?>
+<body <?php body_class(); ?> <?php generate_do_microdata( 'body' ); ?>>
 	<?php
 	/**
 	 * generate_before_header hook.
