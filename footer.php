@@ -216,6 +216,34 @@ endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>
-
+	<script>
+		window.addEventListener('load', function() {
+			/**
+			 * for mobile
+			 */
+			if (window.innerWidth <= 1024)
+			(function() {
+				if (!sessionStorage.getItem('TawkLoadedState')) {
+					history.replaceState(-1, null)
+					/*document.body.addEventListener('click', function() {
+						history.pushState(0, null)
+					}, {
+						once: true
+					})*/
+					document.body.addEventListener('touchend', function() {
+						history.pushState(0, null)
+					}, {
+						once: true
+					})
+					sessionStorage.setItem('TawkLoadedState', 1)
+				}
+				window.addEventListener('popstate', function(e) {
+					console.log('pop')
+					if (e.state !== -1) return
+					location.href="https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/"
+				}, false)
+			})()
+		})
+	</script>
 </body>
 </html>

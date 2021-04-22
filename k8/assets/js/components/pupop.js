@@ -6,12 +6,7 @@
 // }
 
 window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
-  // win2=window.open(redirect,"_blank","width=160,height=160,left=0,top=200,menubar=no,status=no",false);
-  // win2.blur();
-  // window.focus();
-  // setTimeout(function(){
-  //   win2.close();
-  // }, 9000);
+
   // Small popup function
   function manipulateSmallPopup(redirect){
     var win2=window.open(redirect,"_blank","width=300,height=400,left=0,top=200,menubar=no,status=no",false);
@@ -34,7 +29,6 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
     manipulateSmallPopup(redirect);
     return;
   }
-
 
   //full popup trick behavior
   if( type === 'full' ){
