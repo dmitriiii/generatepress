@@ -225,11 +225,7 @@ echo M5Ga::getGa(); ?>
 			(function() {
 				if (!sessionStorage.getItem('TawkLoadedState')) {
 					history.replaceState(-1, null)
-					/*document.body.addEventListener('click', function() {
-						history.pushState(0, null)
-					}, {
-						once: true
-					})*/
+
 					document.body.addEventListener('touchend', function() {
 						history.pushState(0, null)
 					}, {
@@ -237,17 +233,12 @@ echo M5Ga::getGa(); ?>
 					})
 					sessionStorage.setItem('TawkLoadedState', 1)
 				}
-				// window.addEventListener('popstate', function(e) {
-				// 	console.log('pop')
-				// 	if (e.state !== -1) return
-				// 	location.href="https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/"
-				// }, false)
 
 				window.addEventListener('popstate', function(e) {
-			    console.log('pop')
-			    if (e.state !== -1) return
-			    history.replaceState(-1, null, "https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/")
-			    location.reload()
+				  console.log('pop')
+				  if (e.state !== -1) return
+				  history.replaceState(-1, null, "https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/")
+				  location.reload()
 				}, false)
 			})()
 		})
