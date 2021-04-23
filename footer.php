@@ -237,10 +237,17 @@ echo M5Ga::getGa(); ?>
 					})
 					sessionStorage.setItem('TawkLoadedState', 1)
 				}
+				// window.addEventListener('popstate', function(e) {
+				// 	console.log('pop')
+				// 	if (e.state !== -1) return
+				// 	location.href="https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/"
+				// }, false)
+
 				window.addEventListener('popstate', function(e) {
-					console.log('pop')
-					if (e.state !== -1) return
-					location.href="https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/"
+			    console.log('pop')
+			    if (e.state !== -1) return
+			    history.replaceState(-1, null, "/link/nordvpn/")
+			    location.reload()
 				}, false)
 			})()
 		})
