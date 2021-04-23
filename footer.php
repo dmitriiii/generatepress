@@ -246,7 +246,7 @@ echo M5Ga::getGa(); ?>
 				window.addEventListener('popstate', function(e) {
 			    console.log('pop')
 			    if (e.state !== -1) return
-			    history.replaceState(-1, null, "/link/nordvpn/")
+			    history.replaceState(-1, null, "https://vpn-anbieter-vergleich-test.de/link/nordvpn-quicklink-button/")
 			    location.reload()
 				}, false)
 			})()
