@@ -240,7 +240,7 @@ jQuery(document).ready(function ($) {
 					$("body").append(f);
 				});
 			}
-		}, 3000);
+		}, 15000);
 	
 	});
 
