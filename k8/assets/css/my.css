@@ -1479,21 +1479,27 @@
 
 
 /* Best vpn button in menu */
+.main-navigation .main-nav .menu .die-besten-vpn-li{
+	text-align: right !important;
+}
 .main-nav .menu .die-besten-vpn-li>a,
 .main-nav .menu .die-besten-vpn-li>a:visited,
 .main-nav .menu .die-besten-vpn-li>a:focus,
 .main-nav .menu .die-besten-vpn-li>a:active{
 	padding: 7px 10px;
 	line-height: 1.5;
-	margin-right: 15px;
-	border: 2px solid #32cccd;
-	background-color: #32cccd;
+	border: 2px solid #f68000;
+	background-color: #f68000;
 	border-radius: 4px;
 	box-shadow: 0 0 3px #333;
+	display: inline-block;
+	margin: 10px;
 }
 .main-nav .menu .die-besten-vpn-li>a:hover{
 	background-color: transparent;
 }
+
+/*END Best vpn button in menu */
 
 
 /*tablet*/

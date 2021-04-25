@@ -130,3 +130,9 @@
   -ms-transform: translateX(0px);
   -o-transform: translateX(0px);
 }
+
+@media (max-width: 1024px){
+	.k8howto__wrr{
+		padding: 10px 0;
+	}
+}

@@ -147,7 +147,8 @@ wp_footer();
 		$link = esc_url(get_page_link());
 		?>
 	<div class="k8side__item k8side__item-4">
-		<nav class="k8side__fast">
+		<div class="die-besten-vpn-li"><a href="/diebesten10vpn/">Die besten VPN</a></div>
+		<nav class="k8side__fast hide-on-mob">
 			<input type="checkbox" href="#" class="k8side__fast-open k8side__fast-open--share" name="k8side__fast-open--share" id="k8side__share"/>
 			<label class="k8side__fast-open-button k8side__button k8side__button-4" for="k8side__share">
 			<i class="fas fa-share-alt"></i>
