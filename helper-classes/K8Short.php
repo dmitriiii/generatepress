@@ -49,8 +49,8 @@ class K8Short
 		$this->s = '<strong>';
 		$this->_s = '</strong>';
 
-		$this->mark1 = '<mark>';
-		$this->_mark1 = '</mark>';
+		$this->mark1 = '<h3 class="mark">';
+		$this->_mark1 = '</h3>';
 
 		$this->em = '<em>';
 		$this->_em = '</em>';

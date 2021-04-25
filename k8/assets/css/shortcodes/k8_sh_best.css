@@ -212,4 +212,5 @@ tfoot th:first-child {
   font-size: 16px;
   line-height: 1;
   text-decoration: underline;
+  color: #333;
 }
