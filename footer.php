@@ -147,7 +147,11 @@ wp_footer();
 		$link = esc_url(get_page_link());
 		?>
 	<div class="k8side__item k8side__item-4">
-		<div class="die-besten-vpn-li"><a href="/diebesten10vpn/">Die besten VPN</a></div>
+		<?php 
+		if (get_field('beste_mob_use__not','option')): ?>
+			<div class="die-besten-vpn-li"><a href="<?php the_field('beste_mob_url','option'); ?>"><?php the_field('beste_mob_title','option'); ?></a></div>
+		<?php
+		endif ?>
 		<nav class="k8side__fast hide-on-mob">
 			<input type="checkbox" href="#" class="k8side__fast-open k8side__fast-open--share" name="k8side__fast-open--share" id="k8side__share"/>
 			<label class="k8side__fast-open-button k8side__button k8side__button-4" for="k8side__share">
@@ -244,5 +248,6 @@ echo M5Ga::getGa(); ?>
 			})()
 		})
 	</script>
+
 </body>
 </html>
