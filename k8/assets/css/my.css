@@ -1479,7 +1479,7 @@
 
 
 /* Best vpn button in menu */
-.die-besten-vpn-li>a{
+.main-nav .menu .die-besten-vpn-li>a{
 	padding: 7px 10px;
 	line-height: 1.5;
 	margin-right: 15px;
