@@ -203,3 +203,12 @@ tfoot th:first-child {
 /* .k8_sh_best .labb{
   
 } */
+
+.k8_sh_best .title h3{
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+.k8_sh_best .title a{
+  font-size: 18px;
+  text-decoration: underline;
+}
