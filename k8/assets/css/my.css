@@ -1488,6 +1488,9 @@
 	border-radius: 4px;
 	box-shadow: 0 0 3px #333;
 }
+.main-nav .menu .die-besten-vpn-li>a:hover{
+	background-color: transparent;
+}
 
 
 /*tablet*/
