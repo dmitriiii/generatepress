@@ -276,6 +276,17 @@ jQuery(document).ready(function ($) {
 		return false;
 	}); // SLIDER
 
+	//Click on bestes VPN buttons
+	$("body").on('click', '.die-besten-vpn-li>a', function(event) {
+		sentGoogleAnalitic([
+			"event",
+			"besten_vpn_button",
+			{
+				event_category: "click_buttons",
+			},
+		]);
+	});
+
 	if ($(".k8-sl").length > 0) {
 		$(".k8-sl").each(function (index, el) {
 			var $wrr = $(el).parents(".k8-sl__wrr"),
