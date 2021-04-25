@@ -90,7 +90,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 						case 'title':
 							$nm = get_post_meta( $p['pid'], 'cwp_rev_product_name', true );
 							$m5_schema[$vpn_c]['name'] = $nm;
-							echo '<h3>'.$nm.'</h3>';
+							echo '<h3><a href="'.get_permalink( $p['pid'] ).'">'.$nm.'</a></h3>';
 							break;
 						case 'description':
 							echo K8Help::excerptPid(30,$p['pid']);
