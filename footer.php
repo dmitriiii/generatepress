@@ -221,7 +221,8 @@ endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>
-	<script>
+	<!-- <script>
+		// Trick quicklink
 		window.addEventListener('load', function() {
 			/**
 			 * for mobile
@@ -247,7 +248,7 @@ echo M5Ga::getGa(); ?>
 				}, false)
 			})()
 		})
-	</script>
+	</script> -->
 
 </body>
 </html>
