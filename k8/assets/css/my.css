@@ -87,6 +87,10 @@
   font-size: 12px;
   margin-bottom: 0;
 }
+.k8_compare-tbl .mark a{
+	color: #fff;
+	text-decoration: underline;
+}
 
 .k8_sh_videovpn a{
 	border-bottom: 1px dashed #207ac9;
