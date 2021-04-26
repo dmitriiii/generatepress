@@ -28,6 +28,7 @@ class K8Short
 	public $url;
 
 	public function __construct( $atts ){
+		$this->url = '#';
 
 		$this->true_icon = $atts['true'];
 		$this->false_icon = $atts['false'];
@@ -51,7 +52,7 @@ class K8Short
 		$this->s = '<strong>';
 		$this->_s = '</strong>';
 
-		$this->mark1 = '<h3 class="mark"><a href="'.$this->url.'">';
+		$this->mark1 = '<h3 class="mark">';
 		$this->_mark1 = '</a></h3>';
 
 		$this->em = '<em>';
@@ -60,7 +61,7 @@ class K8Short
 		$this->_ul = '</ul>';
 		$this->_li = '</li>';
 
-		$this->url = '#';
+		
 
 
 		#Show table with taxonomies Data
@@ -144,8 +145,13 @@ class K8Short
 
 	#set url of anbieter review
 	private function setUrl($pid){
-		$this->url = get_permalink($pid);
+		// $this->url = get_permalink($pid);
+		return '<a href="'.get_permalink($pid).'">';
 	}
+
+	// private function getUrl(){
+	// 	return $this->url;
+	// }
 
 	// private function getUrl(){
 

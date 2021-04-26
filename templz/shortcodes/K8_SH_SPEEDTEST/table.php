@@ -16,8 +16,8 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 if( count( $pid_arr ) > 1 ):
 	echo $this->tr . $this->td . __('VPN-Dienstname' , 'k8lang_domain') . $this->_td;
 	foreach ( $pid_arr as $item ) {
-		$this->setUrl($item['pid']);
-		echo $this->td . $this->mark1 . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
+		// $this->setUrl($item['pid']);
+		echo $this->td . $this->mark1 . $this->setUrl($item['pid']) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
 	}
 	echo $this->_tr;
 endif;
