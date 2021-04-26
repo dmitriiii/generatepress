@@ -25,6 +25,8 @@ class K8Short
 
 	public $_ul;
 
+	public $url;
+
 	public function __construct( $atts ){
 
 		$this->true_icon = $atts['true'];
@@ -49,14 +51,17 @@ class K8Short
 		$this->s = '<strong>';
 		$this->_s = '</strong>';
 
-		$this->mark1 = '<h3 class="mark">';
-		$this->_mark1 = '</h3>';
+		$this->mark1 = '<h3 class="mark"><a href="'.$this->url.'">';
+		$this->_mark1 = '</a></h3>';
 
 		$this->em = '<em>';
 		$this->_em = '</em>';
 
 		$this->_ul = '</ul>';
 		$this->_li = '</li>';
+
+		$this->url = '#';
+
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -136,6 +141,15 @@ class K8Short
 		#[K8_SH_ACCOUNT]
 		add_shortcode( 'K8_SH_ACCOUNT', array( $this, 'account') );
 	}
+
+	#set url of anbieter review
+	private function setUrl($pid){
+		$this->url = get_permalink($pid);
+	}
+
+	// private function getUrl(){
+
+	// }
 
 	/**
 	 * [td description]
