@@ -662,7 +662,7 @@ class K8Short
 			return __('Sorry nothing found. Please pass valid popup id' , 'k8lang_domain');
 
 		if( 'publish' !== get_post_status ( $atts['id'] ) )
-			return __('Publish popup first, please' , 'k8lang_domain');
+			return __('' , 'k8lang_domain');
 
 		// global $wp_filter;
 		wp_enqueue_style( 'k8-pupop' );
