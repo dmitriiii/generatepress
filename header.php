@@ -8,8 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 $apid = get_the_ID();
+$lang_atts = get_language_attributes( 'html' );
+if(get_site_url()=='https://vpn-anbieter-vergleich-test.de')
+	$lang_atts = str_replace('de-DE', 'de', $lang_atts)
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?= $lang_atts; ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -70,7 +73,7 @@ $apid = get_the_ID();
 
 	<?php wp_head(); ?>
 
-	
+
 </head>
 <?php
 // (wp_is_mobile()) ? $k8_mob_clss = 'k8body__mob' : $k8_mob_clss = 'k8_desktop' ;
