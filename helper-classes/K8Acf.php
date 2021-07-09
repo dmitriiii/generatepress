@@ -668,6 +668,26 @@ class K8Acf
 						'return_format' => 'array',
 						'save_custom' => 0,
 					),
+					array(
+						'key' => 'field_60e80d8c4888c',
+						'label' => 'Trust Level',
+						'name' => 'trust_level',
+						'type' => 'range',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => 0,
+						'min' => 0,
+						'max' => 100,
+						'step' => '',
+						'prepend' => '',
+						'append' => '',
+					),
 				), # END OF fields Array
 				'location' => array(
 					array(
