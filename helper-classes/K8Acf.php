@@ -671,7 +671,7 @@ class K8Acf
 					array(
 						'key' => 'field_60e80d8c4888c',
 						'label' => 'Trust Level',
-						'name' => 'trust_level',
+						'name' => 'k8_acf_trust_level',
 						'type' => 'range',
 						'instructions' => '',
 						'required' => 0,
