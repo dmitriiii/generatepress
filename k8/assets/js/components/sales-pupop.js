@@ -2,6 +2,7 @@ jQuery(document).ready(function ($) {
   let pupop = document.getElementById("sales");
   let popupWrapper = pupop.closest(".pupop-wrapper");
   let id = popupWrapper.dataset.popupId;
+  let maxAge = popupWrapper.dataset.maxAge ? +pupop.dataset.maxAge : 86400;
   if (!pupop) return;
   let delay = pupop.dataset.delay ? +pupop.dataset.delay : 0;
 
@@ -10,7 +11,7 @@ jQuery(document).ready(function ($) {
   if (!status) {
     Cookie.set(`${id}_sale_modal`, 1, {
       samesite: "strict",
-      expires: addOneDayFromNow(),
+      'max-age': maxAge
     });
     setTimeout(function () {
       openPopup($("#sales"));
