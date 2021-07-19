@@ -293,6 +293,10 @@ function m5_hook_cron_aff_fun(){
 				if (strpos($url_part, 'popup') !== false)
 					$eafl_url_arr[$key] = str_replace( 'popup', 'apollo', $url_part );
 
+				#replace quicklink to venus
+				if (strpos($url_part, 'quicklink') !== false)
+					$eafl_url_arr[$key] = str_replace( 'quicklink', 'venus', $url_part );
+
 			}
 			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
 			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );
