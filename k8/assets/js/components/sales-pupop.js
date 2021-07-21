@@ -2,18 +2,20 @@ jQuery(document).ready(function ($) {
   let pupop = document.getElementById("sales");
   let popupWrapper = pupop.closest(".pupop-wrapper");
   let id = popupWrapper.dataset.popupId;
-  let maxAge = popupWrapper.dataset.maxAge ? +popupWrapper.dataset.maxAge : 86400;
+  let maxAge = popupWrapper.dataset.maxAge
+    ? +popupWrapper.dataset.maxAge
+    : 86400;
   if (!pupop) return;
   let delay = pupop.dataset.delay ? +pupop.dataset.delay : 0;
 
   let status = parseInt(Cookie.get(`${id}_sale_modal`));
 
   if (!status) {
-    Cookie.set(`${id}_sale_modal`, 1, {
-      samesite: "strict",
-      'max-age': maxAge
-    });
     setTimeout(function () {
+      Cookie.set(`${id}_sale_modal`, 1, {
+        samesite: "strict",
+        "max-age": maxAge,
+      });
       openPopup($("#sales"));
     }, delay);
   }
