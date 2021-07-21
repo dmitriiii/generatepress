@@ -1810,27 +1810,6 @@ class K8Acf
 				'title' => 'Popups',
 				'fields' => array(
 					array(
-						'key' => 'field_5f0e8be7d015e',
-						'label' => 'How many times dont show before show',
-						'name' => 'm5_acf_pop_times',
-						'type' => 'number',
-						'instructions' => '',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array(
-							'width' => '33',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => 3,
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'min' => 1,
-						'max' => 9999,
-						'step' => '',
-					),
-					array(
 						'key' => 'field_5f0e8bfa19d88',
 						'label' => 'Date until end of timer',
 						'name' => 'm5_acf_pop_date_to',
