@@ -58,6 +58,16 @@ function smTewdedw( $ppost, $shrt='affcoups' ){
 	.tab-content .table td{
 		padding: 10px;
 	}
+	.tableFixHead{
+		overflow: auto;
+		height: 700px;
+	}
+	.tableFixHead thead th {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		background: #fff;
+	}
 </style>
 
 
@@ -608,14 +618,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						</div>
 			  	</div> -->
 
-			  	<table class="table table-striped table-hover table-responsive table-sm">
+			  	<table class="table table-striped table-hover table-responsive table-sm tableFixHead">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
 					      <th scope="col">Page URL</th>
-					      <th scope="col" style="width: 300px;">Affiliate Link</th>
+					      <th scope="col" style="width: 300px;">Affiliate Link / Popup details</th>
 								<th scope="col">Affiliate's Url</th>
 					      <th scope="col">Type</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
@@ -624,6 +634,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					  <tbody>
 					    <?php
 					    $i=1;
+					    // echo '<pre>';
+					    // print_r($popz);
+					    // echo '</pre>';
 					    foreach ($popz as $pop): ?>
 					    	<tr>
 						      <th scope="row"><?php echo $i; ?></th>
@@ -644,7 +657,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      				</em>
 						      				<br>
 						      				<?= $m5_acf_pop_date_to; ?>
-						      				<br>
+						      				- ID[<?= $popz_id;?>] -
+						      				<span class="badge badge-<?=(get_post_status($popz_id) == 'publish') ? 'success' : 'warning'; ?>"><?= get_post_status($popz_id); ?></span>
+						      				-
+						      				<span class="badge badge-secondary"><?= (get_field('m5_acf_pop_delay',$popz_id)/1000); ?> sec.</span>
 						      			</p>
 						      		<?php
 						      		endforeach;
@@ -666,7 +682,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      	else:
 					      		echo '<td style="background: lightsalmon">'.$m5_acf_pop_type;
 					      	endif;
-					      	// echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type; 
+					      	// echo ( !$m5_acf_pop_type || $m5_acf_pop_type == 'small' ) ? '<td style="background: lightblue">small' : '<td style="background: lightgreen">' . $m5_acf_pop_type;
 					      	?>
 						      </td>
 						      <td>
@@ -680,7 +696,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					</table>
 			  </div>
 			  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-			  	<table class="table table-striped">
+			  	<table class="table table-striped tableFixHead">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
@@ -723,7 +739,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	</p>
 			  	<ul class="quoteList"></ul>
 			  	<p><button type="button" class="btn btn-success" onclick="m5AffCheck();">Run Checking process</button></p>
-			  	<table class="table table-striped pills-aff-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-aff-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" width="60px">#</th>
@@ -772,7 +788,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	<h3>
 			  		List of Affiliate Coupons ( outdated are highlighted )
 			  	</h3>
-			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-coup-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" style="width: 60px;">#</th>
@@ -822,7 +838,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	<h3>
 			  		List of Posts and Pages where used [affcoups] shortcode (affiliate coupons)
 			  	</h3>
-			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-coup-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" style="width: 60px;">#</th>
@@ -859,7 +875,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	<h3>
 			  		List of Posts and Pages where used [K8_SH_COUPON] shortcode (affiliate coupons)
 			  	</h3>
-			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-coup-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" style="width: 60px;">#</th>
@@ -895,7 +911,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	<h3>
 			  		List of Posts and Pages where used [supsystic-tables] shortcode
 			  	</h3>
-			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-coup-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" style="width: 60px;">#</th>
@@ -931,7 +947,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	<h3>
 			  		List of Posts and Pages where used Content views [pt_view] shortcode
 			  	</h3>
-			  	<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+			  	<table class="table table-striped pills-coup-tbl tableFixHead" style="word-break: break-all;">
 					  <thead>
 					    <tr>
 					      <th scope="col" style="width: 60px;">#</th>
