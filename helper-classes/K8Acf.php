@@ -1883,7 +1883,7 @@ class K8Acf
 						'allow_null' => 0,
 						'multiple' => 0,
 						'ui' => 0,
-						'return_format' => 'value',
+						'return_format' => 'array',
 						'ajax' => 0,
 						'placeholder' => '',
 					),

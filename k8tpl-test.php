@@ -661,6 +661,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 						      				<span class="badge badge-<?=(get_post_status($popz_id) == 'publish') ? 'success' : 'warning'; ?>"><?= get_post_status($popz_id); ?></span>
 						      				-
 						      				<span class="badge badge-secondary"><?= (get_field('m5_acf_pop_delay',$popz_id)/1000); ?> sec.</span>
+						      				-
+						      				<span class="badge badge-info"><?= get_field('m5_acf_pop_maxage',$popz_id)['label']; ?> </span>
 						      			</p>
 						      		<?php
 						      		endforeach;
