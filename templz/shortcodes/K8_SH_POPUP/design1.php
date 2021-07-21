@@ -11,7 +11,7 @@ if( $noww >= $m5_acf_pop_date_to ){
 }
 
 global $wp;?>
-<div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>" data-popup-id="<?=$atts['id'];?>" data-max-age="<?= get_field('m5_acf_pop_maxage', $atts['id'])['value']; ?>">
+<div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>" data-popup-id="<?=$atts['id'];?>" data-max-age="86400">
 	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>" rel="nofollow" target="_blank" class="pupop__link">&nbsp;</a>
 	<section id="sales" class="pupop pupop--white" data-delay="<?= get_field('m5_acf_pop_delay', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'pupop__bg'] ); ?>
