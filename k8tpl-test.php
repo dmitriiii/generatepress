@@ -625,7 +625,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					      <th scope="col">ID</th>
 					      <th scope="col">Page Title</th>
 					      <th scope="col">Page URL</th>
-					      <th scope="col" style="width: 300px;">Affiliate Link / Popup details</th>
+					      <th scope="col" style="width: 400px;">Affiliate Link / Popup details</th>
 								<th scope="col">Affiliate's Url</th>
 					      <th scope="col">Type</th>
 					      <th scope="col" style="width:110px;">Edit Page</th>
