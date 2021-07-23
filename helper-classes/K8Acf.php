@@ -709,6 +709,46 @@ class K8Acf
 							'value' => 'category:vpn-anbieter',
 						),
 						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:anleitung-vpn',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:vpn-kuendigen',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:best-vpn',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:server-standort-ip-adresse',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:neue-vpn',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:anbieter-installation',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:vergleichen',
+						),
+						array(
+							'param' => 'post_category',
+							'operator' => '!=',
+							'value' => 'category:was-ist-vpn-wissen',
+						),
+						array(
 							'param' => 'post_type',
 							'operator' => '==',
 							'value' => 'post',
