@@ -504,3 +504,45 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+/**
+ * Editable 404 page
+ * Create 404 page
+ */
+add_action('after_setup_theme', 'create_404_page');
+
+// Insert a privately published page we can query for our 404 page
+function create_404_page()
+{
+
+	// Check if the 404 page exists
+	$page_exists = get_page_by_title('404');
+	$page_id = get_option('404_page_id');
+
+	if (!isset($page_exists->ID)) {
+
+		// Page array
+		$page = array(
+			'post_author' => 1,
+			'post_content' => '',
+			'post_name' =>  '404',
+			'post_status' => 'private',
+			'post_title' => '404',
+			'post_type' => 'page',
+			'post_parent' => 0,
+			'menu_order' => 0,
+			'to_ping' =>  '',
+			'pinged' => '',
+		);
+
+		$insert = wp_insert_post($page);
+
+		// The insert was successful
+		if ($insert) {
+			// Store the value of our 404 page
+			update_option('404_page_id', (int) $insert);
+		}
+	} elseif ($page_exists->ID != $page_id) {
+		update_option('404_page_id', (int) $page_exists->ID);
+	}
+}
