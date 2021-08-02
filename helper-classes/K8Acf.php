@@ -3,31 +3,34 @@ class K8Acf
 {
 	public $f_id;
 
-	function __construct(){
+	function __construct()
+	{
 		$this->f_id = array(
 			'5dde6878b95b0'
 		);
-		add_action( 'acf/init', array( $this, 'anbieter_cf' ) );
-		add_action( 'acf/init', array( $this, 'user_info' ) );
-		add_action( 'acf/init', array( $this, 'faq' ) );
-		add_action( 'acf/init', array( $this, 'slider' ) );
-		add_action( 'acf/init', array( $this, 'iframesAsync' ) );
+		add_action('acf/init', array($this, 'anbieter_cf'));
+		add_action('acf/init', array($this, 'user_info'));
+		add_action('acf/init', array($this, 'faq'));
+		add_action('acf/init', array($this, 'slider'));
+		add_action('acf/init', array($this, 'iframesAsync'));
 
-		add_action( 'acf/init', array( $this, 'howto' ) );
+		add_action('acf/init', array($this, 'howto'));
 
-		add_action( 'acf/init', array( $this, 'amp' ) );
+		add_action('acf/init', array($this, 'amp'));
 
-		add_action( 'acf/init', array( $this, 'popup' ) );
+		add_action('acf/init', array($this, 'popup'));
 
-		add_action( 'acf/init', array( $this, 'organization' ) );
+		add_action('acf/init', array($this, 'organization'));
 
-		add_action( 'acf/init', array( $this, 'passgen' ) );
+		add_action('acf/init', array($this, 'passgen'));
 
-		add_action( 'acf/init', array( $this, 'widget' ) );
+		add_action('acf/init', array($this, 'widget'));
 
+		add_action('acf/init', array($this, 'page_404'));
 	}
-	public function anbieter_cf(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function anbieter_cf()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5c83071429237',
 				'title' => 'VPN Details',
@@ -78,7 +81,7 @@ class K8Acf
 							9 => '9',
 							10 => '10',
 							30 => '30',
-							0 => __( 'unlimitiert', 'k8lang_domain' ),
+							0 => __('unlimitiert', 'k8lang_domain'),
 						),
 						'allow_null' => 0,
 						'other_choice' => 0,
@@ -273,7 +276,7 @@ class K8Acf
 					),
 					array(
 						'key' => 'field_5d550d2e4ea4e',
-						'label' => __( 'Testmöglichkeiten', 'k8lang_domain' ),
+						'label' => __('Testmöglichkeiten', 'k8lang_domain'),
 						'name' => 'k8_acf_vpndet_trialz',
 						'type' => 'checkbox',
 						'instructions' => '',
@@ -285,14 +288,13 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'free' => __( 'Kostenloser Tarif verfügbar', 'k8lang_domain' ),
-							'back' => __( 'Geld-Zurück-Garantie', 'k8lang_domain' ),
-							'trial' => __( 'Limitierte kostenfreie Testzeit (Ohne Zahlung)', 'k8lang_domain' ),
-							'spec' => __( 'Rabattierte Testzeit (Sonderpreis für begrenzte Zeit)', 'k8lang_domain' ),
+							'free' => __('Kostenloser Tarif verfügbar', 'k8lang_domain'),
+							'back' => __('Geld-Zurück-Garantie', 'k8lang_domain'),
+							'trial' => __('Limitierte kostenfreie Testzeit (Ohne Zahlung)', 'k8lang_domain'),
+							'spec' => __('Rabattierte Testzeit (Sonderpreis für begrenzte Zeit)', 'k8lang_domain'),
 						),
 						'allow_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => array(),
 						'layout' => 'horizontal',
 						'toggle' => 0,
 						'return_format' => 'array',
@@ -333,37 +335,36 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'net' => __( 'Netflix (DE)', 'k8lang_domain' ),
-							'amaz' => __( 'Amazon Video (DE)', 'k8lang_domain' ),
-							'dazn' => __( 'DAZN (DE)', 'k8lang_domain' ),
-							'sky' => __( 'Sky (DE)', 'k8lang_domain' ),
-							'euro' => __( 'Eurosport (DE)', 'k8lang_domain' ),
-							'max' => __( 'Maxdome', 'k8lang_domain' ),
-							'zat' => __( 'zattoo (CH)', 'k8lang_domain' ),
-							'wai' => __( 'Waipu', 'k8lang_domain' ),
-							'joy' => __( 'JOYN', 'k8lang_domain' ),
-							'tv' => __( 'TVNow', 'k8lang_domain' ),
-							'ard' => __( 'ARD (DE)', 'k8lang_domain' ),
-							'zdf' => __( 'ZDF (DE)', 'k8lang_domain' ),
-							'br' => __( 'BR DE)', 'k8lang_domain' ),
-							'n24' => __( 'N24 (DE)', 'k8lang_domain' ),
-							'mdr' => __( 'MDR (DE)', 'k8lang_domain' ),
-							'rbb' => __( 'rbb (DE)', 'k8lang_domain' ),
-							'wdr' => __( 'WDR (DE)', 'k8lang_domain' ),
-							'art' => __( 'Arte DE)', 'k8lang_domain' ),
-							'sat3' => __( '3Sat (DE)', 'k8lang_domain' ),
-							'pro7' => __( 'Pro7 (DE)', 'k8lang_domain' ),
-							'sat1' => __( 'Sat1 (DE)', 'k8lang_domain' ),
-							'kab1' => __( 'Kabel1 (DE)', 'k8lang_domain' ),
-							'disn_de' => __( 'Disney+ (DE)', 'k8lang_domain' ),
-							'magtv_de' => __( 'MagentaTV (DE)', 'k8lang_domain' ),
-							'orf' => __( 'ORF (AT)', 'k8lang_domain' ),
-							'srf' => __( 'SRF (CH)', 'k8lang_domain' ),
-							'serv' => __( 'Servus TV (DE, AT, CH)', 'k8lang_domain' ),
+							'net' => __('Netflix (DE)', 'k8lang_domain'),
+							'amaz' => __('Amazon Video (DE)', 'k8lang_domain'),
+							'dazn' => __('DAZN (DE)', 'k8lang_domain'),
+							'sky' => __('Sky (DE)', 'k8lang_domain'),
+							'euro' => __('Eurosport (DE)', 'k8lang_domain'),
+							'max' => __('Maxdome', 'k8lang_domain'),
+							'zat' => __('zattoo (CH)', 'k8lang_domain'),
+							'wai' => __('Waipu', 'k8lang_domain'),
+							'joy' => __('JOYN', 'k8lang_domain'),
+							'tv' => __('TVNow', 'k8lang_domain'),
+							'ard' => __('ARD (DE)', 'k8lang_domain'),
+							'zdf' => __('ZDF (DE)', 'k8lang_domain'),
+							'br' => __('BR DE)', 'k8lang_domain'),
+							'n24' => __('N24 (DE)', 'k8lang_domain'),
+							'mdr' => __('MDR (DE)', 'k8lang_domain'),
+							'rbb' => __('rbb (DE)', 'k8lang_domain'),
+							'wdr' => __('WDR (DE)', 'k8lang_domain'),
+							'art' => __('Arte DE)', 'k8lang_domain'),
+							'sat3' => __('3Sat (DE)', 'k8lang_domain'),
+							'pro7' => __('Pro7 (DE)', 'k8lang_domain'),
+							'sat1' => __('Sat1 (DE)', 'k8lang_domain'),
+							'kab1' => __('Kabel1 (DE)', 'k8lang_domain'),
+							'disn_de' => __('Disney+ (DE)', 'k8lang_domain'),
+							'magtv_de' => __('MagentaTV (DE)', 'k8lang_domain'),
+							'orf' => __('ORF (AT)', 'k8lang_domain'),
+							'srf' => __('SRF (CH)', 'k8lang_domain'),
+							'serv' => __('Servus TV (DE, AT, CH)', 'k8lang_domain'),
 						),
 						'allow_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => array(),
 						'layout' => 'horizontal',
 						'toggle' => 0,
 						'return_format' => 'array',
@@ -383,42 +384,41 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'disney_plus_us' => __( 'Disney+ (US)', 'k8lang_domain' ),
-							'hulu_us' => __( 'Hulu (US)', 'k8lang_domain' ),
-							'amazon_prime_us' => __( 'Amazon Prime Video (US)', 'k8lang_domain' ),
-							'netflix_us' => __( 'Netflix (US)', 'k8lang_domain' ),
-							'apple_tv_us' => __( 'Apple TV (US)', 'k8lang_domain' ),
-							'watch_espn_us' => __( 'Watch ESPN (US)', 'k8lang_domain' ),
-							'channel_4_us' => __( 'Channel 4 (US)', 'k8lang_domain' ),
-							'nfl_gamepass_us' => __( 'NFL Gamepass (US)', 'k8lang_domain' ),
-							'mlb_us' => __( 'MLB.tv (US)', 'k8lang_domain' ),
-							'abc_us' => __( 'abc (US)', 'k8lang_domain' ),
-							'cbs_us' => __( 'CBS (US)', 'k8lang_domain' ),
-							'fox_us' => __( 'FOX (US)', 'k8lang_domain' ),
-							'nbc_us' => __( 'NBC (US)', 'k8lang_domain' ),
-							'showtime_us' => __( 'Showtime (US)', 'k8lang_domain' ),
-							'flix_us' => __( 'FLIX (US)', 'k8lang_domain' ),
-							'epix_us' => __( 'epix (US)', 'k8lang_domain' ),
-							'hbo_now_us' => __( 'HBO Now (US)', 'k8lang_domain' ),
-							'itv_uk' => __( 'ITV (UK)', 'k8lang_domain' ),
-							'eurosport_uk' => __( 'Eurosport (UK)', 'k8lang_domain' ),
-							'sky_uk' => __( 'Sky (UK)', 'k8lang_domain' ),
-							'bbc_uk' => __( 'BBC iPlayer (UK)', 'k8lang_domain' ),
-							'sky_news_uk' => __( 'Sky News (UK)', 'k8lang_domain' ),
-							'bloomberg_uk' => __( 'Bloomberg (UK)', 'k8lang_domain' ),
-							'bt_sport' => __( 'BT Sport (UK)', 'k8lang_domain' ),
-							'channel_4_uk' => __( 'Channel 4 (UK)', 'k8lang_domain' ),
-							'sky_go_it' => __( 'Sky Go (IT)', 'k8lang_domain' ),
-							'youtube' => __( 'YouTube', 'k8lang_domain' ),
-							'spotify' => __( 'Spotify', 'k8lang_domain' ),
-							'starz_us' => __( 'starz (US)', 'k8lang_domain' ),
-							'hustlertv_us' => __( 'hustlerTV (US)', 'k8lang_domain' ),
-							'penthousetv_us' => __( 'PenthouseTV (US)', 'k8lang_domain' ),
-							'playboytv_us' => __( 'PlayboyTV (US)', 'k8lang_domain' ),
+							'disney_plus_us' => __('Disney+ (US)', 'k8lang_domain'),
+							'hulu_us' => __('Hulu (US)', 'k8lang_domain'),
+							'amazon_prime_us' => __('Amazon Prime Video (US)', 'k8lang_domain'),
+							'netflix_us' => __('Netflix (US)', 'k8lang_domain'),
+							'apple_tv_us' => __('Apple TV (US)', 'k8lang_domain'),
+							'watch_espn_us' => __('Watch ESPN (US)', 'k8lang_domain'),
+							'channel_4_us' => __('Channel 4 (US)', 'k8lang_domain'),
+							'nfl_gamepass_us' => __('NFL Gamepass (US)', 'k8lang_domain'),
+							'mlb_us' => __('MLB.tv (US)', 'k8lang_domain'),
+							'abc_us' => __('abc (US)', 'k8lang_domain'),
+							'cbs_us' => __('CBS (US)', 'k8lang_domain'),
+							'fox_us' => __('FOX (US)', 'k8lang_domain'),
+							'nbc_us' => __('NBC (US)', 'k8lang_domain'),
+							'showtime_us' => __('Showtime (US)', 'k8lang_domain'),
+							'flix_us' => __('FLIX (US)', 'k8lang_domain'),
+							'epix_us' => __('epix (US)', 'k8lang_domain'),
+							'hbo_now_us' => __('HBO Now (US)', 'k8lang_domain'),
+							'itv_uk' => __('ITV (UK)', 'k8lang_domain'),
+							'eurosport_uk' => __('Eurosport (UK)', 'k8lang_domain'),
+							'sky_uk' => __('Sky (UK)', 'k8lang_domain'),
+							'bbc_uk' => __('BBC iPlayer (UK)', 'k8lang_domain'),
+							'sky_news_uk' => __('Sky News (UK)', 'k8lang_domain'),
+							'bloomberg_uk' => __('Bloomberg (UK)', 'k8lang_domain'),
+							'bt_sport' => __('BT Sport (UK)', 'k8lang_domain'),
+							'channel_4_uk' => __('Channel 4 (UK)', 'k8lang_domain'),
+							'sky_go_it' => __('Sky Go (IT)', 'k8lang_domain'),
+							'youtube' => __('YouTube', 'k8lang_domain'),
+							'spotify' => __('Spotify', 'k8lang_domain'),
+							'starz_us' => __('starz (US)', 'k8lang_domain'),
+							'hustlertv_us' => __('hustlerTV (US)', 'k8lang_domain'),
+							'penthousetv_us' => __('PenthouseTV (US)', 'k8lang_domain'),
+							'playboytv_us' => __('PlayboyTV (US)', 'k8lang_domain'),
 						),
 						'allow_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => array(),
 						'layout' => 'horizontal',
 						'toggle' => 0,
 						'return_format' => 'array',
@@ -522,10 +522,10 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'Germany' => __( 'Deutschland', 'k8lang_domain' ),
-							'USA' => __( 'USA', 'k8lang_domain' ),
-							'UK' => __( 'Großbritannien', 'k8lang_domain' ),
-							'Russia' => __( 'Russland', 'k8lang_domain' ),
+							'Germany' => __('Deutschland', 'k8lang_domain'),
+							'USA' => __('USA', 'k8lang_domain'),
+							'UK' => __('Großbritannien', 'k8lang_domain'),
+							'Russia' => __('Russland', 'k8lang_domain'),
 						),
 						'allow_null' => 0,
 						'other_choice' => 0,
@@ -548,35 +548,34 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'belize' => __( 'Belize', 'k8lang_domain' ),
-							'bv-islands' =>  __( 'BV.Islands', 'k8lang_domain' ),
-							'cayman-islands' => __( 'Cayman Islands', 'k8lang_domain' ),
-							'commonwealth-of-dominic' => __( 'Commonwealth of Dominic', 'k8lang_domain' ),
-							'deutschland' => __( 'Deutschland', 'k8lang_domain' ),
-							'finnland' => __( 'Finnland', 'k8lang_domain' ),
-							'frankreich' => __( 'Frankreich', 'k8lang_domain' ),
-							'grossbritannien' => __( 'Großbritannien', 'k8lang_domain' ),
-							'hongkong' => __( 'HongKong', 'k8lang_domain' ),
-							'indien' => __( 'Indien', 'k8lang_domain' ),
-							'irland' => __( 'Irland', 'k8lang_domain' ),
-							'israel' => __( 'Israel', 'k8lang_domain' ),
-							'kanada' => __( 'Kanada', 'k8lang_domain' ),
-							'niederlande' => __( 'Niederlande', 'k8lang_domain' ),
-							'nord-zypern' => __( 'Nord-Zypern', 'k8lang_domain' ),
-							'panama' => __( 'Panama', 'k8lang_domain' ),
-							'rumaenien' => __( 'Rumänien', 'k8lang_domain' ),
-							'russland' => __( 'Russland', 'k8lang_domain' ),
-							'san-marino' => __( 'San Marino', 'k8lang_domain' ),
-							'schweden' => __( 'Schweden', 'k8lang_domain' ),
-							'schweiz' => __( 'Schweiz', 'k8lang_domain' ),
-							'seychellen' => __( 'Seychellen', 'k8lang_domain' ),
-							'tschechien' => __( 'Tschechien', 'k8lang_domain' ),
-							'usa' => __( 'USA', 'k8lang_domain' ),
-							'zypern' => __( 'Zypern', 'k8lang_domain' )
+							'belize' => __('Belize', 'k8lang_domain'),
+							'bv-islands' =>  __('BV.Islands', 'k8lang_domain'),
+							'cayman-islands' => __('Cayman Islands', 'k8lang_domain'),
+							'commonwealth-of-dominic' => __('Commonwealth of Dominic', 'k8lang_domain'),
+							'deutschland' => __('Deutschland', 'k8lang_domain'),
+							'finnland' => __('Finnland', 'k8lang_domain'),
+							'frankreich' => __('Frankreich', 'k8lang_domain'),
+							'grossbritannien' => __('Großbritannien', 'k8lang_domain'),
+							'hongkong' => __('HongKong', 'k8lang_domain'),
+							'indien' => __('Indien', 'k8lang_domain'),
+							'irland' => __('Irland', 'k8lang_domain'),
+							'israel' => __('Israel', 'k8lang_domain'),
+							'kanada' => __('Kanada', 'k8lang_domain'),
+							'niederlande' => __('Niederlande', 'k8lang_domain'),
+							'nord-zypern' => __('Nord-Zypern', 'k8lang_domain'),
+							'panama' => __('Panama', 'k8lang_domain'),
+							'rumaenien' => __('Rumänien', 'k8lang_domain'),
+							'russland' => __('Russland', 'k8lang_domain'),
+							'san-marino' => __('San Marino', 'k8lang_domain'),
+							'schweden' => __('Schweden', 'k8lang_domain'),
+							'schweiz' => __('Schweiz', 'k8lang_domain'),
+							'seychellen' => __('Seychellen', 'k8lang_domain'),
+							'tschechien' => __('Tschechien', 'k8lang_domain'),
+							'usa' => __('USA', 'k8lang_domain'),
+							'zypern' => __('Zypern', 'k8lang_domain')
 						),
 						'allow_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => array(),
 						'layout' => 'horizontal',
 						'toggle' => 0,
 						'return_format' => 'array',
@@ -653,16 +652,15 @@ class K8Acf
 							'id' => '',
 						),
 						'choices' => array(
-							'deutsch' => __( 'Deutsch', 'k8lang_domain' ),
-							'englisch' => __( 'Englisch', 'k8lang_domain' ),
-							'franzoesisch' => __( 'Französisch', 'k8lang_domain' ),
-							'russisch' => __( 'Russisch', 'k8lang_domain' ),
-							'schwedisch' => __( 'Schwedisch', 'k8lang_domain' ),
-							'spanisch' => __( 'Spanisch', 'k8lang_domain' ),
+							'deutsch' => __('Deutsch', 'k8lang_domain'),
+							'englisch' => __('Englisch', 'k8lang_domain'),
+							'franzoesisch' => __('Französisch', 'k8lang_domain'),
+							'russisch' => __('Russisch', 'k8lang_domain'),
+							'schwedisch' => __('Schwedisch', 'k8lang_domain'),
+							'spanisch' => __('Spanisch', 'k8lang_domain'),
 						),
 						'allow_custom' => 0,
-						'default_value' => array(
-						),
+						'default_value' => array(),
 						'layout' => 'horizontal',
 						'toggle' => 0,
 						'return_format' => 'array',
@@ -773,8 +771,9 @@ class K8Acf
 	}
 
 	#USER INFO ( IMAGE with Description )
-	public function user_info(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function user_info()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5d1dc59e5ab2a',
 				'title' => 'User info',
@@ -845,8 +844,9 @@ class K8Acf
 	}
 
 	#FAQ Shortcode
-	public function faq(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function faq()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5da9a88aa4335',
 				'title' => 'FAQ',
@@ -947,8 +947,9 @@ class K8Acf
 	}
 
 	# Slider Shortcode
-	public function slider(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function slider()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5d6798ce9ae56',
 				'title' => 'Slider',
@@ -1071,7 +1072,8 @@ class K8Acf
 	}
 
 	#Iframes Async Load
-	public function iframesAsync(){
+	public function iframesAsync()
+	{
 		acf_add_local_field_group(array(
 			'key' => 'group_5e0a290ab20e5',
 			'title' => 'Iframes Async Load',
@@ -1146,8 +1148,9 @@ class K8Acf
 
 
 	#HOWTO
-	public function howto(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function howto()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5df4b76c17916',
 				'title' => 'HowTo',
@@ -1359,8 +1362,9 @@ class K8Acf
 	}
 
 	#AMP support
-	public function amp(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function amp()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5e4564086c382',
 				'title' => 'Site Options',
@@ -1841,9 +1845,10 @@ class K8Acf
 	}
 
 	#popup
-	public function popup(){
+	public function popup()
+	{
 
-		if( function_exists('acf_add_local_field_group') ):
+		if (function_exists('acf_add_local_field_group')) :
 			// echo 'Herre!';
 			acf_add_local_field_group(array(
 				'key' => 'group_5ece4797eaf5e',
@@ -2019,9 +2024,10 @@ class K8Acf
 	}
 
 	#Organization Schema
-	public function organization(){
+	public function organization()
+	{
 
-		if( function_exists('acf_add_local_field_group') ){
+		if (function_exists('acf_add_local_field_group')) {
 			acf_add_local_field_group(array(
 				'key' => 'group_5f2bbd83b5c1d',
 				'title' => 'Organization',
@@ -2347,8 +2353,9 @@ class K8Acf
 	}
 
 	#Template for password generator template
-	public function passgen(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function passgen()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_5f9a9c0043121',
 				'title' => 'Password Generator Template',
@@ -2825,13 +2832,14 @@ class K8Acf
 				'description' => '',
 			));
 
-			endif;
+		endif;
 	}
 
 
 	#Custom widget top rated products
-	public function widget(){
-		if( function_exists('acf_add_local_field_group') ):
+	public function widget()
+	{
+		if (function_exists('acf_add_local_field_group')) :
 			acf_add_local_field_group(array(
 				'key' => 'group_606eda0d57df7',
 				'title' => 'Top Rated List',
@@ -2989,6 +2997,58 @@ class K8Acf
 				'active' => true,
 				'description' => '',
 			));
+		endif;
+	}
+
+	function page_404()
+	{
+		$error_page_id = get_option('404_page_id');
+
+		if (function_exists('acf_add_local_field_group') && $error_page_id) :
+
+			acf_add_local_field_group(array(
+				'key' => 'group_61082f24b8c91',
+				'title' => '404',
+				'fields' => array(
+					array(
+						'key' => 'field_61082f2b6ecbf',
+						'label' => 'Title',
+						'name' => 'title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => 'Oops! That page can’t be found.',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'page',
+							'operator' => '==',
+							'value' => $error_page_id,
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+
 		endif;
 	}
 }

@@ -11,13 +11,13 @@ if (!defined('ABSPATH')) {
 }
 
 $the_page    = null;
-$errorpageid = get_option('404_page_id');
-if ($errorpageid !== 0) {
+$error_page_id = get_option('404_page_id');
+if ($error_page_id !== 0) {
 	// Typecast to an integer
-	$errorpageid = (int) $errorpageid;
+	$error_page_id = (int) $error_page_id;
 
 	// Get our page
-	$the_page = get_page($errorpageid);
+	$the_page = get_page($error_page_id);
 }
 
 get_header(); ?>
@@ -47,7 +47,7 @@ get_header(); ?>
 			?>
 
 			<header class="entry-header">
-				<h1 class="entry-title" itemprop="headline"><?php echo apply_filters('generate_404_title', __('Oops! That page can&rsquo;t be found.', 'generatepress')); // WPCS: XSS OK. 
+				<h1 class="entry-title" itemprop="headline"><?php echo apply_filters('generate_404_title', __(get_field('title', $error_page_id) ?? 'Oops! That page can’t be found.', 'generatepress')); // WPCS: XSS OK. 
 															?></h1>
 			</header><!-- .entry-header -->
 
