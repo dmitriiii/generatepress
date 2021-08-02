@@ -63,16 +63,12 @@ get_header(); ?>
 			?>
 
 			<div class="entry-content" itemprop="text">
-				<?php
-				echo '<p>' . apply_filters('generate_404_text', __('It looks like nothing was found at this location. Maybe try searching?', 'generatepress')) . '</p>'; // WPCS: XSS OK.
-
-				get_search_form();
-				?>
+				<?php if ($the_page == NULL || isset($the_page->post_content) && trim($the_page->post_content == '')) { ?>
+				<?php } else { ?>
+					<?php echo apply_filters('the_content', $the_page->post_content); ?>
+				<?php } ?>
 			</div><!-- .entry-content -->
-			<?php if ($the_page == NULL || isset($the_page->post_content) && trim($the_page->post_content == '')) { ?>
-			<?php } else { ?>
-				<?php echo apply_filters('the_content', $the_page->post_content); ?>
-			<?php } ?>
+
 			<?php
 			/**
 			 * generate_after_content hook.
