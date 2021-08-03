@@ -734,7 +734,7 @@ class K8Short
 	#[K8_SH_SEARCH]
 	public function search($atts, $content, $tag) {
 		$a = shortcode_atts( array(
-			'output' => 'search',
+			'output' => 'search-mini',
 			'title' => 'It looks like nothing was found at this location. Maybe try searching?',
 		), $atts );
 		$search_title = $a['title'];
