@@ -35,6 +35,7 @@ get_header(); ?>
 
 		<div class="inside-article">
 
+<<<<<<< HEAD
 			<?php
 			/**
 			 * generate_before_content hook.
@@ -48,6 +49,26 @@ get_header(); ?>
 
 			<header class="entry-header">
 				<h1 class="entry-title" itemprop="headline"><?php echo apply_filters('generate_404_title', __(get_field('title', $error_page_id) ?? 'Oops! That page can’t be found.', 'generatepress')); // WPCS: XSS OK.?></h1>
+			</header><!-- .entry-header -->
+
+			<?php
+			/**
+			 * generate_after_entry_header hook.
+=======
+			<?php
+			/**
+			 * generate_before_content hook.
+			 *
+			 * @since 0.1
+			 *
+			 * @hooked generate_featured_page_header_inside_single - 10
+			 */
+			do_action('generate_before_content');
+			?>
+
+			<header class="entry-header">
+				<h1 class="entry-title" itemprop="headline"><?php echo apply_filters('generate_404_title', __(get_field('title', $error_page_id) ?? 'Oops! That page can’t be found.', 'generatepress')); // WPCS: XSS OK. 
+															?></h1>
 			</header><!-- .entry-header -->
 
 			<?php
@@ -67,6 +88,26 @@ get_header(); ?>
 					<?php echo apply_filters('the_content', $the_page->post_content); ?>
 				<?php } ?>
 			</div><!-- .entry-content -->
+
+			<?php
+			/**
+			 * generate_after_content hook.
+>>>>>>> 07786f1d257abbcee67607be68dede8cadb223d1
+			 *
+			 * @since 0.1
+			 *
+			 * @hooked generate_post_image - 10
+			 */
+<<<<<<< HEAD
+			do_action('generate_after_entry_header');
+			?>
+
+			<div class="entry-content" itemprop="text">
+				<?php if ($the_page == NULL || isset($the_page->post_content) && trim($the_page->post_content == '')) { ?>
+				<?php } else { ?>
+					<?php echo apply_filters('the_content', $the_page->post_content); ?>
+				<?php } ?>
+			</div><!-- .entry-content -->
 			
 			<?php
 			/**
@@ -77,6 +118,11 @@ get_header(); ?>
 			do_action('generate_after_content');
 			?>
 
+=======
+			do_action('generate_after_content');
+			?>
+
+>>>>>>> 07786f1d257abbcee67607be68dede8cadb223d1
 		</div><!-- .inside-article -->
 
 		<?php
