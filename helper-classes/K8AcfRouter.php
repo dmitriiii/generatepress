@@ -2034,7 +2034,7 @@ class K8AcfRouter
 						array(
 							'param' => 'post_category',
 							'operator' => '==',
-							'value' => 'category:router',
+							'value' => 'category:test-bericht',
 						),
 					),
 				),

@@ -30,16 +30,9 @@ class K8Hooks
 		#Add Popup shortcode to admin
 		add_filter( 'manage_m5pt_popup_posts_columns', array( $this, 'm5pt_popup_cols' ) );
 		add_action( 'manage_m5pt_popup_posts_custom_column' , array( $this, 'm5pt_popup_col' ), 10, 2 );
-		
-
-		#301 redirect on coupons single pages
-		if( get_site_url() == 'https://vpntester.net' ){
-			add_action( 'template_redirect', array( $this, 'redirect_to_home_page' ) );
-		}
 
 		#Custom image sizes
 		add_action( 'after_setup_theme', array($this, 'theme_setup') );
-
 	}
 	public function upload_mimes( $mimes ){
 		$mimes['exe'] = 'application/octet-stream';
@@ -103,27 +96,27 @@ class K8Hooks
 	public function acf_rmv(){
 		$current_user = wp_get_current_user();
 		if ($current_user->user_email != 'dk@geroy.ooo'){
-	    remove_menu_page( 'edit.php?post_type=acf-field-group' );
-	  }
+			remove_menu_page( 'edit.php?post_type=acf-field-group' );
+		}
 	}
 
 	#Create json array of anbieter vpnid=>postid vallues
 	public function onSavePost( $post_ID, $post, $update ) {
-    if ( wp_is_post_revision( $post_ID ) )
-    	return;
-    if ( 'post' !== $post->post_type )
-      return;
-    if( !in_category( array( 'anbieter', 'vpn-anbieter' ), $post_ID ) )
-      return;
-    // write_log('anbieter Zone!');
-    $args = array(
+		if ( wp_is_post_revision( $post_ID ) )
+			return;
+		if ( 'post' !== $post->post_type )
+			return;
+		if( !in_category( array( 'anbieter', 'vpn-anbieter' ), $post_ID ) )
+			return;
+		// write_log('anbieter Zone!');
+		$args = array(
 			'post_type'   => 'post',
 			'post_status' => 'any',
 			'category_name' => 'anbieter,vpn-anbieter',
 			'posts_per_page' => -1,
 		);
 		$querr = new WP_Query( $args );
-	 	if ( $querr->have_posts() ) :
+		if ( $querr->have_posts() ) :
 			$vpnidPid_arr = array();
 			while ( $querr->have_posts() ) : $querr->the_post();
 				$pid = get_the_ID();
@@ -140,20 +133,20 @@ class K8Hooks
 
 	#Create json array of rouid=>postid vallues
 	public function rouid( $post_ID, $post, $update ) {
-    if ( wp_is_post_revision( $post_ID ) )
-    	return;
-    if ( 'post' !== $post->post_type )
-      return;
-    if( !in_category( array( 'router' ), $post_ID ) )
-      return;
-    $args = array(
+		if ( wp_is_post_revision( $post_ID ) )
+			return;
+		if ( 'post' !== $post->post_type )
+			return;
+		if( !in_category( array( 'test-bericht' ), $post_ID ) )
+			return;
+		$args = array(
 			'post_type'   => 'post',
 			'post_status' => 'any',
-			'category_name' => 'router',
+			'category_name' => 'test-bericht',
 			'posts_per_page' => -1,
 		);
 		$querr = new WP_Query( $args );
-	 	if ( $querr->have_posts() ) :
+		if ( $querr->have_posts() ) :
 			$rouidPid_arr = array();
 			while ( $querr->have_posts() ) : $querr->the_post();
 				$pid = get_the_ID();
@@ -190,17 +183,9 @@ class K8Hooks
 		}
 	}
 
-	#301 redirect on coupons single pages
-	public function redirect_to_home_page() {
-	  if ( is_single() && 'affcoups_coupon' == get_post_type() ) {
-	   wp_redirect( home_url(), 301 );
-	    exit;
-	  }
-	}
-
 	public function theme_setup() {
-	  // add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
-	  add_image_size( 'pt_view_100x100', 100, 100, true ); // (cropped)
+		// add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
+		add_image_size( 'pt_view_100x100', 100, 100, true ); // (cropped)
 	}
 
 }

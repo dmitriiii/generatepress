@@ -255,4 +255,65 @@ class K8Html
 		}
 		return sprintf( $atts['format'], $atts['txt'] );
 	}
+
+ /**
+  * [buildTableHtml description]
+  * @param  [type] $args [
+  * 'data' - array - found results from DB
+  * 'title' - string - name for data what found ( for ex posts, pages, categories etc. )
+  * 'what' - string - word that we are searching
+  * 'wp_typpe' - string - wordpress type of instance ( `posts` or `terms` )
+  * 'caseCheck' - string - checkbox if we search case sensitive or not ( `true` or `false` )
+  * ]
+  * @return [type]       [description]
+  */
+	static function buildTableHtml( $args ){
+		extract( $args );
+		unset( $args );
+		ob_start();?>
+		<h5><?= $title; ?></h5>
+		<table class="table table-striped pills-coup-tbl" style="word-break: break-all;">
+		  <thead>
+		    <tr>
+		      <th scope="col" style="width: 60px;">#</th>
+		      <th scope="col" style="width: 560px;">Title</th>
+		      <th scope="col">Content</th>
+		      <!-- <th scope="col">Url</th> -->
+		      <th scope="col" style="width:110px;">Edit</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<?php
+				$ii = 1;
+				if( is_array($data) && count($data) > 0 )
+				foreach ($data as $item) :
+					$htmlContent = esc_html( $item['itemContent'] );
+
+					if($caseCheck == 'true')
+						$pos = strpos($htmlContent, esc_html($what));
+					else
+						$pos = stripos($htmlContent, esc_html($what));
+
+					if($wp_typpe == 'posts')
+						$url = get_the_permalink((int)$item['itemID']);
+					else
+						$url = get_term_link((int)$item['itemID'], 'category');
+					?>
+					<tr>
+			      <td scope="col"><?= $ii; ?></td>
+			      <td scope="col"><strong><u><a target="_blank" rel="nofollow" href="<?= ($wp_typpe == 'posts') ? get_the_permalink((int)$item['itemID']) : get_term_link((int)$item['itemID']);?>"><?= $item['itemTitle']; ?></a></u></strong></td>
+			      <td scope="col"><?= substr( $htmlContent, $pos, 300 );?></td>
+			      <td>
+			      	<a type="button" class="btn btn-secondary colr-wh" href="<?= ($wp_typpe == 'posts') ? get_edit_post_link( (int)$item['itemID'] ) : get_edit_term_link((int)$item['itemID']);?>" target="_blank">Edit</a>
+			      </td>
+			    </tr>
+				<?php
+				$ii++;
+				endforeach;?>
+		 </tbody>
+		</table>
+		<?php
+		$html = ob_get_clean();
+		return $html;
+	}
 } ?>

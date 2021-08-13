@@ -44,4 +44,37 @@ jQuery(document).ready(function($) {
 			}
 		});
 	}
+	$('body').on('submit', '.m5_gsearch', function(event) {
+		event.preventDefault();
+		// alert('wqdff');
+
+		let $form = $(this);
+		let $results = $form.siblings('.results');
+		let $results_cont =	$results.find(">:first-child");
+		let $prld = $results.find('.prld');
+		let formData = {
+			'what': $form.find("input[name='what']").val(),
+			'caseCheck': $form.find("input[name='caseCheck']")[0].checked
+		};
+		$prld.addClass('active');
+		$results_cont.html('');
+		$.ajax({
+			url: wpApiSettings.root + 'm5/globalSearch/',
+			async: true,
+			dataType: 'json',
+			method: 'POST',
+			// Setting nonce to be sure that user is logged in
+			beforeSend: function ( xhr ) {
+	      xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+	    },
+			data: formData,
+			success:function(data){
+				$results_cont.html(data.html);
+				$prld.removeClass('active');
+				console.log(data);
+				// if (count <= 90) m5AffCheck();
+			}
+		});
+		/* Act on the event */
+	});
 });

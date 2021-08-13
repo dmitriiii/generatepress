@@ -1,24 +1,27 @@
 <?php
 // ****************************************************************************************************
-if( function_exists('acf_add_options_page') ) {
+if (function_exists('acf_add_options_page')) {
 	acf_add_options_page();
 }
 
-require_once( __DIR__ . '/K8Init.php');
+require_once(__DIR__ . '/K8Init.php');
+
+
 
 // AMP support
-if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 ){
+if (get_field('k8_optz_amp', 'option') && get_field('k8_optz_amp', 'option') == 1) {
 	// write_log( 'Herrre' );
-	define( 'AMP_QUERY_VAR', apply_filters( 'amp_query_var', 'amp' ) );
-	add_rewrite_endpoint( AMP_QUERY_VAR, EP_PERMALINK );
-	add_filter( 'template_include', 'amp_page_template', 99 );
-	function amp_page_template( $template ) {
+	define('AMP_QUERY_VAR', apply_filters('amp_query_var', 'amp'));
+	add_rewrite_endpoint(AMP_QUERY_VAR, EP_PERMALINK);
+	add_filter('template_include', 'amp_page_template', 99);
+	function amp_page_template($template)
+	{
 		// global $wp_query;
 		// $post_type = get_query_var('post_type');
 
 		// write_log(get_defined_vars());
-		if( get_query_var( AMP_QUERY_VAR, false ) !== false ) {
-			if ( is_single() && has_category( get_field('k8_optz_amp_cat','option'), get_the_ID() ) ) {
+		if (get_query_var(AMP_QUERY_VAR, false) !== false) {
+			if (is_single() && has_category(get_field('k8_optz_amp_cat', 'option'), get_the_ID())) {
 				$template = get_template_directory() .  '/amp/tpl/single-news.php';
 			}
 		}
@@ -34,51 +37,52 @@ if( get_field('k8_optz_amp','option') && get_field('k8_optz_amp','option') == 1 
  *
  * @package GeneratePress
  */
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 // Set our theme version.
-define( 'GENERATE_VERSION', '2.2.1' );
-if ( ! function_exists( 'generate_setup' ) ) {
-	add_action( 'after_setup_theme', 'generate_setup' );
+define('GENERATE_VERSION', '2.2.1');
+if (!function_exists('generate_setup')) {
+	add_action('after_setup_theme', 'generate_setup');
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
 	 * @since 0.1
 	 */
-	function generate_setup() {
+	function generate_setup()
+	{
 		// Make theme available for translation.
-		load_theme_textdomain( 'generatepress' );
+		load_theme_textdomain('generatepress');
 		// Add theme support for various features.
-		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'status' ) );
-		add_theme_support( 'woocommerce' );
-		add_theme_support( 'title-tag' );
-		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
-		add_theme_support( 'customize-selective-refresh-widgets' );
-		add_theme_support( 'align-wide' );
-		add_theme_support( 'editor-color-palette', array() );
-		add_theme_support( 'custom-logo', array(
+		add_theme_support('automatic-feed-links');
+		add_theme_support('post-thumbnails');
+		add_theme_support('post-formats', array('aside', 'image', 'video', 'quote', 'link', 'status'));
+		add_theme_support('woocommerce');
+		add_theme_support('title-tag');
+		add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+		add_theme_support('customize-selective-refresh-widgets');
+		add_theme_support('align-wide');
+		add_theme_support('editor-color-palette', array());
+		add_theme_support('custom-logo', array(
 			'height' => 70,
 			'width' => 350,
 			'flex-height' => true,
 			'flex-width' => true,
-		) );
+		));
 		// Register primary menu.
-		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'generatepress' ),
-		) );
+		register_nav_menus(array(
+			'primary' => __('Primary Menu', 'generatepress'),
+		));
 		/**
 		 * Set the content width to something large
 		 * We set a more accurate width in generate_smart_content_width()
 		 */
 		global $content_width;
-		if ( !isset( $content_width ) ) {
+		if (!isset($content_width)) {
 			$content_width = 1200; /* pixels */
 		}
 		// This theme styles the visual editor to resemble the theme style.
-		add_editor_style( 'css/admin/editor-style.css' );
+		add_editor_style('css/admin/editor-style.css');
 	}
 }
 /**
@@ -96,7 +100,7 @@ require get_template_directory() . '/inc/plugin-compat.php';
 require get_template_directory() . '/inc/block-editor.php';
 require get_template_directory() . '/inc/migrate.php';
 require get_template_directory() . '/inc/deprecated.php';
-if ( is_admin() ) {
+if (is_admin()) {
 	require get_template_directory() . '/inc/meta-box.php';
 	require get_template_directory() . '/inc/dashboard.php';
 }
@@ -111,11 +115,11 @@ require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/post-meta.php';
 require get_template_directory() . '/inc/structure/sidebars.php';
-remove_action('load-update-core.php', 'wp_update_themes' );
+remove_action('load-update-core.php', 'wp_update_themes');
 // add_filter('pre_site_transient_update_themes', create_function( '$a', "return null;" ) );
 # no auto updates (should be manual to prevent breaking stuff without noticing)
-add_filter( 'auto_update_theme', '__return_false' );
-add_filter( 'auto_update_plugin', '__return_false' );
+add_filter('auto_update_theme', '__return_false');
+add_filter('auto_update_plugin', '__return_false');
 // add_filter( 'user_has_cap', function( $user_caps, $required_caps, $args, $user ) {
 // 	// write_log( $user->data->user_email );
 // 	if ( $user->data->user_email !== 'dk@geroy.ooo' ) {
@@ -124,16 +128,17 @@ add_filter( 'auto_update_plugin', '__return_false' );
 // 	return $user_caps;
 // }, 10, 4 );
 //
-add_action( 'init', 'k8_disable_feed_for_pages' );
-function k8_disable_feed_for_pages() {
-	remove_action( 'wp_head', 'feed_links_extra', 3 );
-	remove_action( 'wp_head', 'feed_links', 2 );
-	remove_action( 'wp_head', 'rsd_link' );
-	if(!in_array($_SERVER['REQUEST_URI'],['/feed/','/blog/neuigkeiten/feed/'])) {
-		remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
-		remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
-		remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
-		remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
+add_action('init', 'k8_disable_feed_for_pages');
+function k8_disable_feed_for_pages()
+{
+	remove_action('wp_head', 'feed_links_extra', 3);
+	remove_action('wp_head', 'feed_links', 2);
+	remove_action('wp_head', 'rsd_link');
+	if (!in_array($_SERVER['REQUEST_URI'], ['/feed/', '/blog/neuigkeiten/feed/'])) {
+		remove_action('do_feed_rdf',  'do_feed_rdf',  10, 1);
+		remove_action('do_feed_rss',  'do_feed_rss',  10, 1);
+		remove_action('do_feed_rss2', 'do_feed_rss2', 10, 1);
+		remove_action('do_feed_atom', 'do_feed_atom', 10, 1);
 	}
 }
 
@@ -142,7 +147,7 @@ function k8_disable_feed_for_pages() {
 // 	wp_deregister_script('heartbeat');
 // }
 
-add_filter( 'term_description', 'do_shortcode' );
+add_filter('term_description', 'do_shortcode');
 
 // function k8_deregister_scripts () {
 // 	$common_scripts = [
@@ -219,17 +224,18 @@ add_filter( 'term_description', 'do_shortcode' );
 /**
  * Remove Gutenberg Block Library CSS from loading on the frontend
  */
-function smartwp_remove_wp_block_library_css(){
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
+function smartwp_remove_wp_block_library_css()
+{
+	wp_dequeue_style('wp-block-library');
+	wp_dequeue_style('wp-block-library-theme');
 }
-add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
+add_action('wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100);
 
 
 /**
  * Change wp product review's tables plugin output from short content to real excerpt
  */
-// if(in_array(get_site_url(), ['https://vpn-anbieter-vergleich-test.de', 'https://dev.vavt.de'])) {
+// if(in_array(get_site_url(), ['https://vpn-anbieter-vergleich-test.de', 'https://vpn-anbieter-vergleich-test.de'])) {
 // 	add_filter( 'wppr_content', 'wppr_use_true_excerpt', 10, 2 );
 // 	 function wppr_use_true_excerpt( $content, $id ) {
 // 	 	return get_the_excerpt($id);
@@ -238,24 +244,26 @@ add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
 
 
-add_action('admin_head','vavt_hide_login_weak');
-add_action('login_enqueue_scripts','vavt_hide_login_weak');
+add_action('admin_head', 'vavt_hide_login_weak');
+add_action('login_enqueue_scripts', 'vavt_hide_login_weak');
 
-function vavt_hide_login_weak() {
-	wp_enqueue_script( 'vavt-disable-weak-password', get_template_directory_uri() . '/k8/admin/js/disable-weak.js');
+function vavt_hide_login_weak()
+{
+	wp_enqueue_script('vavt-disable-weak-password', get_template_directory_uri() . '/k8/admin/js/disable-weak.js');
 }
 
 #Redirect for routers pages
-if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
-	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
-}
+// if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
+// 	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
+// }
 
 
 
 # Fix issue with product review plugin
 add_filter('do_shortcode_tag', 'k8_clean_wppr_shortcodes', 10, 3);
-function k8_clean_wppr_shortcodes($output, $tag, $attr){
-	if(!in_array($tag, ['wpr_landing']) ){ //make sure it is the right shortcode
+function k8_clean_wppr_shortcodes($output, $tag, $attr)
+{
+	if (!in_array($tag, ['wpr_landing'])) { //make sure it is the right shortcode
 		return $output;
 	}
 	$regexp = '/(\[[^\[\]]+(\]|\.\.\.))/'; //displayed tag or not closed tag
@@ -264,16 +272,17 @@ function k8_clean_wppr_shortcodes($output, $tag, $attr){
 
 
 // Cron Updates  Affiliates Links with today's date
-add_action( 'm5_hook_cron_aff', 'm5_hook_cron_aff_fun' );
-function m5_hook_cron_aff_fun(){
+add_action('m5_hook_cron_aff', 'm5_hook_cron_aff_fun');
+function m5_hook_cron_aff_fun()
+{
 	global $wpdb;
-	$rezz =	$wpdb->get_results( "SELECT * FROM {$wpdb->prefix}posts WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
+	$rezz =	$wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE `post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%surfshark%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%nordvpn%' OR
 																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%vyprvpn%' OR
-																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%protonvpn%'" );
-	if( is_array($rezz) && count($rezz)>0 ):
+																																			`post_type`='easy_affiliate_link' AND `post_status`='publish' AND `post_title` LIKE '%protonvpn%'");
+	if (is_array($rezz) && count($rezz) > 0) :
 		foreach ($rezz as $rez) :
-			$eafl_url = get_post_meta( $rez->ID, 'eafl_url', true );
+			$eafl_url = get_post_meta($rez->ID, 'eafl_url', true);
 			$eafl_url_arr = explode('&', $eafl_url);
 
 			foreach ($eafl_url_arr as $key => $url_part) {
@@ -283,26 +292,28 @@ function m5_hook_cron_aff_fun(){
 
 				#if contains sub3 - remove
 				if (strpos($url_part, 'aff_sub3') !== false)
-					unset( $eafl_url_arr[$key] );
+					unset($eafl_url_arr[$key]);
 
 				#replace frame to mars
 				if (strpos($url_part, 'frame') !== false)
-					$eafl_url_arr[$key] = str_replace( 'frame', 'mars', $url_part );
+					$eafl_url_arr[$key] = str_replace('frame', 'mars', $url_part);
 
 				#replace popup to apollo
 				if (strpos($url_part, 'popup') !== false)
-					$eafl_url_arr[$key] = str_replace( 'popup', 'apollo', $url_part );
+					$eafl_url_arr[$key] = str_replace('popup', 'apollo', $url_part);
 
 				#replace quicklink to venus
 				if (strpos($url_part, 'quicklink') !== false)
-					$eafl_url_arr[$key] = str_replace( 'quicklink', 'venus', $url_part );
-
+					$eafl_url_arr[$key] = str_replace('quicklink', 'venus', $url_part);
 			}
-			$eafl_url_arr[] = 'aff_sub3='.date("ymd");
-			update_post_meta( $rez->ID, 'eafl_url', implode('&', $eafl_url_arr) );
+			$eafl_url_arr[] = 'aff_sub3=' . date("ymd");
+			update_post_meta($rez->ID, 'eafl_url', implode('&', $eafl_url_arr));
 		endforeach;
 	endif;
 }
+
+
+
 
 #Add aff_sub4 on the fly to Affiliate urls
 // function m5_eafl_redirect_callback( $link ) {
@@ -387,104 +398,107 @@ function m5_hook_cron_aff_fun(){
 
 
 
-if(!class_exists('TopRatedListWidget')) {
+if (!class_exists('TopRatedListWidget')) {
 
-  class TopRatedListWidget extends WP_Widget {
+	class TopRatedListWidget extends WP_Widget
+	{
 
-    /**
-    * Sets up the widgets name etc
-    */
-    public function __construct() {
-      $widget_ops = array(
-        'classname' => 'm5top-wdg',
-        'description' => 'Top Rated list widget',
-      );
-      parent::__construct( 'm5top-wdg', 'Top Rated list widget', $widget_ops );
-    }
+		/**
+		 * Sets up the widgets name etc
+		 */
+		public function __construct()
+		{
+			$widget_ops = array(
+				'classname' => 'm5top-wdg',
+				'description' => 'Top Rated list widget',
+			);
+			parent::__construct('m5top-wdg', 'Top Rated list widget', $widget_ops);
+		}
 
-    /**
-    * Outputs the content of the widget
-    *
-    * @param array $args
-    * @param array $instance
-    */
-    public function widget( $args, $instance ) {
-    	 wp_enqueue_style('m5top-wdg-css',  get_template_directory_uri() . '/k8/assets/css/widgets/m5top-wdg.css', [], rand(1,99999), 'all');
-       // outputs the content of the widget
-      if ( ! isset( $args['widget_id'] ) ) {
-        $args['widget_id'] = $this->id;
-      }
+		/**
+		 * Outputs the content of the widget
+		 *
+		 * @param array $args
+		 * @param array $instance
+		 */
+		public function widget($args, $instance)
+		{
+			wp_enqueue_style('m5top-wdg-css',  get_template_directory_uri() . '/k8/assets/css/widgets/m5top-wdg.css', [], rand(1, 99999), 'all');
+			// outputs the content of the widget
+			if (!isset($args['widget_id'])) {
+				$args['widget_id'] = $this->id;
+			}
 
-//       global $_wp_additional_image_sizes; 
-// print '<pre>'; 
-// print_r( $_wp_additional_image_sizes ); 
-// print '</pre>';
+			//       global $_wp_additional_image_sizes; 
+			// print '<pre>'; 
+			// print_r( $_wp_additional_image_sizes ); 
+			// print '</pre>';
 
-      // widget ID with prefix for use in ACF API functions
-      $widget_id = 'widget_' . $args['widget_id'];
+			// widget ID with prefix for use in ACF API functions
+			$widget_id = 'widget_' . $args['widget_id'];
 
-      $title = get_field( 'title', $widget_id ) ? get_field( 'title', $widget_id ) : '';
+			$title = get_field('title', $widget_id) ? get_field('title', $widget_id) : '';
 
-      $links = get_field( 'links', $widget_id );
-
-
-      echo $args['before_widget'];
-
+			$links = get_field('links', $widget_id);
 
 
-      if ( $title ) {
-        echo $args['before_title'] . esc_html($title) . $args['after_title'];
-      }
+			echo $args['before_widget'];
 
-      // the_field( 'text', $widget_id );
 
-      if(is_array($links) && count($links)>0):
-	      echo '<ul class="m5top-wdg-list">';
-	      foreach ($links as $k=>$v) :
-	      	$url_trgt=($v['url_to_page']['target']=='_blank') ? ' target="_blank" rel="nofollow"' : '';
-	      	$aff_trgt=($v['affiliate_link']['target']=='_blank') ? ' target="_blank" rel="nofollow"' : '';
-	      	echo '<li class="m5top-wdg-list__item">'.
-	      					'<span class="m5top-wdg-list__wrap">'.
-		      					'<a class="m5top-wdg-list__logo-link"'.$aff_trgt.' href="'.$v['affiliate_link']['url'].'">'.
-		      						// K8Html::getImgHtml([ 'img_id'=>$v['logo'], 'size'=>'pt_view_100x100', 'class'=>'m5top-wdg-list__logo']).
-		      						K8Html::getImgHtml([ 'img_id'=>$v['logo'], 'size'=>'wppr-widget', 'class'=>'m5top-wdg-list__logo']).
-		      					'</a>'.
-		      					'<span class="m5top-wdg-list__name">'.
-		      						$v['name'].
-		      						'<br><a class="m5top-wdg-list__name-link"'.$url_trgt.' href="'.$v['url_to_page']['url'].'">'.$v['score'].' Punkte</a>'.
-		      					'</span>'.
-	      					'</span>'.
-	      					'<a class="m5top-wdg-list__visit" href="'.$v['affiliate_link']['url'].'"'.$aff_trgt.'>'.$v['affiliate_link']['title'].' <i class="fas fa-caret-right" aria-hidden="true"></i></a>'.
-	      			 '</li>';
-	      endforeach;
-	      echo '</ul>';
-    	endif;
-      echo $args['after_widget'];
-    }
 
-    /**
-     * Outputs the options form on admin
-     *
-     * @param array $instance The widget options
-     */
-    public function form( $instance ) {
-    	// outputs the options form on admin
-    }
+			if ($title) {
+				echo $args['before_title'] . esc_html($title) . $args['after_title'];
+			}
 
-    /**
-     * Processing widget options on save
-     *
-     * @param array $new_instance The new options
-     * @param array $old_instance The previous options
-     *
-     * @return array
-     */
-    public function update( $new_instance, $old_instance ) {
-    	// processes widget options to be saved
-    }
+			// the_field( 'text', $widget_id );
 
-  }
+			if (is_array($links) && count($links) > 0) :
+				echo '<ul class="m5top-wdg-list">';
+				foreach ($links as $k => $v) :
+					$url_trgt = ($v['url_to_page']['target'] == '_blank') ? ' target="_blank" rel="nofollow"' : '';
+					$aff_trgt = ($v['affiliate_link']['target'] == '_blank') ? ' target="_blank" rel="nofollow"' : '';
+					echo '<li class="m5top-wdg-list__item">' .
+						'<span class="m5top-wdg-list__wrap">' .
+						'<a class="m5top-wdg-list__logo-link"' . $aff_trgt . ' href="' . $v['affiliate_link']['url'] . '">' .
+						// K8Html::getImgHtml([ 'img_id'=>$v['logo'], 'size'=>'pt_view_100x100', 'class'=>'m5top-wdg-list__logo']).
+						K8Html::getImgHtml(['img_id' => $v['logo'], 'size' => 'wppr-widget', 'class' => 'm5top-wdg-list__logo']) .
+						'</a>' .
+						'<span class="m5top-wdg-list__name">' .
+						$v['name'] .
+						'<br><a class="m5top-wdg-list__name-link"' . $url_trgt . ' href="' . $v['url_to_page']['url'] . '">' . $v['score'] . ' Punkte</a>' .
+						'</span>' .
+						'</span>' .
+						'<a class="m5top-wdg-list__visit" href="' . $v['affiliate_link']['url'] . '"' . $aff_trgt . '>' . $v['affiliate_link']['title'] . ' <i class="fas fa-caret-right" aria-hidden="true"></i></a>' .
+						'</li>';
+				endforeach;
+				echo '</ul>';
+			endif;
+			echo $args['after_widget'];
+		}
 
+		/**
+		 * Outputs the options form on admin
+		 *
+		 * @param array $instance The widget options
+		 */
+		public function form($instance)
+		{
+			// outputs the options form on admin
+		}
+
+		/**
+		 * Processing widget options on save
+		 *
+		 * @param array $new_instance The new options
+		 * @param array $old_instance The previous options
+		 *
+		 * @return array
+		 */
+		public function update($new_instance, $old_instance)
+		{
+			// processes widget options to be saved
+		}
+	}
 }
 
 /**
@@ -492,9 +506,9 @@ if(!class_exists('TopRatedListWidget')) {
  */
 function register_cta_widget()
 {
-  register_widget( 'TopRatedListWidget' );
+	register_widget('TopRatedListWidget');
 }
-add_action( 'widgets_init', 'register_cta_widget' );
+add_action('widgets_init', 'register_cta_widget');
 
 
 
@@ -502,5 +516,47 @@ add_action( 'widgets_init', 'register_cta_widget' );
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-remove_action( 'admin_print_styles', 'print_emoji_styles' );
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('admin_print_styles', 'print_emoji_styles');
+
+/**
+ * Editable 404 page
+ * Create 404 page
+ */
+add_action('after_setup_theme', 'create_404_page');
+
+// Insert a privately published page we can query for our 404 page
+function create_404_page()
+{
+
+	// Check if the 404 page exists
+	$page_exists = get_page_by_title('404');
+	$page_id = get_option('404_page_id');
+
+	if (!isset($page_exists->ID)) {
+
+		// Page array
+		$page = array(
+			'post_author' => 1,
+			'post_content' => '',
+			'post_name' =>  '404',
+			'post_status' => 'private',
+			'post_title' => '404',
+			'post_type' => 'page',
+			'post_parent' => 0,
+			'menu_order' => 0,
+			'to_ping' =>  '',
+			'pinged' => '',
+		);
+
+		$insert = wp_insert_post($page);
+
+		// The insert was successful
+		if ($insert) {
+			// Store the value of our 404 page
+			update_option('404_page_id', (int) $insert);
+		}
+	} elseif ($page_exists->ID != $page_id) {
+		update_option('404_page_id', (int) $page_exists->ID);
+	}
+}

@@ -68,6 +68,87 @@ function smTewdedw( $ppost, $shrt='affcoups' ){
 		z-index: 1;
 		background: #fff;
 	}
+	.m5_gsearch{
+		max-width: 700px;
+		margin: 30px auto 50px;
+		background-color: #eee;
+		padding: 30px 30px 10px;
+	}
+	.results{
+		min-height: 300px;
+		position: relative;
+	}
+
+	/* Preloader Styles */
+	.prld{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.7);
+		align-items: center;
+		justify-content: center;
+		display: none;
+	}
+	.prld.active{
+		display: flex;
+	}
+	.lds-ellipsis {
+	  display: inline-block;
+	  position: relative;
+	  width: 80px;
+	  height: 80px;
+	}
+	.lds-ellipsis div {
+	  position: absolute;
+	  top: 33px;
+	  width: 13px;
+	  height: 13px;
+	  border-radius: 50%;
+	  background: #fff;
+	  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+	}
+	.lds-ellipsis div:nth-child(1) {
+	  left: 8px;
+	  animation: lds-ellipsis1 0.6s infinite;
+	}
+	.lds-ellipsis div:nth-child(2) {
+	  left: 8px;
+	  animation: lds-ellipsis2 0.6s infinite;
+	}
+	.lds-ellipsis div:nth-child(3) {
+	  left: 32px;
+	  animation: lds-ellipsis2 0.6s infinite;
+	}
+	.lds-ellipsis div:nth-child(4) {
+	  left: 56px;
+	  animation: lds-ellipsis3 0.6s infinite;
+	}
+	@keyframes lds-ellipsis1 {
+	  0% {
+	    transform: scale(0);
+	  }
+	  100% {
+	    transform: scale(1);
+	  }
+	}
+	@keyframes lds-ellipsis3 {
+	  0% {
+	    transform: scale(1);
+	  }
+	  100% {
+	    transform: scale(0);
+	  }
+	}
+	@keyframes lds-ellipsis2 {
+	  0% {
+	    transform: translate(0, 0);
+	  }
+	  100% {
+	    transform: translate(24px, 0);
+	  }
+	}
 </style>
 
 
@@ -603,6 +684,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  <li class="nav-item">
 			    <a class="nav-link" id="pills-sync-tab" data-toggle="pill" href="#pills-sync" role="tab" aria-controls="pills-coup" aria-selected="false">Bulk Sync</a>
 			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="pills-anbtr-tab" data-toggle="pill" href="#pills-anbtr" role="tab" aria-controls="pills-coup" aria-selected="false">Global Search in website's content</a>
+			  </li>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -990,6 +1074,36 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			  	</p>
 			  </div> <!-- #pills-aff -->
 
+
+
+			   <div class="tab-pane fade" id="pills-anbtr" role="tabpanel" aria-labelledby="pills-anbtr-tab">
+			  	<h5>
+			  		Global search form to find out where in content on a website appears searching words
+			  	</h5>
+
+			  	<form class="m5_gsearch" method="post">
+						<div class="form-group clearfix">
+						  <label>Enter What do you want to search</label>
+						  <input type="text" class="form-control" name="what" minlength="4" placeholder="For ex. /vpn-anbieter/" required>
+						  <!-- <br> -->
+						</div>
+						<div class="form-check">
+					    <input type="checkbox" class="form-check-input" id="caseCheck" name="caseCheck" checked="true">
+					    <label class="form-check-label" for="caseCheck">Case sensitive</label>
+					  </div>
+					  <br>
+						<div class="form-group clearfix">
+					  	<button type="button" class="btn btn-info btn-sm float-left">Show nofollow internal links</button>
+					  	<button type="submit" class="btn btn-primary btn-sm float-right">Search</button>
+						</div>
+					</form>
+					<div class="results">
+						<div></div>
+						<div class="prld">
+							<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+						</div>
+					</div>
+			  </div> <!-- #pills-aff -->
 
 			</div>
 

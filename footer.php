@@ -221,12 +221,12 @@ endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>
-	<!-- <script> 
-		/* Trick quicklink
+	<!-- <script>
+		// Trick quicklink
 		window.addEventListener('load', function() {
 			/**
 			 * for mobile
-			 
+			 */
 			if (window.innerWidth <= 1024)
 			(function() {
 				if (!sessionStorage.getItem('TawkLoadedState')) {
@@ -247,7 +247,7 @@ echo M5Ga::getGa(); ?>
 				  location.reload()
 				}, false)
 			})()
-		})*/
+		})
 	</script> -->
 
 </body>

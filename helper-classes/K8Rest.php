@@ -9,7 +9,7 @@ class K8Rest
 		$this->taxz = $args['taxz'];
 		$this->k8_arrr = array(
 			'https://vpn-anbieter-vergleich-test.de',
-			'https://dev.vavt.de'
+			'https://vpn-anbieter-vergleich-test.de'
 		);
 		if( in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'rest_api_init', array( $this, 'create_api_posts_meta_field' ) );
@@ -25,6 +25,9 @@ class K8Rest
 
 		#custom route to manage checking aff links
 		add_action( 'rest_api_init', array( $this, 'affCheck' ) );
+
+		#custom route to global search from Statistics page
+		add_action( 'rest_api_init', array( $this, 'globalSearch' ) );
 
 		#custom route to get data about ip address
 		add_action( 'rest_api_init', array( $this, 'ipaddr' ) );
@@ -76,6 +79,17 @@ class K8Rest
 			array(
 				'methods' => 'POST',
 				'callback' => array( $this, 'affCheck_callback' )
+			)
+		);
+	}
+
+	public function globalSearch() {
+		register_rest_route(
+			'm5',
+			'globalSearch',
+			array(
+				'methods' => 'POST',
+				'callback' => array( $this, 'globalSearch_callback' )
 			)
 		);
 	}
@@ -141,7 +155,7 @@ class K8Rest
 		$argzz = array(
 			'post_type'   => 'post',
 			'posts_per_page' => -1,
-			'category_name' => 'router',
+			'category_name' => 'test-bericht',
 			'post_status' => 'any'
 		);
 		$the_query = new WP_Query( $argzz );
@@ -269,6 +283,147 @@ class K8Rest
 
 		return rest_ensure_response( $post_data );
 	}
+
+
+	public function globalSearch_callback($request_data) {
+		$result=[];
+		$result['html']='<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts / Pages / Questions / Answers</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Categories / Tags / Question Category / Question Tags</a>
+			  </li>
+			</ul><div class="tab-content" id="myTabContent"><div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">';
+		$nonce = null;
+		global $wpdb;
+
+		#check nonce - if request from our website and user logged in
+		if( isset($_SERVER['HTTP_X_WP_NONCE']) )
+			$nonce = $_SERVER['HTTP_X_WP_NONCE'];
+		if ( !wp_verify_nonce( $nonce, 'wp_rest' ) )
+			return new WP_Error( 'rest_cookie_invalid_nonce', __( 'Cookie nonce is invalid' ), array( 'status' => 403 ) );
+
+		$parameters = $request_data->get_params();
+
+		// write_log($parameters);
+
+		if(!isset($parameters['what'])){
+			$result['error'] = 'Missing searching field!';
+			return rest_ensure_response( $result );
+		}
+
+		// $what = $parameters['what'];
+		if (strlen($parameters['what']) < 4) {
+			$result['error'] = 'Searching word should be 5 and more letters!';
+			return rest_ensure_response( $result );
+		}
+
+		// $tablename = $wpdb->prefix . "my_custom_table";
+		$what = '%'.$wpdb->esc_like($parameters['what']).'%';
+		// $caseCheck = '';
+		// if( isset($parameters['caseCheck']) && $parameters['caseCheck'] == 'on' ){
+		// 	$caseCheck = 'BINARY';
+		// }
+
+		$dbRequests = [
+			[
+				'post_type'=>'post',
+				'title'=>'Posts',
+				'wp_type'=>'posts'
+			],
+			[
+				'post_type'=>'page',
+				'title'=>'Pages',
+				'wp_type'=>'posts'
+			],
+			[
+				'post_type'=>'question',
+				'title'=>'Questions',
+				'wp_type'=>'posts'
+			],
+			[
+				'post_type'=>'answer',
+				'title'=>'Answers',
+				'wp_type'=>'posts'
+			]
+		];
+
+		$c=0;
+		foreach ($dbRequests as $req) {
+			$sql = $wpdb->prepare( "SELECT ID AS itemID, post_title AS itemTitle, post_content AS itemContent FROM {$wpdb->posts} WHERE post_content LIKE BINARY %s AND post_type=%s AND post_status='publish' ORDER BY post_modified_gmt DESC", $what, $req['post_type'] );
+			if( $parameters['caseCheck'] === 'false' )
+				$sql = $wpdb->prepare( "SELECT ID AS itemID, post_title AS itemTitle, post_content AS itemContent FROM {$wpdb->posts} WHERE post_content LIKE %s AND post_type=%s AND post_status='publish' ORDER BY post_modified_gmt DESC", $what, $req['post_type'] );
+
+			// write_log($sql);
+			$results = $wpdb->get_results( $sql , ARRAY_A );
+			$c += count($results);
+			$result['html'] .= K8Html::buildTableHtml([
+				'data'=>$results,
+				'title'=>$req['title'],
+				'what'=>$parameters['what'],
+				'wp_typpe'=>$req['wp_type'],
+				'caseCheck'=>$parameters['caseCheck'],
+			]);
+		}
+		$result['html'] .= '</div><div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">';
+
+		$dbRequests = [
+			[
+				'post_type'=>'category',
+				'title'=>'Category',
+				'wp_type'=>'terms'
+			],
+			[
+				'post_type'=>'post_tag',
+				'title'=>'Tags',
+				'wp_type'=>'terms'
+			],
+			[
+				'post_type'=>'question_category',
+				'title'=>'Question Category',
+				'wp_type'=>'terms'
+			],
+			[
+				'post_type'=>'question_tag',
+				'title'=>'Question Tags',
+				'wp_type'=>'terms'
+			]
+		];
+
+		foreach ($dbRequests as $req) {
+			$sql = $wpdb->prepare( "SELECT t1.term_id AS itemID,
+																	 t2.name AS itemTitle,
+																	 t1.description AS itemContent,
+																	 t2.slug AS itemSlug
+																	 FROM {$wpdb->term_taxonomy} AS t1
+																	 INNER JOIN {$wpdb->terms} AS t2 ON t1.term_id=t2.term_id
+																	 WHERE t1.description LIKE BINARY %s AND t1.taxonomy=%s ORDER BY t2.term_order ASC", $what, $req['post_type'] );
+			if( $parameters['caseCheck'] === 'false' )
+				$sql = $wpdb->prepare( "SELECT t1.term_id AS itemID,
+																	 t2.name AS itemTitle,
+																	 t1.description AS itemContent,
+																	 t2.slug AS itemSlug
+																	 FROM {$wpdb->term_taxonomy} AS t1
+																	 INNER JOIN {$wpdb->terms} AS t2 ON t1.term_id=t2.term_id
+																	 WHERE t1.description LIKE %s AND t1.taxonomy=%s ORDER BY t2.term_order ASC", $what, $req['post_type'] );
+
+			$results = $wpdb->get_results( $sql , ARRAY_A );
+			$c += count($results);
+			$result['html'] .= K8Html::buildTableHtml([
+				'data'=>$results,
+				'title'=>$req['title'],
+				'what'=>$parameters['what'],
+				'wp_typpe'=>$req['wp_type'],
+				'caseCheck'=>$parameters['caseCheck'],
+			]);
+		}
+		$result['html'] .= '</div></div>';
+		$result['html'] = '<h2>Totally found items: ' . $c . '</h2>' . $result['html'];
+		return rest_ensure_response( $result );
+	}
+
+
 
 	#custom route to get data about ip address
 	public function ipaddr_callback($request_data) {

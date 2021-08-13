@@ -141,6 +141,9 @@ class K8Short
 
 		#[K8_SH_ACCOUNT]
 		add_shortcode( 'K8_SH_ACCOUNT', array( $this, 'account') );
+
+		#[K8_SH_SEARCH]
+		add_shortcode( 'K8_SH_SEARCH', array( $this, 'search') );
 	}
 
 	#set url of anbieter review
@@ -726,6 +729,19 @@ class K8Short
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
+	}
+
+	#[K8_SH_SEARCH]
+	public function search($atts, $content, $tag) {
+		$a = shortcode_atts( array(
+			'output' => 'search',
+			'title' => 'It looks like nothing was found at this location. Maybe try searching?',
+		), $atts );
+		$search_title = $a['title'];
+		ob_start();
+		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+
+		return ob_get_clean();
 	}
 
 }
