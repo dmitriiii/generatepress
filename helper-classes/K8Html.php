@@ -289,7 +289,7 @@ class K8Html
 				foreach ($data as $item) :
 					$htmlContent = esc_html( $item['itemContent'] );
 
-					if($caseCheck == 'true')
+					if(isset($caseCheck) && $caseCheck == 'true')
 						$pos = strpos($htmlContent, esc_html($what));
 					else
 						$pos = stripos($htmlContent, esc_html($what));

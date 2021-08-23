@@ -71,10 +71,45 @@ jQuery(document).ready(function($) {
 			success:function(data){
 				$results_cont.html(data.html);
 				$prld.removeClass('active');
-				console.log(data);
+				// console.log(data);
 				// if (count <= 90) m5AffCheck();
 			}
 		});
 		/* Act on the event */
+	});
+
+
+	$('body').on('click', '#show_nofollow_int', function(event) {
+		event.preventDefault();
+		let $btn = $(this);
+		let $form = $btn.parents('form');
+		let $results = $form.siblings('.results');
+		let $results_cont =	$results.find(">:first-child");
+		let $prld = $results.find('.prld');
+		let formData = {
+			'what': 'nofollow',
+			// 'caseCheck': $form.find("input[name='caseCheck']")[0].checked
+		};
+		$prld.addClass('active');
+		$results_cont.html('');
+		
+		$.ajax({
+			url: wpApiSettings.root + 'm5/internalNofollow/',
+			async: true,
+			dataType: 'json',
+			method: 'POST',
+			// Setting nonce to be sure that user is logged in
+			beforeSend: function ( xhr ) {
+	      xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+	    },
+			data: formData,
+			success:function(data){
+				$results_cont.html(data.html);
+				$prld.removeClass('active');
+				// console.log(data);
+				// if (count <= 90) m5AffCheck();
+			}
+		});
+
 	});
 });

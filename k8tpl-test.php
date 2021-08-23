@@ -1093,7 +1093,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					  </div>
 					  <br>
 						<div class="form-group clearfix">
-					  	<button type="button" class="btn btn-info btn-sm float-left">Show nofollow internal links</button>
+					  	<button type="button" class="btn btn-info btn-sm float-left" id="show_nofollow_int">Show nofollow internal links</button>
 					  	<button type="submit" class="btn btn-primary btn-sm float-right">Search</button>
 						</div>
 					</form>
