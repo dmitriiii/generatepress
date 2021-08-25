@@ -294,6 +294,8 @@ class K8Html
 					else
 						$pos = stripos($htmlContent, esc_html($what));
 
+					$pos = $pos-20;
+
 					if($wp_typpe == 'posts')
 						$url = get_the_permalink((int)$item['itemID']);
 					else
