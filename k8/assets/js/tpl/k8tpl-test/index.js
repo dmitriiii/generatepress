@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
 	});
 
 
-	$('body').on('click', '#show_nofollow_int', function(event) {
+	$('body').on('click', '.show_internalz', function(event) {
 		event.preventDefault();
 		let $btn = $(this);
 		let $form = $btn.parents('form');
@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
 		let $results_cont =	$results.find(">:first-child");
 		let $prld = $results.find('.prld');
 		let formData = {
-			'what': 'nofollow',
+			'what': $btn.attr('data-val'),
 			// 'caseCheck': $form.find("input[name='caseCheck']")[0].checked
 		};
 		$prld.addClass('active');

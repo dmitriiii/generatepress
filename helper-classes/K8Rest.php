@@ -517,7 +517,7 @@ class K8Rest
 				foreach ($results as $item) :
 
 					$document = new Document($item['itemContent']);
-					$nofolow_links = $document->find('a[rel*=nofollow]');
+					$nofolow_links = $document->find('a[rel*='.$parameters['what'].']');
 					if( is_array($nofolow_links) && count($nofolow_links)>0 ){
 						$ii=0;
 						foreach ($nofolow_links as $nofolow_link) {
