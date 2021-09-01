@@ -12,12 +12,17 @@ jQuery(document).ready(function ($) {
 
   if (!status) {
     setTimeout(function () {
-      Cookie.set(`${id}_sale_modal`, 1, {
-        samesite: "strict",
-        "max-age": maxAge,
-      });
-      openPopup($("#sales"));
+      const $salesPopup = openPopup($("#sales"));
+      $salesPopup.on("popup:beforeClose", () => setCookie());
+      $salesPopup.on("popup:overlayClick", () => setCookie());
     }, delay);
+  }
+
+  function setCookie() {
+    Cookie.set(`${id}_sale_modal`, 1, {
+      samesite: "strict",
+      "max-age": maxAge,
+    });
   }
 
   function isNotExpTimer() {
