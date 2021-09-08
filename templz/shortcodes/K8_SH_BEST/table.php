@@ -184,7 +184,7 @@ if( is_array($pid_arr) && count($pid_arr)>0 ):
 							// print_r($linkz);
 							if( is_array($linkz) && count($linkz)>0 ):
 								foreach ( $linkz as $kl ) :
-									echo '<a rel="nofollow" class="dwnd__butt grn" target="_blank" href="'.$kl.'" >' .
+									echo '<a rel="nofollow sponsored" class="dwnd__butt grn" target="_blank" href="'.$kl.'" >' .
 									// K8Html::getImgHtml([
 									// 	'img_id'=>get_post_thumbnail_id($p['pid']),
 									// 	'size'=>array(30,30)
