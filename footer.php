@@ -114,7 +114,7 @@ wp_footer();
 			if( is_array($linkz) && count($linkz) > 0 ):
 				foreach ($linkz as $k=>$v) :?>
 					<div class="k8side__item k8side__item-2">
-						<a class="k8side__button k8side__button-2" rel="nofollow" href="<?php echo $v; ?>" target="_blank"><span class="sr-only">kaufen</span><i class="fas fa-shopping-cart"></i></a>
+						<a class="k8side__button k8side__button-2" rel="nofollow sponsored" href="<?php echo $v; ?>" target="_blank"><span class="sr-only">kaufen</span><i class="fas fa-shopping-cart"></i></a>
 					</div>
 				<?php
 				endforeach;
@@ -131,7 +131,7 @@ wp_footer();
 					<?php
 					if (is_array($m5_opt_fast) && count($m5_opt_fast)>0):
 						foreach ($m5_opt_fast as $affil):?>
-				  		<a href="<?php echo $affil['url']; ?>" class="k8side__fast-item" target="_blank" rel="nofollow" title="<?php echo $affil['name']; ?>">
+				  		<a href="<?php echo $affil['url']; ?>" class="k8side__fast-item" target="_blank" rel="nofollow sponsored" title="<?php echo $affil['name']; ?>">
 				  			<?php echo wp_get_attachment_image( $affil['logo'], 'thumbnail', false ,['class'=>''] ); ?>
 				  		</a>
 						<?php
