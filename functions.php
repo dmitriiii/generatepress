@@ -317,6 +317,9 @@ function m5_hook_cron_aff_fun()
 
 #Add aff_sub4 on the fly to Affiliate urls
 function m5_eafl_redirect_callback( $link ) {
+	if(!isset($_SERVER['REQUEST_URI']))
+		return ;
+
 	if( strpos($_SERVER['REQUEST_URI'], 'surfshark') === FALSE &&
 			strpos($_SERVER['REQUEST_URI'], 'nordvpn') === FALSE &&
 			strpos($_SERVER['REQUEST_URI'], 'vyprvpn') === FALSE &&
@@ -393,8 +396,8 @@ add_action( 'eafl_redirect', 'm5_eafl_redirect_callback', 10, 2 );
 // 		autoptimizeCache::clearall();
 // 	}
 // }
-// 
-// 
+//
+//
 
 
 
@@ -429,9 +432,9 @@ if (!class_exists('TopRatedListWidget')) {
 				$args['widget_id'] = $this->id;
 			}
 
-			//       global $_wp_additional_image_sizes; 
-			// print '<pre>'; 
-			// print_r( $_wp_additional_image_sizes ); 
+			//       global $_wp_additional_image_sizes;
+			// print '<pre>';
+			// print_r( $_wp_additional_image_sizes );
 			// print '</pre>';
 
 			// widget ID with prefix for use in ACF API functions
