@@ -235,7 +235,7 @@ add_action('wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100);
 /**
  * Change wp product review's tables plugin output from short content to real excerpt
  */
-// if(in_array(get_site_url(), ['https://vpn-anbieter-vergleich-test.de', 'https://vpn-anbieter-vergleich-test.de'])) {
+// if(in_array(get_site_url(), ['https://vpn-anbieter-vergleich-test.de', 'https://vpntester.info'])) {
 // 	add_filter( 'wppr_content', 'wppr_use_true_excerpt', 10, 2 );
 // 	 function wppr_use_true_excerpt( $content, $id ) {
 // 	 	return get_the_excerpt($id);
@@ -253,7 +253,7 @@ function vavt_hide_login_weak()
 }
 
 #Redirect for routers pages
-// if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de'){
+// if(get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.info'){
 // 	new M5Redirect(['slug'=>'router', 'term_id'=>12004]);
 // }
 

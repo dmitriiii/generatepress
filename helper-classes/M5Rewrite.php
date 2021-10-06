@@ -6,7 +6,7 @@ class M5Rewrite
 {
 
 	function __construct(){
-		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' ){
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() ==  'https://vpntester.info' ){
 			add_action( 'init', [$this,'removeFromUrl'] );
 			add_filter('post_link', [$this,'removeFromPermalink'], 10, 3);
 		}

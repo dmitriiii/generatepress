@@ -6,7 +6,7 @@ class M5Redirect
 	function __construct(){
 
 		#Redirect from non categories in urls to proper for vavt.de
-		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' ){
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.info' ){
 			add_action('template_redirect', array($this, 'redir404vavt'));
 		}
 
