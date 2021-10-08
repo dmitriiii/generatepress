@@ -686,6 +686,25 @@ class K8Acf
 						'prepend' => '',
 						'append' => '',
 					),
+					array(
+						'key' => 'field_615c8807f3bcd',
+						'label' => 'Jotform Submission id',
+						'name' => 'jotform_submission_id',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
 				), # END OF fields Array
 				'location' => array(
 					array(
