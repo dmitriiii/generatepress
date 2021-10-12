@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $apid = get_the_ID();
 $lang_atts = get_language_attributes( 'html' );
-if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.info')
+if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.org')
 	$lang_atts = str_replace('de-DE', 'de', $lang_atts)
 ?><!DOCTYPE html>
 <html <?= $lang_atts; ?>>

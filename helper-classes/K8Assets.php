@@ -8,7 +8,7 @@ class K8Assets
 		#add for admin dashboard
 		add_action('admin_enqueue_scripts', array($this, 'admin_style'));
 
-		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.info' ){
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.org' ){
 			add_action( 'admin_head', array($this, 'acf_fix') );
 		}
 
