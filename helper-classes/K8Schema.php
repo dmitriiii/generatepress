@@ -116,7 +116,7 @@ class K8Schema
     		"name" => get_bloginfo('name'),
     		"logo" => [
 		      "@type" => "ImageObject",
-		      "url" => "https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
+		      "url" => "https://vpntester.org/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
 		    ]
 		  ],
 		  "description" => get_the_excerpt($pid)
@@ -269,7 +269,7 @@ class K8Schema
 			$datta['description'] = get_bloginfo('description');
 
 		if ( !isset($datta['thumbnailUrl']) || trim($datta['thumbnailUrl']) == '' )
-			$datta['thumbnailUrl'] = 'https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2019/09/VPNtester-logo-white.png';
+			$datta['thumbnailUrl'] = 'https://vpntester.org/wp-content/uploads/2019/09/VPNtester-logo-white.png';
 
 		if ( !isset($datta['uploadDate']) || trim($datta['uploadDate']) == '' )
 			$datta['uploadDate'] = '2020-01-08T09:58:11Z';
@@ -292,7 +292,7 @@ class K8Schema
 			"url" => home_url(),
 			"logo" => [
 		      "@type" => "ImageObject",
-		      "url" =>  $org['logo'] ? $org['logo'] : "https://vpn-anbieter-vergleich-test.de/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
+		      "url" =>  $org['logo'] ? $org['logo'] : "https://vpntester.org/wp-content/uploads/2018/12/cropped-cropped-vpntester-Logo-quer-min-300x58-1.png"
 		    ],
 		    "foundingDate" => $org['founding_year'],
 		    "founders" => [

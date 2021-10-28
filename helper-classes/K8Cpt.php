@@ -5,7 +5,7 @@ class K8Cpt
 	function __construct()
 	{
 		add_action( 'init', array( $this, 'anbieter_taxes' ) );
-		if ( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' ) :
+		if ( get_site_url() == 'https://vpntester.org' ) :
 			$this->rest = true;
 		endif;
 	}

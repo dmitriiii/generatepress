@@ -13,7 +13,7 @@ class K8Rest
 		$this->taxz = $args['taxz'];
 		$this->k8_arrr = array(
 			'https://vpn-anbieter-vergleich-test.de',
-			'https://vpn-anbieter-vergleich-test.de'
+			'https://vpntester.org'
 		);
 		if( in_array(get_site_url(), $this->k8_arrr) ){
 			add_action( 'rest_api_init', array( $this, 'create_api_posts_meta_field' ) );
