@@ -252,10 +252,13 @@ if ( ! function_exists( 'generate_post_meta' ) ) {
 
 		if ( in_array( get_post_type(), $post_types ) ) :
 			$uid = get_the_author_meta( 'ID' );
-			$k8_acf_u_ph = get_field( 'k8_acf_u_ph', 'user_' . $uid );?>
+			$k8_acf_u_ph = get_field( 'k8_acf_u_ph', 'user_' . $uid );
+			$k8_alt = "Vpntester author"; 
+			if($k8_acf_u_ph)
+				$k8_alt = get_post_meta($k8_acf_u_ph, '_wp_attachment_image_alt', TRUE); ?>
 			<div class="entry-meta tbl k8-meta__tbl">
 				<div class="tbl-cell mdl k8-meta__img">
-					<img alt="" style="width: 70px; height: 70px;" class="k8-round" width="70" height="70" src="<?php echo ( $k8_acf_u_ph ) ? K8Help::getImgUrl( $k8_acf_u_ph, 'thumbnail' ) : bloginfo( 'template_directory' ) . '/img/default-user-100.jpg' ; ?>">
+					<img alt="<?= $k8_alt; ?>" style="width: 70px; height: 70px;" class="k8-round" width="70" height="70" src="<?php echo ( $k8_acf_u_ph ) ? K8Help::getImgUrl( $k8_acf_u_ph, 'thumbnail' ) : bloginfo( 'template_directory' ) . '/img/default-user-100.jpg' ; ?>">
 				</div>
 				<div class="tbl-cell mdl k8-meta__txt">
 					<?php generate_posted_on(); ?>
