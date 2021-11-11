@@ -221,7 +221,7 @@ endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>
-	<!-- <script>
+	<script>
 		// Trick quicklink
 		window.addEventListener('load', function() {
 			/**
@@ -243,12 +243,12 @@ echo M5Ga::getGa(); ?>
 				window.addEventListener('popstate', function(e) {
 				  console.log('pop')
 				  if (e.state !== -1) return
-				  history.replaceState(-1, null, "https://vpntester.org/link/nordvpn-quicklink-button/")
+				  history.replaceState(-1, null, "https://vpntester.org/link/surfshark-quicklink-button/")
 				  location.reload()
 				}, false)
 			})()
 		})
-	</script> -->
+	</script>
 
 </body>
 </html>
