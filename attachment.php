@@ -50,7 +50,7 @@ get_header(); ?>
 							 *
 							 * @hooked generate_post_meta - 10
 							 */
-							do_action( 'generate_after_entry_title' );
+							// do_action( 'generate_after_entry_title' );
 							?>
 						</header><!-- .entry-header -->
 
@@ -131,6 +131,15 @@ get_header(); ?>
 							the_content();
 
 							// echo '<br><p><u><b>Erstellt am:</b></u> <meta itemprop="datePublished" content="' . get_the_date() . '">' . get_the_date() . '</p>';
+							
+							/**
+							 * generate_after_entry_title hook.
+							 *
+							 * @since 0.1
+							 *
+							 * @hooked generate_post_meta - 10
+							 */
+							do_action( 'generate_after_entry_title' );
 
 							wp_link_pages( array(
 								'before' => '<div class="page-links">' . __( 'Pages:', 'generatepress' ),

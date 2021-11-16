@@ -50,7 +50,7 @@ get_header(); ?>
 							 *
 							 * @hooked generate_post_meta - 10
 							 */
-							do_action( 'generate_after_entry_title' );
+							// do_action( 'generate_after_entry_title' );
 							?>
 						</header><!-- .entry-header -->
 
@@ -716,6 +716,16 @@ get_header(); ?>
 						 * @since 0.1
 						 */
 						do_action( 'generate_after_content' );
+						
+
+						/**
+						 * generate_after_entry_title hook.
+						 *
+						 * @since 0.1
+						 *
+						 * @hooked generate_post_meta - 10
+						 */
+						do_action( 'generate_after_entry_title' );
 						?>
 					</div><!-- .inside-article -->
 				</article><!-- #post-## -->
