@@ -1578,6 +1578,10 @@
 	color: #fff;
 	opacity: 0.8;
 }
+.ntf-blck a:visited{
+	color: #fff;
+}
+
 
 .ntf-blck__close{
 	position: absolute;
