@@ -1,8 +1,31 @@
 jQuery(document).ready(function ($) {
-	// console.log('cacche fixez v3');
-	// let retrievedObject = localStorage.getItem('k8PhnSucc');
-	// console.log(){
-	// }
+
+	//Black Friday notification
+	(function() {
+		var ntf = $('.ntf-blck');
+		if (ntf.length > 0) {
+			var cook = Cookie.get('_ntf_blck');
+			if (cook === undefined) {
+				cook=0;
+			}
+			cook++;
+			Cookie.set('_ntf_blck',cook, {
+	      "max-age": 86400,
+	    });
+			setTimeout(function(){
+		    if(cook % 5 === 0 || cook ===1 ) {
+					ntf.addClass('active');
+		    }
+			},2000);
+			$('body').on('click', '.ntf-blck__close', function(e) {
+				e.preventDefault();
+				ntf.removeClass('active');
+			});
+		}
+	})();
+
+
+
 	var retrieveLocal = function retrieveLocal() {
 		// console.log('Bananza!');
 		var k8PhnSucc = localStorage.getItem("k8PhnSucc");
@@ -241,7 +264,6 @@ jQuery(document).ready(function ($) {
 				});
 			}
 		}, 15000);
-	
 	});
 
 	function sentGoogleAnalitic(gtagOpts) {

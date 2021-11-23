@@ -17,38 +17,46 @@ if ( ! function_exists( 'generate_navigation_position' ) ) {
 	 */
 	function generate_navigation_position() {
 		?>
-		<nav id="site-navigation" <?php generate_do_element_classes( 'navigation' ); ?> <?php generate_do_microdata( 'navigation' ); ?>>
-			<div <?php generate_do_element_classes( 'inside_navigation' ); ?>>
-				<?php
-				/**
-				 * generate_inside_navigation hook.
-				 *
-				 * @since 0.1
-				 *
-				 * @hooked generate_navigation_search - 10
-				 * @hooked generate_mobile_menu_search_icon - 10
-				 */
-				do_action( 'generate_inside_navigation' );
-				?>
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<?php do_action( 'generate_inside_mobile_menu' ); ?>
-					<span class="mobile-menu"><?php echo apply_filters( 'generate_mobile_menu_label', __( 'Menu', 'generatepress' ) ); // WPCS: XSS ok. ?></span>
-				</button>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'primary',
-						'container' => 'div',
-						'container_class' => 'main-nav',
-						'container_id' => 'primary-menu',
-						'menu_class' => '',
-						'fallback_cb' => 'generate_menu_fallback',
-						'items_wrap' => '<ul id="%1$s" class="%2$s ' . join( ' ', generate_get_element_classes( 'menu' ) ) . '">%3$s</ul>',
-					)
-				);
-				?>
-			</div><!-- .inside-navigation -->
-		</nav><!-- #site-navigation -->
+		<div class="ntf">
+			<div class="ntf-blck">
+				<p>Black Friday Sale <a href="https://vpntester.org/blog/black-friday-2020-top-vpn-angebote/">Beeil dich!</a></p>
+				<i class="ntf-blck__close far fa-times-circle"></i>
+			</div>
+			<nav id="site-navigation" <?php generate_do_element_classes( 'navigation' ); ?> <?php generate_do_microdata( 'navigation' ); ?>>
+				<div <?php generate_do_element_classes( 'inside_navigation' ); ?>>
+					<?php
+					/**
+					 * generate_inside_navigation hook.
+					 *
+					 * @since 0.1
+					 *
+					 * @hooked generate_navigation_search - 10
+					 * @hooked generate_mobile_menu_search_icon - 10
+					 */
+					do_action( 'generate_inside_navigation' );
+					?>
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+						<?php do_action( 'generate_inside_mobile_menu' ); ?>
+						<span class="mobile-menu"><?php echo apply_filters( 'generate_mobile_menu_label', __( 'Menu', 'generatepress' ) ); // WPCS: XSS ok. ?></span>
+					</button>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'container' => 'div',
+							'container_class' => 'main-nav',
+							'container_id' => 'primary-menu',
+							'menu_class' => '',
+							'fallback_cb' => 'generate_menu_fallback',
+							'items_wrap' => '<ul id="%1$s" class="%2$s ' . join( ' ', generate_get_element_classes( 'menu' ) ) . '">%3$s</ul>',
+						)
+					);
+					?>
+				</div><!-- .inside-navigation -->
+			</nav><!-- #site-navigation -->
+
+		</div>
+		
 		<?php
 	}
 }
