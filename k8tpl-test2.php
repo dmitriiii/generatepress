@@ -70,7 +70,7 @@ if( isset($_GET['test2']) && $_GET['test2'] == 77 ){
 							$ii++;
 						}
 					}
-					
+
 					#if there no more nofollow internal links left - remove post( page ) from found array of pages
 					if( is_array($nofolow_links) && count($nofolow_links)==0 ){
 						unset($results[$i]);
@@ -101,5 +101,29 @@ if( isset($_GET['test2']) && $_GET['test2'] == 77 ){
 		endforeach;
 }
 
+
+
+
+if( isset($_GET['test3']) && $_GET['test3'] == 77 ){
+	$vpnidPid =	json_decode( file_get_contents( K8_PATH_LOC . '/' . 'vpnidPid.json'), true );
+	$fp = fopen( K8_PATH_LOC . '/vpnlist.csv' , 'w');
+	foreach ($vpnidPid as $item) :
+		// $csv_arr=[];
+		echo '<pre>';
+		print_r($item);
+		echo '</pre>';
+		$csv_arr=[
+			$item['vpnid'],
+			html_entity_decode(get_the_title($item['pid'])),
+			html_entity_decode(get_the_permalink($item['pid'])),
+			html_entity_decode(get_edit_post_link($item['pid']))
+		];
+		fputcsv($fp, $csv_arr );
+	endforeach;
+
+
+
+	fclose($fp);
+}
 
 get_footer();
