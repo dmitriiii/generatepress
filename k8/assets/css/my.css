@@ -1578,7 +1578,9 @@
 	color: #fff;
 	opacity: 0.8;
 }
-.ntf-blck a:visited{
+.ntf-blck a:visited,
+.ntf-blck a:focus,
+.ntf-blck a:active{
 	color: #fff;
 }
 
