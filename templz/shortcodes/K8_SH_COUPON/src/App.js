@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+// import ImageBlack from './imgz/76580-Black-friday-background.png';
+
 class App extends React.Component{
   constructor(props) {
     super(props);

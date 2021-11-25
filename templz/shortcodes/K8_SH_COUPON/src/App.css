@@ -193,8 +193,15 @@ select.contt__control:focus{
   font-weight: bold;
 }
 
+.gridd__body-txt{
+  margin: 0 0 15px;
+}
+.gridd__body-txt p{
+  margin: 0;
+}
+
 .gridd__item[data-type*="blackfriday"] .gridd__body{
-  background: url('./imgz/76580-Black-friday-background-template.webp') center no-repeat;
+  background: url('https://vpntester.org/wp-content/uploads/2021/11/76580-Black-friday-background.png') center no-repeat;
   background-size: cover;
   color: rgb(255, 255, 255);
 }
@@ -206,7 +213,7 @@ select.contt__control:focus{
 }
 
 .gridd__item[data-type*="blackfriday"] .gridd__body-txt{
-  padding: 5px;
+  padding: 10px;
   position: relative;
   text-shadow: 0px 0 5px #fff;
 }
