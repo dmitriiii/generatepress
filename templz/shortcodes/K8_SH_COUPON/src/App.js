@@ -167,6 +167,14 @@ class App extends React.Component{
                 onChange={this.handleSpecoffer} />
                 <span>X-mas</span>
             </label>
+            <label className="contt__control contt__control-radio">
+              <input
+                type="radio"
+                value="der-beste"
+                checked={this.state.selectedTyp === 'der-beste' ? true : false}
+                onChange={this.handleSpecoffer} />
+                <span>Bestes</span>
+            </label>
           </div>
           <span className="contt__control"><i className="fas fa-tags"></i>{todoItems.length}</span>
           {this.state.selectedCat !== 'all' || this.state.selectedTyp !== 'all' 

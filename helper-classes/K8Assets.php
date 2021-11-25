@@ -51,7 +51,7 @@ class K8Assets
 		wp_register_script( 'k8_sh_coupon-js-run', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/runtime-main.7de392ff.js', array(), false, true );
 		wp_register_script( 'k8_sh_coupon-js-2', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/2.37ce1337.chunk.js', array(), false, true );
 		wp_register_script( 'k8_sh_coupon-js-3', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/3.b9afe8b6.chunk.js', array(), false, true );
-		wp_register_script( 'k8_sh_coupon-js-main', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/main.488ea425.chunk.js', array(), false, true );
+		wp_register_script( 'k8_sh_coupon-js-main', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/main.f0341fa0.chunk.js', array(), false, true );
 		wp_register_style( 'k8_sh_coupon-css-main', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/css/main.54f2b184.chunk.css', array(), rand(1,9999), 'all' );
 
 
