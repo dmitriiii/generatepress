@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b4e1d9a.chunk.css",
-    "main.js": "/static/js/main.25d22711.chunk.js",
-    "main.js.map": "/static/js/main.25d22711.chunk.js.map",
+    "main.css": "/static/css/main.4d6f8911.chunk.css",
+    "main.js": "/static/js/main.48d0b2cc.chunk.js",
+    "main.js.map": "/static/js/main.48d0b2cc.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7de392ff.js",
     "runtime-main.js.map": "/static/js/runtime-main.7de392ff.js.map",
     "static/js/2.37ce1337.chunk.js": "/static/js/2.37ce1337.chunk.js",
@@ -10,13 +10,14 @@
     "static/js/3.b9afe8b6.chunk.js": "/static/js/3.b9afe8b6.chunk.js",
     "static/js/3.b9afe8b6.chunk.js.map": "/static/js/3.b9afe8b6.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.7b4e1d9a.chunk.css.map": "/static/css/main.7b4e1d9a.chunk.css.map",
-    "static/js/2.37ce1337.chunk.js.LICENSE.txt": "/static/js/2.37ce1337.chunk.js.LICENSE.txt"
+    "static/css/main.4d6f8911.chunk.css.map": "/static/css/main.4d6f8911.chunk.css.map",
+    "static/js/2.37ce1337.chunk.js.LICENSE.txt": "/static/js/2.37ce1337.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/76580-Black-friday-background-template.3013a9d9.webp"
   },
   "entrypoints": [
     "static/js/runtime-main.7de392ff.js",
     "static/js/2.37ce1337.chunk.js",
-    "static/css/main.7b4e1d9a.chunk.css",
-    "static/js/main.25d22711.chunk.js"
+    "static/css/main.4d6f8911.chunk.css",
+    "static/js/main.48d0b2cc.chunk.js"
   ]
 }

@@ -98,7 +98,7 @@ class App extends React.Component{
 
       todoItems = filteredData.map((todo, index) =>
         <div className="gridd__wrr" key={index} style={{maxWidth: maxWidth + "%"}}>
-          <div className="gridd__item">
+          <div className="gridd__item" data-type={todo.type.join(' ')}>
             <div className="gridd__head">
               <img className="gridd__head-logo" src={todo.image.url} width={todo.image.width} height={todo.image.height} alt={todo.title}/> 
               <p className="gridd__head-until">Gültig bis {todo.until}</p>
@@ -108,7 +108,9 @@ class App extends React.Component{
             </div> 
             <div className="gridd__body">
               <h3>{todo.title}</h3>
-              <p>{todo.description}</p>
+              <div className="gridd__body-txt">
+                <p>{todo.description}</p>
+              </div>
               <div className="gridd__butts">
                 {todo.code ?
                   <div className="gridd__butt gridd__butt-code">
