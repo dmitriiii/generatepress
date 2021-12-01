@@ -8,15 +8,15 @@ jQuery(document).ready(function ($) {
 			if (cook === undefined) {
 				cook=0;
 			}
-			cook++;
-			Cookie.set('_ntf_blck',cook, {
-	      "max-age": 86400,
-	    });
 			setTimeout(function(){
+		    cook++;
+				Cookie.set('_ntf_blck',cook, {
+		      "max-age": 86400,
+		    });
 		    if(cook % 5 === 0 || cook ===1 ) {
 					ntf.addClass('active');
 		    }
-			},2000);
+			},10000);
 			$('body').on('click', '.ntf-blck__close', function(e) {
 				e.preventDefault();
 				ntf.removeClass('active');
