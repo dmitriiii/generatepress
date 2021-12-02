@@ -13,7 +13,7 @@ jQuery(document).ready(function ($) {
 				Cookie.set('_ntf_blck',cook, {
 		      "max-age": 86400,
 		    });
-		    if(cook % 5 === 0 || cook ===1 ) {
+		    if(cook % 3 === 0 || cook ===1 ) {
 					ntf.addClass('active');
 		    }
 			},10000);
