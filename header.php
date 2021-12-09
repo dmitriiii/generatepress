@@ -107,7 +107,11 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 	 *
 	 * @hooked generate_featured_page_header - 10
 	 */
+	do_action('mira_snackbar_top', ['static', 'fixed']);
+	echo '<div class="main-navigation-container">';
+	do_action('mira_snackbar_top', ['sticky']);
 	do_action( 'generate_after_header' );
+	echo '</div>';
 
 	if (!is_page_template('k8tpl-passgen.php') && !is_page_template('k8tpl-test.php')): ?>
 	<div id="page" class="hfeed site grid-container container grid-parent">
