@@ -1529,7 +1529,7 @@
 /*END Best vpn button in menu */
 
 
-/* Black friday notification */
+/* Black friday notification
 .ntf{
 	position: sticky;
 	top: 0;
@@ -1544,18 +1544,11 @@
 	font-size: 18px;
 	position: relative;
 	display: none;
-
-/* 	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s linear; */
 }
 .ntf-blck.active{
-	/* animation: animatetop 0.4s; */
 	display: block;
 	-webkit-animation: fadeInDown 0.8s;
 	animation: fadeInDown 0.8s;
-	/* visibility: visible; */
-	/* opacity: 1; */
 }
 .ntf-blck p,
 .ntf-blck h1,
@@ -1591,7 +1584,7 @@
 	top: 5px;
 	cursor: pointer;
 }
-/*END Black friday notification */
+END Black friday notification */
 
 
 /*tablet*/

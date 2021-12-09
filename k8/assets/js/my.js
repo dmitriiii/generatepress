@@ -1,28 +1,28 @@
 jQuery(document).ready(function ($) {
 
 	//Black Friday notification
-	(function() {
-		var ntf = $('.ntf-blck');
-		if (ntf.length > 0) {
-			var cook = Cookie.get('_ntf_blck');
-			if (cook === undefined) {
-				cook=0;
-			}
-			setTimeout(function(){
-		    cook++;
-				Cookie.set('_ntf_blck',cook, {
-		      "max-age": 86400,
-		    });
-		    if(cook % 3 === 0 || cook ===1 ) {
-					ntf.addClass('active');
-		    }
-			},10000);
-			$('body').on('click', '.ntf-blck__close', function(e) {
-				e.preventDefault();
-				ntf.removeClass('active');
-			});
-		}
-	})();
+	// (function() {
+	// 	var ntf = $('.ntf-blck');
+	// 	if (ntf.length > 0) {
+	// 		var cook = Cookie.get('_ntf_blck');
+	// 		if (cook === undefined) {
+	// 			cook=0;
+	// 		}
+	// 		setTimeout(function(){
+	// 	    cook++;
+	// 			Cookie.set('_ntf_blck',cook, {
+	// 	      "max-age": 86400,
+	// 	    });
+	// 	    if(cook % 3 === 0 || cook ===1 ) {
+	// 				ntf.addClass('active');
+	// 	    }
+	// 		},10000);
+	// 		$('body').on('click', '.ntf-blck__close', function(e) {
+	// 			e.preventDefault();
+	// 			ntf.removeClass('active');
+	// 		});
+	// 	}
+	// })();
 
 
 

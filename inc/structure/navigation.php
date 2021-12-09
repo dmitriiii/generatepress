@@ -17,11 +17,11 @@ if ( ! function_exists( 'generate_navigation_position' ) ) {
 	 */
 	function generate_navigation_position() {
 		?>
-		<div class="ntf">
+<!-- 		<div class="ntf">
 			<div class="ntf-blck">
 				<p>Black Friday Sale <a href="https://vpntester.org/blog/black-friday-2020-top-vpn-angebote/">Beeil dich!</a></p>
 				<i class="ntf-blck__close far fa-times-circle"></i>
-			</div>
+			</div> -->
 			<nav id="site-navigation" <?php generate_do_element_classes( 'navigation' ); ?> <?php generate_do_microdata( 'navigation' ); ?>>
 				<div <?php generate_do_element_classes( 'inside_navigation' ); ?>>
 					<?php
@@ -55,7 +55,7 @@ if ( ! function_exists( 'generate_navigation_position' ) ) {
 				</div><!-- .inside-navigation -->
 			</nav><!-- #site-navigation -->
 
-		</div>
+		<!-- </div> -->
 		
 		<?php
 	}
