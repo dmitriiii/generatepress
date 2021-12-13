@@ -1506,6 +1506,12 @@
 
 
 /* Best vpn button in menu */
+.main-navigation-container {
+	position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
 .main-navigation .main-nav .menu .die-besten-vpn-li{
 	text-align: right !important;
 }
