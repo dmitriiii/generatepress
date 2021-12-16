@@ -1,3 +1,9 @@
+.rc-font-inactive * {
+	font-size: 15px;
+	line-height: 1.7;
+	letter-spacing: -0.25px;
+}
+
 /*
  * Global
  */
