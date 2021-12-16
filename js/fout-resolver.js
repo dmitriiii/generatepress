@@ -11,6 +11,6 @@
     document.documentElement.classList.add('rc-font-inactive')
     fontRC.load().then(function () {
       console.log('Roboto Condensed font is available');
-      document.documentElement.classList.add('rc-font-inactive')
+      document.documentElement.classList.remove('rc-font-inactive')
     });
 })();
