@@ -45,6 +45,7 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 		body h6{
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 700;
+			letter-spacing: 0;
 		}
 
 	</style>
