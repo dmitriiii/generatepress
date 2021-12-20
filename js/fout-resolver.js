@@ -14,12 +14,12 @@
   fontRC.load().then(function () {
     console.log("Roboto Condensed font is available");
     document.documentElement.classList.remove("rc-font-inactive");
-    removeStyles()
+    removeStyles();
   });
 
   function addedStyles() {
     const styleEl = document.createElement("style");
-    styleEl.classList.add("rc-font-style-inactive");
+    styleEl.id = "rc-font-style-inactive";
     styleEl.innerHTML = `
       body {
         font-family: sans-serif;
@@ -27,12 +27,15 @@
         line-height: 1.7;
         letter-spacing: -0.25px;
       }`;
-    document.head.append(styleEl);
+    const mainBodyStyle =
+      document.querySelector("#generate-style-inline-css") ||
+      document.querySelector("#body-style");
+    if (!mainBodyStyle) return;
+    mainBodyStyle.after(styleEl);
   }
 
   function removeStyles() {
-    const styleEl = document.querySelector(".rc-font-style-inactive")
-    if (styleEl) styleEl.remove()
+    const styleEl = document.querySelector(".rc-font-style-inactive");
+    if (styleEl) styleEl.remove();
   }
-
 })();
