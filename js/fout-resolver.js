@@ -35,7 +35,7 @@
   }
 
   function removeStyles() {
-    const styleEl = document.querySelector(".rc-font-style-inactive");
+    const styleEl = document.querySelector("#rc-font-style-inactive");
     if (styleEl) styleEl.remove();
   }
 })();
