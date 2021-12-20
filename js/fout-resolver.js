@@ -22,7 +22,6 @@
     styleEl.id = "rc-font-style-inactive";
     styleEl.innerHTML = `
       body {
-        font-family: sans-serif;
         font-size: 15px;
         line-height: 1.7;
         letter-spacing: -0.25px;
