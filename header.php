@@ -23,6 +23,7 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
     <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-regular-400.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/fonts/generatepress.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/wp-content/themes/generatepress/k8/assets/webfonts/fa-brands-400.woff2" crossorigin>
+	<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style">
     <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
 	<link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
 	<link href="https://s.w.org" rel="preconnect" crossorigin>
