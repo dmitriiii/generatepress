@@ -30,13 +30,13 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-	<style id="body-style">
-		body{
+	<style>
+		body,
+		body *{
 			font-family: 'Roboto Condensed', sans-serif;
+			/* font-size: 16px !important; */
 			line-height: 1.6;
 		}
-	</style>
-	<style>
 		body h1,
 		body h2,
 		body h3,

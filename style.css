@@ -147,7 +147,7 @@ a img {
 # Elements
 --------------------------------------------------------------*/
 
-/*body,
+body,
 button,
 input,
 select,
@@ -158,7 +158,7 @@ textarea {
 	text-transform: none;
 	font-size: 17px;
 	line-height: 1.5;
-}*/
+}
 
 p {
 	margin-bottom: 1.5em;
