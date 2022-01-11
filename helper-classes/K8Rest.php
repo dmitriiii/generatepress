@@ -256,49 +256,49 @@ class K8Rest
 
 		// curl_setopt($ch, CURLOPT_MAXREDIRS, 2);
 
-	  curl_setopt($ch, CURLOPT_URL, $parameters['link']);
-	  $out = curl_exec($ch);
+		curl_setopt($ch, CURLOPT_URL, $parameters['link']);
+		$out = curl_exec($ch);
 
-	  // line endings is the wonkiest piece of this whole thing
-	  $out = str_replace("\r", "", $out);
+		// line endings is the wonkiest piece of this whole thing
+		$out = str_replace("\r", "", $out);
 
-	  // echo '<pre>';
-	  // print_r( $out );
-	  // echo '</pre>';
+		// echo '<pre>';
+		// print_r( $out );
+		// echo '</pre>';
 
-	  // $exploadedd = explode("\n\n", $out);
-	  // echo '<pre>';
-	  // print_r($exploadedd);
-	  // echo '</pre>';
-
-
-
-	  // only look at the headers
-	  $headers_end = strpos($out, "\n\n");
-	  if( $headers_end !== false ) {
-	    $out = substr($out, 0, $headers_end);
-	  }
-
-	  $headers = explode("\n", $out);
-	  foreach($headers as $header) :
-	  	// echo '<pre>';
-	  	// print_r( $header );
-	  	// echo '</pre>';
-      if( substr($header, 0, 10) == "Location: " ) {
-        $target = substr($header, 10);
-        $post_data['target'] = $target;
-        if( $target == $parameters['url'] ){
-        	$post_data['className'] = 'm5-succ';
-        }
-        // echo "[$url] redirects to [$target]<br>";
-        continue 1;
-      }
-	  endforeach;
-
-	  // echo "[$url] does not redirect<br>";
+		// $exploadedd = explode("\n\n", $out);
+		// echo '<pre>';
+		// print_r($exploadedd);
+		// echo '</pre>';
 
 
-	  // write_log( $post_data );
+
+		// only look at the headers
+		$headers_end = strpos($out, "\n\n");
+		if( $headers_end !== false ) {
+			$out = substr($out, 0, $headers_end);
+		}
+
+		$headers = explode("\n", $out);
+		foreach($headers as $header) :
+			// echo '<pre>';
+			// print_r( $header );
+			// echo '</pre>';
+			if( substr($header, 0, 10) == "Location: " ) {
+				$target = substr($header, 10);
+				$post_data['target'] = $target;
+				if( $target == $parameters['url'] ){
+					$post_data['className'] = 'm5-succ';
+				}
+				// echo "[$url] redirects to [$target]<br>";
+				continue 1;
+			}
+		endforeach;
+
+		// echo "[$url] does not redirect<br>";
+
+
+		// write_log( $post_data );
 
 		return rest_ensure_response( $post_data );
 	}
@@ -307,12 +307,12 @@ class K8Rest
 	public function globalSearch_callback($request_data) {
 		$result=[];
 		$result['html']='<ul class="nav nav-tabs" id="myTab" role="tablist">
-			  <li class="nav-item">
-			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts / Pages / Questions / Answers</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Categories / Tags / Question Category / Question Tags</a>
-			  </li>
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts / Pages / Questions / Answers</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Categories / Tags / Question Category / Question Tags</a>
+				</li>
 			</ul><div class="tab-content" id="myTabContent"><div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">';
 		$nonce = null;
 		global $wpdb;
@@ -448,12 +448,12 @@ class K8Rest
 		$result=[];
 		$c=0;
 		$result['html']='<ul class="nav nav-tabs" id="myTab" role="tablist">
-			  <li class="nav-item">
-			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts / Pages / Questions / Answers</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Categories / Tags / Question Category / Question Tags</a>
-			  </li>
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts / Pages / Questions / Answers</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Categories / Tags / Question Category / Question Tags</a>
+				</li>
 			</ul><div class="tab-content" id="myTabContent"><div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">';
 		$nonce = null;
 		global $wpdb;
@@ -633,78 +633,109 @@ class K8Rest
 	public function getCoupons_callback(){
 		$coup_data = [];
 		$fill_data = [];
-		$fill_data['category']['all'] = 'All VPNs';
-		$fill_data['type']['all'] = 'All Types';
+		$fill_data['category']['all'] = 'Alles VPNs';
+		$fill_data['type']['all'] = 'Alles Types';
 		$all_data = [];
-		$args = array(
-			'post_type'   => 'affcoups_coupon',
-			'post_status' => 'publish',
-			'posts_per_page' => -1,
-			'orderby'       => 'date',
-			'order'         => 'DESC',
-			'meta_key'     => 'affcoups_coupon_valid_until',
-	    'meta_value'   => time(),
-	    'meta_compare' => '>',
-		);
-		$the_query = new WP_Query( $args );
-		 if ( $the_query->have_posts() ) :
-		 	$c=0;
-			while ( $the_query->have_posts() ) : $the_query->the_post();
-				$pid = get_the_ID();
-				$pm = get_post_meta( $pid, '', true );
-				$image_atts = wp_get_attachment_image_src( $pm['affcoups_coupon_image'][0], 'thumbnail' );
-				$affcoups_coupon_category = get_the_terms($pid,'affcoups_coupon_category');
-				$affcoups_coupon_type = get_the_terms($pid,'affcoups_coupon_type');
 
-				if (isset($pm['affcoups_coupon_title'][0]))
-					$coup_data[$c]['title'] = $pm['affcoups_coupon_title'][0];
+		$aff_coupon_category = get_terms("affcoups_coupon_category",[
+			'orderby'=>'term_order',
+			'order'=>'ASC',
+			'hide_empty' => true,
+		]);
 
-				if (isset($pm['affcoups_coupon_url'][0]))
-					$coup_data[$c]['url'] = $pm['affcoups_coupon_url'][0];
+		$aff_coupon_type = get_terms("affcoups_coupon_type",[
+			'orderby'=>'term_order',
+			'order'=>'ASC',
+			'hide_empty' => true,
+		]);
 
-				if( is_array($image_atts) && count($image_atts)>0 )
-					$coup_data[$c]['image'] = array('url'=>$image_atts[0], 'width'=>$image_atts[1], 'height'=>$image_atts[2]);
+		#Preparte Array with coupon types in order
+		if (is_array($aff_coupon_type) && count($aff_coupon_type)>0) {
+			foreach ($aff_coupon_type as $aff_type) {
+				$fill_data['type'][$aff_type->slug] = $aff_type->name;
+			}
+		}
 
-				if (isset($pm['affcoups_coupon_discount'][0]))
-					$coup_data[$c]['discount'] = $pm['affcoups_coupon_discount'][0];
 
-				if (isset($pm['affcoups_coupon_valid_until'][0]))
-					$coup_data[$c]['until'] = date('d.m.Y', $pm['affcoups_coupon_valid_until'][0]);
+		$c=0;
+		#loop through coupon's categories ordered in a proper way
+		foreach ($aff_coupon_category as $aff_cat) :
+			$fill_data['category'][$aff_cat->slug] = $aff_cat->name;
+			$affs_coup_args = array(
+				'post_type'   => 'affcoups_coupon',
+				'post_status' => 'publish',
+				'posts_per_page' => -1,
+				'orderby'       => 'date',
+				'order'         => 'DESC',
+				'meta_key'     => 'affcoups_coupon_valid_until',
+				'meta_value'   => time(),
+				'meta_compare' => '>',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'affcoups_coupon_category',
+						'field'    => 'slug',
+						'terms'    => $aff_cat->slug,
+					),
+				),
+			);
 
-				if (isset($pm['affcoups_coupon_description'][0]))
-					$coup_data[$c]['description'] = $pm['affcoups_coupon_description'][0];
 
-				if (isset($pm['affcoups_coupon_code'][0]))
-					$coup_data[$c]['code'] = $pm['affcoups_coupon_code'][0];
 
-				if( is_array($affcoups_coupon_category) && count($affcoups_coupon_category)>0 ){
-					foreach ($affcoups_coupon_category as $cat) {
-						$coup_data[$c]['category'][] = $cat->slug;
-						if( !isset($fill_data['category'][$cat->slug]) )
-							$fill_data['category'][$cat->slug] = $cat->name;
+			$affs_coup_query = new WP_Query( $affs_coup_args );
+			if ( $affs_coup_query->have_posts() ) :
+
+				while ( $affs_coup_query->have_posts() ) : $affs_coup_query->the_post();
+					$pid = get_the_ID();
+					$pm = get_post_meta( $pid, '', true );
+					$image_atts = wp_get_attachment_image_src( $pm['affcoups_coupon_image'][0], 'thumbnail' );
+					$affcoups_coupon_category = get_the_terms($pid,'affcoups_coupon_category');
+					$affcoups_coupon_type = get_the_terms($pid,'affcoups_coupon_type');
+
+					if (isset($pm['affcoups_coupon_title'][0]))
+						$coup_data[$c]['title'] = $pm['affcoups_coupon_title'][0];
+
+					if (isset($pm['affcoups_coupon_url'][0]))
+						$coup_data[$c]['url'] = $pm['affcoups_coupon_url'][0];
+
+					if( is_array($image_atts) && count($image_atts)>0 )
+						$coup_data[$c]['image'] = array('url'=>$image_atts[0], 'width'=>$image_atts[1], 'height'=>$image_atts[2]);
+
+					if (isset($pm['affcoups_coupon_discount'][0]))
+						$coup_data[$c]['discount'] = $pm['affcoups_coupon_discount'][0];
+
+					if (isset($pm['affcoups_coupon_valid_until'][0]))
+						$coup_data[$c]['until'] = date('d.m.Y', $pm['affcoups_coupon_valid_until'][0]);
+
+					if (isset($pm['affcoups_coupon_description'][0]))
+						$coup_data[$c]['description'] = $pm['affcoups_coupon_description'][0];
+
+					if (isset($pm['affcoups_coupon_code'][0]))
+						$coup_data[$c]['code'] = $pm['affcoups_coupon_code'][0];
+
+					if( is_array($affcoups_coupon_category) && count($affcoups_coupon_category)>0 ){
+						foreach ($affcoups_coupon_category as $cat) {
+							$coup_data[$c]['category'][] = $cat->slug;
+						}
 					}
-				}
-				else{
-					$coup_data[$c]['category'][] = 'undef';
-				}
-				if( is_array($affcoups_coupon_type) && count($affcoups_coupon_type)>0 ){
-					foreach ($affcoups_coupon_type as $type) {
-						$coup_data[$c]['type'][] = $type->slug;
-						if( !isset($fill_data['type'][$type->slug]) )
-							$fill_data['type'][$type->slug] = $type->name;
+					else{
+						$coup_data[$c]['category'][] = 'undef';
 					}
-				}
-				else{
-					$coup_data[$c]['type'][] = 'undef';
-				}
-				$c++;
-			endwhile;
+					if( is_array($affcoups_coupon_type) && count($affcoups_coupon_type)>0 ){
+						foreach ($affcoups_coupon_type as $type) {
+							$coup_data[$c]['type'][] = $type->slug;
+						}
+					}
+					else{
+						$coup_data[$c]['type'][] = 'undef';
+					}
+					$c++;
+				endwhile;
+
 			wp_reset_postdata();
-			$fill_data['type']['undef'] = 'Undefined';
-			$fill_data['category']['undef'] = 'Undefined';
+			endif;
 
-		endif;
-
+		#END loop coupon's categories
+		endforeach;
 
 		$all_data = [
 			'fill_data' => $fill_data,

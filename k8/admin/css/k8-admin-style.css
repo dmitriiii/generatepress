@@ -1,3 +1,10 @@
 .wp-admin #edittag{
 	max-width: 100%;
 }
+
+/* Hide order taxonomies plugin's menu links in admin*/
+#menu-posts .wp-submenu>li:last-child,
+#menu-posts-wcs_slide .wp-submenu>li:last-child,
+#menu-posts-wcs_collage .wp-submenu>li:last-child{
+	display: none !important;
+}
