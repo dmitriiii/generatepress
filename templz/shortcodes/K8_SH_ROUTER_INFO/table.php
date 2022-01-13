@@ -122,7 +122,7 @@ endif ?>
 					 			echo $this->tr .
 											K8Html::tdHead( ['txt'=>$cf_obj['label']] ) .
 											$this->td .
-												( ($cf_obj['value'] === 1) ? $this->true_icon : $this->false_icon) .
+												( ($cf_obj['value'] == 1) ? $this->true_icon : $this->false_icon) .
 											$this->_td .
 										 $this->_tr;
 					 			break;
