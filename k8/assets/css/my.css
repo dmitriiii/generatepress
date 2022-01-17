@@ -1740,10 +1740,10 @@ END Black friday notification */
 	}
 
 	#ez-toc-container{
-		float: none;
-		margin: 0 0 15px 0;
-		width: 100%;
-		max-width: auto;
+		float: none !important;
+		margin: 0 0 15px 0 !important;
+		width: 100% !important;
+		max-width: none !important;
 	}
 
 }
