@@ -194,6 +194,8 @@
 	margin: 0;
 	list-style: none;
 	background-color: rgba(0, 0, 0, 0.7);
+	height: 400px;
+	overflow: auto;
 }
 .ez-toc-title-container{
 	position: relative;
