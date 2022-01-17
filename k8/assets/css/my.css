@@ -1738,6 +1738,14 @@ END Black friday notification */
 	.k8-sec3__it-name{
 		margin-bottom: 15px;
 	}
+
+	#ez-toc-container{
+		float: none;
+		margin: 0 0 15px 0;
+		width: 100%;
+		max-width: auto;
+	}
+
 }
 
 .js-tawk-btn--loading {

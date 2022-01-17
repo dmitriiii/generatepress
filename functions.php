@@ -30,6 +30,32 @@ if (get_field('k8_optz_amp', 'option') && get_field('k8_optz_amp', 'option') == 
 }
 
 
+#Remove unused scripts & plugins
+function remove_assets() {
+
+	wp_deregister_script('jquery-smooth-scroll');
+	wp_dequeue_script('jquery-smooth-scroll');
+
+	wp_deregister_script('js-cookie');
+	wp_dequeue_script('js-cookie');
+
+	wp_deregister_script('jquery-sticky-kit');
+	wp_dequeue_script('jquery-sticky-kit');
+
+	wp_deregister_script('ez-toc-js');
+	wp_dequeue_script('ez-toc-js');
+
+
+	wp_deregister_style('ez-icomoon');
+	wp_dequeue_style('ez-icomoon');
+
+	wp_deregister_style('ez-toc');
+	wp_dequeue_style('ez-toc');
+
+}
+add_action( 'wp_enqueue_scripts', 'remove_assets', 999);
+
+
 /**
  * GeneratePress.
  *
