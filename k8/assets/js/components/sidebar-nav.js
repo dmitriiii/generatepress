@@ -128,12 +128,20 @@ jQuery(document).ready(function ($) {
 
 		$(b).on("click", ".ez-toc-list a.ez-toc-link", function (e) {
 			e.preventDefault();
-			let $clicked = $(this);
-			let offsetTop = ($($clicked.attr('href')).offset().top - 100)
+			let $clicked = $(this),
+					$toc_cont = $clicked.closest('#ez-toc-container'),
+					offsetTop = ($($clicked.attr('href')).offset().top - 100);
 			$('html, body').animate({
 				scrollTop: offsetTop
 			}, 600);
 			window.location.hash = $clicked.attr('href');
+			$toc_cont.removeClass('active');
+		});
+
+		$(b).on('click', '.ez-toc-title-container', function(e) {
+			e.preventDefault();
+			$(this).parent().toggleClass('active');
+			/* Act on the event */
 		});
 
 		// Open||Close fast affiliate|share links

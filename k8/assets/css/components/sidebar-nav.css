@@ -159,33 +159,72 @@
 	width: 100%;
 	max-width: 260px;
 	float: right;
-	padding: 20px;
-	color: #fff;
-	background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 	font-size: 14px;
 	font-weight: bold;
-	text-shadow: 0 0 2px #000;
 	margin: 0 0 20px 20px;
 	box-sizing: border-box;
+	position: relative;
+	z-index: 9;
+}
+#ez-toc-container>nav{
+	position: absolute;
+	display: none;
+	width: 100%;
+}
+#ez-toc-container.active>nav{
+	display: block;
 }
 .ez-toc-title{
 	text-align: center;
 	margin: 0 0 10px;
 	font-size: 18px;
-	/* font-weight: bold; */
+	line-height: 1;
+	margin-bottom: 15px;
+	margin-bottom: 0;
+	padding: 12px 10px;
 }
-#ez-toc-container a{
+#ez-toc-container nav a{
 	color: #fff;
-	margin-bottom: 10px;
-	display: inline-block;
+	display: block;
+	line-height: 1.2;
+	padding: 10px 15px;
 	line-height: 1.3;
-	/* text-decoration: underline; */
 }
 .ez-toc-list{
 	margin: 0;
 	list-style: none;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.ez-toc-title-container{
+	position: relative;
+	background: #eeeeee;
+	cursor: pointer;
+	box-shadow: 0 0 5px #999;
+}
+.ez-toc-title-toggle{
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin-top: -4px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	transition: transform .2s ease;
+}
+#ez-toc-container.active .ez-toc-title-toggle{
+	transform: rotate(90deg);
+}
+.ez-toc-title-toggle:after{
+	content: "\25bc";
+	/* color: #fff; */
+	font-size: 12px;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+/* END Table of contents*/
 
 /* Gooey meny */
 
