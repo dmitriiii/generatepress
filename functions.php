@@ -45,12 +45,17 @@ function remove_assets() {
 	wp_deregister_script('ez-toc-js');
 	wp_dequeue_script('ez-toc-js');
 
+	wp_deregister_script('generate-a11y');
+	wp_dequeue_script('generate-a11y');
+	
 
 	wp_deregister_style('ez-icomoon');
 	wp_dequeue_style('ez-icomoon');
 
 	wp_deregister_style('ez-toc');
 	wp_dequeue_style('ez-toc');
+
+
 
 }
 add_action( 'wp_enqueue_scripts', 'remove_assets', 999);
