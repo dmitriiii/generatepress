@@ -20,9 +20,9 @@ global $wp;?>
 		</a>
 		<div class="pupop__inner pupop__inner--centered">
 			<?= wp_get_attachment_image( get_field('m5_acf_pop_logo',$atts['id']), 'medium' ); ?>
-			<h2 class="pupop__title">
+			<h3 class="pupop__title">
 				<?= $c_post->post_title; ?>
-			</h2>
+			</h3>
 			<div class="pupop__content">
 				<p><?= $cnt; ?></p>
 				<div class="timer" data-date="<?
