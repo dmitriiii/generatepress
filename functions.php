@@ -47,7 +47,20 @@ function remove_assets() {
 
 	wp_deregister_script('generate-a11y');
 	wp_dequeue_script('generate-a11y');
+
+	wp_deregister_script('affcoups');
+	wp_dequeue_script('affcoups');
+
+	wp_deregister_script('affcoups-pro-script');
+	wp_dequeue_script('affcoups-pro-script');
 	
+
+
+	wp_deregister_style('affcoups');
+	wp_dequeue_style('affcoups');
+
+	wp_deregister_style('affcoups-pro-style');
+	wp_dequeue_style('affcoups-pro-style');
 
 	wp_deregister_style('ez-icomoon');
 	wp_dequeue_style('ez-icomoon');
