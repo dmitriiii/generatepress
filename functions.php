@@ -489,8 +489,8 @@ if (!class_exists('TopRatedListWidget')) {
 			if (is_array($links) && count($links) > 0) :
 				echo '<ul class="m5top-wdg-list">';
 				foreach ($links as $k => $v) :
-					$url_trgt = ($v['url_to_page']['target'] == '_blank') ? ' target="_blank" rel="nofollow sponsored"' : '';
-					$aff_trgt = ($v['affiliate_link']['target'] == '_blank') ? ' target="_blank" rel="nofollow sponsored"' : '';
+					$url_trgt = ($v['url_to_page']['target'] == '_blank') ? ' target="_blank" rel="nofollow noopener"' : '';
+					$aff_trgt = ($v['affiliate_link']['target'] == '_blank') ? ' target="_blank" rel="nofollow noopener"' : '';
 					echo '<li class="m5top-wdg-list__item">' .
 						'<span class="m5top-wdg-list__wrap">' .
 						'<a class="m5top-wdg-list__logo-link"' . $aff_trgt . ' href="' . $v['affiliate_link']['url'] . '">' .

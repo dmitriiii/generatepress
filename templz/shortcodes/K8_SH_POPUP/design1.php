@@ -12,10 +12,10 @@ if( $noww >= $m5_acf_pop_date_to ){
 
 global $wp;?>
 <div class="pupop-wrapper" data-type="<?= get_field('m5_acf_pop_type', $atts['id']); ?>" data-popup-id="<?=$atts['id'];?>" data-max-age="<?= get_field('m5_acf_pop_maxage', $atts['id'])['value']; ?>">
-	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>/" rel="nofollow sponsored" target="_blank" class="pupop__link">&nbsp;</a>
+	<a data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>/" rel="nofollow noopener" target="_blank" class="pupop__link">&nbsp;</a>
 	<section id="sales" class="pupop pupop--white" data-delay="<?= get_field('m5_acf_pop_delay', $atts['id']); ?>">
 		<?= get_the_post_thumbnail( $atts['id'], 'large', ['class'=>'pupop__bg'] ); ?>
-		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>/" target="_blank" rel="nofollow sponsored">
+		<a class="pupop__btn-close" aria-label="close" data-red="<?= get_site_url() . $m5_acf_pop_url; ?>" href="<?= home_url( $wp->request ); ?>/" target="_blank" rel="nofollow noopener">
 			<i class="fas fa-times"></i>
 		</a>
 		<div class="pupop__inner pupop__inner--centered">
@@ -40,7 +40,7 @@ global $wp;?>
 				</div>
 			</div>
 			<div class="pupop__actions">
-				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow sponsored" class="button button--red pupop__button">
+				<a href="<?= $m5_acf_pop_url; ?>" target="_blank" rel="nofollow noopener" class="button button--red pupop__button">
 					Jetzt sichern!
 				</a>
 			</div>
