@@ -23,5 +23,13 @@
   "21":"k8_acf_prev_monit",
   "22":"k8_acf_prev_monit2",
   "23":"k8_acf_lang_kund",
-  "24":"k8_acf_trust_level"
+  "24":"k8_acf_trust_level",
+  "25":"third_party_review_portal_links_capterra_link",
+  "26":"third_party_review_portal_links_apple_link",
+  "27":"third_party_review_portal_links_google_link",
+  "28":"third_party_review_portal_links_amazon_link",
+  "29":"third_party_review_portal_links_trustpilot_link",
+  "30":"third_party_review_portal_links_mozilla_link",
+  "31":"third_party_review_portal_links",
+  "32":"third_party_review_short_desc"
 }
