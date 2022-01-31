@@ -661,6 +661,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Popups List</a>
 			  </li>
 			  <li class="nav-item">
+			    <a class="nav-link" id="pills-anbieter-tab" data-toggle="pill" href="#pills-anbieter" role="tab" aria-controls="pills-anbieter" aria-selected="false">Anbieter List</a>
+			  </li>
+			  <li class="nav-item">
 			    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Iframes List</a>
 			  </li>
 			  <li class="nav-item">
@@ -690,17 +693,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 			</ul>
 			<div class="tab-content" id="pills-tabContent">
 			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-			  <!-- 	<div class="m5-filter">
-			  		<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline1"></label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
-						</div>
-			  	</div> -->
 
 			  	<table class="table table-striped table-hover table-responsive table-sm tableFixHead">
 					  <thead>
@@ -781,6 +773,49 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 					  </tbody>
 					</table>
 			  </div>
+
+
+
+			  <div class="tab-pane fade" id="pills-anbieter" role="tabpanel" aria-labelledby="pills-anbieter-tab">
+			  	<?php
+			  	(function() {
+			  		$vpnidPid =	json_decode( file_get_contents( K8_PATH_LOC . '/' . 'vpnidPid.json'), true );
+						if( is_array($vpnidPid) && count($vpnidPid)>0 ):?>
+							<table class="table table-striped tableFixHead">
+							  <thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">Post ID</th>
+							      <th scope="col">Page Title</th>
+							      <th scope="col">VPN ID</th>
+							      <th scope="col">VPN name</th>
+							      <th scope="col" style="width:110px;">Edit Page</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <?php
+							    $i=1;
+							    foreach ($vpnidPid as $res): 
+							    	$content_post = get_post($res['pid']);?>
+							    	<tr>
+								      <th scope="row"><?php echo $i; ?></th>
+								      <td><?= $content_post->ID; ?></td>
+								      <td><a target="_blank" href="<?= get_the_permalink($content_post->ID); ?>"><?= $content_post->post_title; ?></a></td>
+								      <td><h5><?= $res['vpnid']; ?></h5></td>
+								      <td><b><?= get_post_meta($content_post->ID,'cwp_rev_product_name',true); ?></b></td>
+								      <td><a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $content_post->ID );?>" target="_blank">Edit</a></td>
+								    </tr>
+							    <?php
+							    $i++;
+							  	endforeach ?>
+							  </tbody>
+							</table>
+						<?php
+						endif;
+					})();?>
+			  </div>
+
+
 			  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 			  	<table class="table table-striped tableFixHead">
 					  <thead>
