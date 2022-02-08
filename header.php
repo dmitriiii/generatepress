@@ -89,7 +89,7 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 	 * @hooked generate_top_bar - 5
 	 * @hooked generate_add_navigation_before_header - 5
 	 */
-	do_action('mira_snackbar_top', ['static', 'fixed']);
+	do_action('mira_snackbar_top', ['static']);
 	echo '<div class="main-navigation-container">';
 	do_action('mira_snackbar_top', ['sticky']);
 	do_action( 'generate_before_header' );

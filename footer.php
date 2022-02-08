@@ -18,7 +18,7 @@ endif;
  *
  * @since 0.1
  */
-do_action('mira_snackbar_bot', []);
+do_action('mira_snackbar_bot', ['static', 'sticky']);
 do_action( 'generate_before_footer' );
 ?>
 
