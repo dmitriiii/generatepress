@@ -7,6 +7,34 @@ use DiDom\Element;
 get_header();
 
 
+#Clear for rank math's auto video schema generated
+if ( isset($_GET['testvidschema']) && $_GET['testvidschema'] == 77 ) {
+	$args = array(
+		'post_type'   => ['post','page'],
+		'post_status' => 'any',
+		'order'               => 'DESC',
+		'orderby'             => 'date',
+		'posts_per_page'         => -1,
+	);
+
+	$the_query = new WP_Query( $args );
+
+	if ( $the_query->have_posts() ) :
+	$ccc=1;
+	while ( $the_query->have_posts() ) : $the_query->the_post();
+		echo $ccc . '.) ';
+		echo '<hr>';
+		delete_post_meta(get_the_ID(), 'rank_math_schema_VideoObject');
+		$ccc++;
+	endwhile;
+	wp_reset_postdata();
+
+	else :
+
+	endif;
+}
+
+
 if( isset($_GET['test2']) && $_GET['test2'] == 77 ){
 	global $wpdb;
 	$what = '%nofollow%';
