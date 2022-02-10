@@ -222,8 +222,10 @@ class K8Short
 			$a["output"] = 'amp/'.$a["output"];
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-		if( get_site_url() == "https://vpn-anbieter-vergleich-test.de" || get_site_url() == 'https://vpntester.org')
+		// if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
+		if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
 			echo '<script type="application/ld+json">' . K8Help::ytPrepare( ['id'=>$a['id']] ) . '</script>';
+		
 		$html = ob_get_clean();
 		return $html;
 	}
