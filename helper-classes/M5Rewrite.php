@@ -9,6 +9,7 @@ class M5Rewrite
 		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() ==  'https://vpntester.org' ){
 			add_action( 'init', [$this,'removeFromUrl'] );
 			add_filter('post_link', [$this,'removeFromPermalink'], 10, 3);
+			add_filter('post_type_link', [$this,'rmvFromAnspress'], 100, 3);
 		}
 	}
 
@@ -35,6 +36,14 @@ class M5Rewrite
 		if( $pos !== false ){
 			$url = str_replace( '/anbieter/','/', $url );
 			$url = str_replace( '/vpn-anbieter/','/', $url );
+		}
+	  return $url;
+	}
+
+	#Fix issue with Anspress question & answer plugin
+	public function rmvFromAnspress($url, $post, $leavename=false){
+		if ( $post->post_type == 'question' || $post->post_type == 'answer' ){
+	    $url = str_replace( '/de/','/', $url );
 		}
 	  return $url;
 	}
