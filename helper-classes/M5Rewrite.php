@@ -6,7 +6,7 @@ class M5Rewrite
 {
 
 	function __construct(){
-		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() ==  'https://vpntester.org' ){
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() ==  'https://vpntester.org' || get_site_url() == 'https://dev.vpnanbietervergleich.de' ){
 			add_action( 'init', [$this,'removeFromUrl'] );
 			add_filter('post_link', [$this,'removeFromPermalink'], 10, 3);
 			add_filter('post_type_link', [$this,'rmvFromAnspress'], 100, 3);
