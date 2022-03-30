@@ -16,7 +16,7 @@ window.m5OpenInNewTab = function (redirect, currentUrl, $curr) {
     window.focus();
     setTimeout(function () {
       win2.close();
-    }, 15000);
+    }, 20000);
   }
 
   var type = $curr.closest(".pupop-wrapper").attr("data-type");
