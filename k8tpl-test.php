@@ -22,7 +22,22 @@ function smTewdedw( $ppost, $shrt='affcoups' ){
 	return $result;
 }
 
-
+#Returns array of all handlews, where used AppsFlyer tracker
+function getHandlesArr(){
+	global $wpdb;
+	$finall = [];
+	$sql = $wpdb->prepare( "SELECT * FROM wp_vavt_de_wppr_privacy_report_tracker WHERE tracker_id=%d",12);
+	$reports_arr = $wpdb->get_results( $sql , ARRAY_A );
+	if (is_array($reports_arr) && count($reports_arr)>0) :
+	foreach ($reports_arr as $report) :
+		$sql2 = $wpdb->prepare( "SELECT app_name, handle FROM wp_vavt_de_wppr_privacy_report WHERE id=%d", $report['report_id']);
+		$res = $wpdb->get_results( $sql2 , ARRAY_A );
+		$finall[] = $res[0]['handle'];
+	endforeach;
+	endif;
+	$finall = array_unique($finall);
+	return $finall;
+}
 ?>
 
 <style>
@@ -787,6 +802,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 							      <th scope="col">#</th>
 							      <th scope="col">Post ID</th>
 							      <th scope="col">Page Title</th>
+							      <th scope="col">Appsflyer<br>Tracker</th>
 							      <th scope="col">VPN ID</th>
 							      <th scope="col">VPN name</th>
 							      <th scope="col" style="width:110px;">Edit Page</th>
@@ -795,12 +811,25 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();?>
 							  <tbody>
 							    <?php
 							    $i=1;
-							    foreach ($vpnidPid as $res): 
+							    foreach ($vpnidPid as $res):
 							    	$content_post = get_post($res['pid']);?>
 							    	<tr>
 								      <th scope="row"><?php echo $i; ?></th>
 								      <td><?= $content_post->ID; ?></td>
 								      <td><a target="_blank" href="<?= get_the_permalink($content_post->ID); ?>"><?= $content_post->post_title; ?></a></td>
+								      <td>
+								      <?php
+								      	$handless =	getHandlesArr();
+								      	$glink = get_field('field_618aa63e46c84',$content_post->ID)['google_link'];
+								      	$pres_or_not = false;
+								      	foreach ($handless as $handle) {
+								      		if(str_contains($glink,$handle)){
+								      			$pres_or_not = true;
+								      			break;
+								      		}
+								      	}
+								      	echo ($pres_or_not===true)?'<b>&#10003;</b>':''; ?>
+								      </td>
 								      <td><h5><?= $res['vpnid']; ?></h5></td>
 								      <td><b><?= get_post_meta($content_post->ID,'cwp_rev_product_name',true); ?></b></td>
 								      <td><a type="button" class="btn btn-secondary colr-wh" href="<?= get_edit_post_link( $content_post->ID );?>" target="_blank">Edit</a></td>
