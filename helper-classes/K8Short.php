@@ -144,6 +144,9 @@ class K8Short
 
 		#[K8_SH_SEARCH]
 		add_shortcode( 'K8_SH_SEARCH', array( $this, 'search') );
+
+		#[K8_SH_NPERF]
+		add_shortcode( 'K8_SH_NPERF', array( $this, 'nperf') );
 	}
 
 	#set url of anbieter review
@@ -744,6 +747,18 @@ class K8Short
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 
 		return ob_get_clean();
+	}
+
+
+	#[K8_SH_NPERF]
+	public function nperf( $atts, $content, $tag ){
+		$src="https://ws.nperf.com/partner/js?l=7dd64821-0293-4951-b4bf-4be7e60efef6";
+		if (isset($atts['src']))
+			$src=$atts['src'];
+		ob_start();
+		echo "<script src='$src'></script>";
+		$html = ob_get_clean();
+		return $html;
 	}
 
 }
