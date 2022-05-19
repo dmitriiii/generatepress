@@ -61,7 +61,7 @@ class K8Short
 		$this->_ul = '</ul>';
 		$this->_li = '</li>';
 
-		
+
 
 
 		#Show table with taxonomies Data
@@ -147,6 +147,9 @@ class K8Short
 
 		#[K8_SH_NPERF]
 		add_shortcode( 'K8_SH_NPERF', array( $this, 'nperf') );
+
+		#[K8_SH_PROXY]
+		add_shortcode( 'K8_SH_PROXY', array( $this, 'proxy') );
 	}
 
 	#set url of anbieter review
@@ -228,7 +231,7 @@ class K8Short
 		// if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
 		if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
 			echo '<script type="application/ld+json">' . K8Help::ytPrepare( ['id'=>$a['id']] ) . '</script>';
-		
+
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -757,6 +760,21 @@ class K8Short
 			$src=$atts['src'];
 		ob_start();
 		echo "<script src='$src'></script>";
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	#[K8_SH_PROXY]
+	public function proxy( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'design1',
+			'proxy_url' => 'https://ruproxy.vpntester.org/main/',
+		), $atts );
+		wp_enqueue_style( 'k8_sh_proxy-css' );
+		wp_enqueue_script( 'k8_sh_proxy-js' );
+		ob_start();
+		include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
