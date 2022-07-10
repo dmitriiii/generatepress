@@ -4,6 +4,13 @@ if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	return;
 }
 $span = count( $pid_arr ) + 1;
+
+// echo '<pre>';
+// print_r(get_defined_vars());
+// print_r(pll_current_language('locale'));
+// echo '</pre>';
+
+
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 
 #Show names of vpn Services if it is compare tables
@@ -29,9 +36,22 @@ echo $this->tr .
 	K8Html::tdHead( ['txt'=>__('Empfohlene Einsatzgebiete' , 'k8lang_domain')] );
 	foreach ($pid_arr as $item) {
 		$anwendungen = get_the_terms( $item['pid'], 'anwendungen' );
+
 		echo $this->td;
-			if ( is_array( $anwendungen ) && count( $anwendungen ) > 0 )
+
+			#show translations of terms, from custom fields, related on locale
+			if ( is_array( $anwendungen ) && count( $anwendungen ) > 0 ){
+				if ( function_exists( 'pll_current_language' ) ) {
+					$ii=0;
+					foreach ($anwendungen as $objj) {
+						$anwendungen[$ii]->name = get_field(pll_current_language('locale'),'anwendungen_'.$objj->term_id);
+						$ii++;
+					}
+				}
+
 				echo K8H::getAcfChbx(['data'=>$anwendungen, 'label'=>'name' ]);
+			}
+
 		echo $this->_td;
 	}
 echo $this->_tr .

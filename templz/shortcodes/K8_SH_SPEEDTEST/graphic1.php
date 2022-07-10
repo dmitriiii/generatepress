@@ -60,8 +60,10 @@ $k8_acf_vpndet_up = get_field( 'k8_acf_vpndet_up', $pid ); ?>
 		</div>
 	</div>
 	<div class="head-4 ta-c">
-		<em><?php echo get_field('k8_acf_vpndet_meas', $pid)['label']; ?></em>
-		<?php 
+		<em><?php
+		$k8_acf_vpndet_meas =	get_field('k8_acf_vpndet_meas', $pid);
+		echo (is_array($k8_acf_vpndet_meas)) ? $k8_acf_vpndet_meas['label'] : $k8_acf_vpndet_meas; ?></em>
+		<?php
 		$stamp_old = get_the_modified_time('G' , $pid);
 		echo " | " . date('d.m.Y', strtotime('-10 day', $stamp_old) ); ?>
 	</div>

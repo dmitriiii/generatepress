@@ -35,6 +35,66 @@ if ( isset($_GET['testvidschema']) && $_GET['testvidschema'] == 77 ) {
 }
 
 
+function sendPostReq($text){
+	$array = array(
+	'auth_key' => '649b9629-8fdc-1fa1-d9ed-97cd7166cd92',
+	'text' => $text,
+	'source_lang'=>'DE',
+	'target_lang'=>'EN-US'
+	);
+
+	$ch = curl_init('https://api.deepl.com/v2/translate');
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($array, '', '&'));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_HEADER, false);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+	$html = curl_exec($ch);
+	curl_close($ch);
+
+	return $html;
+}
+
+
+/* AUTO Translating custom taxonomies's acf fields using Deepl.com
+ 	only for website vpntester.org ( multilanguage websites ) */
+if( isset($_GET['trsl_en']) && $_GET['trsl_en']==77){
+	$terms_slugs = [
+		'betriebssystem',
+		'zahlungsmittel',
+		'sprache',
+		'vpnprotokolle',
+		'anwendungen',
+		'sonderfunktionen',
+		'fixeip',
+		'vpnstandortelaender',
+		'kundenservice',
+		'unternehmen',
+		'bedingungen',
+		'sicherheitslevel'
+	];
+	foreach ($terms_slugs as $terms_slug) :
+
+		$terms = get_terms( array(
+	    'taxonomy' => $terms_slug,
+	    'hide_empty' => false,
+		));
+
+		foreach ($terms as $term) {
+
+			#Request translation from Deepl
+			// $res = json_decode(sendPostReq($term->name), TRUE);
+			// update_field('en_US', $res['translations'][0]['text'], $terms_slug.'_'.$term->term_id);
+
+			update_field('de_DE', $term->name, $terms_slug.'_'.$term->term_id);
+
+		}
+
+	endforeach;
+}
+
+
 if( isset($_GET['test2']) && $_GET['test2'] == 77 ){
 	global $wpdb;
 	$what = '%nofollow%';
