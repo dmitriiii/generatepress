@@ -84,10 +84,10 @@ if( isset($_GET['trsl_en']) && $_GET['trsl_en']==77){
 		foreach ($terms as $term) {
 
 			#Request translation from Deepl
-			// $res = json_decode(sendPostReq($term->name), TRUE);
-			// update_field('en_US', $res['translations'][0]['text'], $terms_slug.'_'.$term->term_id);
+			$res = json_decode(sendPostReq($term->name), TRUE);
+			update_field('en_US', $res['translations'][0]['text'], $terms_slug.'_'.$term->term_id);
 
-			update_field('de_DE', $term->name, $terms_slug.'_'.$term->term_id);
+			// update_field('de_DE', $term->name, $terms_slug.'_'.$term->term_id);
 
 		}
 
@@ -213,5 +213,21 @@ if( isset($_GET['test3']) && $_GET['test3'] == 77 ){
 
 	fclose($fp);
 }
+
+if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<!-- post -->
+
+
+<h1><?php
+the_title( );?></h1>
+
+<?php
+the_content();
+endwhile; ?>
+<!-- post navigation -->
+<?php else: ?>
+<!-- no posts found -->
+<?php endif;
+
 
 get_footer();

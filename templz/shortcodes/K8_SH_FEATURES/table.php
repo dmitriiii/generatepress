@@ -22,7 +22,11 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 
 	if ( isset($termz) && is_array($termz) && count( $termz ) > 0 ) :
 		foreach ($termz as $term):
-			echo $this->tr . K8Html::tdHead( ['txt'=>__($term->name , 'k8lang_domain')] );
+			if ( function_exists( 'pll_current_language' ) )
+				echo $this->tr . K8Html::tdHead( ['txt'=> get_field(pll_current_language('locale'),'sonderfunktionen_'.$term->term_id)] );
+			else
+				echo $this->tr . K8Html::tdHead( ['txt'=>$term->name] );
+
 			foreach ($pid_arr as $item) {
 				if( $term->slug == 'virtuelle-server' ){
 					echo ( (has_term( $term->slug, $term->taxonomy, $item['pid'] ) ) ?
