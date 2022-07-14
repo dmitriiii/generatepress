@@ -123,7 +123,7 @@ class K8Help
 		return $content;
 	}
 
-	static function get_excerpt_by_id($post_id, $excerpt_length = 35){
+	static function get_excerpt_by_id($post_id, $excerpt_length = 35, $raw = true){
 		$the_post = get_post($post_id); //Gets post ID
 		$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
 		$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
@@ -135,7 +135,8 @@ class K8Help
 				$the_excerpt = implode(' ', $words);
 		endif;
 
-		$the_excerpt = '<p>' . $the_excerpt . '</p>';
+		if(!$raw)
+			$the_excerpt = '<p>' . $the_excerpt . '</p>';
 
 		return $the_excerpt;
 	}
