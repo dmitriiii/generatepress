@@ -27,6 +27,11 @@ class K8Short
 
 	public $url;
 
+	#Translations
+	public $poly = false;
+	public $polySlug;
+	public $polyLocale;
+
 	public function __construct( $atts ){
 		$this->url = '#';
 
@@ -61,8 +66,9 @@ class K8Short
 		$this->_ul = '</ul>';
 		$this->_li = '</li>';
 
+		$this->setPoly();
 
-
+		
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -158,13 +164,25 @@ class K8Short
 		return '<a href="'.get_permalink($pid).'">';
 	}
 
-	// private function getUrl(){
-	// 	return $this->url;
-	// }
 
-	// private function getUrl(){
+	// Polylang functions
+	# Checks if polylang plugin is active and set properly variables
+	private function setPoly(){
+		if(function_exists( 'pll_get_post_translations') ):
+			$this->poly = true;
+			$this->polyLocale = pll_current_language('locale');
+			$this->polySlug = pll_current_language('slug');
+		endif;
+	}
 
-	// }
+	#returns array of existing translations if they exist
+	private function getPostTranslations($post_id){
+		if(function_exists( 'pll_get_post_translations') )
+			return pll_get_post_translations($post_id);
+		else
+			return false;
+	}
+
 
 	/**
 	 * [td description]
@@ -601,7 +619,10 @@ class K8Short
 		wp_enqueue_style( 'k8_sh_best-css' );
 		wp_enqueue_script( 'k8-lib-progressbar-js' );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
