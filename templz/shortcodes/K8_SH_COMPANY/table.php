@@ -1,9 +1,10 @@
-<?php
+<?php #[K8_SH_COMPANY]
 if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	echo __('Sorry nothing found. Please check shortcode attributes!' , 'k8lang_domain');
 	return;
 }
 $span = count( $pid_arr ) + 1;
+
 
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 
@@ -11,8 +12,15 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	if( count( $pid_arr ) > 1 ):
 		echo $this->tr . $this->td . __('VPN-Dienstname' , 'k8lang_domain') . $this->_td;
 		foreach ( $pid_arr as $item ) {
-			// $this->setUrl($item['pid']);
-			echo $this->td . $this->mark1 . $this->setUrl($item['pid']) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
+			if ($this->poly):
+				$translPid = $this->getPostTranslations($item['pid']);
+				if(isset($translPid[$this->polySlug]))
+					echo $this->td . $this->mark1 . $this->setUrl( $translPid[$this->polySlug] ) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
+				else
+					echo $this->td . 'Please check if vpnid has translation!' . $this->_td;
+			else:
+				echo $this->td . $this->mark1 . $this->setUrl($item['pid']) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
+			endif;
 		}
 		echo $this->_tr;
 	endif;
@@ -21,10 +29,18 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	foreach ($pid_arr as $item) {
 		$unternehmen = get_the_terms( $item['pid'], 'unternehmen' );
 		echo $this->td;
-					if( is_array($unternehmen) && count( $unternehmen ) > 0 ) :
-						$compare1[] = array_column( $unternehmen, 'slug' );
-						echo K8H::getAcfChbx(['data'=>$unternehmen, 'label'=>'name']);
-					endif;
+			if( is_array($unternehmen) && count( $unternehmen ) > 0 ) :
+				$compare1[] = array_column( $unternehmen, 'slug' );
+
+				if($this->poly){
+					$ii=0;
+					foreach ($unternehmen as $objj) {
+						$unternehmen[$ii]->name = get_field($this->polyLocale,'unternehmen_'.$objj->term_id);
+						$ii++;
+					}
+				}
+				echo K8H::getAcfChbx(['data'=>$unternehmen, 'label'=>'name']);
+			endif;
 		echo $this->_td;
 	}
 	echo $this->_tr .
