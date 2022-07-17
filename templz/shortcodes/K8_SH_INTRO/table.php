@@ -1,26 +1,17 @@
-<?php
+<?php # [K8_SH_INTRO]
 if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	echo __('Sorry nothing found. Please check shortcode attributes!' , 'k8lang_domain');
 	return;
 }
 $span = count( $pid_arr ) + 1;
 
-// echo '<pre>';
-// print_r(get_defined_vars());
-// print_r(pll_current_language('locale'));
-// echo '</pre>';
-
-
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 
 #Show names of vpn Services if it is compare tables
 if( count( $pid_arr ) > 1 ):
-	echo $this->tr . $this->td . __('VPN-Dienstname' , 'k8lang_domain') . $this->_td;
-	foreach ( $pid_arr as $item ) {
-		// $this->setUrl($item['pid']);
-		echo $this->td . $this->mark1 . $this->setUrl($item['pid']) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) . $this->_mark1 . $this->_td;
-	}
-	echo $this->_tr;
+	echo $this->tr . $this->td . __('VPN-Dienstname' , 'k8lang_domain') . $this->_td .
+				K8Html::getPolyThs( $this, $pid_arr ) . 
+			 $this->_tr;
 else:
 	echo $this->tr .
 		K8Html::tdHead( ['txt'=>__('Produktbezeichnung' , 'k8lang_domain')] );

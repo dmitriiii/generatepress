@@ -1,4 +1,4 @@
-<?php
+<?php # [K8_SH_VIDEOVPN]
 if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	echo __('Sorry nothing found. Please check shortcode attributes!' , 'k8lang_domain');
 	return;
@@ -19,6 +19,18 @@ foreach ($srvcs as $it) {
 }
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 foreach ( $pid_arr as $item ) :
+	
+	#polylang is installed
+	if($this->poly){
+		$translPid = $this->getPostTranslations($item['pid']);
+		#if there is no translated article - error!
+		if( !isset($translPid[$this->polySlug]) ):
+			echo $this->tr . $this->td .'<strong style="color:red;">Please check if vpnid has translation!</strong>' . $this->_td . $this->_tr;
+			continue;
+		endif;
+		$item['pid'] = $translPid[$this->polySlug];
+	}
+
 	echo $this->tr .
 				$this->td .
 					'<a href="' . get_permalink( $item['pid'] ) . '">' .

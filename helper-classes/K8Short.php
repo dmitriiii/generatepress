@@ -76,90 +76,90 @@ class K8Short
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
 
-		#[K8_SHORT_YT id="dkPLIw9aZwY"]
+		# [K8_SHORT_YT id="dkPLIw9aZwY"]
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
 
-		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
+		# [K8_SHORT_FAQ] generates schema markup for FAQ pages
 		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
 
-		#[K8_SH_INTRO]
+		# [K8_SH_INTRO]
 		add_shortcode( 'K8_SH_INTRO', array( $this, 'intro' ) );
 
-		#[K8_SH_STREAMING]
+		# [K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_STREAMING', array( $this, 'streaming' ) );
 
-		#[K8_SH_DOWNLOAD]
+		# [K8_SH_DOWNLOAD]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
-		#[K8_SH_FEATURES]
+		# [K8_SH_FEATURES]
 		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
 
-		#[K8_SH_ROUTER]
+		# [K8_SH_ROUTER]
 		add_shortcode( 'K8_SH_ROUTER', array( $this, 'router' ) );
 
-		#[K8_SH_TRAVELING]
+		# [K8_SH_TRAVELING]
 		add_shortcode( 'K8_SH_TRAVELING', array( $this, 'traveling' ) );
 
-		#[K8_SHORT_PRICING]
+		# [K8_SHORT_PRICING]
 		add_shortcode( 'K8_SHORT_PRICING', array( $this, 'pricing') );
 
-		#[K8_SH_SPEEDTEST]
+		# [K8_SH_SPEEDTEST]
 		add_shortcode( 'K8_SH_SPEEDTEST', array( $this, 'speedtest') );
 
-		#[K8_SH_GAMING]
+		# [K8_SH_GAMING]
 		add_shortcode( 'K8_SH_GAMING', array( $this, 'gaming') );
 
-		#[K8_SH_COMPANY]
+		# [K8_SH_COMPANY]
 		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
 
-		#[K8_SH_APPS]
+		# [K8_SH_APPS]
 		add_shortcode( 'K8_SH_APPS', array( $this, 'apps') );
 
-		#[K8_SH_SUPPORT]
+		# [K8_SH_SUPPORT]
 		add_shortcode( 'K8_SH_SUPPORT', array( $this, 'support') );
 
-		#[K8_SH_PRIVACY]
+		# [K8_SH_PRIVACY]
 		add_shortcode( 'K8_SH_PRIVACY', array( $this, 'privacy') );
 
-		#[K8_SH_SLIDER]
+		# [K8_SH_SLIDER]
 		add_shortcode( 'K8_SH_SLIDER', array( $this, 'slider') );
 
-		#[K8_SH_VIDEOVPN]
+		# [K8_SH_VIDEOVPN]
 		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
 
-		#[K8_SH_HOWTO]
+		# [K8_SH_HOWTO]
 		add_shortcode( 'K8_SH_HOWTO', array( $this, 'howto') );
 
-		#[K8_SH_BEST]
+		# [K8_SH_BEST]
 		add_shortcode( 'K8_SH_BEST', array( $this, 'best') );
 
-		#[K8_SH_ROUTER_INFO]
+		# [K8_SH_ROUTER_INFO]
 		add_shortcode( 'K8_SH_ROUTER_INFO', array( $this, 'router_info') );
 
-		#[K8_SH_POPUP]
+		# [K8_SH_POPUP]
 		add_shortcode( 'K8_SH_POPUP', array( $this, 'popup') );
 
-		#[K8_SCHEMA_ORG]
+		# [K8_SCHEMA_ORG]
 		add_shortcode( 'K8_SCHEMA_ORG', array( $this, 'organization') );
 
-		#[K8_SH_COUPON]
+		# [K8_SH_COUPON]
 		add_shortcode( 'K8_SH_COUPON', array( $this, 'coupon') );
 
-		#[K8_SH_ACCOUNT]
+		# [K8_SH_ACCOUNT]
 		add_shortcode( 'K8_SH_ACCOUNT', array( $this, 'account') );
 
-		#[K8_SH_SEARCH]
+		# [K8_SH_SEARCH]
 		add_shortcode( 'K8_SH_SEARCH', array( $this, 'search') );
 
-		#[K8_SH_NPERF]
+		# [K8_SH_NPERF]
 		add_shortcode( 'K8_SH_NPERF', array( $this, 'nperf') );
 
-		#[K8_SH_PROXY]
+		# [K8_SH_PROXY]
 		add_shortcode( 'K8_SH_PROXY', array( $this, 'proxy') );
 	}
 
 	#set url of anbieter review
-	private function setUrl($pid){
+	public function setUrl($pid){
 		// $this->url = get_permalink($pid);
 		return '<a href="'.get_permalink($pid).'">';
 	}
@@ -176,7 +176,7 @@ class K8Short
 	}
 
 	#returns array of existing translations if they exist
-	private function getPostTranslations($post_id){
+	public function getPostTranslations($post_id){
 		if(function_exists( 'pll_get_post_translations') )
 			return pll_get_post_translations($post_id);
 		else
