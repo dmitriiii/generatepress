@@ -338,7 +338,7 @@ class K8Html
 
 			# if exact post doesnt have translation to website's lang
 			if( !isset($translPid[$obj->polySlug]) ){
-				$html .= $obj->td . 'Please check if vpnid has translation!' . $obj->_td;
+				$html .= $obj->td . '<strong style="color:red;">Please check if vpnid has translation!</strong>' . $obj->_td;
 				continue;
 			}
 			$html .= $obj->td . $obj->mark1 .
