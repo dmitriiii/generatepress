@@ -497,7 +497,11 @@ class K8Short
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		// include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -510,7 +514,10 @@ class K8Short
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
