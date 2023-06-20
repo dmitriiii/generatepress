@@ -31,9 +31,22 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 	<style>
+		@font-face {
+			font-family: 'Roboto Condensed-fallback';
+			size-adjust: 88.92000000000002%;
+			ascent-override: 110%;
+			src: local("Arial");
+		}
+		@font-face {
+			font-family: 'Source Sans Pro-fallback';
+			size-adjust: 93.75%;
+			ascent-override: 110%;
+			src: local("Arial");
+		}
+
 		body,
 		body *{
-			font-family: 'Roboto Condensed', sans-serif;
+			font-family: 'Roboto Condensed', 'Roboto Condensed-fallback', sans-serif;
 			/* font-size: 16px !important; */
 			line-height: 1.6;
 		}
@@ -43,7 +56,7 @@ if(get_site_url()=='https://vpn-anbieter-vergleich-test.de' || get_site_url() ==
 		body h4,
 		body h5,
 		body h6{
-			font-family: 'Source Sans Pro', sans-serif;
+			font-family: 'Source Sans Pro', 'Source Sans Pro-fallback', sans-serif;
 			font-weight: 700;
 		}
 
