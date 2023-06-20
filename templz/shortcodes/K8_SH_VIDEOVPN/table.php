@@ -1,4 +1,4 @@
-<?php
+<?php # [K8_SH_VIDEOVPN]
 if( !is_array( $pid_arr ) || count( $pid_arr ) == 0 ){
 	echo __('Sorry nothing found. Please check shortcode attributes!' , 'k8lang_domain');
 	return;
@@ -19,12 +19,33 @@ foreach ($srvcs as $it) {
 }
 echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 foreach ( $pid_arr as $item ) :
-	echo $this->tr .
-				$this->td .
-					'<a href="' . get_permalink( $item['pid'] ) . '">' .
-						get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
-					'</a>' .
-				$this->_td;
+
+	#polylang is installed
+	if($this->poly):
+		$translPid = $this->getPostTranslations($item['pid']);
+		#if there is no translated article - error!
+		if( !isset($translPid[$this->polySlug]) ){
+			echo $this->tr . $this->td .'<strong style="color:red;">Please check if vpnid has translation!</strong>' . $this->_td . $this->_tr;
+			continue;
+		}
+
+		echo $this->tr .
+					$this->td .
+						'<a href="' . get_permalink( $translPid[$this->polySlug] ) . '">' .
+							get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
+						'</a>' .
+					$this->_td;
+
+	#without polylang
+	else:
+		echo $this->tr .
+					$this->td .
+						'<a href="' . get_permalink( $item['pid'] ) . '">' .
+							get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
+						'</a>' .
+					$this->_td;
+	endif;
+
 	foreach ( $srvcs as $srvc ) {
 		$k8_acf_vpndet_vid = get_field( 'k8_acf_vpndet_vid', $item['pid'] );
 		if( is_array( $k8_acf_vpndet_vid ) && count( $k8_acf_vpndet_vid ) > 0 ){

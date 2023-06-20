@@ -512,7 +512,7 @@ if (!class_exists('TopRatedListWidget')) {
 						'</a>' .
 						'<span class="m5top-wdg-list__name">' .
 						$v['name'] .
-						'<br><a class="m5top-wdg-list__name-link"' . $url_trgt . ' href="' . $v['url_to_page']['url'] . '">' . $v['score'] . ' Punkte</a>' .
+						'<br><a class="m5top-wdg-list__name-link"' . $url_trgt . ' href="' . $v['url_to_page']['url'] . '">' . $v['score'] . ' ' . __("Punkte" , "k8lang_domain") . '</a>' .
 						'</span>' .
 						'</span>' .
 						'<a class="m5top-wdg-list__visit" href="' . $v['affiliate_link']['url'] . '"' . $aff_trgt . '>' . $v['affiliate_link']['title'] . ' <i class="fas fa-caret-right" aria-hidden="true"></i></a>' .

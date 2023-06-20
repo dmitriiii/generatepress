@@ -186,39 +186,6 @@ wp_footer();
 </div><!-- .k8side__wraper -->
 
 <?php
-if( K8Help::hasShort(['shortcode'=>'k8coupon_mng_form']) ): ?>
-	<div class="k8-prld">
-		<div class="k8-prld__inn">
-			<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-		</div>
-	</div>
-	<div class="modd" id="modd__err">
-		<div class="modd__content">
-			<div class="modd__clz">&times;</div>
-			<!-- <div class="modd__title" style="color: red;">
-				Fehler bei <br> der Übermittlung.
-			</div> -->
-			<div class="modd__txt" style="color: red;"></div>
-	  </div>
-	</div>
-	<div class="modd" id="modd__succ">
-		<div class="modd__content">
-			<div class="modd__clz">&times;</div>
-			<!-- <div class="modd__title" style="color: green;">
-				Erfolgreich.
-			</div> -->
-			<div class="modd__txt" style="color: green;">
-				<p>
-					Coupon wurde erfolgreich gesendet.
-				</p>
-				<p>
-					Nimm Dein Telefon zu Hand.
-				</p>
-			</div>
-	  </div>
-	</div>
-<?php
-endif;
 
 # ENABLE GOOGLE ANALITICS
 echo M5Ga::getGa(); ?>

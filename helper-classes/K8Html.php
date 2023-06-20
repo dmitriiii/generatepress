@@ -318,4 +318,33 @@ class K8Html
 		$html = ob_get_clean();
 		return $html;
 	}
+
+	/**
+	 * Builds Ths for polylang translated [k8_sh] shortcodes
+	 * $obj - K8Short object
+	 * $pid_arr - array of post_id and vpn_ids
+	 */
+	static function getPolyThs( $obj,$pid_arr ){
+		$html = "";
+		foreach ( $pid_arr as $item ):
+			#website does't have multilang feature, polylang not activated, so just showing link to german vpnid article
+			if(!$obj->poly){
+				$html .= $obj->td . $obj->mark1 .
+									$obj->setUrl($item['pid']) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
+								 $obj->_mark1 . $obj->_td;
+				continue;
+			}
+			$translPid = $obj->getPostTranslations($item['pid']);
+
+			# if exact post doesnt have translation to website's lang
+			if( !isset($translPid[$obj->polySlug]) ){
+				$html .= $obj->td . '<strong style="color:red;">Please check if vpnid has translation!</strong>' . $obj->_td;
+				continue;
+			}
+			$html .= $obj->td . $obj->mark1 .
+								$obj->setUrl( $translPid[$obj->polySlug] ) . get_post_meta( $item['pid'], 'cwp_rev_product_name', true ) .
+							 $obj->_mark1 . $obj->_td;
+		endforeach;
+		return $html;
+	}
 } ?>

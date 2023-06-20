@@ -122,6 +122,24 @@ class K8Help
 		$content = str_replace(']]>', ']]&gt;', $content);
 		return $content;
 	}
+
+	static function get_excerpt_by_id($post_id, $excerpt_length = 35, $raw = true){
+		$the_post = get_post($post_id); //Gets post ID
+		$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+		$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+		$words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+		if(count($words) > $excerpt_length) :
+				array_pop($words);
+				array_push($words, '…');
+				$the_excerpt = implode(' ', $words);
+		endif;
+
+		if(!$raw)
+			$the_excerpt = '<p>' . $the_excerpt . '</p>';
+
+		return $the_excerpt;
+	}
 	//Pagination
 	static function pagination($pages = '', $range = 2){
 		$showitems = ($range * 2)+1;
@@ -208,8 +226,8 @@ class K8Help
 	/**
 	 * [hasShort description]
 	 * @param  [type]  $args[
-	 		'shortcode' - string,
-	 		'pid' - int
+			'shortcode' - string,
+			'pid' - int
 	 * ]
 	 * @return boolean            [description]
 	 */
@@ -217,19 +235,19 @@ class K8Help
 		if( !isset($args['pid']) ){
 			$args['pid'] = get_the_ID();
 		}
-    $post_to_check = get_post( $args['pid'] );
-    // false because we have to search through the post content first
-    $found = false;
-    // if no short code was provided, return false
-    if (!$args['shortcode']) {
-      return $found;
-    }
-    // check the post content for the short code
-    if ( stripos($post_to_check->post_content, '[' . $args['shortcode']) !== false ) {
-      // we have found the short code
-      $found = true;
-    }
-    return $found;
+		$post_to_check = get_post( $args['pid'] );
+		// false because we have to search through the post content first
+		$found = false;
+		// if no short code was provided, return false
+		if (!$args['shortcode']) {
+			return $found;
+		}
+		// check the post content for the short code
+		if ( stripos($post_to_check->post_content, '[' . $args['shortcode']) !== false ) {
+			// we have found the short code
+			$found = true;
+		}
+		return $found;
 	}
 
 	/**

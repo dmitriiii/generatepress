@@ -27,6 +27,11 @@ class K8Short
 
 	public $url;
 
+	#Translations
+	public $poly = false;
+	public $polySlug;
+	public $polyLocale;
+
 	public function __construct( $atts ){
 		$this->url = '#';
 
@@ -61,8 +66,9 @@ class K8Short
 		$this->_ul = '</ul>';
 		$this->_li = '</li>';
 
-		
+		$this->setPoly();
 
+		
 
 		#Show table with taxonomies Data
 		add_shortcode( 'k8_short_prod', array( $this, 'vpn_tax') );
@@ -70,95 +76,113 @@ class K8Short
 		#Show table with vpn details
 		add_shortcode( 'k8_short_vpndet', array( $this, 'vpn_det') );
 
-		#[K8_SHORT_YT id="dkPLIw9aZwY"]
+		# [K8_SHORT_YT id="dkPLIw9aZwY"]
 		add_shortcode( 'K8_SHORT_YT', array( $this, 'yt' ) );
 
-		#[K8_SHORT_FAQ] generates schema markup for FAQ pages
+		# [K8_SHORT_FAQ] generates schema markup for FAQ pages
 		add_shortcode( 'K8_SHORT_FAQ', array( $this, 'faq' ) );
 
-		#[K8_SH_INTRO]
+		# [K8_SH_INTRO]
 		add_shortcode( 'K8_SH_INTRO', array( $this, 'intro' ) );
 
-		#[K8_SH_STREAMING]
+		# [K8_SH_STREAMING]
 		add_shortcode( 'K8_SH_STREAMING', array( $this, 'streaming' ) );
 
-		#[K8_SH_DOWNLOAD]
+		# [K8_SH_DOWNLOAD]
 		add_shortcode( 'K8_SH_DOWNLOAD', array( $this, 'download' ) );
 
-		#[K8_SH_FEATURES]
+		# [K8_SH_FEATURES]
 		add_shortcode( 'K8_SH_FEATURES', array( $this, 'features' ) );
 
-		#[K8_SH_ROUTER]
+		# [K8_SH_ROUTER]
 		add_shortcode( 'K8_SH_ROUTER', array( $this, 'router' ) );
 
-		#[K8_SH_TRAVELING]
+		# [K8_SH_TRAVELING]
 		add_shortcode( 'K8_SH_TRAVELING', array( $this, 'traveling' ) );
 
-		#[K8_SHORT_PRICING]
+		# [K8_SHORT_PRICING]
 		add_shortcode( 'K8_SHORT_PRICING', array( $this, 'pricing') );
 
-		#[K8_SH_SPEEDTEST]
+		# [K8_SH_SPEEDTEST]
 		add_shortcode( 'K8_SH_SPEEDTEST', array( $this, 'speedtest') );
 
-		#[K8_SH_GAMING]
+		# [K8_SH_GAMING]
 		add_shortcode( 'K8_SH_GAMING', array( $this, 'gaming') );
 
-		#[K8_SH_COMPANY]
+		# [K8_SH_COMPANY]
 		add_shortcode( 'K8_SH_COMPANY', array( $this, 'company') );
 
-		#[K8_SH_APPS]
+		# [K8_SH_APPS]
 		add_shortcode( 'K8_SH_APPS', array( $this, 'apps') );
 
-		#[K8_SH_SUPPORT]
+		# [K8_SH_SUPPORT]
 		add_shortcode( 'K8_SH_SUPPORT', array( $this, 'support') );
 
-		#[K8_SH_PRIVACY]
+		# [K8_SH_PRIVACY]
 		add_shortcode( 'K8_SH_PRIVACY', array( $this, 'privacy') );
 
-		#[K8_SH_SLIDER]
+		# [K8_SH_SLIDER]
 		add_shortcode( 'K8_SH_SLIDER', array( $this, 'slider') );
 
-		#[K8_SH_VIDEOVPN]
+		# [K8_SH_VIDEOVPN]
 		add_shortcode( 'K8_SH_VIDEOVPN', array( $this, 'videovpn') );
 
-		#[K8_SH_HOWTO]
+		# [K8_SH_HOWTO]
 		add_shortcode( 'K8_SH_HOWTO', array( $this, 'howto') );
 
-		#[K8_SH_BEST]
+		# [K8_SH_BEST]
 		add_shortcode( 'K8_SH_BEST', array( $this, 'best') );
 
-		#[K8_SH_ROUTER_INFO]
+		# [K8_SH_ROUTER_INFO]
 		add_shortcode( 'K8_SH_ROUTER_INFO', array( $this, 'router_info') );
 
-		#[K8_SH_POPUP]
+		# [K8_SH_POPUP]
 		add_shortcode( 'K8_SH_POPUP', array( $this, 'popup') );
 
-		#[K8_SCHEMA_ORG]
+		# [K8_SCHEMA_ORG]
 		add_shortcode( 'K8_SCHEMA_ORG', array( $this, 'organization') );
 
-		#[K8_SH_COUPON]
+		# [K8_SH_COUPON]
 		add_shortcode( 'K8_SH_COUPON', array( $this, 'coupon') );
 
-		#[K8_SH_ACCOUNT]
+		# [K8_SH_ACCOUNT]
 		add_shortcode( 'K8_SH_ACCOUNT', array( $this, 'account') );
 
-		#[K8_SH_SEARCH]
+		# [K8_SH_SEARCH]
 		add_shortcode( 'K8_SH_SEARCH', array( $this, 'search') );
+
+		# [K8_SH_NPERF]
+		add_shortcode( 'K8_SH_NPERF', array( $this, 'nperf') );
+
+		# [K8_SH_PROXY]
+		add_shortcode( 'K8_SH_PROXY', array( $this, 'proxy') );
 	}
 
 	#set url of anbieter review
-	private function setUrl($pid){
+	public function setUrl($pid){
 		// $this->url = get_permalink($pid);
 		return '<a href="'.get_permalink($pid).'">';
 	}
 
-	// private function getUrl(){
-	// 	return $this->url;
-	// }
 
-	// private function getUrl(){
+	// Polylang functions
+	# Checks if polylang plugin is active and set properly variables
+	private function setPoly(){
+		if(function_exists( 'pll_get_post_translations') ):
+			$this->poly = true;
+			$this->polyLocale = pll_current_language('locale');
+			$this->polySlug = pll_current_language('slug');
+		endif;
+	}
 
-	// }
+	#returns array of existing translations if they exist
+	public function getPostTranslations($post_id){
+		if(function_exists( 'pll_get_post_translations') )
+			return pll_get_post_translations($post_id);
+		else
+			return false;
+	}
+
 
 	/**
 	 * [td description]
@@ -222,8 +246,10 @@ class K8Short
 			$a["output"] = 'amp/'.$a["output"];
 		ob_start();
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
-		if( get_site_url() == "https://vpn-anbieter-vergleich-test.de" || get_site_url() == 'https://vpntester.org')
+		// if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
+		if( get_site_url() == 'https://vpntester.org' && !isset($atts['skip_schema']) )
 			echo '<script type="application/ld+json">' . K8Help::ytPrepare( ['id'=>$a['id']] ) . '</script>';
+
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -471,7 +497,11 @@ class K8Short
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		// include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -484,7 +514,10 @@ class K8Short
 		), $atts );
 		$pid_arr = K8H::shortPrep( $a, $atts );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -593,7 +626,10 @@ class K8Short
 		wp_enqueue_style( 'k8_sh_best-css' );
 		wp_enqueue_script( 'k8-lib-progressbar-js' );
 		ob_start();
-		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		if($this->poly && $this->polySlug !== 'de')
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '-' . $this->polySlug . '.php';
+		else
+			include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
 		$html = ob_get_clean();
 		return $html;
 	}
@@ -742,6 +778,33 @@ class K8Short
 		include $this->templ_url . $tag . '/' . $a["output"] . '.php';
 
 		return ob_get_clean();
+	}
+
+
+	#[K8_SH_NPERF]
+	public function nperf( $atts, $content, $tag ){
+		$src="https://ws.nperf.com/partner/js?l=7dd64821-0293-4951-b4bf-4be7e60efef6";
+		if (isset($atts['src']))
+			$src=$atts['src'];
+		ob_start();
+		echo "<script src='$src'></script>";
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	#[K8_SH_PROXY]
+	public function proxy( $atts, $content, $tag ){
+		$a = shortcode_atts( array(
+			'output' => 'design1',
+			'proxy_url' => 'https://ruproxy.vpntester.org/main/',
+		), $atts );
+		wp_enqueue_style( 'k8_sh_proxy-css' );
+		wp_enqueue_script( 'k8_sh_proxy-js' );
+		ob_start();
+		include_once $this->templ_url . $tag . '/' . $a["output"] . '.php';
+		$html = ob_get_clean();
+		return $html;
 	}
 
 }

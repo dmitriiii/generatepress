@@ -1,0 +1,36 @@
+.proxx{
+	max-width: 500px;
+	width: 100%;
+	margin: 50px auto 60px;
+	background: #428bca;
+	color: #fff;
+	padding: 30px;
+}
+
+.proxx, .proxx *{
+	box-sizing: border-box;
+}
+
+.proxx__form{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	width: 100%;
+}
+
+.proxx__inp{
+	width: 100%;
+}
+.proxx__logo{
+	margin: 0 auto 10px;
+	display: block;
+}
+.proxx__head{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.proxx__warn{
+	color: red;
+	text-shadow: 0 0 2px red;
+}

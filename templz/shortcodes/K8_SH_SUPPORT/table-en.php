@@ -23,8 +23,14 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 	foreach ($pid_arr as $item) {
 		$sprache = get_the_terms( $item['pid'], 'sprache' );
 		echo $this->td;
-			if ( is_array( $sprache ) && count( $sprache ) > 0 )
-				echo K8H::getAcfChbx(['data'=>$sprache, 'label'=>'name' ]);
+			if ( is_array( $sprache ) && count( $sprache ) > 0 ){
+        $ii=0;
+        foreach ($sprache as $objj) {
+          $sprache[$ii]->name = get_field($this->polyLocale,'sprache_'.$objj->term_id);
+          $ii++;
+        }
+      }
+			echo K8H::getAcfChbx(['data'=>$sprache, 'label'=>'name' ]);
 		echo $this->_td;
 	}
 	echo $this->_tr.
@@ -33,8 +39,14 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]) .
 	foreach ($pid_arr as $item) {
 		$kundenservice = get_the_terms( $item['pid'], 'kundenservice' );
 		echo $this->td;
-			if ( is_array( $kundenservice ) && count( $kundenservice ) > 0 )
-				echo K8H::getAcfChbx(['data'=>$kundenservice, 'label'=>'name' ]);
+			if ( is_array( $kundenservice ) && count( $kundenservice ) > 0 ){
+        $ii=0;
+        foreach ($kundenservice as $objj) {
+          $kundenservice[$ii]->name = get_field($this->polyLocale,'kundenservice_'.$objj->term_id);
+          $ii++;
+        }
+      }
+			echo K8H::getAcfChbx(['data'=>$kundenservice, 'label'=>'name' ]);
 		echo $this->_td;
 	}
 	echo $this->_tr .

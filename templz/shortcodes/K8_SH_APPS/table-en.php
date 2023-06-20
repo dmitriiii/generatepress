@@ -19,8 +19,14 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	foreach ($pid_arr as $item) {
 		$vpnprotokolle = get_the_terms( $item['pid'], 'vpnprotokolle' );
 		echo $this->td;
-			if ( is_array( $vpnprotokolle ) && count( $vpnprotokolle ) > 0 )
+			if ( is_array( $vpnprotokolle ) && count( $vpnprotokolle ) > 0 ):
+        $ii=0;
+        foreach ($vpnprotokolle as $objj) {
+          $vpnprotokolle[$ii]->name = get_field($this->polyLocale,'vpnprotokolle_'.$objj->term_id);
+          $ii++;
+        }
 				echo K8H::getAcfChbx(['data'=>$vpnprotokolle, 'label'=>'name' ]);
+      endif;
 		echo $this->_td;
 	}
 	echo $this->_tr.
@@ -29,9 +35,15 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	foreach ($pid_arr as $item) {
 		$betriebssystem = get_the_terms( $item['pid'], 'betriebssystem' );
 		echo $this->td;
-			if ( is_array( $betriebssystem ) && count( $betriebssystem ) > 0 )
+			if ( is_array( $betriebssystem ) && count( $betriebssystem ) > 0 ):
+        $ii=0;
+        foreach ($betriebssystem as $objj) {
+          $betriebssystem[$ii]->name = get_field($this->polyLocale,'betriebssystem_'.$objj->term_id);
+          $ii++;
+        }
 				echo K8H::getAcfChbx(['data'=>$betriebssystem, 'label'=>'name' ]);
-		echo $this->_td;
+      endif;
+    echo $this->_td;
 	}
 	echo $this->_tr.
 
@@ -49,8 +61,14 @@ echo K8Html::tbl_start(['add_clss' => strtolower( $tag )]);
 	foreach ($pid_arr as $item) {
 		$sprache = get_the_terms( $item['pid'], 'sprache' );
 		echo $this->td;
-			if ( is_array( $sprache ) && count( $sprache ) > 0 )
+			if ( is_array( $sprache ) && count( $sprache ) > 0 ):
+        $ii=0;
+        foreach ($sprache as $objj) {
+          $sprache[$ii]->name = get_field($this->polyLocale,'sprache_'.$objj->term_id);
+          $ii++;
+        }
 				echo K8H::getAcfChbx(['data'=>$sprache, 'label'=>'name' ]);
+      endif;
 		echo $this->_td;
 	}
 	echo $this->_tr;

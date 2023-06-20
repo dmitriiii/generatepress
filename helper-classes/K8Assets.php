@@ -8,7 +8,7 @@ class K8Assets
 		#add for admin dashboard
 		add_action('admin_enqueue_scripts', array($this, 'admin_style'));
 
-		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.org' ){
+		if( get_site_url() == 'https://vpn-anbieter-vergleich-test.de' || get_site_url() == 'https://vpntester.org' || get_site_url() == 'https://dev.vpnanbietervergleich.de' ){
 			add_action( 'admin_head', array($this, 'acf_fix') );
 		}
 
@@ -47,6 +47,9 @@ class K8Assets
 		wp_register_script( 'k8-timer', get_template_directory_uri() . '/k8/assets/js/components/timer.js', array('jquery'), rand(1,9999), true );
 		wp_register_script( 'k8-sales-pupop', get_template_directory_uri() . '/k8/assets/js/components/sales-pupop.js', array('k8-pupop'), rand(1,9999), true );
 
+		wp_register_script( 'k8_sh_proxy-js', get_template_directory_uri() . '/templz/shortcodes/K8_SH_PROXY/js/scrip.js', array('jquery'), rand(1,9999), true );
+
+
 		# [K8_SH_COUPON]
 		wp_register_script( 'k8_sh_coupon-js-run', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/runtime-main.7de392ff.js', array(), false, true );
 		wp_register_script( 'k8_sh_coupon-js-2', get_template_directory_uri() . '/templz/shortcodes/K8_SH_COUPON/build/static/js/2.37ce1337.chunk.js', array(), false, true );
@@ -71,6 +74,9 @@ class K8Assets
 		wp_register_style( 'k8_sh_best-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_best.css', array(), false, 'all' );
 		wp_register_style( 'k8_sh_router_info-css', get_template_directory_uri() . '/k8/assets/css/shortcodes/k8_sh_router_info.css', array(), rand(1,9999), 'all' );
 		wp_register_style( 'K8_SHORT_FAQ-css', get_template_directory_uri() . '/templz/shortcodes/K8_SHORT_FAQ/css/style.css', array(), rand(1,9999), 'all' );
+
+		wp_register_style( 'k8_sh_proxy-css', get_template_directory_uri() . '/templz/shortcodes/K8_SH_PROXY/css/styl.css', array(), rand(1,9999), 'all' );
+
 		#END SHORTCODE's JS & CSS
 
 		#Components&Modules

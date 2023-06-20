@@ -10,7 +10,7 @@ class K8Hooks
 		add_action('manage_post_posts_custom_column', array( $this,'add_admin_column_show' ), 10, 2);
 
 		#SCHEMA markup for Menus
-		add_action('wp_footer', array($this,'menus_schema'));
+		// add_action('wp_footer', array($this,'menus_schema'));
 
 		#Multiple Languages
 		add_action('after_setup_theme', array($this,'setup_theme'));
@@ -75,27 +75,27 @@ class K8Hooks
 	}
 
 	#SCHEMA markup for Menus
-	public function menus_schema(){
-		$menu_locations =	wp_get_nav_menus();
-		// echo '<pre>';
-		// print_r($m5_nav_m);
-		// echo '</pre>';
+	// public function menus_schema(){
+	// 	$menu_locations =	wp_get_nav_menus();
+	// 	// echo '<pre>';
+	// 	// print_r($m5_nav_m);
+	// 	// echo '</pre>';
 
-		foreach ($menu_locations as $menu_location) :
-			$menus = wp_get_nav_menu_items($menu_location->term_id);
-			foreach ($menus as $link) {
-				echo '<script type="application/ld+json">';
-				echo K8Schema::getSiteNavEl(['link'=>$link]);
-				echo '</script>';
+	// 	foreach ($menu_locations as $menu_location) :
+	// 		$menus = wp_get_nav_menu_items($menu_location->term_id);
+	// 		foreach ($menus as $link) {
+	// 			echo '<script type="application/ld+json">';
+	// 			echo K8Schema::getSiteNavEl(['link'=>$link]);
+	// 			echo '</script>';
 
-			}
-			// echo '<pre>';
-			// print_r($m5_nav);
-			// echo '</pre>';
-			// echo K8Schema::getSiteNavEl(['menu'=>$menu]);
-		endforeach;
+	// 		}
+	// 		// echo '<pre>';
+	// 		// print_r($m5_nav);
+	// 		// echo '</pre>';
+	// 		// echo K8Schema::getSiteNavEl(['menu'=>$menu]);
+	// 	endforeach;
 
-	}
+	// }
 
 	#Multiple Languages
 	public function setup_theme(){
