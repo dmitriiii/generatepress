@@ -266,21 +266,21 @@ jQuery(document).ready(function ($) {
 		}, 15000);
 	});
 
-	function sentGoogleAnalitic(gtagOpts) {
-		if (gtag) {
-			gtag.apply(void 0, gtagOpts);
-		}
-	} // load youtube iframe on click
+	// function sentGoogleAnalitic(gtagOpts) {
+	// 	if (gtag) {
+	// 		gtag.apply(void 0, gtagOpts);
+	// 	}
+	// } // load youtube iframe on click
 
 	$("body").on("click", ".k8_yt-link", function (event) {
 		event.preventDefault();
-		sentGoogleAnalitic([
-			"event",
-			"a1_play",
-			{
-				event_category: "a1_videos",
-			},
-		]);
+		// sentGoogleAnalitic([
+		// 	"event",
+		// 	"a1_play",
+		// 	{
+		// 		event_category: "a1_videos",
+		// 	},
+		// ]);
 		var $link = $(this),
 			$wrr = $link.parents(".k8_yt-wrr"),
 			url = $link.attr("data-href"),
@@ -300,13 +300,13 @@ jQuery(document).ready(function ($) {
 
 	//Click on bestes VPN buttons
 	$("body").on('click', '.die-besten-vpn-li>a', function(event) {
-		sentGoogleAnalitic([
-			"event",
-			"besten_vpn_button",
-			{
-				event_category: "click_buttons",
-			},
-		]);
+		// sentGoogleAnalitic([
+		// 	"event",
+		// 	"besten_vpn_button",
+		// 	{
+		// 		event_category: "click_buttons",
+		// 	},
+		// ]);
 	});
 
 	if ($(".k8-sl").length > 0) {

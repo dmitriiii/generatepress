@@ -167,42 +167,42 @@ jQuery(document).ready(function ($) {
 			/* Act on the event */
 		});
 		$(b).on("change", ".k8side__fast-open--affiliate", function (e) {
-			if (this.checked && gtag) {
-				gtag("event", "Click on Fast Affiliates", {
-					event_category: "Fast Affiliates open",
-				});
-			} else if (gtag) {
-				gtag("event", "Click on Fast Affiliates", {
-					event_category: "Fast Affiliates close",
-				});
-			}
+			// if (this.checked && gtag) {
+			// 	gtag("event", "Click on Fast Affiliates", {
+			// 		event_category: "Fast Affiliates open",
+			// 	});
+			// } else if (gtag) {
+			// 	gtag("event", "Click on Fast Affiliates", {
+			// 		event_category: "Fast Affiliates close",
+			// 	});
+			// }
 		})
 		$(b).on("change", ".k8side__fast-open--share", function (e) {
-			if (this.checked && gtag) {
-				gtag("event", "Open fast share", {
-					event_category: "Social Network",
-					non_interaction: true
-				});
-			} else if (gtag) {
-				gtag("event", "Close fast share", {
-					event_category: "Social Network",
-					non_interaction: true
-				});
-			}
+			// if (this.checked && gtag) {
+			// 	gtag("event", "Open fast share", {
+			// 		event_category: "Social Network",
+			// 		non_interaction: true
+			// 	});
+			// } else if (gtag) {
+			// 	gtag("event", "Close fast share", {
+			// 		event_category: "Social Network",
+			// 		non_interaction: true
+			// 	});
+			// }
 		})
 		$(b).on("click", ".k8side__fast-item--share", function (e) {
-			if (gtag) {
-				let postIdEl = document.querySelector('meta[name="post:id"]')
-				let postTypeEl = document.querySelector('meta[name="post:type"]')
-				gtag("event", "share", {
-					event_category: "Social Network",
-					event_label: this.dataset.name,
-					method: this.dataset.name,
-					content_id: postIdEl ? postIdEl.content : undefined,
-					content_type: postTypeEl ? postTypeEl.content : undefined,
-					non_interaction: true
-				});
-			}
+			// if (gtag) {
+			// 	let postIdEl = document.querySelector('meta[name="post:id"]')
+			// 	let postTypeEl = document.querySelector('meta[name="post:type"]')
+			// 	gtag("event", "share", {
+			// 		event_category: "Social Network",
+			// 		event_label: this.dataset.name,
+			// 		method: this.dataset.name,
+			// 		content_id: postIdEl ? postIdEl.content : undefined,
+			// 		content_type: postTypeEl ? postTypeEl.content : undefined,
+			// 		non_interaction: true
+			// 	});
+			// }
 		})
 	};
 	Clickz();
