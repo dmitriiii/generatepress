@@ -12,7 +12,7 @@ class K8Rest
 		$this->cust_fields = $args['cust_fields'];
 		$this->taxz = $args['taxz'];
 		$this->k8_arrr = array(
-			'https://vpn-anbieter-vergleich-test.de',
+			'https://test1.vpntester.org',
 			'https://vpntester.org'
 		);
 		if( in_array(get_site_url(), $this->k8_arrr) ){
