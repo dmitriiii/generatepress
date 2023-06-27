@@ -127,9 +127,8 @@ class K8Assets
 
 			wp_enqueue_script( 'k8-ip-test-js-run', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/runtime-main.4dc7fbe5.js', array(), false, true );
 			wp_enqueue_script( 'k8-ip-test-js-2', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/2.2ea7d36a.chunk.js', array(), false, true );
-			// wp_enqueue_script( 'k8-ip-test-js-main', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/main.a6d182e4.chunk.js', array(), false, true );
-			wp_enqueue_script( 'k8-ip-test-js-main', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/main.10f5d977.chunk.js', array(), false, true );
-			
+			wp_enqueue_script( 'k8-ip-test-js-main', get_template_directory_uri() . '/k8/assets/js/tpl/k8tpl-test/main.1356195f.chunk.js', array(), false, true );
+
 		}
 
 		#Template Password Generator
